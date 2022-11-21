@@ -1,0 +1,1546 @@
+<html>
+
+<head>
+
+    <title>home page</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+    <!-- for popup -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div id="popup1" class="modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-2">
+                <div class="modal-header pb-0" style="border-bottom:0 ;">
+                    <p class="mb-0" style="font-size:20px ;">Confirm Delete </p>
+                </div>
+                <div class="modal-body pb-0">
+                    Are you sure you want to delete this item?
+                </div>
+                <div class="modal-footer mt-3 justify-content-center" style="border-top:0 ;">
+                    <button type="button" class="col-example8" data-bs-dismiss="modal">Cancle
+                    </button>
+                    <button type="button" class="col-example7" data-bs-dismiss="modal">Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row h-100 p-0 m-0">
+        <div class="col-md-2 d-md-none col-sm-2 col-2 ps-2 pe-2 position-relative" style="background-color: #f88634;">
+            <div class="position-sticky top-0 pt-5">
+                <div class="nav flex-column nav-pills m-0">
+                    <button class="nav-link active text-center" data-bs-toggle="pill" data-bs-target="#user">
+                        <i class="fa fa-user p-1" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#page">
+                        <i class="fa fa-file-text p-1" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#mission">
+                        <i class="fa fa-bullseye p-1" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#theme">
+                        <i class="fa fa-object-ungroup p-1" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#skill">
+                        <i class="fa fa-pencil-square-o p-1" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#app">
+                        <i class="fa fa-clone p-1" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#story">
+                        <i class="fa fa-book p-1" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#banner">
+                        <i class="fa fa-map-signs p-1" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="d-none col-lg-2 col-md-2 d-md-block m-0 p-0 position-relative" style="background-color: #f88634;">
+            <div class="position-sticky top-0 pt-4">
+                <p class="p-3 mb-0" style="color:white ;">NEVIGATION</p>
+                <div class="nav flex-column nav-pills ms-4 me-4" style="font-size:14px ;">
+                    <button class="nav-link active text-start" data-bs-toggle="pill" data-bs-target="#user">
+                        <i class="fa fa-user me-2 p-1" aria-hidden="true"></i>
+                        User
+                    </button>
+                    <button class="nav-link text-start" data-bs-toggle="pill" data-bs-target="#page">
+                        <i class="fa fa-file-text  me-2 p-1" aria-hidden="true"></i>
+                        CMS Pages
+                    </button>
+                    <button class="nav-link text-start" data-bs-toggle="pill" data-bs-target="#mission">
+                        <i class="fa fa-bullseye  me-2 p-1" aria-hidden="true"></i>
+                        Mission
+                    </button>
+                    <button class="nav-link text-start" data-bs-toggle="pill" data-bs-target="#theme">
+                        <i class="fa fa-object-ungroup  me-2 p-1" aria-hidden="true"></i>
+                        Mission Theme
+                    </button>
+                    <button class="nav-link text-start" data-bs-toggle="pill" data-bs-target="#skill">
+                        <i class="fa fa-pencil-square-o  me-2 p-1" aria-hidden="true"></i>
+                        Mission Skill
+                    </button>
+                    <button class="nav-link text-start" data-bs-toggle="pill" data-bs-target="#app">
+                        <i class="fa fa-folder me-2 p-1" aria-hidden="true"></i></i>
+                        Mission Application
+                    </button>
+                    <button class="nav-link text-start" data-bs-toggle="pill" data-bs-target="#story">
+                        <i class="fa fa-book  me-2 p-1" aria-hidden="true"></i>
+                        Story
+                    </button>
+                    <button class="nav-link text-start" data-bs-toggle="pill" data-bs-target="#banner">
+                        <i class="fa fa-map-signs me-2 p-1" aria-hidden="true"></i>
+                        Banner Management
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-10 m-0 p-0 position-relative">
+            <div class="position-sticky top-0" style="z-index: 2">
+                <div class="d-flex justify-content-between hd ">
+                    <div class="p-3">
+                        Thursday, November 3, 2022, 10:06 AM
+                    </div>
+                    <nav class="main-nav p-3 pb-2">
+                        <ul class="right">
+                            <li class="drop-down">
+                                <a href="#" class="p-0"><img src="Assets/user-img.png"
+                                        class="rounded-circle m-2 mt-0 mb-0" width="29" height="29">username</a>
+                                <ul>
+                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="#">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="tab-content p-3" style="z-index: 1">
+                <div class="tab-pane show active" id="user">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">User</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between mt-4 mb-4">
+                        <div style="border: 2px solid #dee2e6; border-radius:5px;">
+                            <div class="input-group">
+                                <span class="input-group-text" style="background-color:transparent; border:none;">
+                                    <img src="Assets/search.png" height="15px">
+                                </span>
+                                <input type="text" placeholder="search" class="form-control"
+                                    style="border:none;border-radius:5px;background-color:transparent;">
+                            </div>
+                        </div>
+                        <a class="col-example1" href="#"
+                            style="font-size:calc(12px + 0.15vw);background-color: white; padding-top: 7px;">
+                            <i class="fa fa-plus me-2" aria-hidden="true"></i>
+                            Add
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="userc">
+                            <table class="table" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Email</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Department</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination pager justify-content-end">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/previous.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/left.png" alt=""></a></li>
+                                    <li class="page-item"><a class="page-link active text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">4</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/next.png" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="page">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">CMS
+                                Pages</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between mt-4 mb-4">
+                        <div style="border: 2px solid #dee2e6; border-radius:5px;">
+                            <div class="input-group">
+                                <span class="input-group-text" style="background-color:transparent; border:none;">
+                                    <img src="Assets/search.png" height="15px">
+                                </span>
+                                <input type="text" placeholder="search" class="form-control"
+                                    style="border:none;border-radius:5px;background-color:transparent;">
+                            </div>
+                        </div>
+                        <a class="col-example1" href="#"
+                            style="font-size:calc(12px + 0.15vw);background-color: white; padding-top: 7px;">
+                            <i class="fa fa-plus me-2" aria-hidden="true"></i>
+                            Add
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="userc">
+                            <table class="table" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Email</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Department</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size: 20px;">
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination pager justify-content-end">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/previous.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/left.png" alt=""></a></li>
+                                    <li class="page-item"><a class="page-link active text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">4</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/next.png" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="mission">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">Mission</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between mt-4 mb-4">
+                        <div style="border: 2px solid #dee2e6; border-radius:5px;">
+                            <div class="input-group">
+                                <span class="input-group-text" style="background-color:transparent; border:none;">
+                                    <img src="Assets/search.png" height="15px">
+                                </span>
+                                <input type="text" placeholder="search" class="form-control"
+                                    style="border:none;border-radius:5px;background-color:transparent;">
+                            </div>
+                        </div>
+                        <a class="col-example1" href="#"
+                            style="font-size:calc(12px + 0.15vw);background-color: white; padding-top: 7px;">
+                            <i class="fa fa-plus me-2" aria-hidden="true"></i>
+                            Add
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="userc">
+                            <table class="table" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Email</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Department</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size: 20px;">
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination pager justify-content-end">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/previous.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/left.png" alt=""></a></li>
+                                    <li class="page-item"><a class="page-link active text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">4</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/next.png" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="theme">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">Mission
+                                Theme</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between mt-4 mb-4">
+                        <div style="border: 2px solid #dee2e6; border-radius:5px;">
+                            <div class="input-group">
+                                <span class="input-group-text" style="background-color:transparent; border:none;">
+                                    <img src="Assets/search.png" height="15px">
+                                </span>
+                                <input type="text" placeholder="search" class="form-control"
+                                    style="border:none;border-radius:5px;background-color:transparent;">
+                            </div>
+                        </div>
+                        <a class="col-example1" href="#"
+                            style="font-size:calc(12px + 0.15vw);background-color: white; padding-top: 7px;">
+                            <i class="fa fa-plus me-2" aria-hidden="true"></i>
+                            Add
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="userc">
+                            <table class="table" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Email</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Department</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size: 20px;">
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #14c506;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination pager justify-content-end">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/previous.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/left.png" alt=""></a></li>
+                                    <li class="page-item"><a class="page-link active text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">4</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/next.png" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="skill">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">Mission
+                                Skill</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between mt-4 mb-4">
+                        <div style="border: 2px solid #dee2e6; border-radius:5px;">
+                            <div class="input-group">
+                                <span class="input-group-text" style="background-color:transparent; border:none;">
+                                    <img src="Assets/search.png" height="15px">
+                                </span>
+                                <input type="text" placeholder="search" class="form-control"
+                                    style="border:none;border-radius:5px;background-color:transparent;">
+                            </div>
+                        </div>
+                        <a class="col-example1" href="#"
+                            style="font-size:calc(12px + 0.15vw);background-color: white; padding-top: 7px;">
+                            <i class="fa fa-plus me-2" aria-hidden="true"></i>
+                            Add
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="userc">
+                            <table class="table" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Email</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Department</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size: 20px;">
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination pager justify-content-end">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/previous.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/left.png" alt=""></a></li>
+                                    <li class="page-item"><a class="page-link active text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">4</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/next.png" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="app">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">Mission
+                                Application</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between mt-4 mb-4">
+                        <div style="border: 2px solid #dee2e6; border-radius:5px;">
+                            <div class="input-group">
+                                <span class="input-group-text" style="background-color:transparent; border:none;">
+                                    <img src="Assets/search.png" height="15px">
+                                </span>
+                                <input type="text" placeholder="search" class="form-control"
+                                    style="border:none;border-radius:5px;background-color:transparent;">
+                            </div>
+                        </div>
+                        <a class="col-example1" href="#"
+                            style="font-size:calc(12px + 0.15vw);background-color: white; padding-top: 7px;">
+                            <i class="fa fa-plus me-2" aria-hidden="true"></i>
+                            Add
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="userc">
+                            <table class="table" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Email</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Department</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size: 20px;">
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination pager justify-content-end">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/previous.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/left.png" alt=""></a></li>
+                                    <li class="page-item"><a class="page-link active text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">4</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/next.png" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="story">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">Story</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between mt-4 mb-4">
+                        <div style="border: 2px solid #dee2e6; border-radius:5px;">
+                            <div class="input-group">
+                                <span class="input-group-text" style="background-color:transparent; border:none;">
+                                    <img src="Assets/search.png" height="15px">
+                                </span>
+                                <input type="text" placeholder="search" class="form-control"
+                                    style="border:none;border-radius:5px;background-color:transparent;">
+                            </div>
+                        </div>
+                        <a class="col-example1" href="#"
+                            style="font-size:calc(12px + 0.15vw);background-color: white; padding-top: 7px;">
+                            <i class="fa fa-plus me-2" aria-hidden="true"></i>
+                            Add
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="userc">
+                            <table class="table" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Email</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Department</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size: 20px;">
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination pager justify-content-end">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/previous.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/left.png" alt=""></a></li>
+                                    <li class="page-item"><a class="page-link active text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">4</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/next.png" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="banner">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">Banner
+                                Management</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-between mt-4 mb-4">
+                        <div style="border: 2px solid #dee2e6; border-radius:5px;">
+                            <div class="input-group">
+                                <span class="input-group-text" style="background-color:transparent; border:none;">
+                                    <img src="Assets/search.png" height="15px">
+                                </span>
+                                <input type="text" placeholder="search" class="form-control"
+                                    style="border:none;border-radius:5px;background-color:transparent;">
+                            </div>
+                        </div>
+                        <a class="col-example1" href="#"
+                            style="font-size:calc(12px + 0.15vw);background-color: white; padding-top: 7px;">
+                            <i class="fa fa-plus me-2" aria-hidden="true"></i>
+                            Add
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="userc">
+                            <table class="table" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Email</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Department</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size: 20px;">
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Baldwin</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">Adam12546@yahs.com</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">1365465645</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;">HR</td>
+                                        <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;">Active</td>
+                                        <td class="p-3 pe-0 p-0" style="font-size:13px;">
+                                            <i class="fa fa-pencil-square-o" style="color: #f88634;"
+                                                aria-hidden="true"></i>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#popup1"><i
+                                                    class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination pager justify-content-end">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/previous.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/left.png" alt=""></a></li>
+                                    <li class="page-item"><a class="page-link active text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">4</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link text-center" href="#"
+                                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/arrow.png" alt=""></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                                src="Assets/next.png" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

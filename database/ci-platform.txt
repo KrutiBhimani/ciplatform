@@ -1,0 +1,84 @@
+user
+	user_id(PK)
+	user_fname
+	user_lname
+	user_number
+	user_email
+	user_password	user_image
+	user_eid	user_manager
+	user_title
+	user_department
+	user_profile
+	user_vol_reason
+	city_id(FK)
+	country_id(FK)
+	availability_id(FK)
+	user_linkedin
+	skill_id(FK)
+
+mission
+	mission_id(PK)
+	mission_org_detail
+	mission_sdate
+	mission_edate
+	mission_seat
+	mission_deadline
+	mission_theme_id(FK)
+	mission_skill_id(FK)
+	mission_image
+	mission_document
+	mission_availability_id(FK)
+	mission_city_id(FK)
+	mission_star
+	mission_liked
+	mission_volenteers
+
+story
+	story_id(PK)
+	story_detail
+	story_date
+	mission_id(FK)
+	story_photo
+	story_video
+	user_id(FK)
+	story_views
+	mission_id(FK)
+
+availability
+	availability_id(PK)
+	availability_name
+
+city
+	city_id(PK)
+	city_name
+	country_id(FK)
+
+country
+	country_id(PK)
+	country_name
+
+comment
+	comment_id(PK)
+	comment_text
+	comment_time
+	user_id(FK)
+	mission_id(FK)
+
+contact
+	contact_id(PK)
+	contact_subject
+	contact_message
+	user_id(FK)
+
+search
+	search_id(PK)
+	search_title
+	user_id(FK)
+
+skill
+	skill_id(PK)
+	skill_name
+
+theme
+	theme_id(PK)
+	theme_name
