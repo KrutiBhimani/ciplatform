@@ -46,7 +46,7 @@
           <br />
           <form action="test.php" method="post">
             <p class="text-center text-1 mb-2">Forgot Password</p>
-            <p class="text-center text-3">Enter your email address you've using for your account<br /> below and we will
+            <p class="text-center text-2">Enter your email address you've using for your account<br /> below and we will
               send you password reset link</p>
             <div class="form-group">
               <span class="Email">Email Address</span>

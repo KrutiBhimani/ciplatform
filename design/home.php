@@ -445,7 +445,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 <?php
   }
 } else {
-  header('Location:../ci-platform/login.php');
+  header('Location:../design/login.php');
 }
 ?>
 </body>

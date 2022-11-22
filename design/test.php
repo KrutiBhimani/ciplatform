@@ -6,12 +6,10 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
     $email = mysqli_real_escape_string($connection, $email);
     $password = mysqli_real_escape_string($connection, $password);
-    $query = "SELECT * FROM user WHERE email = '$email'";
-    $result = mysqli_query($connection, $query);
-    if (!$result)
-        die("QUERY FAILED" . mysqli_error($connection));
     $flag = 0;
-    while ($row = mysqli_fetch_assoc($result)) {
+    $query1 = "SELECT * FROM user WHERE email = '$email'";
+    $result1 = mysqli_query($connection, $query1);
+    while ($row = mysqli_fetch_assoc($result1)) {
         $id = $row['user_id'];
         $db_email = $row['email'];
         $user_password = $row['password'];
@@ -26,6 +24,23 @@ if (isset($_POST['login'])) {
             header('Location:../design/home.php');
         }
     }
+    $query2 = "SELECT * FROM admin WHERE email = '$email'";
+    $result2 = mysqli_query($connection, $query2);
+    while ($row = mysqli_fetch_assoc($result2)) {
+      $id = $row['admin_id'];
+      $db_email = $row['email'];
+      $user_password = $row['password'];
+      $user_fname = $row['first_name'];
+      $user_lname = $row['last_name'];
+      $admin_image = $row['avatar'];
+      if ($email == $db_email && $password == $user_password) {
+          $flag = 1;
+          $_SESSION['admin_id'] = $id;
+          $_SESSION['email'] = $db_email;
+          $_SESSION['password'] = $user_password;
+          header('Location:../design/adminpanel.php');
+      }
+  }
     if ($flag == 0)
     {
         header('Location:../design/login.php');
@@ -66,51 +81,6 @@ if (isset($_POST['register'])) {
         header('Location:../design/registration.php');
     }
 }?>
-<?php
-// include "db.php";
-// session_start();
-// if (isset($_POST['reset'])) {
-//     $email = $_POST['email'];
-//     $email = mysqli_real_escape_string($connection, $email);
-//     $query = "SELECT * FROM user WHERE email = '$email'";
-//     $result = mysqli_query($connection, $query);
-//     if (!$result)
-//         die("QUERY FAILED" . mysqli_error($connection));
-//     $flag = 0;
-//     while ($row = mysqli_fetch_assoc($result)) {
-//         $user_id = $row['user_id'];
-//         $db_email = $row['email'];
-//         if ($email == $db_email) {
-//             $flag = 1;
-//             $_SESSION['user_id'] = $user_id;
-//             $_SESSION['email'] = $db_email;
-//             header('Location:../ci-platform/resetpsd.php');
-//         }
-//     }
-//     if ($flag == 0)
-//         header('Location:../ci-platform/forgetpsd.php');
-// }
-// if (isset($_POST['change'])) {
-//     $user_id = $_SESSION['user_id'];
-//     $password1 = $_POST['password1'];
-//     $password2 = $_POST['password2'];
-//     if ($password1 == $password2)
-//     {
-//         $query = "UPDATE user SET password = '$password1' WHERE user_id = '$user_id'";
-//         $result = mysqli_query($connection, $query);
-//         if ($result)
-//         {
-//             $_SESSION['user_id'] = null;
-//             $_SESSION['email'] = null;
-//             session_destroy();
-//             header('Location:../ci-platform/login.php');
-//         }
-//     }
-//     else{
-//         header('Location:../ci-platform/resetpsd.php');
-//     }
-// }
-?> 
 <?php
 include "db.php";
 if(isset($_POST['reset']) && $_POST['email'])
