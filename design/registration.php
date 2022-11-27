@@ -83,7 +83,7 @@
           <button class="login" name="register" type="submit">Register</button>
         </form>
         <p class="text-center">
-          <a href="forgetpsd.php" class="lost">Lost your password?</a><br /><br />
+          <a href="forgot" class="lost">Lost your password?</a><br /><br />
         </p>
       </div>
       <a href="policy.html" class="text-center position-absolute bottom-0 start-50 translate-middle p-0 m-0 mt-3 Privacy-Policy">Privacy Policy</a>

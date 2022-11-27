@@ -175,103 +175,231 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     } ?>
                     <?php if (isset($_POST['add_user'])) { ?>
                         <br />
-                        <table class="table table-borderless" style="border: 1px solid #dee2e6;">
-                            <thead class="table-light border-bottom">
-                                <tr>
-                                    <td class="p-3 fs-6" scope="col">Add</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="p-3 fs-6">
-                                        <form>
+                        <form action="test.php" method="post" enctype="multipart/form-data">
+                            <table class="table table-borderless" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 fs-6" scope="col">Add</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 fs-6">
                                             <p class="mb-1" style="font-size:14px;">First Name</p>
-                                            <input type="text" class="popup" name="">
+                                            <input type="text" name="first_name" class="popup">
                                             <p class="mb-1 mt-4" style="font-size:14px;">Last Name</p>
-                                            <input type="text" class="popup" name="">
+                                            <input type="text" name="last_name" class="popup">
                                             <p class="mb-1 mt-4" style="font-size:14px;">Email</p>
-                                            <input type="email" class="popup" name="">
+                                            <input type="email" name="email" class="popup" required>
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Phone number</p>
+                                            <input type="text" name="phone_number" class="popup" required>
                                             <p class="mb-1 mt-4" style="font-size:14px;">password</p>
-                                            <input type="password" class="popup" name="">
+                                            <input type="password" name="password" class="popup" required>
                                             <p class="mb-1 mt-4" style="font-size:14px;">Avatar</p>
-                                            <input type="file" name="">
+                                            <input type="file" name="avatar" value="">
                                             <p class="mb-1 mt-4" style="font-size:14px;">Employee ID</p>
-                                            <input type="text" class="popup" name="">
+                                            <input type="text" name="employee_id" class="popup">
                                             <p class="mb-1 mt-4" style="font-size:14px;">Department</p>
-                                            <input type="text" class="popup" name="">
+                                            <input type="text" name="department" class="popup">
                                             <p class="mb-1 mt-4" style="font-size:14px;">City</p>
-                                            <select class="popup pt-0 pb-0">
+                                            <select class="popup pt-0 pb-0" name="city_id" required>
                                                 <option value="none" selected="" disabled="" hidden=""></option>
-                                                <option value="newsest">1</option>
-                                                <option value="oldest">2</option>
+                                                <?php
+                                                $query = "SELECT * From city";
+                                                $result = mysqli_query($connection, $query);
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    $city_id = $row['city_id'];
+                                                    $name = $row['name'];
+                                                    echo "<option value='$city_id'>$name</option>";
+                                                }
+                                                ?>
                                             </select>
                                             <p class="mb-1 mt-4" style="font-size:14px;">Country</p>
-                                            <select class="popup pt-0 pb-0">
+                                            <select class="popup pt-0 pb-0" name="country_id" required>
                                                 <option value="none" selected="" disabled="" hidden=""></option>
-                                                <option value="newsest">3</option>
-                                                <option value="oldest">4</option>
+                                                <?php
+                                                $query = "SELECT * From country";
+                                                $result = mysqli_query($connection, $query);
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    $country_id = $row['country_id'];
+                                                    $name = $row['name'];
+                                                    echo "<option value='$country_id'>$name</option>";
+                                                }
+                                                ?>
                                             </select>
                                             <p class="mb-1 mt-4" style="font-size:14px;">Profile text</p>
-                                            <textarea rows="5" name="" class="popup1"></textarea>
+                                            <textarea rows="5" name="profile_text" class="popup1"></textarea>
                                             <p class="mb-1 mt-4" style="font-size:14px;">Status</p>
-                                            <select class="popup pt-0 pb-0">
-                                                <option value="none" selected="" disabled="" hidden=""></option>
-                                                <option value="newsest">Active</option>
-                                                <option value="oldest">Inactive</option>
+                                            <select class="popup pt-0 pb-0" name="status">
+                                                <option value='1'>Active</option>
+                                                <option value='0'>Inactive</option>
                                             </select>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="d-flex align-content-end justify-content-end">
-                            <a class="col-example8 mt-4 mb-4 me-2" href="ruff.html" style="font-size:calc(13px + 0.1vw);">
-                                cancel
-                            </a>
-                            <a class="col-example mt-4 mb-4" href="ruff.html" style="font-size:calc(13px + 0.1vw);">
-                                save
-                            </a>
-                        </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex align-content-end justify-content-end">
+                                <a class="col-example8 mt-4 mb-4 me-2" href="ruff.html" style="font-size:calc(13px + 0.1vw);">
+                                    cancel
+                                </a>
+                                <button class="col-example mt-4 mb-4" name="adduser" type="submit" style="font-size:calc(13px + 0.1vw);">
+                                    save
+                                </button>
+                            </div>
+                        </form>
+                    <?php } else if (isset($_GET['edit'])) {
+
+                        $user_id = $_GET['edit'];
+                        $query = "SELECT *,city.name as city_name,country.name as country_name FROM user 
+                            join city ON user.city_id = city.city_id
+                            join country ON user.country_id = country.country_id
+                            Where user_id = $user_id";
+                        $result = mysqli_query($connection, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $user_id = $row['user_id'];
+                            $first_name = $row['first_name'];
+                            $last_name = $row['last_name'];
+                            $email = $row['email'];
+                            $phone_number = $row['phone_number'];
+                            $password = $row['password'];
+                            $avatar = $row['avatar'];
+                            $employee_id = $row['employee_id'];
+                            $department = $row['department'];
+                            $city_name = $row['city_name'];
+                            $country_name = $row['country_name'];
+                            $city_id = $row['city_id'];
+                            $country_id = $row['country_id'];
+                            $profile_text = $row['profile_text'];
+                            $status = $row['status'];
+                        } ?>
+                        <br />
+                        <form action="test.php" method="post" enctype="multipart/form-data">
+                            <table class="table table-borderless" style="border: 1px solid #dee2e6;">
+                                <thead class="table-light border-bottom">
+                                    <tr>
+                                        <td class="p-3 fs-6" scope="col">Edit</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 fs-6">
+                                            <input type='number' name='user_id' value="<?php echo $user_id; ?>" hidden>
+                                            <p class="mb-1" style="font-size:14px;">First Name</p>
+                                            <input type="text" name="first_name" class="popup" value="<?php echo $first_name; ?>">
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Last Name</p>
+                                            <input type="text" name="last_name" class="popup" value="<?php echo $last_name; ?>">
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Email</p>
+                                            <input type="email" name="email" class="popup" value="<?php echo $email; ?>" required>
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Phone number</p>
+                                            <input type="text" name="phone_number" class="popup" value="<?php echo $phone_number; ?>" required>
+                                            <p class="mb-1 mt-4" style="font-size:14px;">password</p>
+                                            <input type="password" name="password" class="popup" value="<?php echo $password; ?>" required>
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Avatar</p>
+                                            <img class="m-2" style="height:50px" src="../Assets/<?php echo $avatar; ?>">
+                                            <input type="file" name="avatar" value="">
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Employee ID</p>
+                                            <input type="text" name="employee_id" class="popup" value="<?php echo $employee_id; ?>">
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Department</p>
+                                            <input type="text" name="department" class="popup" value="<?php echo $department; ?>">
+                                            <p class="mb-1 mt-4" style="font-size:14px;">City</p>
+                                            <!-- <select class="popup pt-0 pb-0" name="city_id" required>
+                                                <option value="<?php echo $city_id; ?>" selected="" hidden><?php echo $city_name; ?></option>
+                                                <?php
+                                                $query = "SELECT * From city";
+                                                $result = mysqli_query($connection, $query);
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    $city_id = $row['city_id'];
+                                                    $name = $row['name'];
+                                                    echo "<option value='$city_id'>$name</option>";
+                                                }
+                                                ?>
+                                            </select> -->
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Country</p>
+                                            <select class="popup pt-0 pb-0" name="country_id" required>
+                                                <option value="<?php echo $country_id; ?>" selected="" hidden><?php echo $country_name; ?></option>
+                                                <?php
+                                                $query = "SELECT * From country";
+                                                $result = mysqli_query($connection, $query);
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    $country_id = $row['country_id'];
+                                                    $name = $row['name'];
+                                                    echo "<option value='$country_id'>$name</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Profile text</p>
+                                            <textarea rows="5" name="profile_text" class="popup1"><?php echo $profile_text; ?></textarea>
+                                            <p class="mb-1 mt-4" style="font-size:14px;">Status</p>
+                                            <select class="popup pt-0 pb-0" name="status">
+                                                <option value="<?php echo $status; ?>"><?php echo $status; ?></option>
+                                                <?php
+                                                if ($status == '1') {
+                                                    echo "<option value='0'>0</option>";
+                                                } else {
+                                                    echo "<option value='1'>1</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex align-content-end justify-content-end">
+                                <a class="col-example8 mt-4 mb-4 me-2" href="ruff.html" style="font-size:calc(13px + 0.1vw);">
+                                    cancel
+                                </a>
+                                <button class="col-example mt-4 mb-4" name="edituser" type="submit" style="font-size:calc(13px + 0.1vw);">
+                                    save
+                                </button>
+                            </div>
+                        </form>
                     <?php } else { ?>
-                        <form action="adminpanel.php?add_user" method="post">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">User</a>
-                                </li>
-                            </ul>
-                            <div class="d-flex justify-content-between mt-4 mb-4">
-                                <div style="border: 2px solid #dee2e6; border-radius:5px;">
+
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active1 gray ps-0 pe-5 fs-4" data-toggle="tab" href="#userc">User</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-between mt-4 mb-4">
+                            <form action="adminpanel.php?search" method="post">
+                                <div style="border: 2px solid #dee2e6; border-radius:5px; height:100%;">
                                     <div class="input-group">
                                         <span class="input-group-text" style="background-color:transparent; border:none;">
                                             <img src="../Assets/search.png" height="15px">
                                         </span>
-                                        <input type="text" placeholder="search" class="form-control" style="border:none;border-radius:5px;background-color:transparent;">
+                                        <input type="text" name="search" placeholder="search" class="form-control" style="border:none;border-radius:5px;background-color:transparent;">
                                     </div>
                                 </div>
-                                <button class="col-example1" name="add_user" type="submit" style="font-size:calc(12px + 0.15vw);background-color: white; padding-top: 7px;">
+                            </form>
+                            <form action="adminpanel.php?add_user" method="post">
+                                <button class="col-example1" name="add_user" type="submit" style="font-size:calc(12px + 0.15vw);padding-top: 7px;">
                                     <i class="fa fa-plus me-2"></i>
                                     Add
                                 </button>
-                            </div>
-                            <div class="tab-content">
-                                <div class="tab-pane show active" id="userc">
-                                    <table class="table" style="border: 1px solid #dee2e6;">
-                                        <thead class="table-light border-bottom">
-                                            <tr>
-                                                <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
-                                                <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
-                                                <td class="p-3 pe-0 fs-6" scope="col">Email</td>
-                                                <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
-                                                <td class="p-3 pe-0 fs-6" scope="col">Department</td>
-                                                <td class="p-3 pe-0 fs-6" scope="col">Status</td>
-                                                <td class="p-3 pe-0 fs-6" scope="col">Action</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $query = "SELECT * FROM user";
+                            </form>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane show active" id="userc">
+                                <table class="table" style="border: 1px solid #dee2e6;">
+                                    <thead class="table-light border-bottom">
+                                        <tr>
+                                            <td class="p-3 pe-0 fs-6" scope="col">First Name</td>
+                                            <td class="p-3 pe-0 fs-6" scope="col">Last Name</td>
+                                            <td class="p-3 pe-0 fs-6" scope="col">Email</td>
+                                            <td class="p-3 pe-0 fs-6" scope="col">Employee id</td>
+                                            <td class="p-3 pe-0 fs-6" scope="col">Department</td>
+                                            <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                                            <td class="p-3 pe-0 fs-6" scope="col">Action</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        if (isset($_POST['search'])) {
+                                            $search = $_POST['search'];
+                                            $query = "SELECT * FROM `user` WHERE first_name LIKE '%$search%' or last_name LIKE '%$search%' or email LIKE '%$search%' or employee_id LIKE '%$search%' or department LIKE '%$search%'";
                                             $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
                                             while ($row = mysqli_fetch_assoc($result)) {
+                                                $user_id = $row['user_id'];
                                                 $first_name = $row['first_name'];
                                                 $last_name = $row['last_name'];
                                                 $email = $row['email'];
@@ -292,39 +420,81 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                                                 }
                                                 echo "</td>";
                                                 echo "<td class='p-3 pe-0 p-0' style='font-size:20px;'>";
-                                                echo "<i class='fa fa-pencil-square-o pe-2' style='color: #f88634;' aria-hidden='true'></i>";
-                                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#popup1'><i class='fa fa-trash-o text-dark' aria-hidden='true'></i></a>";
+                                                echo "<a href='adminpanel.php?edit=$user_id'><i class='fa fa-pencil-square-o pe-2' style='color: #f88634;' aria-hidden='true'></i></a>";
+                                                echo "<a onClick=\"javascript:return confirm('Are you sure to delete?');\" href='test.php?delete=$user_id'><i class='fa fa-trash-o text-dark' aria-hidden='true'></i></a>";
                                                 echo "</td>";
                                                 echo "</tr>";
                                             }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="pagination pager justify-content-end">
-                                            <li class="page-item">
-                                                <a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/previous.png" alt=""></a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/left.png" alt=""></a></li>
-                                            <li class="page-item"><a class="page-link active text-center" href="#" style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link text-center" href="#" style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link text-center" href="#" style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link text-center" href="#" style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">4</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link text-center" href="#" style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">5</a>
-                                            </li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/arrow.png" alt=""></a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/next.png" alt=""></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                                        } else {
+                                            $pagecount = 6;
+                                            if (isset($_GET['page'])) {
+                                                $page = $_GET['page'];
+                                            } else
+                                                $page = "";
+                                            if ($page == "" || $page == 1)
+                                                $postno = 0;
+                                            else
+                                                $postno = ($page * $pagecount) - $pagecount;
+                                            $query = "SELECT * FROM user";
+                                            $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
+                                            $cnt = mysqli_num_rows($result);
+                                            $cnt = ceil($cnt / $pagecount);
+                                            $query = "SELECT * FROM user LIMIT $postno,$pagecount";
+                                            $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                $user_id = $row['user_id'];
+                                                $first_name = $row['first_name'];
+                                                $last_name = $row['last_name'];
+                                                $email = $row['email'];
+                                                $employee_id = $row['employee_id'];
+                                                $department = $row['department'];
+                                                $status = $row['status'];
+                                                echo "<tr>";
+                                                echo "<td class='p-3 pe-0' style='font-size:13px;'>$first_name</td>";
+                                                echo "<td class='p-3 pe-0' style='font-size:13px;'>$last_name</td>";
+                                                echo "<td class='p-3 pe-0' style='font-size:13px;'>$email</td>";
+                                                echo "<td class='p-3 pe-0' style='font-size:13px;'>$employee_id</td>";
+                                                echo "<td class='p-3 pe-0' style='font-size:13px;'>$department</td>";
+                                                echo "<td class='p-3 pe-0' style='font-size:13px;color: #7ed470;'>";
+                                                if ($status == 1) {
+                                                    echo "Active";
+                                                } else {
+                                                    echo "Inactive";
+                                                }
+                                                echo "</td>";
+                                                echo "<td class='p-3 pe-0 p-0' style='font-size:20px;'>";
+                                                echo "<a href='adminpanel.php?edit=$user_id'><i class='fa fa-pencil-square-o pe-2' style='color: #f88634;' aria-hidden='true'></i></a>";
+                                                echo "<a onClick=\"javascript:return confirm('Are you sure to delete?');\" href='test.php?delete=$user_id'><i class='fa fa-trash-o text-dark' aria-hidden='true'></i></a>";
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                                <?php if (isset($_POST['search'])){} else{?>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination pager justify-content-end">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/previous.png" alt=""></a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/left.png" alt=""></a></li>
+                                        <?php
+                                        for ($i = 1; $i <= $cnt; $i++) {
+                                            if ($i == $page)
+                                                echo "<li class='page-item'><a class='page-link active text-center' href='adminpanel.php?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
+                                            else
+                                                echo "<li class='page-item'><a class='page-link text-center' href='adminpanel.php?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
+                                        }?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/arrow.png" alt=""></a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/next.png" alt=""></a></li>
+                                    </ul>
+                                </nav>
+                                <?php }?>
                             </div>
-                        </form>
+                        </div>
                     <?php } ?>
                 </div>
                 <?php if (isset($_POST['add_cmspage'])) {
