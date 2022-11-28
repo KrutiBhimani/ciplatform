@@ -287,10 +287,25 @@ class Controller extends Model
 						$source = '';
 					switch ($source) {
 						case 'add_user':
-							$selectData = $this->SelectData('city');
-							$cities = $selectData['Data'];
 							$selectData = $this->SelectData('country');
 							$countries = $selectData['Data'];
+							$resultString = 0;
+						?>
+							<script type="text/javascript">
+								$(document).ready(function() {
+									$('#selectCountries').change(function() {
+										var selectedOptions = $('#selectCountries option:selected');
+										if (selectedOptions.length > 0) {
+											$resultString = $(this).val();
+											document.getElementById("divResult").value = $resultString;
+										}
+									});
+								})
+							</script>
+							<?php
+							$selectData = $this->SelectData('city');
+							$cities = $selectData['Data'];
+
 							if (isset($_POST['add_user'])) {
 								$avatar = $_FILES['avatar']['name'];
 								$avatar_temp = $_FILES['avatar']['tmp_name'];
@@ -313,7 +328,7 @@ class Controller extends Model
 									if (!is_null($avatar)) {
 										move_uploaded_file($avatar_temp, '../Assets/' . $avatar);
 									}
-						?>
+							?>
 									<script type="text/javascript">
 										alert("<?php echo $insertEx['Message'] ?>");
 										window.location.href = 'user';
@@ -358,7 +373,8 @@ class Controller extends Model
 									'department' => $_POST['department'],
 									'profile_text' => $_POST['profile_text'],
 									'status' => $_POST['status'],
-									'avatar' => $avatar
+									'avatar' => $avatar,
+									'updated_at' => date("Y-m-d h:i:s")
 								];
 								$upd_data = $this->UpdateData('user', $update_data, $user_id);
 								if ($upd_data) {
@@ -391,8 +407,15 @@ class Controller extends Model
 							$salt = "SECRET_STUFF";
 							$decrypted_id_raw = base64_decode($encrypted_id);
 							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
-							$delete_user_id = $decrypted_id;
-							$delete_data = $this->DeleteData('user', $delete_user_id);
+							$user_id = $decrypted_id;
+							$update_data = [
+								'deleted_at' => date("Y-m-d h:i:s")
+							];
+							$where = [
+								'user_id' => $user_id
+							];
+							$delete_data = $this->UpdateData1('user', $update_data, $where);
+
 							if ($delete_data) {
 								?>
 								<script type="text/javascript">
@@ -404,13 +427,11 @@ class Controller extends Model
 							?>
 								<script type="text/javascript">
 									alert("Something Went Wrong.");
-									window.location.href = 'user?source=delete_user&delete=<?php $id = $user->user_id;
-																							$salt = "SECRET_STUFF";
-																							$encrypted_id = base64_encode($id . $salt);
-																							echo $encrypted_id; ?>';
+									window.location.href = 'user';
 								</script>
 								<?php
 							}
+							break;
 						default:
 							$pagecount = 5;
 							if (isset($_GET['page'])) {
@@ -421,11 +442,11 @@ class Controller extends Model
 								$postno = 0;
 							} else
 								$postno = ($page * $pagecount) - $pagecount;
-							$selectData = $this->Select('user');
-							$cnt = $selectData['Data'];
+							$selectData1 = $this->Select('user');
+							$cnt = $selectData1['Data'];
 							$cnt = ceil($cnt / $pagecount);
-							$selectData = $this->SelectData('user', $postno, $pagecount);
-							$users = $selectData['Data'];
+							$selectData1 = $this->SelectData('user', $postno, $pagecount);
+							$users = $selectData1['Data'];
 							if (isset($_POST['search'])) {
 								$where = [
 									'first_name' => $_POST['search'],
@@ -438,7 +459,6 @@ class Controller extends Model
 								$users = $selectData1['Data'];
 							}
 							include "Views/Admin/view_all_user.php";
-							break;
 					}
 					break;
 				case '/page';
@@ -497,7 +517,8 @@ class Controller extends Model
 									'title' => $_POST['title'],
 									'description' => $_POST['description'],
 									'slug' => $_POST['slug'],
-									'status' => $_POST['status']
+									'status' => $_POST['status'],
+									'updated_at' => date("Y-m-d h:i:s")
 								];
 								$where = [
 									'cms_page_id' => $cms_page_id
@@ -514,7 +535,10 @@ class Controller extends Model
 								?>
 									<script type="text/javascript">
 										alert("Something Went Wrong.");
-										window.location.href = 'page?source=edit_page&edit=<?php $id = $pag->cms_page_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?> ';
+										window.location.href = 'page?source=edit_page&edit=<?php $id = $pag->cms_page_id;
+																							$salt = "SECRET_STUFF";
+																							$encrypted_id = base64_encode($id . $salt);
+																							echo $encrypted_id; ?> ';
 									</script>
 								<?php
 								}
@@ -527,10 +551,13 @@ class Controller extends Model
 							$decrypted_id_raw = base64_decode($encrypted_id);
 							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
 							$cms_page_id = $decrypted_id;
+							$update_data = [
+								'deleted_at' => date("Y-m-d h:i:s")
+							];
 							$where = [
 								'cms_page_id' => $cms_page_id
 							];
-							$delete_data = $this->DeleteData1('cms_page', $where);
+							$delete_data = $this->UpdateData1('cms_page', $update_data, $where);
 							if ($delete_data) {
 								?>
 								<script type="text/javascript">
@@ -666,6 +693,31 @@ class Controller extends Model
 						case 'edit_mission':
 							include "Views/Admin/edit_mission.php";
 							break;
+						case 'delete_mission':
+							$encrypted_id = $_GET['delete'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$mission_id = $decrypted_id;
+							$where = [
+								'mission_id' => $mission_id
+							];
+							$delete_data = $this->DeleteData1('mission', $where);
+							if ($delete_data) {
+							?>
+								<script type="text/javascript">
+									alert("Data deleted successfully.");
+									window.location.href = 'mission';
+								</script>
+							<?php
+							} else {
+							?>
+								<script type="text/javascript">
+									alert("Something Went Wrong.");
+									window.location.href = 'mission';
+								</script>
+								<?php
+							}
 						default:
 							$pagecount = 5;
 							if (isset($_GET['page'])) {
@@ -715,7 +767,7 @@ class Controller extends Model
 								$insertEx = $this->InsertData('mission_theme', $insert_data);
 								echo $insertEx;
 								if ($insertEx['Code']) {
-							?>
+								?>
 									<script type="text/javascript">
 										alert("<?php echo $insertEx['Message'] ?>");
 										window.location.href = 'theme';
@@ -746,7 +798,8 @@ class Controller extends Model
 							if (isset($_POST['edit_theme'])) {
 								$update_data = [
 									'title' => $_POST['title'],
-									'status' => $_POST['status']
+									'status' => $_POST['status'],
+									'updated_at' => date("Y-m-d h:i:s")
 								];
 								$where = [
 									'mission_theme_id' => $mission_theme_id
@@ -763,7 +816,10 @@ class Controller extends Model
 								?>
 									<script type="text/javascript">
 										alert("Something Went Wrong.");
-										window.location.href = 'theme?source=edit_theme&edit=<?php $id = $theme->mission_theme_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?>';
+										window.location.href = 'theme?source=edit_theme&edit=<?php $id = $theme->mission_theme_id;
+																								$salt = "SECRET_STUFF";
+																								$encrypted_id = base64_encode($id . $salt);
+																								echo $encrypted_id; ?>';
 									</script>
 								<?php
 								}
@@ -776,10 +832,13 @@ class Controller extends Model
 							$decrypted_id_raw = base64_decode($encrypted_id);
 							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
 							$mission_theme_id = $decrypted_id;
+							$update_data = [
+								'deleted_at' => date("Y-m-d h:i:s")
+							];
 							$where = [
 								'mission_theme_id' => $mission_theme_id
 							];
-							$delete_data = $this->DeleteData1('mission_theme', $where);
+							$delete_data = $this->UpdateData1('mission_theme', $update_data, $where);
 							if ($delete_data) {
 								?>
 								<script type="text/javascript">
@@ -872,7 +931,8 @@ class Controller extends Model
 							if (isset($_POST['edit_skill'])) {
 								$update_data = [
 									'skill_name' => $_POST['skill_name'],
-									'status' => $_POST['status']
+									'status' => $_POST['status'],
+									'updated_at' => date("Y-m-d h:i:s")
 								];
 								$where = [
 									'skill_id' => $skill_id
@@ -889,7 +949,10 @@ class Controller extends Model
 								?>
 									<script type="text/javascript">
 										alert("Something Went Wrong.");
-										window.location.href = 'skill?source=edit_skill&edit=<?php $id = $skill->skill_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?> ';
+										window.location.href = 'skill?source=edit_skill&edit=<?php $id = $skill->skill_id;
+																								$salt = "SECRET_STUFF";
+																								$encrypted_id = base64_encode($id . $salt);
+																								echo $encrypted_id; ?> ';
 									</script>
 								<?php
 								}
@@ -902,10 +965,13 @@ class Controller extends Model
 							$decrypted_id_raw = base64_decode($encrypted_id);
 							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
 							$skill_id = $decrypted_id;
+							$update_data = [
+								'deleted_at' => date("Y-m-d h:i:s")
+							];
 							$where = [
 								'skill_id' => $skill_id
 							];
-							$delete_data = $this->DeleteData1('skill', $where);
+							$delete_data = $this->UpdateData1('skill', $update_data, $where);
 							if ($delete_data) {
 								?>
 								<script type="text/javascript">
@@ -919,7 +985,7 @@ class Controller extends Model
 									alert("Something Went Wrong.");
 									window.location.href = 'skill';
 								</script>
-<?php
+							<?php
 							}
 						default:
 							$pagecount = 5;
@@ -959,7 +1025,65 @@ class Controller extends Model
 						$source = '';
 					switch ($source) {
 						case 'edit_app':
-							include "Views/Admin/edit_app.php";
+							$encrypted_id = $_GET['edit'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$mission_application_id = $decrypted_id;
+							$update_data = [
+								'approval_status' => 'APPROVE',
+								'updated_at' => date("Y-m-d h:i:s")
+							];
+							$where = [
+								'mission_application_id' => $mission_application_id
+							];
+							$upd_data = $this->UpdateData1('mission_application', $update_data, $where);
+							if ($upd_data) {
+							?>
+								<script type="text/javascript">
+									alert("Data update successfully.");
+									window.location.href = 'app';
+								</script>
+							<?php
+							} else {
+							?>
+								<script type="text/javascript">
+									alert("Something Went Wrong.");
+									window.location.href = 'app';
+								</script>
+							<?php
+							}
+							break;
+						case 'delete_app':
+							$encrypted_id = $_GET['delete'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$mission_application_id = $decrypted_id;
+							echo $mission_application_id;
+							$update_data = [
+								'approval_status' => 'DECLINE',
+								'deleted_at' => date("Y-m-d h:i:s")
+							];
+							$where = [
+								'mission_application_id' => $mission_application_id
+							];
+							$upd_data = $this->UpdateData1('mission_application', $update_data, $where);
+							if ($upd_data) {
+							?>
+								<script type="text/javascript">
+									alert("Data update successfully.");
+									window.location.href = 'app';
+								</script>
+							<?php
+							} else {
+							?>
+								<script type="text/javascript">
+									alert("Something Went Wrong.");
+									window.location.href = 'app';
+								</script>
+<?php
+							}
 							break;
 						default:
 							$pagecount = 5;
@@ -974,7 +1098,7 @@ class Controller extends Model
 							$selectData = $this->Select('mission_application');
 							$cnt = $selectData['Data'];
 							$cnt = ceil($cnt / $pagecount);
-							$selectData = $this->SelectJoinApp();
+							$selectData = $this->SelectJoinApp($postno, $pagecount);
 							$apps = $selectData['Data'];
 							if (isset($_POST['search'])) {
 								$where = [
@@ -982,7 +1106,7 @@ class Controller extends Model
 									'last_name' => $_POST['search'],
 									'first_name' => $_POST['search']
 								];
-								$selectData = $this->SelectApp($where);
+								$selectData = $this->SelectJoinApp(0, 0, $where);
 								$apps = $selectData['Data'];
 							}
 							include "Views/Admin/view_all_app.php";
@@ -1000,8 +1124,104 @@ class Controller extends Model
 					else
 						$source = '';
 					switch ($source) {
-						case 'edit_story':
-							include "Views/Admin/edit_story.php";
+						case 'view_story':
+							$encrypted_id = $_GET['view'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$story_id = $decrypted_id;
+							$selectData = $this->SelectViewStory($story_id);
+							$story = $selectData['Data'];
+							include "Views/Admin/view_story.php";
+							break;
+						case 'approve_story':
+							$encrypted_id = $_GET['edit'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$story_id = $decrypted_id;
+							$update_data = [
+								'status' => 'PUBLISHED',
+								'updated_at' => date("Y-m-d h:i:s")
+							];
+							$where = [
+								'story_id' => $story_id
+							];
+							$upd_data = $this->UpdateData1('story', $update_data, $where);
+							if ($upd_data) {
+							?>
+								<script type="text/javascript">
+									alert("Data update successfully.");
+									window.location.href = 'story';
+								</script>
+							<?php
+							} else {
+							?>
+								<script type="text/javascript">
+									alert("Something Went Wrong.");
+									window.location.href = 'story';
+								</script>
+							<?php
+							}
+							break;
+						case 'decline_story':
+							$encrypted_id = $_GET['edit'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$story_id = $decrypted_id;
+							$update_data = [
+								'status' => 'DECLINED',
+								'updated_at' => date("Y-m-d h:i:s")
+							];
+							$where = [
+								'story_id' => $story_id
+							];
+							$upd_data = $this->UpdateData1('story', $update_data, $where);
+							if ($upd_data) {
+							?>
+								<script type="text/javascript">
+									alert("Data update successfully.");
+									window.location.href = 'story';
+								</script>
+							<?php
+							} else {
+							?>
+								<script type="text/javascript">
+									alert("Something Went Wrong.");
+									window.location.href = 'story';
+								</script>
+							<?php
+							}
+							break;
+						case 'delete_story':
+							$encrypted_id = $_GET['delete'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$story_id = $decrypted_id;
+							$update_data = [
+								'deleted_at' => date("Y-m-d h:i:s")
+							];
+							$where = [
+								'story_id' => $story_id
+							];
+							$delete_data = $this->UpdateData1('story', $update_data, $where);
+							if ($delete_data) {
+								?>
+								<script type="text/javascript">
+									alert("Data deleted successfully.");
+									window.location.href = 'story';
+								</script>
+							<?php
+							} else {
+							?>
+								<script type="text/javascript">
+									alert("Something Went Wrong.");
+									window.location.href = 'story';
+								</script>
+								<?php
+							}
 							break;
 						default:
 							$pagecount = 5;
@@ -1016,7 +1236,7 @@ class Controller extends Model
 							$selectData = $this->Select('story');
 							$cnt = $selectData['Data'];
 							$cnt = ceil($cnt / $pagecount);
-							$selectData = $this->SelectJoinStory();
+							$selectData = $this->SelectJoinStory($postno, $pagecount);
 							$storys = $selectData['Data'];
 							if (isset($_POST['search'])) {
 								$where = [
@@ -1025,7 +1245,7 @@ class Controller extends Model
 									'first_name' => $_POST['search'],
 									'last_name' => $_POST['search']
 								];
-								$selectData = $this->SelectStory($where);
+								$selectData = $this->SelectJoinStory(0,0,$where);
 								$storys = $selectData['Data'];
 							}
 							include "Views/Admin/view_all_story.php";

@@ -25,18 +25,19 @@
                     <input type="text" name="employee_id" class="popup">
                     <p class="mb-1 mt-4" style="font-size:14px;">Department</p>
                     <input type="text" name="department" class="popup">
+                    <p class="mb-1 mt-4" style="font-size:14px;">Country</p>
+                    <select class="popup pt-0 pb-0" id="selectCountries" name="country_id" required>
+                        <option value="none" selected="" disabled="" hidden=""></option>
+                        <?php foreach ($countries as $country) { ?>
+                            <option value='<?php echo $country->country_id; ?>'><?php echo $country->name; ?></option>
+                        <?php } ?>
+                    </select>
+                    <input type="number" name='selected_country_id' id="divResult" value="" hidden>
                     <p class="mb-1 mt-4" style="font-size:14px;">City</p>
                     <select class="popup pt-0 pb-0" name="city_id" required>
                         <option value="none" selected="" disabled="" hidden=""></option>
                         <?php foreach ($cities as $city) { ?>
                             <option value='<?php echo $city->city_id; ?>'><?php echo $city->name; ?></option>
-                        <?php } ?>
-                    </select>
-                    <p class="mb-1 mt-4" style="font-size:14px;">Country</p>
-                    <select class="popup pt-0 pb-0" name="country_id" required>
-                        <option value="none" selected="" disabled="" hidden=""></option>
-                        <?php foreach ($countries as $country) { ?>
-                            <option value='<?php echo $city->country_id; ?>'><?php echo $country->name; ?></option>
                         <?php } ?>
                     </select>
                     <p class="mb-1 mt-4" style="font-size:14px;">Profile text</p>

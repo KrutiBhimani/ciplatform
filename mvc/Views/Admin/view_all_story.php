@@ -37,10 +37,10 @@
                                                                             echo $story->last_name; ?></td>
                             <td class="p-3 pe-0" style="font-size:13px;"><?php echo $story->mission_title; ?></td>
                             <td class="p-3 pe-0 p-0" style="font-size:20px;">
-                                <button class='col-example13' href='#' style='background-color: white;'>View</button>
-                                <i class='fa fa-check-circle-o pe-2' style='color: #14c506;' aria-hidden='true'></i>
-                                <i class='fa fa-times-circle-o text-danger pe-2' aria-hidden='true'></i>
-                                <a href='#' data-bs-toggle='modal' data-bs-target='#popup1'><i class='fa fa-trash-o text-dark' aria-hidden='true'></i></a>
+                                <a href="story?source=view_story&view=<?php $id = $story->story_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?>" class='col-example13' style='background-color: white;'>View</a>
+                                <a onClick="javascript:return confirm('Are you sure to change status to approve?');" href="story?source=approve_story&edit=<?php $id = $story->story_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?>"><i class='fa fa-check-circle-o pe-2' style='color: #14c506;' aria-hidden='true'></i></a>
+                                <a onClick="javascript:return confirm('Are you sure to change status to decline?');" href="story?source=decline_story&edit=<?php $id = $story->story_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?>"><i class='fa fa-times-circle-o text-danger pe-2' aria-hidden='true'></i></a>
+                                <a onClick="javascript:return confirm('Are you sure to delete?');" href="story?source=delete_story&delete=<?php $id = $story->story_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?>"><i class='fa fa-trash-o text-dark' aria-hidden='true'></i></a>
                             </td>
                         </tr>
                     <?php
@@ -49,25 +49,30 @@
                 </tbody>
             </table>
             <?php if (!isset($_POST['search'])) { ?>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination pager justify-content-end">
-                    <li class="page-item">
-                        <a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/previous.png" alt=""></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/left.png" alt=""></a></li>
-                    <?php
-                    for ($i = 1; $i <= $cnt; $i++) {
-                        if ($i == $page)
-                            echo "<li class='page-item'><a class='page-link active text-center' href='story?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pager justify-content-end">
+                        <?php
+                        $next = $page+1;
+                        $previous = $page-1;
+                        echo "<li class='page-item'><a class='page-link' href='story?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/previous.png' alt=''></a></li>";
+                        if ($previous>=1)
+                            echo "<li class='page-item'><a class='page-link' href='story?page=$previous' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
                         else
-                            echo "<li class='page-item'><a class='page-link text-center' href='story?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
-                    } ?>
-                    <li class="page-item">
-                        <a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/arrow.png" alt=""></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="../Assets/next.png" alt=""></a></li>
-                </ul><?php } ?>
-            </nav>
+                        echo "<li class='page-item'><a class='page-link' href='story?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
+                        for ($i = 1; $i <= $cnt; $i++) {
+                            if ($i == $page)
+                                echo "<li class='page-item'><a class='page-link active text-center' href='story?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
+                            else
+                                echo "<li class='page-item'><a class='page-link text-center' href='story?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
+                        }
+                        if($next<=$cnt)
+                            echo "<li class='page-item'><a class='page-link' href='story?page=$next' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
+                        else
+                            echo "<li class='page-item'><a class='page-link' href='story?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='story?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/next.png' alt=''></a></li>";
+                        ?>
+                    </ul>
+                </nav><?php } ?>
         </div>
     </div>
 </div>

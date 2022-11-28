@@ -71,20 +71,12 @@ class Model
 		if ($resetEx) {
 			$response['Data'] = $userData;
 			$response['Code'] = true;
-			$response['Message'] = 'user found found in user';
+			$response['Message'] = 'user found in user';
 		} else {
-			$resetSql = "SELECT * FROM admin WHERE email = '$email'";
-			$resetEx = $this->connection->query($resetSql);
-			$userData = $resetEx->fetch_object();
-			if ($resetEx->num_rows > 0) {
-				$response['Data'] = $userData;
-				$response['Code'] = true;
-				$response['Message'] = 'user found in admin';
-			} else {
 				$response['Data'] = null;
 				$response['Code'] = false;
 				$response['Message'] = 'user not found';
-			}
+			
 		}
 		return $response;
 	}
@@ -131,11 +123,15 @@ class Model
 	{
 		$selSql = "SELECT * FROM $tblName";
 		if (!empty($where)) {
-			$selSql .= " WHERE ";
+			$selSql .= " WHERE (";
 			foreach ($where as $key => $value) {
 				$selSql .= " $key LIKE '%$value%' OR";
 			}
 			$selSql = rtrim($selSql, 'OR');
+			$selSql .= ") AND deleted_at is NULL";
+		}
+		else if(empty($where)){
+		$selSql .= " WHERE deleted_at is NULL";
 		}
 		if ($postno != 0 || $pagecount != 0) {
 			$selSql .= " LIMIT $postno,$pagecount";
@@ -155,11 +151,25 @@ class Model
 		}
 		return $response;
 	}
-	function SelectJoinApp()
+	function SelectJoinApp(int $postno = 0, int $pagecount = 0, array $where = [])
 	{
 		$selSql = "SELECT *,mission.title as mission_title FROM mission_application
 		INNER JOIN mission ON mission_application.mission_id=mission.mission_id
 		INNER JOIN user On mission_application.user_id=user.user_id";
+		if (!empty($where)) {
+			$selSql .= " WHERE (";
+			foreach ($where as $key => $value) {
+				$selSql .= " $key LIKE '%$value%' OR";
+			}
+			$selSql = rtrim($selSql, 'OR');
+			$selSql .= ") AND approval_status='PENDING' AND mission_application.deleted_at is NULL";
+		}
+		else if(empty($where)){
+		$selSql .= " WHERE approval_status='PENDING' AND mission_application.deleted_at is NULL";
+		}
+		if ($postno != 0 || $pagecount != 0) {
+			$selSql .= " LIMIT $postno,$pagecount";
+		}
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
 			while ($FetchData = $sqlEx->fetch_object()) {
@@ -175,17 +185,24 @@ class Model
 		}
 		return $response;
 	}
-	function SelectApp(array $where = [])
+	function SelectJoinStory(int $postno = 0, int $pagecount = 0, array $where = [])
 	{
-		$selSql = "SELECT *,mission.title as mission_title FROM mission_application
-		INNER JOIN mission ON mission_application.mission_id=mission.mission_id
-		INNER JOIN user On mission_application.user_id=user.user_id";
+		$selSql = "SELECT *,mission.title as mission_title,story.title as story_title FROM story
+		INNER JOIN mission ON story.mission_id=mission.mission_id
+		INNER JOIN user ON story.user_id=user.user_id";
 		if (!empty($where)) {
-			$selSql .= " WHERE ";
+			$selSql .= " WHERE (";
 			foreach ($where as $key => $value) {
 				$selSql .= " $key LIKE '%$value%' OR";
 			}
 			$selSql = rtrim($selSql, 'OR');
+			$selSql .= ") AND story.status='PENDING' AND story.deleted_at is NULL";
+		}
+		else if(empty($where)){
+		$selSql .= " WHERE story.status='PENDING' AND story.deleted_at is NULL";
+		}
+		if ($postno != 0 || $pagecount != 0) {
+			$selSql .= " LIMIT $postno,$pagecount";
 		}
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
@@ -194,24 +211,22 @@ class Model
 			}
 			$response['Data'] = $allData;
 			$response['Code'] = true;
-			$response['Message'] = 'Data retrieved successfully.'.$selSql;
+			$response['Message'] = 'Data retrieved successfully.';
 		} else {
 			$response['Data'] = [];
 			$response['Code'] = false;
-			$response['Message'] = 'Data not retrieved.'.$selSql;
+			$response['Message'] = 'Data not retrieved.';
 		}
 		return $response;
 	}
-	function SelectJoinStory()
+	function SelectViewStory($story_id)
 	{
 		$selSql = "SELECT *,mission.title as mission_title,story.title as story_title FROM story
 		INNER JOIN mission ON story.mission_id=mission.mission_id
-		INNER JOIN user ON story.user_id=user.user_id";
+		INNER JOIN user ON story.user_id=user.user_id Where story_id = $story_id";
 		$sqlEx = $this->connection->query($selSql);
+		$allData = $sqlEx->fetch_object();
 		if ($sqlEx->num_rows > 0) {
-			while ($FetchData = $sqlEx->fetch_object()) {
-				$allData[] = $FetchData;
-			}
 			$response['Data'] = $allData;
 			$response['Code'] = true;
 			$response['Message'] = 'Data retrieved successfully.';
@@ -347,7 +362,13 @@ class Model
 	}
 	function Select($tbl)
 	{
-		$selSql = "SELECT * FROM $tbl";
+		$selSql = "SELECT * FROM $tbl WHERE deleted_at is NULL";
+		if($tbl == 'mission_application'){
+			$selSql .= " AND approval_status = 'PENDING'";
+		}
+		if($tbl == 'story'){
+			$selSql .= " AND status = 'PENDING'";
+		}
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
 			$response['Data'] = $sqlEx->num_rows;

@@ -791,16 +791,3 @@ li ol>li:before {
     text-align: start;
   }
 }
-.nav-link {
-  color: green;
-}
-
-.nav-item>a:hover {
-  color: green;
-}
-
-/*code to change background color*/
-.navbar-nav>.active>a {
-  background-color: #C0C0C0;
-  color: green;
-}

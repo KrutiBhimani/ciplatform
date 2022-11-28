@@ -1,0 +1,1 @@
+<?php echo $story->story_id; ?>
