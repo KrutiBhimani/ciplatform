@@ -1,0 +1,229 @@
+<html>
+
+<head>
+    <title>share story</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+    <button type="button" class="container mobile-nav-toggle d-sm-none">
+        <nav class="main-nav">
+            <ul class="left left-right">
+                <li class="drop-down">
+                    <i class="fa fa-bars"></i>
+                    <ul>
+                        <li><a href="#">Stories</a></li>
+                        <li class="drop-down"><a href="#">Policy<i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="#">Volunteering</a></li>
+                                <li><a href="#">Sponsored</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </button>
+    <button type="button" class="mobile-nav-toggle2 d-sm-none">
+        <nav class="main-nav">
+            <ul class="right">
+                <li class="drop-down">
+                    <img src="Assets/user-img.png" class="rounded-circle" width="30" height="30">
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </button>
+    <br /><br />
+    <header id="header" class="fixed-top">
+        <div class="container">
+            <div class="d-flex justify-content-between">
+                <nav class="main-nav float-left d-none d-sm-block pt-2">
+                    <ul class="left left-right">
+                        <li class="pt-2 pe-3"><img src="Assets/logo.png"></li>
+                        <li><a href="#">Stories</a></li>
+                        <li class="drop-down"><a href="#">Policy<i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="#">Volunteering</a></li>
+                                <li><a href="#">Sponsored</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="main-nav float-right d-none d-sm-block">
+                    <ul class="right">
+                        <li class="drop-down">
+                            <a href="#"><img src="Assets/user-img.png" class="rounded-circle m-2 mt-0 mb-0" width="29"
+                                    height="29">username</a>
+                            <ul>
+                                <li><a href="#">Dashboard</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <hr class="div mt-3 pb-0">
+    <div class="container">
+        <p class="fs-2 fw-light pt-5">Share your story</p>
+        <div class="row">
+            <div class="col">
+                <p class="mb-1">Select mission</p>
+                <select class="popup pt-0 pb-0">
+                    <option value="none" selected="" disabled="" hidden="">Select your mission</option>
+                    <option value="newsest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="lowest">Lowest available seats</option>
+                    <option value="highest">Highest available seats</option>
+                    <option value="favourite">Sort by my favourite</option>
+                    <option value="deadline">sort by deadline</option>
+                </select>
+            </div>
+            <div class="col">
+                <p class="mb-1">My Story Title</p>
+                <input type="text" class="popup" name="" placeholder="Enter story title">
+            </div>
+            <div class="col removecal">
+                <p class="mb-1">Date</p>
+                <input type="date" name="" class="popup" value="Select date">
+            </div>
+        </div>
+        <p class="mb-1 mt-4">My Story</p>
+        <textarea rows="5" placeholder="Enter your message" name="" class="popup1"></textarea>
+        <p class="mb-1 mt-4">Enter Video URL</p>
+        <input type="url" class="popup" name="" placeholder="Enter your url">
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah')
+                            .attr('src', e.target.result)
+                            .width(80)
+                            .height(80);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }</script>
+        <p class="mb-1 mt-3">Mission Images</p>
+        <label for="choose-file2" class="custom-file-upload">
+            <img src="Assets/drag-and-drop.png" style="height:calc(20px + 2vw);"><br />
+        </label>
+        <input type="file" id="choose-file2" onchange="readURL(this);" style="display: none;" />
+        <div class="d-none d-sm-block d-flex">
+            <div class="row p-2">
+                <div class="p-1 position-relative i1" style="width: calc(100%/11);">
+                    <img src="Assets/img2.png" alt="" style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i1').remove();">
+                </div>
+                <div class="p-1 position-relative i2" style="width: calc(100%/11);">
+                    <img src="Assets/Grow-Trees-On-the-path-to-environment-sustainability-4.png" alt=""
+                        style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i2').remove();">
+                </div>
+                <div class="p-1 position-relative i3" style="width: calc(100%/11);">
+                    <img src="Assets/img22.png" alt="" style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i3').remove();">
+                </div>
+                <div class="p-1 position-relative i4" style="width: calc(100%/11);">
+                    <img src="Assets/wolgawron-169hero-service-istock.jpg" alt=""
+                        style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i4').remove();">
+                </div>
+                <div class="p-1 position-relative i5" style="width: calc(100%/11);">
+                    <img src="Assets/img.png" alt="" style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i5').remove();">
+                </div>
+                <div class="p-1 position-relative i6" style="width: calc(100%/11);">
+                    <img src="Assets/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png" alt=""
+                        style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i6').remove();">
+                </div>
+                <div class="p-1 position-relative i7" style="width: calc(100%/11);">
+                    <img src="Assets/img2.png" alt="" style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i7').remove();">
+                </div>
+                <div class="p-1 position-relative i8" style="width: calc(100%/11);">
+                    <img src="Assets/Grow-Trees-On-the-path-to-environment-sustainability-4.png" alt=""
+                        style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i8').remove();">
+                </div>
+                <div class="p-1 position-relative i9" style="width: calc(100%/11);">
+                    <img src="Assets/img22.png" alt="" style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i9').remove();">
+                </div>
+                <div class="p-1 position-relative i10" style="width: calc(100%/11);">
+                    <img src="Assets/wolgawron-169hero-service-istock.jpg" alt=""
+                        style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i10').remove();">
+                </div>
+                <div class="p-1 position-relative i11" style="width: calc(100%/11);">
+                    <img src="Assets/img.png" alt="" style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i11').remove();">
+                </div>
+                <div class="p-1 position-relative i12" style="width: calc(100%/11);">
+                    <img src="Assets/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png" alt=""
+                        style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i12').remove();">
+                </div>
+                <div class="p-1 position-relative i13" style="width: calc(100%/11);">
+                    <img src="" id="blah" alt="" style="object-fit: cover;width: 100%; height: 100%;" />
+                    <img src="Assets/cross.png" class="position-absolute cross" onclick="$('.i13').remove();">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mt-3 mb-5">
+            <div>
+                <button type="button" class="col-example8">Cancle</button>
+            </div>
+            <div>
+                <button type="button" class="col-example7">Save</button>
+                <button type="button" class="col-example7">Submit</button>
+            </div>
+        </div>
+    </div>
+    <hr class="div">
+    <footer id="footer2" class="position-relative">
+        <div class="position-absolute w-100">
+            <div class="container pt-4 pb-4">
+                <a href="policy.html" class="Forma-1-copy-13">Privacy policy</a>
+            </div>
+        </div>
+        <div id="footer" class="position-absolute w-100" style="z-index: 9;">
+            <div class="float-end mt-3 me-3">
+                <img src="Assets/cross.png" alt="" class="img-fluid" onclick="$('#footer').remove();">
+            </div>
+            <div class="container">
+                <div class="d-flex justify-content-between pt-4 pb-3">
+                    <div>
+                        <span>This website makes use of cookies to enhance browsing experience and provide additional
+                            functionality.</span><br />
+                        <a href="policy.html" class="Forma-1-copy-12">Privacy policy</a>
+                    </div>
+                    <div>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="col-example">I Agree</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

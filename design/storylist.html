@@ -1,0 +1,621 @@
+<html>
+
+<head>
+    <title></title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <button type="button" class="container mobile-nav-toggle d-sm-none">
+        <nav class="main-nav">
+            <ul class="left left-right">
+                <li class="drop-down">
+                    <i class="fa fa-bars"></i>
+                    <ul>
+                        <li><a href="#">Stories</a></li>
+                        <li class="drop-down"><a href="#">Policy<i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="#">Volunteering</a></li>
+                                <li><a href="#">Sponsored</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </button>
+    <button type="button" class="mobile-nav-toggle2 d-sm-none">
+        <nav class="main-nav">
+            <ul class="right">
+                <li class="drop-down">
+                    <img src="Assets/user-img.png" class="rounded-circle" width="30" height="30">
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </button>
+
+    <br /><br />
+    <form action="search.php" method="post">
+        <div class="container d-sm-none mt-2">
+            <table class="table table-bordered border-start">
+                <thead>
+                    <tr>
+                        <td class="p-2">
+                            <div class="input-group">
+                                <input type="text" name="search" placeholder="Search mission..."
+                                    class="form-control shadow-none" style="border:none; font-size:18px;">
+                                <div class="input-group-append">
+                                    <button type="button" class="container mobile-nav-toggle3 d-sm-none p-0">
+                                        <nav class="main-nav">
+                                            <ul class="right right-left">
+                                                <li class="drop-down">
+                                                    <img src="Assets/filter.png" class="input-group-text m-2"
+                                                        id="basic-addon1" style="background-color:white; border:none;"
+                                                        height="22px">
+                                                    <ul style="background-color:white ;">
+                                                        <li class="drop-down"><a href="#">Country</a>
+                                                            <ul>
+                                                                <li><a href="#">Afghanistan</a></li>
+                                                                <li><a href="#">Belgium</a></li>
+                                                                <li><a href="#">India</a></li>
+                                                                <li><a href="#">South Africa</a></li>
+                                                                <li><a href="#">china</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="drop-down"><a href="#">City</a>
+                                                            <ul>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Afghanistan</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Belgium</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">India</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">South Africa</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">china</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="drop-down"><a href="#">Theme</a>
+                                                            <ul>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Education</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Children</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Health</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Animals</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Environment</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="drop-down"><a href="#">Skills</a>
+                                                            <ul>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Anthropology</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Computer</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">History</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Research</a></li>
+                                                                <li><a href="#"><input type="checkbox"
+                                                                            class="space mt-0">Teaching</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </form>
+    <header id="header" class="fixed-top">
+        <div class="container">
+            <div class="d-flex justify-content-between">
+                <nav class="main-nav float-left d-none d-sm-block pt-2">
+                    <ul class="left left-right">
+                        <li class="pt-2 pr-3"><img src="Assets/logo.png"></li>
+                        <li><a href="#">Stories</a></li>
+                        <li class="drop-down"><a href="#">Policy<i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="#">Volunteering</a></li>
+                                <li><a href="#">Sponsored</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="main-nav float-right d-none d-sm-block">
+                    <ul class="right">
+                        <li class="drop-down">
+                            <a href="#"><img src="Assets/user-img.png" class="rounded-circle m-2 mt-0 mb-0" width="29"
+                                    height="29">username</a>
+                            <ul>
+                                <li><a href="#">Dashboard</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <hr class="div d-none d-sm-block">
+    <form class="mb-0">
+        <div class="container">
+            <div class="d-none d-sm-block">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <td class="border-end" style="width:calc(100%/2);">
+                                <div class="input-group">
+                                    <div class="input-group-prepend" style="padding:5px">
+                                        <img src="Assets/search.png" alt="" class="input-group-text" id="basic-addon1"
+                                            style="background-color:white; border:none;">
+                                    </div>
+                                    <input type="text" name="search" placeholder="Search mission..."
+                                        class="form-control shadow-none" style="border:none; font-size:18px;">
+                                </div>
+                            </td>
+                            <td class="border-end" style="width:calc(100%/8);">
+                                <nav class="main-nav">
+                                    <ul class="center">
+                                        <li class="drop-down" style="width:100% ;"><a href="#">Country</a>
+                                            <ul>
+                                                <li><a href="#">Afghanistan</a></li>
+                                                <li><a href="#">Belgium</a></li>
+                                                <li><a href="#">India</a></li>
+                                                <li><a href="#">South Africa</a></li>
+                                                <li><a href="#">china</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </td>
+                            <td class="border-end" style="width:calc(100%/8);">
+                                <nav class="main-nav">
+                                    <ul class="center">
+                                        <li class="drop-down" style="width:100% ;"><a href="#">City</a>
+                                            <ul>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Afghanistan</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Belgium</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">India</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">South Africa</a>
+                                                </li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">china</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </td>
+                            <td class="border-end" style="width:calc(100%/8);">
+                                <nav class="main-nav">
+                                    <ul class="center">
+                                        <li class="drop-down" style="width:100% ;"><a href="#">Themes</a>
+                                            <ul>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Education</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Children</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Health</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Animals</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Environment</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </td>
+                            <td class="border-end">
+                                <nav class="main-nav">
+                                    <ul class="center">
+                                        <li class="drop-down" style="width:100% ;"><a href="#">Skills</a>
+                                            <ul>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Anthropology</a>
+                                                </li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Computer</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">History</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Research</a></li>
+                                                <li><a href="#"><input type="checkbox" class="me-2">Teaching</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </form>
+    <hr class="div d-none d-sm-block">
+
+    <div class="example">
+        <img class="image1" src="Assets/Grow-Trees-On-the-path-to-environment-sustainability-login - Copy.png">
+        <div class="middle">
+            <p class="txt1 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip</p>
+            <a href="share_story.html">
+                <div class="text text-center">Share your Story
+                    <i class="fa fa-arrow-right pl-2"></i>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row row-eq-height justify-content-center mt-5">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                <div class="card box border-0">
+                    <div class="gfg1">
+                        <img src="Assets/Grow-Trees-On-the-path-to-environment-sustainability.png" alt=""
+                            class="img-fluid image2" style="width:100%;">
+                        <div class="middle1">
+                            <a href="story_detail.html">
+                                <div class="text1 text-center">View Detail
+                                    <i class="fa fa-arrow-right pl-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex four-txt justify-content-center">
+                            <div class="bdg1">CustomerExperience</div>
+                        </div>
+                    </div>
+                    <div class="card-body remove">
+                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);">10 Users and Costomer
+                            Engagement Strategies for 2019</h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <img src="Assets/volunteer1.png" class="rounded-circle" height="34px" width="34px">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
+                                <p class="mb-0" style="font-size:12px ;">Andrew Johnson</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                <div class="card box border-0">
+                    <div class="gfg1">
+                        <img src="Assets/doctor-laptop.jpg" alt="" class="img-fluid image2" style="width:100%;">
+                        <div class="middle1">
+                            <a href="#">
+                                <div class="text1 text-center">View Detail
+                                    <i class="fa fa-arrow-right pl-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex four-txt justify-content-center">
+                            <div class="bdg1">Updates</div>
+                        </div>
+                    </div>
+                    <div class="card-body remove">
+                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);">Overheard in Product:Good
+                            Products, the End of Failure.</h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <img src="Assets/volunteer2.png" class="rounded-circle" height="34px" width="34px">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
+                                <p class="mb-0" style="font-size:12px ;">Charles vigue</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                <div class="card box border-0">
+                    <div class="gfg1">
+                        <img src="Assets/wolgawron-169hero-service-istock.jpg" alt="" class="img-fluid image2"
+                            style="width:100%;">
+                        <div class="middle1">
+                            <a href="#">
+                                <div class="text1 text-center">View Detail
+                                    <i class="fa fa-arrow-right pl-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex four-txt justify-content-center">
+                            <div class="bdg1">CustomerExperience</div>
+                        </div>
+                    </div>
+                    <div class="card-body remove">
+                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);">10 Users and Costomer
+                            Engagement Strategies for 2019</h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <img src="Assets/volunteer7.png" class="rounded-circle" height="34px" width="34px">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
+                                <p class="mb-0" style="font-size:12px ;">Travis Steen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                <div class="card box border-0">
+                    <div class="gfg1">
+                        <img src="Assets/img11 - Copy.png" alt="" class="img-fluid image2" style="width:100%;">
+                        <div class="middle1">
+                            <a href="#">
+                                <div class="text1 text-center">View Detail
+                                    <i class="fa fa-arrow-right pl-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex four-txt justify-content-center">
+                            <div class="bdg1">CustomerExperience</div>
+                        </div>
+                    </div>
+                    <div class="card-body remove">
+                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);">10 Users and Costomer
+                            Engagement Strategies for 2019</h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <img src="Assets/volunteer1.png" class="rounded-circle" height="34px" width="34px">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
+                                <p class="mb-0" style="font-size:12px ;">Andrew Johnson</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                <div class="card box border-0">
+                    <div class="gfg1">
+                        <img src="Assets/img.jpg" alt="" class="img-fluid image2" style="width:100%;">
+                        <div class="middle1">
+                            <a href="#">
+                                <div class="text1 text-center">View Detail
+                                    <i class="fa fa-arrow-right pl-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex four-txt justify-content-center">
+                            <div class="bdg1">Updates</div>
+                        </div>
+                    </div>
+                    <div class="card-body remove">
+                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);">Overheard in Product:Good
+                            Products, the End of Failure.</h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <img src="Assets/volunteer2.png" class="rounded-circle" height="34px" width="34px">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
+                                <p class="mb-0" style="font-size:12px ;">Charles vigue</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                <div class="card box border-0">
+                    <div class="gfg1">
+                        <img src="Assets/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png" alt=""
+                            class="img-fluid image2" style="width:100%;">
+                        <div class="middle1">
+                            <a href="#">
+                                <div class="text1 text-center">View Detail
+                                    <i class="fa fa-arrow-right pl-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex four-txt justify-content-center">
+                            <div class="bdg1">CustomerExperience</div>
+                        </div>
+                    </div>
+                    <div class="card-body remove">
+                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);">10 Users and Costomer
+                            Engagement Strategies for 2019</h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <img src="Assets/volunteer7.png" class="rounded-circle" height="34px" width="34px">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
+                                <p class="mb-0" style="font-size:12px ;">Travis Steen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                <div class="card box border-0">
+                    <div class="gfg1">
+                        <img src="Assets/Grow-Trees-On-the-path-to-environment-sustainability.png" alt=""
+                            class="img-fluid image2" style="width:100%;">
+                        <div class="middle1">
+                            <a href="#">
+                                <div class="text1 text-center">View Detail
+                                    <i class="fa fa-arrow-right pl-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex four-txt justify-content-center">
+                            <div class="bdg1">CustomerExperience</div>
+                        </div>
+                    </div>
+                    <div class="card-body remove">
+                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);">10 Users and Costomer
+                            Engagement Strategies for 2019</h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <img src="Assets/volunteer1.png" class="rounded-circle" height="34px" width="34px">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
+                                <p class="mb-0" style="font-size:12px ;">Andrew Johnson</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                <div class="card box border-0">
+                    <div class="gfg1">
+                        <img src="Assets/doctor-laptop.jpg" alt="" class="img-fluid image2" style="width:100%;">
+                        <div class="middle1">
+                            <a href="#">
+                                <div class="text1 text-center">View Detail
+                                    <i class="fa fa-arrow-right pl-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex four-txt justify-content-center">
+                            <div class="bdg1">Updates</div>
+                        </div>
+                    </div>
+                    <div class="card-body remove">
+                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);">Overheard in Product:Good
+                            Products, the End of Failure.</h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <img src="Assets/volunteer2.png" class="rounded-circle" height="34px" width="34px">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
+                                <p class="mb-0" style="font-size:12px ;">Charles vigue</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                <div class="card box border-0">
+                    <div class="gfg1">
+                        <img src="Assets/wolgawron-169hero-service-istock.jpg" alt="" class="img-fluid image2"
+                            style="width:100%;">
+                        <div class="middle1">
+                            <a href="#">
+                                <div class="text1 text-center">View Detail
+                                    <i class="fa fa-arrow-right pl-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex four-txt justify-content-center">
+                            <div class="bdg1">CustomerExperience</div>
+                        </div>
+                    </div>
+                    <div class="card-body remove">
+                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);">10 Users and Costomer
+                            Engagement Strategies for 2019</h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <img src="Assets/volunteer7.png" class="rounded-circle" height="34px" width="34px">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
+                                <p class="mb-0" style="font-size:12px ;">Travis Steen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pager justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#"
+                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                src="Assets/previous.png" alt=""></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#"
+                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                src="Assets/left.png" alt=""></a></li>
+                    <li class="page-item"><a class="page-link active text-center" href="#"
+                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link text-center" href="#"
+                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+                    </li>
+                    <li class="page-item"><a class="page-link text-center" href="#"
+                            style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"
+                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                src="Assets/arrow.png" alt=""></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#"
+                            style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                                src="Assets/next.png" alt=""></a></li>
+                </ul>
+            </nav>
+        </div><br>
+
+    </div>
+    <hr class="div">
+    <footer id="footer2" class="position-relative">
+        <div class="position-absolute w-100">
+            <div class="container pt-4 pb-4">
+                <a href="policy.html" class="Forma-1-copy-13">Privacy policy</a>
+            </div>
+        </div>
+        <div id="footer" class="position-absolute w-100" style="z-index: 9;">
+            <div class="float-end mt-3 me-3">
+                <img src="Assets/cross.png" alt="" class="img-fluid" onclick="$('#footer').remove();">
+            </div>
+            <div class="container">
+                <div class="d-flex justify-content-between pt-4 pb-3">
+                    <div>
+                        <span>This website makes use of cookies to enhance browsing experience and provide additional
+                            functionality.</span><br />
+                        <a href="policy.html" class="Forma-1-copy-12">Privacy policy</a>
+                    </div>
+                    <div>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="col-example">I Agree</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
