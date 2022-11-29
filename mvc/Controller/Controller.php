@@ -35,20 +35,22 @@ class Controller extends Model
 
 ?>
 								<script type="text/javascript">
-									alert("<?php echo $insertEx['Message'] ?>");
+									alert("<?php echo 'your registration is successfull!' ?>");
 									window.location.href = 'login';
 								</script>
 							<?php
 							} else {
 							?>
 								<script type="text/javascript">
-									alert("<?php echo $insertEx['Message'] ?>");
+									alert("<?php echo 'please try again!' ?>");
 									window.location.href = 'register';
 								</script>
 					<?php
 							}
 						}
 					}
+					$selectData = $this->SelectBanner();
+					$banners = $selectData['Data'];
 					include 'Views/header.php';
 					include 'Views/registration.php';
 					break;
@@ -78,14 +80,12 @@ class Controller extends Model
 							if ($_SESSION['user_data']) {
 					?>
 								<script type="text/javascript">
-									alert("<?php echo $loginEx['Message'] ?>");
 									window.location.href = 'home';
 								</script>
 							<?php
 							} else if ($_SESSION['admin_data']) {
 							?>
 								<script type="text/javascript">
-									alert("<?php echo $loginEx['Message'] ?>");
 									window.location.href = 'user';
 								</script>
 							<?php
@@ -99,6 +99,8 @@ class Controller extends Model
 						<?php
 						}
 					}
+					$selectData = $this->SelectBanner();
+					$banners = $selectData['Data'];
 					include 'Views/header.php';
 					include 'Views/login.php';
 					break;
@@ -136,11 +138,6 @@ class Controller extends Model
 					if (isset($_POST['forgot'])) {
 						$email = mysqli_real_escape_string($this->connection, $_POST['email']);
 						$resetEx = $this->ResetPass($email);
-					?>
-						<script type="text/javascript">
-							alert("<?php echo $resetEx['Message'] ?>");
-						</script>
-						<?php
 						if ($resetEx['Code']) {
 							$_SESSION['reset_data'] = $resetEx['Data'];
 							$token = md5(2418 * 2) . substr(md5(uniqid(rand(), 1)), 3, 10);
@@ -184,7 +181,7 @@ class Controller extends Model
 											echo 'Mailer Error: ' . $mail->ErrorInfo;
 										} else { ?>
 											<script type="text/javascript">
-												alert("message sent.");
+												alert("message sent to your email.");
 												window.location.href = 'forgot';
 											</script>
 								<?php }
@@ -206,6 +203,8 @@ class Controller extends Model
 								<?php }
 						}
 					}
+					$selectData = $this->SelectBanner();
+					$banners = $selectData['Data'];
 					include 'Views/header.php';
 					include 'Views/forgotpsd.php';
 					break;
@@ -250,6 +249,8 @@ class Controller extends Model
 											}
 										}
 									}
+									$selectData = $this->SelectBanner();
+									$banners = $selectData['Data'];
 									include 'Views/header.php';
 									include 'Views/resetpsd.php';
 									break;
@@ -1082,7 +1083,7 @@ class Controller extends Model
 									alert("Something Went Wrong.");
 									window.location.href = 'app';
 								</script>
-<?php
+							<?php
 							}
 							break;
 						default:
@@ -1132,6 +1133,11 @@ class Controller extends Model
 							$story_id = $decrypted_id;
 							$selectData = $this->SelectViewStory($story_id);
 							$story = $selectData['Data'];
+							$where = [
+								'story_id' => $story_id
+							];
+							$selectData1 = $this->SelectData('story_media', 0, 0, $where);
+							$medias = $selectData1['Data'];
 							include "Views/Admin/view_story.php";
 							break;
 						case 'approve_story':
@@ -1208,7 +1214,7 @@ class Controller extends Model
 							];
 							$delete_data = $this->UpdateData1('story', $update_data, $where);
 							if ($delete_data) {
-								?>
+							?>
 								<script type="text/javascript">
 									alert("Data deleted successfully.");
 									window.location.href = 'story';
@@ -1220,7 +1226,7 @@ class Controller extends Model
 									alert("Something Went Wrong.");
 									window.location.href = 'story';
 								</script>
-								<?php
+<?php
 							}
 							break;
 						default:
@@ -1245,7 +1251,7 @@ class Controller extends Model
 									'first_name' => $_POST['search'],
 									'last_name' => $_POST['search']
 								];
-								$selectData = $this->SelectJoinStory(0,0,$where);
+								$selectData = $this->SelectJoinStory(0, 0, $where);
 								$storys = $selectData['Data'];
 							}
 							include "Views/Admin/view_all_story.php";

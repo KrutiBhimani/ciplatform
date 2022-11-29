@@ -40,7 +40,7 @@ class Model
 	}
 	function LoginData($email, $password)
 	{
-		$loginSql = "SELECT * FROM user WHERE email = '$email' and status = '1'";
+		$loginSql = "SELECT * FROM user WHERE email = '$email' and status = '1' AND deleted_at is null";
 		$loginEx = $this->connection->query($loginSql);
 		$userData = $loginEx->fetch_object();
 		if ($loginEx->num_rows > 0 && $password == $userData->password) {
@@ -71,12 +71,11 @@ class Model
 		if ($resetEx) {
 			$response['Data'] = $userData;
 			$response['Code'] = true;
-			$response['Message'] = 'user found in user';
+			$response['Message'] = 'user found';
 		} else {
-				$response['Data'] = null;
-				$response['Code'] = false;
-				$response['Message'] = 'user not found';
-			
+			$response['Data'] = null;
+			$response['Code'] = false;
+			$response['Message'] = 'user not found';
 		}
 		return $response;
 	}
@@ -87,19 +86,11 @@ class Model
 		if ($resetEx) {
 			$response['Data'] = null;
 			$response['Code'] = true;
-			$response['Message'] = 'updated in user';
+			$response['Message'] = 'your password is updated';
 		} else {
-			$resetSql = "UPDATE admin set password='$password' where email='$email'";
-			$resetEx = $this->connection->query($resetSql);
-			if ($resetEx) {
-				$response['Data'] = null;
-				$response['Code'] = true;
-				$response['Message'] = 'updated in admin';
-			} else {
-				$response['Data'] = null;
-				$response['Code'] = false;
-				$response['Message'] = 'not updated';
-			}
+			$response['Data'] = null;
+			$response['Code'] = false;
+			$response['Message'] = 'not updated';
 		}
 		return $response;
 	}
@@ -119,6 +110,24 @@ class Model
 		}
 		return $response;
 	}
+	function SelectBanner()
+	{
+		$selSql = "SELECT * FROM banner WHERE deleted_at is NULL ORDER BY banner.sort_order ASC";
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
 	function SelectData(string $tblName, int $postno = 0, int $pagecount = 0, array $where = [])
 	{
 		$selSql = "SELECT * FROM $tblName";
@@ -129,9 +138,8 @@ class Model
 			}
 			$selSql = rtrim($selSql, 'OR');
 			$selSql .= ") AND deleted_at is NULL";
-		}
-		else if(empty($where)){
-		$selSql .= " WHERE deleted_at is NULL";
+		} else if (empty($where)) {
+			$selSql .= " WHERE deleted_at is NULL";
 		}
 		if ($postno != 0 || $pagecount != 0) {
 			$selSql .= " LIMIT $postno,$pagecount";
@@ -163,9 +171,8 @@ class Model
 			}
 			$selSql = rtrim($selSql, 'OR');
 			$selSql .= ") AND approval_status='PENDING' AND mission_application.deleted_at is NULL";
-		}
-		else if(empty($where)){
-		$selSql .= " WHERE approval_status='PENDING' AND mission_application.deleted_at is NULL";
+		} else if (empty($where)) {
+			$selSql .= " WHERE approval_status='PENDING' AND mission_application.deleted_at is NULL";
 		}
 		if ($postno != 0 || $pagecount != 0) {
 			$selSql .= " LIMIT $postno,$pagecount";
@@ -197,9 +204,8 @@ class Model
 			}
 			$selSql = rtrim($selSql, 'OR');
 			$selSql .= ") AND story.status='PENDING' AND story.deleted_at is NULL";
-		}
-		else if(empty($where)){
-		$selSql .= " WHERE story.status='PENDING' AND story.deleted_at is NULL";
+		} else if (empty($where)) {
+			$selSql .= " WHERE story.status='PENDING' AND story.deleted_at is NULL";
 		}
 		if ($postno != 0 || $pagecount != 0) {
 			$selSql .= " LIMIT $postno,$pagecount";
@@ -221,7 +227,7 @@ class Model
 	}
 	function SelectViewStory($story_id)
 	{
-		$selSql = "SELECT *,mission.title as mission_title,story.title as story_title FROM story
+		$selSql = "SELECT *,mission.title as mission_title,story.title as story_title,story.description as story_desc FROM story
 		INNER JOIN mission ON story.mission_id=mission.mission_id
 		INNER JOIN user ON story.user_id=user.user_id Where story_id = $story_id";
 		$sqlEx = $this->connection->query($selSql);
@@ -256,11 +262,11 @@ class Model
 			}
 			$response['Data'] = $allData;
 			$response['Code'] = true;
-			$response['Message'] = 'Data retrieved successfully.'.$selSql;
+			$response['Message'] = 'Data retrieved successfully.' . $selSql;
 		} else {
 			$response['Data'] = [];
 			$response['Code'] = false;
-			$response['Message'] = 'Data not retrieved.'.$selSql;
+			$response['Message'] = 'Data not retrieved.' . $selSql;
 		}
 		return $response;
 	}
@@ -363,10 +369,10 @@ class Model
 	function Select($tbl)
 	{
 		$selSql = "SELECT * FROM $tbl WHERE deleted_at is NULL";
-		if($tbl == 'mission_application'){
+		if ($tbl == 'mission_application') {
 			$selSql .= " AND approval_status = 'PENDING'";
 		}
-		if($tbl == 'story'){
+		if ($tbl == 'story') {
 			$selSql .= " AND status = 'PENDING'";
 		}
 		$sqlEx = $this->connection->query($selSql);
