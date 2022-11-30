@@ -25,7 +25,7 @@ class Model
 		$clms = implode(',', array_keys($data));
 		$vals = implode("','", $data);
 		$sql = "insert into $tbl ($clms) values ('$vals')";
-		// echo $sql;
+		$sql = str_replace("''","NULL",$sql);
 		$insertEx = $this->connection->query($sql);
 		if ($insertEx) {
 			$response['Data'] = null;
@@ -35,6 +35,22 @@ class Model
 			$response['Data'] = null;
 			$response['Code'] = false;
 			$response['Message'] = 'Data insertion failed.';
+		}
+		return $response;
+	}
+	function GetMission()
+	{
+		$resetSql = "SELECT max(mission_id) as max FROM mission";
+		$resetEx = $this->connection->query($resetSql);
+		$userData = $resetEx->fetch_object();
+		if ($resetEx) {
+			$response['Data'] = $userData;
+			$response['Code'] = true;
+			$response['Message'] = 'user found';
+		} else {
+			$response['Data'] = null;
+			$response['Code'] = false;
+			$response['Message'] = 'user not found';
 		}
 		return $response;
 	}
@@ -144,6 +160,26 @@ class Model
 		if ($postno != 0 || $pagecount != 0) {
 			$selSql .= " LIMIT $postno,$pagecount";
 		}
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
+	function GetSelectedSkill($mission_id)
+	{
+		$selSql = "SELECT * from mission_skill
+		LEFT JOIN skill on skill.skill_id = mission_skill.skill_id
+		where mission_id = $mission_id";
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
 			while ($FetchData = $sqlEx->fetch_object()) {
@@ -308,6 +344,29 @@ class Model
 		}
 		return $response;
 	}
+	function SelectData2($mission_id)
+	{
+		$selSql = "SELECT *,city.name as city_name, country.name as country_name,mission.title as mission_title, mission_theme.title as theme_title from mission
+		LEFT JOIN mission_media on mission_media.mission_id = mission.mission_id
+		LEFT JOIN mission_document on mission_document.mission_id = mission.mission_id
+		LEFT JOIN time_mission on time_mission.mission_id = mission.mission_id 
+		LEFT JOIN city on city.city_id = mission.city_id
+		LEFT JOIN country on country.country_id = mission.country_id
+		LEFT JOIN mission_theme on mission_theme.mission_theme_id = mission.theme_id
+		WHERE mission.mission_id = $mission_id";
+		$sqlEx = $this->connection->query($selSql);
+		$allData = $sqlEx->fetch_object();
+		if ($sqlEx->num_rows > 0) {
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
 	function UpdateData1($tbl, $data, array $where = [])
 	{
 		$sql = "UPDATE $tbl SET ";
@@ -387,11 +446,11 @@ class Model
 		}
 		return $response;
 	}
-	function exp($item)
+	function exp($mission_id,$item)
 	{
-		$selSql = "INSERT INTO mission_skill (mission_id,skill_id) VALUES ($item)";
+		$selSql = "INSERT INTO mission_skill (mission_id,skill_id) VALUES ($mission_id,$item)";
 		$sqlEx = $this->connection->query($selSql);
-		if ($sqlEx->num_rows > 0) {
+		if ($sqlEx) {
 			$response['Data'] = $sqlEx->num_rows;
 			$response['Code'] = true;
 			$response['Message'] = 'Data retrieved successfully.';

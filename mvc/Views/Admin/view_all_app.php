@@ -18,74 +18,78 @@
         </form>
     </div>
     <div class="tab-content">
-        <div class="tab-pane show active" id="userc">
-            <table class="table" style="border: 1px solid #dee2e6;">
-                <thead class="table-light border-bottom">
-                    <tr>
-                        <td class="p-3 pe-0 fs-6" scope="col">Mission Title</td>
-                        <td class="p-3 pe-0 fs-6" scope="col">Mission Id</td>
-                        <td class="p-3 pe-0 fs-6" scope="col">User Id</td>
-                        <td class="p-3 pe-0 fs-6" scope="col">User Name</td>
-                        <td class="p-3 pe-0 fs-6" scope="col">Applied Date</td>
-                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($apps as $app) {
-                    ?>
-                        <tr>
-                            <td class="p-3 pe-0" style="font-size:13px;"><?php echo $app->mission_title; ?></td>
-                            <td class="p-3 pe-0" style="font-size:13px;"><?php echo $app->mission_id; ?></td>
-                            <td class="p-3 pe-0" style="font-size:13px;"><?php echo $app->user_id; ?></td>
-                            <td class="p-3 pe-0" style="font-size:13px;"><?php echo $app->first_name . ' ';
-                                                                            echo $app->last_name; ?></td>
 
-                            <td class="p-3 pe-0" style="font-size:13px;"><?php
-                                                                            $applied_at = $app->applied_at;
-                                                                            $applied_at = date("d/m/Y", strtotime($applied_at));
-                                                                            echo $applied_at; ?></td>
-                            <td class="p-3 pe-0 p-0" style="font-size:20px;">
-                                <a onClick="javascript:return confirm('Are you sure to change status to approve?');" href="app?source=edit_app&edit=<?php $id = $app->mission_application_id;
-                                                                    $salt = "SECRET_STUFF";
-                                                                    $encrypted_id = base64_encode($id . $salt);
-                                                                    echo $encrypted_id; ?>"><i class='fa fa-check-circle-o pe-2' style='color: #14c506;' aria-hidden='true'></i></a>
-                                <a onClick="javascript:return confirm('Are you sure to change status to decline?');" href="app?source=delete_app&delete=<?php $id = $app->mission_application_id;
-                                                                    $salt = "SECRET_STUFF";
-                                                                    $encrypted_id = base64_encode($id . $salt);
-                                                                    echo $encrypted_id; ?>"><i class='fa fa-times-circle-o text-danger' aria-hidden='true'></i></a>
-                            </td>
+        <div class="table-responsive">
+            <div class="tab-pane show active" id="userc">
+                <table class="table" style="border: 1px solid #dee2e6;">
+                    <thead class="table-light border-bottom">
+                        <tr>
+                            <td class="p-3 pe-0 fs-6" scope="col">Mission Title</td>
+                            <td class="p-3 pe-0 fs-6" scope="col">Mission Id</td>
+                            <td class="p-3 pe-0 fs-6" scope="col">User Id</td>
+                            <td class="p-3 pe-0 fs-6" scope="col">User Name</td>
+                            <td class="p-3 pe-0 fs-6" scope="col">Applied Date</td>
+                            <td class="p-3 pe-0 fs-6" scope="col">Action</td>
                         </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
-            <?php if (!isset($_POST['search'])) { ?>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination pager justify-content-end">
+                    </thead>
+                    <tbody>
                         <?php
-                        $next = $page+1;
-                        $previous = $page-1;
-                        echo "<li class='page-item'><a class='page-link' href='app?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/previous.png' alt=''></a></li>";
-                        if ($previous>=1)
-                            echo "<li class='page-item'><a class='page-link' href='app?page=$previous' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
-                        else
-                        echo "<li class='page-item'><a class='page-link' href='app?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
-                        for ($i = 1; $i <= $cnt; $i++) {
-                            if ($i == $page)
-                                echo "<li class='page-item'><a class='page-link active text-center' href='app?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
-                            else
-                                echo "<li class='page-item'><a class='page-link text-center' href='app?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
-                        }
-                        if($next<=$cnt)
-                            echo "<li class='page-item'><a class='page-link' href='app?page=$next' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
-                        else
-                            echo "<li class='page-item'><a class='page-link' href='app?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
-                        echo "<li class='page-item'><a class='page-link' href='app?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/next.png' alt=''></a></li>";
+                        foreach ($apps as $app) {
                         ?>
-                    </ul>
-                </nav><?php } ?>
+                            <tr>
+                                <td class="p-3 pe-0" style="font-size:13px;"><?php echo $app->mission_title; ?></td>
+                                <td class="p-3 pe-0" style="font-size:13px;"><?php echo $app->mission_id; ?></td>
+                                <td class="p-3 pe-0" style="font-size:13px;"><?php echo $app->user_id; ?></td>
+                                <td class="p-3 pe-0" style="font-size:13px;"><?php echo $app->first_name . ' ';
+                                                                                echo $app->last_name; ?></td>
+
+                                <td class="p-3 pe-0" style="font-size:13px;"><?php
+                                                                                $applied_at = $app->applied_at;
+                                                                                $applied_at = date("d/m/Y", strtotime($applied_at));
+                                                                                echo $applied_at; ?></td>
+                                <td class="p-3 pe-0 p-0" style="font-size:20px;">
+                                    <a onClick="javascript:return confirm('Are you sure to change status to approve?');" href="app?source=edit_app&edit=<?php $id = $app->mission_application_id;
+                                                                                                                                                        $salt = "SECRET_STUFF";
+                                                                                                                                                        $encrypted_id = base64_encode($id . $salt);
+                                                                                                                                                        echo $encrypted_id; ?>"><i class='fa fa-check-circle-o pe-2' style='color: #14c506;' aria-hidden='true'></i></a>
+                                    <a onClick="javascript:return confirm('Are you sure to change status to decline?');" href="app?source=delete_app&delete=<?php $id = $app->mission_application_id;
+                                                                                                                                                            $salt = "SECRET_STUFF";
+                                                                                                                                                            $encrypted_id = base64_encode($id . $salt);
+                                                                                                                                                            echo $encrypted_id; ?>"><i class='fa fa-times-circle-o text-danger' aria-hidden='true'></i></a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <?php if (!isset($_POST['search'])) { ?>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination pager justify-content-end">
+                            <?php
+                            $next = $page + 1;
+                            $previous = $page - 1;
+                            echo "<li class='page-item'><a class='page-link' href='app?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/previous.png' alt=''></a></li>";
+                            if ($previous >= 1)
+                                echo "<li class='page-item'><a class='page-link' href='app?page=$previous' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
+                            else
+                                echo "<li class='page-item'><a class='page-link' href='app?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
+                            for ($i = 1; $i <= $cnt; $i++) {
+                                if ($i == $page)
+                                    echo "<li class='page-item'><a class='page-link active text-center' href='app?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
+                                else
+                                    echo "<li class='page-item'><a class='page-link text-center' href='app?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
+                            }
+                            if ($next <= $cnt)
+                                echo "<li class='page-item'><a class='page-link' href='app?page=$next' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
+                            else
+                                echo "<li class='page-item'><a class='page-link' href='app?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
+                            echo "<li class='page-item'><a class='page-link' href='app?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/next.png' alt=''></a></li>";
+                            ?>
+                        </ul>
+                    </nav>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </div>

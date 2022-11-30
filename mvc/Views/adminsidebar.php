@@ -20,30 +20,62 @@
     <div class="col-md-2 d-md-none col-sm-2 col-2 ps-2 pe-2 position-relative" style="background-color: #f88634;">
         <div class="position-sticky top-0 pt-5">
             <div class="nav flex-column nav-pills m-0">
-                <button class="nav-link active text-center" data-bs-toggle="pill" data-bs-target="#user">
-                    <i class="fa fa-user p-1" aria-hidden="true"></i>
-                </button>
-                <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#page">
-                    <i class="fa fa-file-text p-1" aria-hidden="true"></i>
-                </button>
-                <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#mission">
-                    <i class="fa fa-bullseye p-1" aria-hidden="true"></i>
-                </button>
-                <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#theme">
-                    <i class="fa fa-object-ungroup p-1" aria-hidden="true"></i>
-                </button>
-                <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#skill">
-                    <i class="fa fa-pencil-square-o p-1" aria-hidden="true"></i>
-                </button>
-                <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#app">
-                    <i class="fa fa-clone p-1" aria-hidden="true"></i>
-                </button>
-                <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#story">
-                    <i class="fa fa-book p-1" aria-hidden="true"></i>
-                </button>
-                <button class="nav-link text-center" data-bs-toggle="pill" data-bs-target="#banner">
-                    <i class="fa fa-map-signs p-1" aria-hidden="true"></i>
-                </button>
+            <?php if ($case == 1) { ?>
+                    <a href="user" class="nav-link text-center active">
+                    <?php } else { ?>
+                        <a href="user" class="nav-link text-center">
+                        <?php } ?>
+                        <i class="fa fa-user me-2 p-1" aria-hidden="true"></i>
+                        </a>
+                        <?php if ($case == 2) { ?>
+                            <a href="page" class="nav-link text-center  active">
+                            <?php } else { ?>
+                                <a href="page" class="nav-link text-center">
+                                <?php } ?>
+                                <i class="fa fa-file-text me-2 p-1" aria-hidden="true"></i>
+                                </a>
+                                <?php if ($case == 3) { ?>
+                                    <a href="mission" class="nav-link text-center active">
+                                    <?php } else { ?>
+                                        <a href="mission" class="nav-link text-center">
+                                        <?php } ?>
+                                        <i class="fa fa-bullseye me-2 p-1" aria-hidden="true"></i>
+                                        </a>
+                                        <?php if ($case == 4) { ?>
+                                            <a href="theme" class="nav-link text-center  active">
+                                            <?php } else { ?>
+                                                <a href="theme" class="nav-link text-center">
+                                                <?php } ?>
+                                                <i class="fa fa-object-ungroup me-2 p-1" aria-hidden="true"></i>
+                                                </a>
+                                                <?php if ($case == 5) { ?>
+                                                    <a href="skill" class="nav-link text-center active">
+                                                    <?php } else { ?>
+                                                        <a href="skill" class="nav-link text-center">
+                                                        <?php } ?>
+                                                        <i class="fa fa-pencil-square-o me-2 p-1" aria-hidden="true"></i>
+                                                        </a>
+                                                        <?php if ($case == 6) { ?>
+                                                            <a href="app" class="nav-link text-center  active">
+                                                            <?php } else { ?>
+                                                                <a href="app" class="nav-link text-center">
+                                                                <?php } ?>
+                                                                <i class="fa fa-folder me-2 p-1" aria-hidden="true"></i></i>
+                                                                </a>
+                                                                <?php if ($case == 7) { ?>
+                                                                    <a href="story" class="nav-link text-center active">
+                                                                    <?php } else { ?>
+                                                                        <a href="story" class="nav-link text-center">
+                                                                        <?php } ?>
+                                                                        <i class="fa fa-book  me-2 p-1" aria-hidden="true"></i>
+                                                                        </a>
+                                                                        <?php if ($case == 8) { ?>
+                                                                            <a href="banner" class="nav-link text-center  active">
+                                                                            <?php } else { ?>
+                                                                                <a href="banner" class="nav-link text-center">
+                                                                                <?php } ?>
+                                                                                <i class="fa fa-map-signs me-2 p-1" aria-hidden="true"></i>
+                                                                                </a>
             </div>
         </div>
     </div>

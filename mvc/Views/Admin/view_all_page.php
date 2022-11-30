@@ -23,57 +23,66 @@
     </div>
     <div class="tab-content">
         <div class="tab-pane show active" id="userc">
-            <table class="table" style="border: 1px solid #dee2e6;">
-                <thead class="table-light border-bottom">
-                    <tr>
-                        <td class="p-3 pe-0 fs-6" scope="col">Title</td>
-                        <td class="p-3 pe-0 fs-6" scope="col">Status</td>
-                        <td class="p-3 pe-0 fs-6" scope="col">Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($pages as $pag) {
-                    ?>
+            <div class="table-responsive">
+                <table class="table" style="border: 1px solid #dee2e6;">
+                    <thead class="table-light border-bottom">
                         <tr>
-                            <td class="p-3 pe-0" style="font-size:13px;"><?php echo $pag->title; ?></td>
-                            <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;"><?php if ($pag->status == 1) echo 'Active';
-                                                                                        else echo 'Inactive'; ?></td>
-                            <td class="p-3 pe-0 p-0" style="font-size:20px;">
-                                <a href='page?source=edit_page&edit=<?php $id = $pag->cms_page_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?>'><i class="fa fa-pencil-square-o" style="color: #f88634;" aria-hidden="true"></i></a>
-                                <a onClick="javascript:return confirm('Are you sure to delete?');" href='page?source=delete_page&delete=<?php $id = $pag->cms_page_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?>'><i class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
-                            </td>
+                            <td class="p-3 pe-0 fs-6" scope="col">Title</td>
+                            <td class="p-3 pe-0 fs-6" scope="col">Status</td>
+                            <td class="p-3 pe-0 fs-6" scope="col">Action</td>
                         </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
-            <?php if (!isset($_POST['search'])) { ?>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination pager justify-content-end">
+                    </thead>
+                    <tbody>
                         <?php
-                        $next = $page+1;
-                        $previous = $page-1;
-                        echo "<li class='page-item'><a class='page-link' href='page?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/previous.png' alt=''></a></li>";
-                        if ($previous>=1)
-                            echo "<li class='page-item'><a class='page-link' href='page?page=$previous' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
-                        else
-                        echo "<li class='page-item'><a class='page-link' href='page?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
-                        for ($i = 1; $i <= $cnt; $i++) {
-                            if ($i == $page)
-                                echo "<li class='page-item'><a class='page-link active text-center' href='page?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
-                            else
-                                echo "<li class='page-item'><a class='page-link text-center' href='page?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
-                        }
-                        if($next<=$cnt)
-                            echo "<li class='page-item'><a class='page-link' href='page?page=$next' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
-                        else
-                            echo "<li class='page-item'><a class='page-link' href='page?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
-                        echo "<li class='page-item'><a class='page-link' href='page?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/next.png' alt=''></a></li>";
+                        foreach ($pages as $pag) {
                         ?>
-                    </ul>
-                </nav><?php } ?>
+                            <tr>
+                                <td class="p-3 pe-0" style="font-size:13px;"><?php echo $pag->title; ?></td>
+                                <td class="p-3 pe-0" style="font-size:13px;color: #7ed470;"><?php if ($pag->status == 1) echo 'Active';
+                                                                                            else echo 'Inactive'; ?></td>
+                                <td class="p-3 pe-0 p-0" style="font-size:20px;">
+                                    <a href='page?source=edit_page&edit=<?php $id = $pag->cms_page_id;
+                                                                        $salt = "SECRET_STUFF";
+                                                                        $encrypted_id = base64_encode($id . $salt);
+                                                                        echo $encrypted_id; ?>'><i class="fa fa-pencil-square-o" style="color: #f88634;" aria-hidden="true"></i></a>
+                                    <a onClick="javascript:return confirm('Are you sure to delete?');" href='page?source=delete_page&delete=<?php $id = $pag->cms_page_id;
+                                                                                                                                            $salt = "SECRET_STUFF";
+                                                                                                                                            $encrypted_id = base64_encode($id . $salt);
+                                                                                                                                            echo $encrypted_id; ?>'><i class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <?php if (!isset($_POST['search'])) { ?>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination pager justify-content-end">
+                            <?php
+                            $next = $page + 1;
+                            $previous = $page - 1;
+                            echo "<li class='page-item'><a class='page-link' href='page?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/previous.png' alt=''></a></li>";
+                            if ($previous >= 1)
+                                echo "<li class='page-item'><a class='page-link' href='page?page=$previous' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
+                            else
+                                echo "<li class='page-item'><a class='page-link' href='page?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
+                            for ($i = 1; $i <= $cnt; $i++) {
+                                if ($i == $page)
+                                    echo "<li class='page-item'><a class='page-link active text-center' href='page?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
+                                else
+                                    echo "<li class='page-item'><a class='page-link text-center' href='page?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
+                            }
+                            if ($next <= $cnt)
+                                echo "<li class='page-item'><a class='page-link' href='page?page=$next' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
+                            else
+                                echo "<li class='page-item'><a class='page-link' href='page?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
+                            echo "<li class='page-item'><a class='page-link' href='page?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/next.png' alt=''></a></li>";
+                            ?>
+                        </ul>
+                    </nav>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </div>

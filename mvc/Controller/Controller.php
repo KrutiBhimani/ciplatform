@@ -13,9 +13,6 @@ class Controller extends Model
 
 		if (isset($_SERVER['PATH_INFO'])) {
 			switch ($_SERVER['PATH_INFO']) {
-				case '/index':
-					include 'Views/index.php';
-					break;
 				case '/register':
 					if (isset($_POST['register'])) {
 						$password = $_POST['password'];
@@ -32,7 +29,6 @@ class Controller extends Model
 							];
 							$insertEx = $this->InsertData('user', $insert_data);
 							if ($insertEx['Code']) {
-
 ?>
 								<script type="text/javascript">
 									alert("<?php echo 'your registration is successfull!' ?>");
@@ -572,7 +568,7 @@ class Controller extends Model
 									alert("Something Went Wrong.");
 									window.location.href = 'page';
 								</script>
-								<?php
+							<?php
 							}
 						default:
 							$pagecount = 5;
@@ -613,6 +609,24 @@ class Controller extends Model
 						$source = '';
 					switch ($source) {
 						case 'add_mission':
+							?>
+							<script type="text/javascript">
+								$(document).ready(function() {
+									$('#selecttype').change(function() {
+										var selectedOptions = $('#selecttype option:selected');
+										if (selectedOptions.length > 0) {
+											var resultString = '';
+											selectedOptions.each(function() {
+												var val = $(this).val();
+												if (val == "TIME")
+													resultString += "<p class='mb-1 mt-4' style='font-size:14px;'>Total Seats</p><input type='number' class='popup' name='total_seat'><p class='mb-1 mt-4' style='font-size:14px;' >Registration Deadline</p><input type='date' class='popup' name='deadline'>";
+											});
+											$('#divResult').html(resultString);
+										}
+									});
+								});
+							</script>
+							<?php
 							$selectData = $this->SelectData('city');
 							$cities = $selectData['Data'];
 							$selectData = $this->SelectData('country');
@@ -622,12 +636,7 @@ class Controller extends Model
 							$selectData = $this->SelectData('skill');
 							$skills = $selectData['Data'];
 							if (isset($_POST['add_mission'])) {
-								// $avatar = $_FILES['avatar']['name'];
-								// $avatar_temp = $_FILES['avatar']['tmp_name'];
 								$skil = $_POST['mission_skill_id'];
-								foreach ($skil as $item) {
-									$expEx = $this->exp($item);
-								}
 								$insert_data = [
 									'title' => $_POST['title'],
 									'short_description' => $_POST['short_description'],
@@ -644,7 +653,48 @@ class Controller extends Model
 								];
 								$insertEx = $this->InsertData('mission', $insert_data);
 								if ($insertEx['Code']) {
-								?>
+									$selectData = $this->GetMission();
+									$mission_id = $selectData['Data']->max;
+									foreach ($skil as $item) {
+										$expEx = $this->exp($mission_id, $item);
+									}
+									if ($_POST['mission_type'] == 'TIME') {
+										$insert_data = [
+											'mission_id' => $mission_id,
+											'total_seat' => $_POST['total_seat'],
+											'deadline' => $_POST['deadline']
+										];
+										$this->InsertData('time_mission', $insert_data);
+									}
+									$media_name = $_FILES['media_name']['name'];
+									$media_name_temp = $_FILES['media_name']['tmp_name'];
+									if (!is_null($media_name) && $media_name != '') {
+										move_uploaded_file($media_name_temp, '../Assets/' . $media_name);
+										$media_type = substr(strstr($media_name, '.'), 1);
+										$media_path = 'Assets/' . $media_name;
+										$insert_data = [
+											'mission_id' => $mission_id,
+											'media_name' => $media_name,
+											'media_type' => $media_type,
+											'media_path' => $media_path
+										];
+										$this->InsertData('mission_media', $insert_data);
+									}
+									$document_name = $_FILES['document_name']['name'];
+									$document_name_temp = $_FILES['document_name']['tmp_name'];
+									if (!is_null($document_name) && $media_name != '') {
+										move_uploaded_file($document_name_temp, '../Assets/' . $document_name);
+										$document_type = substr(strstr($document_name, '.'), 1);
+										$document_path = 'Assets/' . $document_name;
+										$insert_data = [
+											'mission_id' => $mission_id,
+											'document_name' => $document_name,
+											'document_type' => $document_type,
+											'document_path' => $document_path
+										];
+										$this->InsertData('mission_document', $insert_data);
+									}
+							?>
 									<script type="text/javascript">
 										alert("<?php echo $insertEx['Message'] ?>");
 										window.location.href = 'mission';
@@ -659,6 +709,9 @@ class Controller extends Model
 							<?php
 								}
 							}
+							include "Views/Admin/add_mission.php";
+							break;
+						case 'edit_mission':
 							?>
 							<script type="text/javascript">
 								$(document).ready(function() {
@@ -669,29 +722,62 @@ class Controller extends Model
 											selectedOptions.each(function() {
 												var val = $(this).val();
 												if (val == "TIME")
-													resultString += "<p class='mb-1 mt-4' style='font-size:14px;'>Total Seats</p><input type='number' class='popup' name=''><p class='mb-1 mt-4' style='font-size:14px;'>Registration Deadline</p><input type='date' class='popup' name=''>";
+													resultString += "<p class='mb-1 mt-4' style='font-size:14px;'>Total Seats</p><input type='number' class='popup' name='total_seat' value='<?php echo $mission->total_seat; ?>'><p class='mb-1 mt-4' style='font-size:14px;' >Registration Deadline</p><input type='date' class='popup' name='deadline' value='<?php echo $mission->deadline; ?>'>";
+												else if (val == "GOAL")
+													$("#divresult1").remove();
 											});
 											$('#divResult').html(resultString);
 										}
 									});
 								});
-								// $(document).ready(function() {
-								// 	$('#selectCountries').change(function() {
-								// 		var selectedOptions = $('#selectCountries option:selected');
-								// 		if (selectedOptions.length > 0) {
-								// 			var resultString = '';
-								// 			selectedOptions.each(function() {
-								// 				resultString +=  $(this).val() + ',';
-								// 			});
-								// 			document.getElementById("divResult1").value = resultString;
-								// 		}
-								// 	});
-								// });
 							</script>
 							<?php
-							include "Views/Admin/add_mission.php";
-							break;
-						case 'edit_mission':
+							$encrypted_id = $_GET['edit'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$mission_id = $decrypted_id;
+							$selectData = $this->SelectData2($mission_id);
+							$mission = $selectData['Data'];
+							$selectData = $this->SelectData('city');
+							$cities = $selectData['Data'];
+							$selectData = $this->SelectData('country');
+							$countries = $selectData['Data'];
+							$selectData = $this->SelectData('mission_theme');
+							$themes = $selectData['Data'];
+							$selectData = $this->SelectData('skill');
+							$skills = $selectData['Data'];
+							$selectData = $this->GetSelectedSkill($mission_id);
+							$selectedSkills = $selectData['Data'];
+							if (isset($_POST['edit_theme'])) {
+								$update_data = [
+									'title' => $_POST['title'],
+									'status' => $_POST['status'],
+									'updated_at' => date("Y-m-d h:i:s")
+								];
+								$where = [
+									'mission_theme_id' => $mission_theme_id
+								];
+								$upd_data = $this->UpdateData1('mission_theme', $update_data, $where);
+								if ($upd_data) {
+							?>
+									<script type="text/javascript">
+										alert("Data update successfully.");
+										window.location.href = 'theme';
+									</script>
+								<?php
+								} else {
+								?>
+									<script type="text/javascript">
+										alert("Something Went Wrong.");
+										window.location.href = 'theme?source=edit_theme&edit=<?php $id = $theme->mission_theme_id;
+																								$salt = "SECRET_STUFF";
+																								$encrypted_id = base64_encode($id . $salt);
+																								echo $encrypted_id; ?>';
+									</script>
+								<?php
+								}
+							}
 							include "Views/Admin/edit_mission.php";
 							break;
 						case 'delete_mission':
@@ -705,7 +791,7 @@ class Controller extends Model
 							];
 							$delete_data = $this->DeleteData1('mission', $where);
 							if ($delete_data) {
-							?>
+								?>
 								<script type="text/javascript">
 									alert("Data deleted successfully.");
 									window.location.href = 'mission';
@@ -1226,7 +1312,7 @@ class Controller extends Model
 									alert("Something Went Wrong.");
 									window.location.href = 'story';
 								</script>
-<?php
+								<?php
 							}
 							break;
 						default:
@@ -1270,11 +1356,119 @@ class Controller extends Model
 						$source = '';
 					switch ($source) {
 						case 'add_banner':
+							if (isset($_POST['add_banner'])) {
+								$image = $_FILES['image']['name'];
+								$image_temp = $_FILES['image']['tmp_name'];
+								$insert_data = [
+									'title' => $_POST['title'],
+									'text' => $_POST['text'],
+									'sort_order' => $_POST['sort_order'],
+									'image' => $image
+								];
+								$insertEx = $this->InsertData('banner', $insert_data);
+								if ($insertEx['Code']) {
+									if (!is_null($image)) {
+										move_uploaded_file($image_temp, '../Assets/' . $image);
+									}
+								?>
+									<script type="text/javascript">
+										alert("<?php echo $insertEx['Message'] ?>");
+										window.location.href = 'banner';
+									</script>
+								<?php
+								} else {
+								?>
+									<script type="text/javascript">
+										alert("<?php echo $insertEx['Message'] ?>");
+										window.location.href = 'page?source=add_banner';
+									</script>
+								<?php
+								}
+							}
 							include "Views/Admin/add_banner.php";
 							break;
 						case 'edit_banner':
+							$encrypted_id = $_GET['edit'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$banner_id = $decrypted_id;
+							$where = [
+								'banner_id' => $banner_id
+							];
+							$selectData = $this->SelectData1('banner', $where);
+							$banner = $selectData['Data'];
+							if (isset($_POST['edit_banner'])) {
+								$image = $_FILES['image']['name'];
+								$image_temp = $_FILES['image']['tmp_name'];
+								if (empty($image)) {
+									$selectData12 = $this->SelectData1('banner', $where);
+									$image = $selectData12['Data']->image;
+								}
+								$update_data = [
+									'title' => $_POST['title'],
+									'text' => $_POST['text'],
+									'sort_order' => $_POST['sort_order'],
+									'image' => $image,
+									'updated_at' => date("Y-m-d h:i:s")
+								];
+								$where = [
+									'banner_id' => $banner_id
+								];
+								$upd_data = $this->UpdateData1('banner', $update_data, $where);
+								if ($upd_data) {
+									if (!is_null($avatar)) {
+										move_uploaded_file($avatar_temp, '../Assets/' . $avatar);
+									}
+								?>
+									<script type="text/javascript">
+										alert("Data update successfully.");
+										window.location.href = 'banner';
+									</script>
+								<?php
+								} else {
+								?>
+									<script type="text/javascript">
+										alert("Something Went Wrong.");
+										window.location.href = 'banner?source=edit_banner&edit=<?php
+																								$id = $banner->banner_id;
+																								$salt = "SECRET_STUFF";
+																								$encrypted_id = base64_encode($id . $salt);
+																								echo $encrypted_id; ?>';
+									</script>
+								<?php
+								}
+							}
 							include "Views/Admin/edit_banner.php";
 							break;
+						case 'delete_banner':
+							$encrypted_id = $_GET['delete'];
+							$salt = "SECRET_STUFF";
+							$decrypted_id_raw = base64_decode($encrypted_id);
+							$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+							$banner_id = $decrypted_id;
+							$update_data = [
+								'deleted_at' => date("Y-m-d h:i:s")
+							];
+							$where = [
+								'banner_id' => $banner_id
+							];
+							$delete_data = $this->UpdateData1('banner', $update_data, $where);
+							if ($delete_data) {
+								?>
+								<script type="text/javascript">
+									alert("Data deleted successfully.");
+									window.location.href = 'banner';
+								</script>
+							<?php
+							} else {
+							?>
+								<script type="text/javascript">
+									alert("Something Went Wrong.");
+									window.location.href = 'banner';
+								</script>
+<?php
+							}
 						default:
 							$pagecount = 5;
 							if (isset($_GET['page'])) {
@@ -1292,11 +1486,8 @@ class Controller extends Model
 							$banners = $selectData['Data'];
 							if (isset($_POST['search'])) {
 								$where = [
-									'first_name' => $_POST['search'],
-									'last_name' => $_POST['search'],
-									'email' => $_POST['search'],
-									'employee_id' => $_POST['search'],
-									'department' => $_POST['search']
+									'title' => $_POST['search'],
+									'sort_order' => $_POST['search']
 								];
 								$selectData = $this->SelectData('banner', 0, 0, $where);
 								$banners = $selectData['Data'];
@@ -1304,6 +1495,8 @@ class Controller extends Model
 							include "Views/Admin/view_all_banner.php";
 					}
 					break;
+				case '/ruff':
+					include "Views/ruff.php";
 				default:
 
 					break;
