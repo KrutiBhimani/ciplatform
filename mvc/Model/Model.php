@@ -26,15 +26,16 @@ class Model
 		$vals = implode("','", $data);
 		$sql = "insert into $tbl ($clms) values ('$vals')";
 		$sql = str_replace("''","NULL",$sql);
+		echo $sql;
 		$insertEx = $this->connection->query($sql);
 		if ($insertEx) {
 			$response['Data'] = null;
 			$response['Code'] = true;
-			$response['Message'] = 'Data inserted successfully.';
+			$response['Message'] = 'Data inserted successfully.'.$sql;
 		} else {
 			$response['Data'] = null;
 			$response['Code'] = false;
-			$response['Message'] = 'Data insertion failed.';
+			$response['Message'] = 'Data insertion failed.'.$sql;
 		}
 		return $response;
 	}
@@ -451,7 +452,7 @@ class Model
 		$selSql = "INSERT INTO mission_skill (mission_id,skill_id) VALUES ($mission_id,$item)";
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx) {
-			$response['Data'] = $sqlEx->num_rows;
+			$response['Data'] = null;
 			$response['Code'] = true;
 			$response['Message'] = 'Data retrieved successfully.';
 		} else {
@@ -461,34 +462,4 @@ class Model
 		}
 		return $response;
 	}
-	// function InsertMission($tbl, $data,$item)
-	// {
-	// 	$clms = implode(',', array_keys($data));
-	// 	$vals = implode("','", $data);
-	// 	$sql = "insert into $tbl ($clms) values ('$vals')";
-	// 	// echo $sql;
-	// 	$insertEx = $this->connection->query($sql);
-	// 	if ($insertEx) {
-	// 		$sql = "SELECT max(mission_id) as maxId FROM $tbl";
-	// 		$sqlEx = $this->connection->query($sql);
-	// 		$userData = $sqlEx->fetch_object();
-	// 		$id = $userData->maxId;
-	// 		$selSql = "INSERT INTO mission_skill (mission_id,skill_id) VALUES ($id,$item)";
-	// 		$sqlEx = $this->connection->query($selSql);
-	// 		if ($sqlEx) {
-	// 			$response['Data'] = $sqlEx->num_rows;
-	// 			$response['Code'] = true;
-	// 			$response['Message'] = 'Data inserted successfully.';
-	// 		} else {
-	// 			$response['Data'] = null;
-	// 			$response['Code'] = false;
-	// 			$response['Message'] = 'Data not retrieved.';
-	// 		}
-	// 	} else {
-	// 		$response['Data'] = null;
-	// 		$response['Code'] = false;
-	// 		$response['Message'] = 'Data insertion failed.';
-	// 	}
-	// 	return $response;
-	// }
 }

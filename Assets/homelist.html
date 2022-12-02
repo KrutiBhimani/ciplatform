@@ -1,0 +1,1261 @@
+<html>
+
+<head>
+  <title>home page</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <button type="button" class="container mobile-nav-toggle d-sm-none">
+    <nav class="main-nav">
+      <ul class="left left-right">
+        <li class="drop-down">
+          <i class="fa fa-bars"></i>
+          <ul>
+            <li><a href="#">Stories</a></li>
+            <li class="drop-down"><a href="#">Policy<i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="#">Volunteering</a></li>
+                <li><a href="#">Sponsored</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </button>
+  <button type="button" class="mobile-nav-toggle2 d-sm-none">
+    <nav class="main-nav">
+      <ul class="right">
+        <li class="drop-down">
+          <img src="Assets/user-img.png" class="rounded-circle" width="30" height="30">
+          <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </button>
+  <br /><br />
+  <form action="search.php" method="post">
+    <div class="container d-sm-none mt-2">
+      <table class="table table-bordered border-start">
+        <thead>
+          <tr>
+            <td class="p-2">
+              <div class="input-group">
+                <input type="text" name="search" placeholder="Search mission..." class="form-control shadow-none"
+                  style="border:none; font-size:18px;">
+                <div class="input-group-append">
+                  <button type="button" class="container mobile-nav-toggle3 d-sm-none p-0">
+                    <nav class="main-nav">
+                      <ul class="right right-left">
+                        <li class="drop-down">
+                          <img src="Assets/filter.png" class="input-group-text m-2" id="basic-addon1"
+                            style="background-color:white; border:none;" height="22px">
+                          <ul style="background-color:white ;">
+                            <li class="drop-down"><a href="#">Country</a>
+                              <ul>
+                                <li><a href="#">Afghanistan</a></li>
+                                <li><a href="#">Belgium</a></li>
+                                <li><a href="#">India</a></li>
+                                <li><a href="#">South Africa</a></li>
+                                <li><a href="#">china</a></li>
+                              </ul>
+                            </li>
+                            <li class="drop-down"><a href="#">City</a>
+                              <ul>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Afghanistan</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Belgium</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">India</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">South Africa</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">china</a></li>
+                              </ul>
+                            </li>
+                            <li class="drop-down"><a href="#">Theme</a>
+                              <ul>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Education</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Children</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Health</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Animals</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Environment</a></li>
+                              </ul>
+                            </li>
+                            <li class="drop-down"><a href="#">Skills</a>
+                              <ul>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Anthropology</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Computer</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">History</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Research</a></li>
+                                <li><a href="#"><input type="checkbox" class="space mt-0">Teaching</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </nav>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </form>
+  <header id="header" class="fixed-top">
+    <div class="container">
+      <div class="d-flex justify-content-between">
+        <nav class="main-nav float-left d-none d-sm-block pt-2">
+          <ul class="left left-right">
+            <li class="pt-2 pe-3"><img src="Assets/logo.png"></li>
+            <li><a href="#">Stories</a></li>
+            <li class="drop-down"><a href="#">Policy<i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="#">Volunteering</a></li>
+                <li><a href="#">Sponsored</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <nav class="main-nav float-right d-none d-sm-block">
+          <ul class="right">
+            <li class="drop-down">
+              <a href="#"><img src="Assets/user-img.png" class="rounded-circle m-2 mt-0 mb-0" width="29"
+                  height="29">username</a>
+              <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <hr class="div d-none d-sm-block">
+  <form class="mb-0">
+    <div class="container">
+      <div class="d-none d-sm-block">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <td class="border-end" style="width:calc(100%/2);">
+                <div class="input-group">
+                  <div class="input-group-prepend" style="padding:5px">
+                    <img src="Assets/search.png" alt="" class="input-group-text" id="basic-addon1"
+                      style="background-color:white; border:none;">
+                  </div>
+                  <input type="text" name="search" placeholder="Search mission..." class="form-control shadow-none"
+                    style="border:none; font-size:18px;">
+                </div>
+              </td>
+              <td class="border-end" style="width:calc(100%/8);">
+                <nav class="main-nav">
+                  <ul class="center">
+                    <li class="drop-down" style="width:100% ;"><a href="#">Country</a>
+                      <ul>
+                        <li><a href="#">Afghanistan</a></li>
+                        <li><a href="#">Belgium</a></li>
+                        <li><a href="#">India</a></li>
+                        <li><a href="#">South Africa</a></li>
+                        <li><a href="#">china</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+              </td>
+              <td class="border-end" style="width:calc(100%/8);">
+                <nav class="main-nav">
+                  <ul class="center">
+                    <li class="drop-down" style="width:100% ;"><a href="#">City</a>
+                      <ul>
+                        <li><a href="#"><input type="checkbox" class="me-2">Afghanistan</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">Belgium</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">India</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">South Africa</a>
+                        </li>
+                        <li><a href="#"><input type="checkbox" class="me-2">china</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+              </td>
+              <td class="border-end" style="width:calc(100%/8);">
+                <nav class="main-nav">
+                  <ul class="center">
+                    <li class="drop-down" style="width:100% ;"><a href="#">Themes</a>
+                      <ul>
+                        <li><a href="#"><input type="checkbox" class="me-2">Education</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">Children</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">Health</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">Animals</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">Environment</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+              </td>
+              <td class="border-end">
+                <nav class="main-nav">
+                  <ul class="center">
+                    <li class="drop-down" style="width:100% ;"><a href="#">Skills</a>
+                      <ul>
+                        <li><a href="#"><input type="checkbox" class="me-2">Anthropology</a>
+                        </li>
+                        <li><a href="#"><input type="checkbox" class="me-2">Computer</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">History</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">Research</a></li>
+                        <li><a href="#"><input type="checkbox" class="me-2">Teaching</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+              </td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </form>
+  <hr class="div d-none d-sm-block">
+  <div class="container d-none d-lg-block mb-4 mt-3">
+    <div class="row row-cols-auto ps-4">
+      <div class="p-1">
+        <span class="six-txt">
+          Tree Plantation
+          <img src="Assets/cancel.png" alt="" class="ps-1" height="8px">
+        </span>
+      </div>
+      <div class="p-1">
+        <span class="six-txt">
+          Canada
+          <img src="Assets/cancel.png" alt="" class="ps-1" height="8px">
+        </span>
+      </div>
+      <div class="p-1">
+        <span class="six-txt">
+          Toronto
+          <img src="Assets/cancel.png" alt="" class="ps-1" height="8px">
+        </span>
+      </div>
+      <div class="p-1">
+        <span class="six-txt">
+          Montreal
+          <img src="Assets/cancel.png" alt="" class="ps-1" height="8px">
+        </span>
+      </div>
+      <div class="p-1">
+        <span class="six-txt">
+          Environment
+          <img src="Assets/cancel.png" alt="" class="ps-1" height="8px">
+        </span>
+      </div>
+      <div class="p-1">
+        <span class="six-txt">
+          Nutrition
+          <img src="Assets/cancel.png" alt="" class="ps-1" height="8px">
+        </span>
+      </div>
+      <div class="p-1">
+        <span class="six-txt">
+          Anthropology
+          <img src="Assets/cancel.png" alt="" class="ps-1" height="8px">
+        </span>
+      </div>
+      <div class="p-1">
+        <span class="six-txt">
+          Environment Science
+          <img src="Assets/cancel.png" alt="" class="ps-1" height="8px">
+        </span>
+      </div>
+      <div class="p-1">
+        <a href="#" style="color:black; font-size:11px">Clear all</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+        <h2 class="mb-0" style="font-size:calc(14px + 0.3vw);">Explore <b> 72 missions</b></h2>
+      </div>
+      <div class="col-lg-7 col-mb-7 col-sm-7 col-0" style="display:flex; justify-content:flex-end">
+        <div class="d-none d-lg-block">
+          <select class="Rounded-Rectangle-8">
+            <option value="none" selected="" disabled="" hidden="">Sort by</option>
+            <option value="newsest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="lowest">Lowest available seats</option>
+            <option value="highest">Highest available seats</option>
+            <option value="favourite">Sort by my favourite</option>
+            <option value="deadline">sort by deadline</option>
+          </select>
+          <a href="home.html"><img src="Assets/grid.png" alt="" class="img-fluid ms-5"></a>
+          <a href="#" class="Ellipse-575"><img src="Assets/list.png" alt="" style="height:18px"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <main id="main">
+    <section id="story">
+      <div class="container"><br>
+        <div class="row row-eq-height justify-content-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div class="card box border-0">
+              <a href="#">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
+                    <img src="Assets/Grow-Trees-On-the-path-to-environment-sustainability.png" alt="" class="img-fluid"
+                      style="height:100%">
+                    <div class="d-flex align-items-center first-txt1">
+                      <img src="Assets/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <span>Toronto</span>
+                    </div>
+                    <div class="d-flex align-items-center second-txt1 p-2">
+                      <img src="Assets/heart.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex align-items-center third-txt1 p-2">
+                      <img src="Assets/user.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex four-txt justify-content-center">
+                      <div class="bdg1">Environment</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <div class="card-body me-4">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <img src="Assets/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black">Toronto</span> <img src="Assets/web.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Environment</span> <img src="Assets/organization.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Tree Canada</span>
+                        </div>
+                        <div class="icon">
+                          <img src="Assets/selected-star.png" alt="" class="star"><img src="Assets/star.png" alt=""
+                            class="star"><img src="Assets/star.png" alt="" class="star"><img src="Assets/star.png"
+                            alt="" class="star"><img src="Assets/star.png" alt="" class="star">
+                        </div>
+                      </div>
+                      <h2 class="card-title mt-2" style="font-size:calc(15px + 0.3vw); color:black;">Grow Trees – On the
+                        path to environment sustainability</h2>
+                      <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <div class="row">
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/Seats-left.png" alt=""
+                                    style="height:21px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">10</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Seats Left</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/deadline.png" alt=""
+                                    style="height:28px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">09/01/2019</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Deadline</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:11px;">From 10/01/2019 until 25/02/2019
+                                  </h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">Skills</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">planting</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="col-example1" style="font-size:calc(12px + 0.1vw);">
+                            <div class="row">
+                              Apply <img src="Assets/right-arrow.png" alt="" class="p-1 pe-0"
+                                style="height:20px; width:20px">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div class="card box border-0">
+              <a href="#">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
+                    <img src="Assets/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" alt="" class="img-fluid"
+                      style="height:100%">
+                    <div class="d-flex align-items-center first-txt1">
+                      <img src="Assets/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <span>Melbourne</span>
+                    </div>
+                    <div class="d-flex align-items-center second-txt1 p-2">
+                      <img src="Assets/heart.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex align-items-center third-txt1 p-2">
+                      <img src="Assets/user.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex four-txt justify-content-center">
+                      <div class="bdg1">Children</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <div class="card-body me-4">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <img src="Assets/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black">Melbourne</span> <img src="Assets/web.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Children</span> <img src="Assets/organization.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Australian Paradise</span>
+                        </div>
+                        <div class="icon">
+                          <img src="Assets/selected-star.png" alt="" class="star"><img src="Assets/selected-star.png"
+                            alt="" class="star"><img src="Assets/star.png" alt="" class="star"><img
+                            src="Assets/star.png" alt="" class="star"><img src="Assets/star.png" alt="" class="star">
+                        </div>
+                      </div>
+                      <h2 class="card-title mt-2" style="font-size:calc(15px + 0.3vw); color:black;">Education Supplies
+                        for Every Pair of Shoes Sold</h2>
+                      <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <div class="row">
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/Already-volunteered.png"
+                                    alt="" style="height:18px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">250</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Already volunteered</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/deadline.png" alt=""
+                                    style="height:28px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">09/01/2019</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Deadline</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:11px;">From 10/01/2019 until 25/02/2019</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">Skills</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">English</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="col-example1" style="font-size:calc(12px + 0.1vw);">
+                            <div class="row">
+                              Apply <img src="Assets/right-arrow.png" alt="" class="p-1 pe-0"
+                                style="height:20px; width:20px">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div class="card box border-0">
+              <a href="#">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
+                    <img src="Assets/Nourish-the-Children-in--African-country.png" alt="" class="img-fluid"
+                      style="height:100%">
+                    <div class="d-flex align-items-center first-txt1">
+                      <img src="Assets/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <span>Barcelona</span>
+                    </div>
+                    <div class="d-flex align-items-center second-txt1 p-2">
+                      <img src="Assets/heart.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex align-items-center third-txt1 p-2">
+                      <img src="Assets/user.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex four-txt justify-content-center">
+                      <div class="bdg1">Nutrition</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <div class="card-body me-4">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <img src="Assets/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black">Barcelona</span> <img src="Assets/web.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Nutrition</span> <img src="Assets/organization.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">The Hunger</span>
+                        </div>
+                        <div class="icon">
+                          <img src="Assets/selected-star.png" alt="" class="star"><img src="Assets/selected-star.png"
+                            alt="" class="star"><img src="Assets/selected-star.png" alt="" class="star"><img
+                            src="Assets/selected-star.png" alt="" class="star"><img src="Assets/star.png" alt=""
+                            class="star">
+                        </div>
+                      </div>
+                      <h2 class="card-title mt-2" style="font-size:calc(15px + 0.3vw); color:black;">Nourish the
+                        Children in African country</h2>
+                      <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <div class="row">
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/Seats-left.png" alt=""
+                                    style="height:21px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">10</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Seats Left</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/deadline.png" alt=""
+                                    style="height:28px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">09/01/2019</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Deadline</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:11px;">Ongoing Opportunity</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">Skills</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Teaching</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="col-example1" style="font-size:calc(12px + 0.1vw);">
+                            <div class="row">
+                              Apply <img src="Assets/right-arrow.png" alt="" class="p-1 pe-0"
+                                style="height:20px; width:20px">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div class="card box border-0">
+              <a href="#">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
+                    <img src="Assets/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png" alt="" class="img-fluid"
+                      style="height:100%">
+                    <div class="d-flex align-items-center first-txt1">
+                      <img src="Assets/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <span>London</span>
+                    </div>
+                    <div class="d-flex align-items-center second-txt1 p-2">
+                      <img src="Assets/heart.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex align-items-center third-txt1 p-2">
+                      <img src="Assets/user.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex four-txt justify-content-center">
+                      <div class="bdg1">Environment</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <div class="card-body me-4">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <img src="Assets/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black">London</span> <img src="Assets/web.png" alt="" class="img-fluid pe-3 ps-3"
+                            style="height:13px;">
+                          <span class="black">Environment</span> <img src="Assets/organization.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">CSE Network</span>
+                        </div>
+                        <div class="icon">
+                          <img src="Assets/star.png" alt="" class="star"><img src="Assets/star.png" alt=""
+                            class="star"><img src="Assets/star.png" alt="" class="star"><img src="Assets/star.png"
+                            alt="" class="star"><img src="Assets/star.png" alt="" class="star">
+                        </div>
+                      </div>
+                      <h2 class="card-title mt-2" style="font-size:calc(15px + 0.3vw); color:black;">CSR initiative
+                        stands for Coffee
+                        and Farmer Equity</h2>
+                      <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <div class="row">
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/Already-volunteered.png"
+                                    alt="" style="height:18px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">250</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Already volunteered</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:11px;">Ongoing Opportunity</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">Skills</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Farming</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="col-example1" style="font-size:calc(12px + 0.1vw);">
+                            <div class="row">
+                              Apply <img src="Assets/right-arrow.png" alt="" class="p-1 pe-0"
+                                style="height:20px; width:20px">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div class="card box border-0">
+              <a href="#">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
+                    <img src="Assets/Animal-welfare-&amp;-save-birds-campaign.png" alt="" class="img-fluid"
+                      style="height:100%">
+                    <div class="d-flex align-items-center first-txt1">
+                      <img src="Assets/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <span>Cape Town</span>
+                    </div>
+                    <div class="d-flex align-items-center second-txt1 p-2">
+                      <img src="Assets/heart.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex align-items-center third-txt1 p-2">
+                      <img src="Assets/user.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex four-txt justify-content-center">
+                      <div class="bdg1">Animals</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <div class="card-body me-4">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <img src="Assets/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black">Cape Town</span> <img src="Assets/web.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Animals</span> <img src="Assets/organization.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">JR Foundation</span>
+                        </div>
+                        <div class="icon">
+                          <img src="Assets/selected-star.png" alt="" class="star"><img src="Assets/selected-star.png"
+                            alt="" class="star"><img src="Assets/star.png" alt="" class="star"><img
+                            src="Assets/star.png" alt="" class="star"><img src="Assets/star.png" alt="" class="star">
+                        </div>
+                      </div>
+                      <h2 class="card-title mt-2" style="font-size:calc(15px + 0.3vw); color:black;">Animal welfare
+                        &amp; save birds
+                        campaign</h2>
+                      <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <div class="row">
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/Seats-left.png" alt=""
+                                    style="height:21px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">10</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Seats Left</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/achieved.png" alt=""
+                                    style="height:22px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <div class="mt-2 mb-2" id="forwidth"
+                                    style="background-color:#EEEEEE; height:7px; width:100%; border-radius: 10px;">
+                                    <div style="background-color:#f88634; height:7px; border-radius: 10px; width:80%;"
+                                      class="6"></div>
+                                  </div>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">8000 achieved</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:11px;">Plant 10,000 Trees</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">Skills</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Speaking</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="col-example1" style="font-size:calc(12px + 0.1vw);">
+                            <div class="row">
+                              Apply <img src="Assets/right-arrow.png" alt="" class="p-1 pe-0"
+                                style="height:20px; width:20px">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div class="card box border-0">
+              <a href="#">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
+                    <img src="Assets/Plantation-and-Afforestation-programme.png" alt="" class="img-fluid"
+                      style="height:100%">
+                    <div class="d-flex align-items-center first-txt1">
+                      <img src="Assets/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <span>Paris</span>
+                    </div>
+                    <div class="d-flex align-items-center second-txt1 p-2">
+                      <img src="Assets/heart.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex align-items-center third-txt1 p-2">
+                      <img src="Assets/user.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex four-txt justify-content-center">
+                      <div class="bdg1">Health</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <div class="card-body me-4">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <img src="Assets/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black">Paris</span> <img src="Assets/web.png" alt="" class="img-fluid pe-3 ps-3"
+                            style="height:13px;">
+                          <span class="black">Health</span> <img src="Assets/organization.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Amaze Doctors</span>
+                        </div>
+                        <div class="icon">
+                          <img src="Assets/selected-star.png" alt="" class="star"><img src="Assets/star.png" alt=""
+                            class="star"><img src="Assets/star.png" alt="" class="star"><img src="Assets/star.png"
+                            alt="" class="star"><img src="Assets/star.png" alt="" class="star">
+                        </div>
+                      </div>
+                      <h2 class="card-title mt-2" style="font-size:calc(15px + 0.3vw); color:black;">Plantation and
+                        Afforestation
+                        programme</h2>
+                      <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <div class="row">
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/achieved.png" alt=""
+                                    style="height:22px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <div class="mt-2 mb-2" id="forwidth"
+                                    style="background-color:#EEEEEE; height:7px; width:100%; border-radius: 10px;">
+                                    <div style="background-color:#f88634; height:7px; border-radius: 10px; width:80%;"
+                                      class="7"></div>
+                                  </div>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">8000 achieved</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:11px;">Plant 10,000 Trees</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">Skills</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">plantation</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="col-example1" style="font-size:calc(12px + 0.1vw);">
+                            <div class="row">
+                              Apply <img src="Assets/right-arrow.png" alt="" class="p-1 pe-0"
+                                style="height:20px; width:20px">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div class="card box border-0">
+              <a href="#">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
+                    <img src="Assets/Grow-Trees-On-the-path-to-environment-sustainability.png" alt="" class="img-fluid"
+                      style="height:100%">
+                    <div class="d-flex align-items-center first-txt1">
+                      <img src="Assets/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <span>New York</span>
+                    </div>
+                    <div class="d-flex align-items-center second-txt1 p-2">
+                      <img src="Assets/heart.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex align-items-center third-txt1 p-2">
+                      <img src="Assets/user.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex four-txt justify-content-center">
+                      <div class="bdg1">Education</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <div class="card-body me-4">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <img src="Assets/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black">New York</span> <img src="Assets/web.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Education</span> <img src="Assets/organization.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Tree Canada</span>
+                        </div>
+                        <div class="icon">
+                          <img src="Assets/selected-star.png" alt="" class="star"><img src="Assets/selected-star.png"
+                            alt="" class="star"><img src="Assets/selected-star.png" alt="" class="star"><img
+                            src="Assets/selected-star.png" alt="" class="star"><img src="Assets/selected-star.png"
+                            alt="" class="star">
+                        </div>
+                      </div>
+                      <h2 class="card-title mt-2" style="font-size:calc(15px + 0.3vw); color:black;">Grow Trees – On the
+                        path to environment sustainability</h2>
+                      <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit...</p>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <div class="row">
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">Skills</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">learning</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="col-example1" style="font-size:calc(12px + 0.1vw);">
+                            <div class="row">
+                              View Detail <img src="Assets/right-arrow.png" alt="" class="p-1 pe-0"
+                                style="height:20px; width:20px">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div class="card box border-0">
+              <a href="#">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
+                    <img src="Assets/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" alt="" class="img-fluid"
+                      style="height:100%">
+                    <div class="d-flex align-items-center first-txt1">
+                      <img src="Assets/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <span>Sydney</span>
+                    </div>
+                    <div class="d-flex align-items-center second-txt1 p-2">
+                      <img src="Assets/heart.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex align-items-center third-txt1 p-2">
+                      <img src="Assets/user.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex four-txt justify-content-center">
+                      <div class="bdg1">Children</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <div class="card-body me-4">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <img src="Assets/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black">Sydney</span> <img src="Assets/web.png" alt="" class="img-fluid pe-3 ps-3"
+                            style="height:13px;">
+                          <span class="black">Children</span> <img src="Assets/organization.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Tree Canada</span>
+                        </div>
+                        <div class="icon">
+                          <img src="Assets/selected-star.png" alt="" class="star"><img src="Assets/selected-star.png"
+                            alt="" class="star"><img src="Assets/selected-star.png" alt="" class="star"><img
+                            src="Assets/star.png" alt="" class="star"><img src="Assets/star.png" alt="" class="star">
+                        </div>
+                      </div>
+                      <h2 class="card-title mt-2" style="font-size:calc(15px + 0.3vw); color:black;">Education Supplies
+                        for Every
+                        Pair of Shoes Sold</h2>
+                      <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <div class="row">
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/Seats-left.png" alt=""
+                                    style="height:21px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">5</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Seats Left</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/deadline.png" alt=""
+                                    style="height:28px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">09/01/2019</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Deadline</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:11px;">From 10/01/2019 until 25/02/2019</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">Skills</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">learn</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="col-example1" style="font-size:calc(12px + 0.1vw);">
+                            <div class="row">
+                              Apply <img src="Assets/right-arrow.png" alt="" class="p-1 pe-0"
+                                style="height:20px; width:20px">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div class="card box border-0">
+              <a href="#">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
+                    <img src="Assets/Nourish-the-Children-in--African-country.png" alt="" class="img-fluid"
+                      style="height:100%">
+                    <div class="d-flex align-items-center first-txt1">
+                      <img src="Assets/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <span>Berlin</span>
+                    </div>
+                    <div class="d-flex align-items-center second-txt1 p-2">
+                      <img src="Assets/heart.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex align-items-center third-txt1 p-2">
+                      <img src="Assets/user.png" alt="" class="img-fluid" style="height:17px">
+                    </div>
+                    <div class="d-flex four-txt justify-content-center">
+                      <div class="bdg1">Nutrition</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                    <div class="card-body me-4">
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <img src="Assets/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black">Berlin</span> <img src="Assets/web.png" alt="" class="img-fluid pe-3 ps-3"
+                            style="height:13px;">
+                          <span class="black">Nutrition</span> <img src="Assets/organization.png" alt=""
+                            class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black">Junior Charity</span>
+                        </div>
+                        <div class="icon">
+                          <img src="Assets/selected-star.png" alt="" class="star"><img src="Assets/selected-star.png"
+                            alt="" class="star"><img src="Assets/selected-star.png" alt="" class="star"><img
+                            src="Assets/star.png" alt="" class="star"><img src="Assets/star.png" alt="" class="star">
+                        </div>
+                      </div>
+                      <h2 class="card-title mt-2" style="font-size:calc(15px + 0.3vw); color:black;">Nourish the
+                        Children in African country</h2>
+                      <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore...</p>
+                      <div class="d-flex justify-content-between">
+                        <div>
+                          <div class="row">
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/Seats-left.png" alt=""
+                                    style="height:21px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">10</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Seats Left</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/deadline.png" alt=""
+                                    style="height:28px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">09/01/2019</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">Deadline</h6>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:11px;">Ongoing Opportunity</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col" style="color:black;">
+                              <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="Assets/calender.png" alt=""
+                                    style="height:20px"></div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                  <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">Skills</h4>
+                                  <h6 class="mb-0" style="font-size:12px ;color:gray;">nutrition</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="col-example1" style="font-size:calc(12px + 0.1vw);">
+                            <div class="row">
+                              Apply <img src="Assets/right-arrow.png" alt="" class="p-1 pe-0"
+                                style="height:20px; width:20px">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination pager justify-content-center">
+            <li class="page-item">
+              <a class="page-link" href="#"
+                style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                  src="Assets/previous.png" alt=""></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#"
+                style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="Assets/left.png"
+                  alt=""></a></li>
+            <li class="page-item"><a class="page-link active text-center" href="#"
+                style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;">1</a>
+            </li>
+            <li class="page-item"><a class="page-link text-center" href="#"
+                style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">2</a>
+            </li>
+            <li class="page-item"><a class="page-link text-center" href="#"
+                style="border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#"
+                style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img
+                  src="Assets/arrow.png" alt=""></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#"
+                style="border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;"><img src="Assets/next.png"
+                  alt=""></a></li>
+          </ul>
+        </nav><br />
+      </div>
+    </section>
+  </main>
+  <hr class="div">
+  <footer id="footer2" class="position-relative">
+    <div class="position-absolute w-100">
+      <div class="container pt-4 pb-4">
+        <a href="policy.html" class="Forma-1-copy-13">Privacy policy</a>
+      </div>
+    </div>
+    <div id="footer" class="position-absolute w-100" style="z-index: 9;">
+      <div class="float-end mt-3 me-3">
+        <img src="Assets/cross.png" alt="" class="img-fluid" onclick="$('#footer').remove();">
+      </div>
+      <div class="container">
+        <div class="d-flex justify-content-between pt-4 pb-3">
+          <div>
+            <span>This website makes use of cookies to enhance browsing experience and provide additional
+              functionality.</span><br />
+            <a href="policy.html" class="Forma-1-copy-12">Privacy policy</a>
+          </div>
+          <div>
+            <div class="d-flex align-items-center justify-content-center">
+              <div class="col-example">I Agree</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
