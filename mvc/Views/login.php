@@ -19,7 +19,7 @@
               <?php } else { ?>
                 <div class='carousel-item'>
                 <?php } ?>
-                <img src="../Assets/<?php echo $banner->image; ?>" class="d-block w-100" alt="..." style="height:100% ;">
+                <img src="../mvc/Assets/uplodes/<?php echo $banner->image; ?>" class="d-block w-100" alt="..." style="height:100% ;">
                 <div class="carousel-caption" style="text-align:start; bottom:10%">
                   <p class="Sed-ut-perspiciatis-unde-omnis-iste-natus-voluptatem mb-3"><?php echo $banner->title; ?></p>
                   <p class="Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do m-0"><?php echo $banner->text; ?></p>
@@ -55,6 +55,3 @@
       </div>
     </div>
   </div>
-  </body>
-
-  </html>

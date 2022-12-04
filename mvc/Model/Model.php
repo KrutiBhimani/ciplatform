@@ -348,12 +348,13 @@ class Model
 	function SelectData2($mission_id)
 	{
 		$selSql = "SELECT *,city.name as city_name, country.name as country_name,mission.title as mission_title, mission_theme.title as theme_title from mission
-		LEFT JOIN mission_media on mission_media.mission_id = mission.mission_id
-		LEFT JOIN mission_document on mission_document.mission_id = mission.mission_id
 		LEFT JOIN time_mission on time_mission.mission_id = mission.mission_id 
+		LEFT JOIN goal_mission on goal_mission.mission_id = mission.mission_id 
 		LEFT JOIN city on city.city_id = mission.city_id
 		LEFT JOIN country on country.country_id = mission.country_id
 		LEFT JOIN mission_theme on mission_theme.mission_theme_id = mission.theme_id
+		LEFT JOIN mission_media on mission_media.mission_id = mission.mission_id
+		LEFT JOIN mission_document on mission_document.mission_id = mission.mission_id
 		WHERE mission.mission_id = $mission_id";
 		$sqlEx = $this->connection->query($selSql);
 		$allData = $sqlEx->fetch_object();
@@ -381,6 +382,7 @@ class Model
 				$sql .= " $key = $value";
 			}
 		}
+		$sql = str_replace("''","NULL",$sql);
 		return $updEx = $this->connection->query($sql);
 	}
 	function SelectId(int $user_id)

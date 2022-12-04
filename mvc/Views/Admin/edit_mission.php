@@ -14,7 +14,7 @@
                     <p class="mb-1 mt-4" style="font-size:14px;">Short Description</p>
                     <input type="text" class="popup" name="short_description" value="<?php echo $mission->short_description; ?>" required>
                     <p class="mb-1 mt-4" style="font-size:14px;">Description</p>
-                    <textarea rows="5" name="description" class="popup1" value="<?php echo $mission->description; ?>"></textarea>
+                    <textarea rows="5" name="description" class="popup1" value="<?php echo $mission->description; ?>"><?php echo $mission->description; ?></textarea>
                     <p class="mb-1 mt-4" style="font-size:14px;">City</p>
                     <select class="popup pt-0 pb-0" name="city_id" required>
                         <option value="<?php echo $mission->city_id; ?>" selected="" hidden><?php echo $mission->city_name; ?></option>
@@ -54,6 +54,11 @@
                             <input type='number' class='popup' name='total_seat' value="<?php echo $mission->total_seat; ?>">
                             <p class='mb-1 mt-4' style='font-size:14px;'>Registration Deadline</p>
                             <input type="datetime-local" step="1" class='popup' name='deadline' value="<?php echo $mission->deadline; ?>">
+                        <?php } else{?>
+                            <p class='mb-1 mt-4' style='font-size:14px;'>Goal</p>
+                            <input type='text' class='popup' name='goal_objective_text' value="<?php echo $mission->goal_objective_text; ?>">
+                            <p class='mb-1 mt-4' style='font-size:14px;'>Goal Value</p>
+                            <input type="number" step="1" class='popup' name='goal_value' value="<?php echo $mission->goal_value; ?>">
                         <?php } ?>
                     </div>
                     <div id="divResult"></div>
@@ -80,15 +85,13 @@
                     <embed class="m-2" style="height:100px;width:100px;" src="../<?php echo $mission->document_path; ?>"/>
                     <input type="file" name="document_name" multiple>
                     <p class="mb-1 mt-4" style="font-size:14px;">Availability</p>
-                    <select class="popup pt-0 pb-0" name="availability" required>
+                    <select class="popup pt-0 pb-0" name="availability">
                     <option value="<?php echo $mission->availability; ?>" selected=""><?php echo $mission->availability; ?></option>
                         <option value='daily'>Daily</option>
                         <option value='weekly'>Weekly</option>
                         <option value='week-end'>Weekend</option>
                         <option value='monthly'>Monthly</option>
                     </select>
-                    <p class="mb-1 mt-4" style="font-size:14px;" hidden>Video URL</p>
-                    <input type="url" class="popup" name="" hidden>
                 </td>
             </tr>
         </tbody>
@@ -102,3 +105,24 @@
         </button>
     </div>
 </form>
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('#selecttype').change(function() {
+                    var selectedOptions = $('#selecttype option:selected');
+                    if (selectedOptions.length > 0) {
+                        var resultString = '';
+                        selectedOptions.each(function() {
+                            var val = $(this).val();
+                            if (val == "TIME"){
+                                resultString += "<p class='mb-1 mt-4' style='font-size:14px;'>Total Seats</p><input type='number' class='popup' name='total_seat'><p class='mb-1 mt-4' style='font-size:14px;' >Registration Deadline</p><input type='date' class='popup' name='deadline'>";
+                                
+                            }
+                            else
+                                resultString += "<p class='mb-1 mt-4' style='font-size:14px;'>Goal</p><input type='text' class='popup' name='goal_objective_text'><p class='mb-1 mt-4' style='font-size:14px;' >Goal Value*</p><input type='number' class='popup' name='goal_value'>";
+                                $("#divresult1").remove();
+                        });
+                        $('#divResult').html(resultString);
+                    }
+                });
+            });
+        </script>

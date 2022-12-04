@@ -1,10 +1,19 @@
-<?php
+<?php if (!isset($_SESSION['admin_data'])) {
+?>
+    <script type="text/javascript">
+        window.location.href = 'login';
+    </script>
+    <?php
+}
 $case = 3;
 include 'Views/header.php';
-$firstname = $_SESSION['admin_data']->first_name;
-$lastname = $_SESSION['admin_data']->last_name;
-$avtar = $_SESSION['admin_data']->avatar;
-include 'Views/adminsidebar.php';
+$admin_id = $_SESSION['admin_data']->admin_id;
+$where = [
+    'admin_id' => $admin_id
+];
+$selectData = $this->SelectData1('admin', $where);
+$admin = $selectData['Data'];
+include 'Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -62,10 +71,38 @@ switch ($source) {
                 foreach ($skil as $item) {
                     $this->exp($mission_id, $item);
                 }
-                foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
-                    $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
-                    $media_name = $_FILES['media_name']['name'][$key];
-                    move_uploaded_file($media_name_temp, '../Assets/' . $media_name);
+                // foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
+                //     $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
+                //     $media_name = $_FILES['media_name']['name'][$key];
+                //     move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                //     $media_type = substr(strstr($media_name, '.'), 1);
+                //     $media_path = 'Assets/' . $media_name;
+                //     $insert_data = [
+                //         'mission_id' => $mission_id,
+                //         'media_name' => $media_name,
+                //         'media_type' => $media_type,
+                //         'media_path' => $media_path
+                //     ];
+                //     $this->InsertData('mission_media', $insert_data);
+                // }
+                // foreach ($_FILES['document_name']['tmp_name'] as $key => $image) {
+                //     $document_name_temp = $_FILES['document_name']['tmp_name'][$key];
+                //     $document_name = $_FILES['document_name']['name'][$key];
+                //     move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
+                //     $document_type = substr(strstr($document_name, '.'), 1);
+                //     $document_path = 'Assets/' . $document_name;
+                //     $insert_data = [
+                //         'mission_id' => $mission_id,
+                //         'document_name' => $document_name,
+                //         'document_type' => $document_type,
+                //         'document_path' => $document_path
+                //     ];
+                //     $this->InsertData('mission_document', $insert_data);
+                // }
+                if ($_FILES['media_name']['name'] != '') {
+                    $media_name_temp = $_FILES['media_name']['tmp_name'];
+                    $media_name = $_FILES['media_name']['name'];
+                    move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
                     $media_type = substr(strstr($media_name, '.'), 1);
                     $media_path = 'Assets/' . $media_name;
                     $insert_data = [
@@ -76,10 +113,10 @@ switch ($source) {
                     ];
                     $this->InsertData('mission_media', $insert_data);
                 }
-                foreach ($_FILES['document_name']['tmp_name'] as $key => $image) {
-                    $document_name_temp = $_FILES['document_name']['tmp_name'][$key];
-                    $document_name = $_FILES['document_name']['name'][$key];
-                    move_uploaded_file($document_name_temp, '../Assets/' . $document_name);
+                if ($_FILES['document_name']['name'] != '') {
+                    $document_name_temp = $_FILES['document_name']['tmp_name'];
+                    $document_name = $_FILES['document_name']['name'];
+                    move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
                     $document_type = substr(strstr($document_name, '.'), 1);
                     $document_path = 'Assets/' . $document_name;
                     $insert_data = [
@@ -119,32 +156,12 @@ switch ($source) {
                     alert("<?php echo $insertEx['Message'] ?>");
                     window.location.href = 'mission?source=add_mission';
                 </script>
-        <?php
+            <?php
             }
         }
         include "Views/Admin/add_mission.php";
         break;
     case 'edit_mission':
-        ?>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#selecttype').change(function() {
-                    var selectedOptions = $('#selecttype option:selected');
-                    if (selectedOptions.length > 0) {
-                        var resultString = '';
-                        selectedOptions.each(function() {
-                            var val = $(this).val();
-                            if (val == "TIME")
-                                resultString += "<p class='mb-1 mt-4' style='font-size:14px;'>Total Seats</p><input type='number' class='popup' name='total_seat' value='<?php echo $mission->total_seat; ?>'><p class='mb-1 mt-4' style='font-size:14px;' >Registration Deadline</p><input type='date' class='popup' name='deadline' value='<?php echo $mission->deadline; ?>'>";
-                            else if (val == "GOAL")
-                                $("#divresult1").remove();
-                        });
-                        $('#divResult').html(resultString);
-                    }
-                });
-            });
-        </script>
-        <?php
         $encrypted_id = $_GET['edit'];
         $salt = "SECRET_STUFF";
         $decrypted_id_raw = base64_decode($encrypted_id);
@@ -162,31 +179,131 @@ switch ($source) {
         $skills = $selectData['Data'];
         $selectData = $this->GetSelectedSkill($mission_id);
         $selectedSkills = $selectData['Data'];
-        if (isset($_POST['edit_theme'])) {
+        if (isset($_POST['edit_mission'])) {
             $update_data = [
                 'title' => $_POST['title'],
-                'status' => $_POST['status'],
+                'short_description' => $_POST['short_description'],
+                'description' => $_POST['description'],
+                'city_id' => $_POST['city_id'],
+                'Country_id' => $_POST['country_id'],
+                'organization_name' => $_POST['organization_name'],
+                'organization_detail' => $_POST['organization_detail'],
+                'start_date' => $_POST['start_date'],
+                'end_date' => $_POST['end_date'],
+                'mission_type' => $_POST['mission_type'],
+                'theme_id' => $_POST['theme_id'],
+                'availability' => $_POST['availability'],
                 'updated_at' => date("Y-m-d h:i:s")
             ];
             $where = [
-                'mission_theme_id' => $mission_theme_id
+                'mission_id' => $mission_id,
             ];
-            $upd_data = $this->UpdateData1('mission_theme', $update_data, $where);
+            $upd_data = $this->UpdateData1('mission', $update_data, $where);
+            if ($_FILES['media_name']['name'] != '') {
+                $media_name_temp = $_FILES['media_name']['tmp_name'];
+                $media_name = $_FILES['media_name']['name'];
+                move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                $media_type = substr(strstr($media_name, '.'), 1);
+                $media_path = 'Assets/' . $media_name;
+                $update_data = [
+                    'media_name' => $media_name,
+                    'media_type' => $media_type,
+                    'media_path' => $media_path,
+                    'updated_at' => date("Y-m-d h:i:s")
+                ];
+                $insert_data = [
+                    'mission_id' => $mission_id,
+                    'media_name' => $media_name,
+                    'media_type' => $media_type,
+                    'media_path' => $media_path,
+                ];
+                if ($mission->media_path != '') {
+                    $this->UpdateData1('mission_media', $update_data, $where);
+                } else if ($mission->media_path == '') {
+                    $this->InsertData('mission_media', $insert_data);
+                }
+            }
+            if ($_FILES['document_name']['name'] != '') {
+                $document_name_temp = $_FILES['document_name']['tmp_name'];
+                $document_name = $_FILES['document_name']['name'];
+                move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
+                $document_type = substr(strstr($document_name, '.'), 1);
+                $document_path = 'Assets/' . $document_name;
+                $update_data = [
+                    'document_name' => $document_name,
+                    'document_type' => $document_type,
+                    'document_path' => $document_path,
+                    'updated_at' => date("Y-m-d h:i:s")
+                ];
+                $insert_data = [
+                    'mission_id' => $mission_id,
+                    'document_name' => $document_name,
+                    'document_type' => $document_type,
+                    'document_path' => $document_path,
+                ];
+                if ($mission->document_path != '') {
+                    $this->UpdateData1('mission_document', $update_data, $where);
+                } else if ($mission->document_path == '') {
+                    $this->InsertData('mission_document', $insert_data);
+                }
+            }
+            if ($_POST['mission_type'] == 'TIME') {
+                $insert_data = [
+                    'mission_id' => $mission_id,
+                    'total_seat' => $_POST['total_seat'],
+                    'deadline' => $_POST['deadline']
+                ];
+                $update_data = [
+                    'total_seat' => $_POST['total_seat'],
+                    'deadline' => $_POST['deadline'],
+                    'updated_at' => date("Y-m-d h:i:s")
+                ];
+                $delete_data = [
+                    'deleted_at' => date("Y-m-d h:i:s")
+                ];
+                if ($mission->mission_type == 'TIME') {
+                    $this->UpdateData1('time_mission', $update_data, $where);
+                } else if ($mission->mission_type == 'GOAL') {
+                    $this->InsertData('time_mission', $insert_data);
+                    $this->UpdateData1('goal_mission', $delete_data, $where);
+                }
+            }
+            if ($_POST['mission_type'] == 'GOAL') {
+                $insert_data = [
+                    'mission_id' => $mission_id,
+                    'goal_objective_text' => $_POST['goal_objective_text'],
+                    'goal_value' => $_POST['goal_value']
+                ];
+                $update_data = [
+                    'goal_objective_text' => $_POST['goal_objective_text'],
+                    'goal_value' => $_POST['goal_value'],
+                    'updated_at' => date("Y-m-d h:i:s")
+                ];
+                $delete_data = [
+                    'deleted_at' => date("Y-m-d h:i:s")
+                ];
+                if ($mission->mission_type == 'GOAL') {
+                    $this->UpdateData1('goal_mission', $update_data, $where);
+                } else if ($mission->mission_type == 'TIME') {
+                    $this->InsertData('goal_mission', $insert_data);
+                    $this->UpdateData1('time_mission', $delete_data, $where);
+                }
+            }
             if ($upd_data) {
-        ?>
+            ?>
                 <script type="text/javascript">
                     alert("Data update successfully.");
-                    window.location.href = 'theme';
+                    window.location.href = 'mission';
                 </script>
             <?php
             } else {
             ?>
                 <script type="text/javascript">
                     alert("Something Went Wrong.");
-                    window.location.href = 'theme?source=edit_theme&edit=<?php $id = $theme->mission_theme_id;
-                                                                            $salt = "SECRET_STUFF";
-                                                                            $encrypted_id = base64_encode($id . $salt);
-                                                                            echo $encrypted_id; ?>';
+                    window.location.href = 'mission?source=edit_mission&edit=<?php $id = $mission->mission_id;
+                                                                                $salt = "SECRET_STUFF";
+                                                                                $encrypted_id = base64_encode($id . $salt);
+                                                                                echo $encrypted_id; ?>';
                 </script>
             <?php
             }
@@ -199,10 +316,13 @@ switch ($source) {
         $decrypted_id_raw = base64_decode($encrypted_id);
         $decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
         $mission_id = $decrypted_id;
+        $update_data = [
+            'deleted_at' => date("Y-m-d h:i:s")
+        ];
         $where = [
             'mission_id' => $mission_id
         ];
-        $delete_data = $this->DeleteData1('mission', $where);
+        $delete_data = $this->UpdateData1('mission', $update_data, $where);
         if ($delete_data) {
             ?>
             <script type="text/javascript">
@@ -244,5 +364,6 @@ switch ($source) {
             $missions = $selectData1['Data'];
         }
         include "Views/Admin/view_all_mission.php";
-} 
+}
+include 'Views/footer.php';
 ?>

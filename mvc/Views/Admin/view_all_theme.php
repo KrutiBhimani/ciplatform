@@ -10,7 +10,7 @@
             <div style="border: 2px solid #dee2e6; border-radius:5px;">
                 <div class="input-group">
                     <span class="input-group-text" style="background-color:transparent; border:none;">
-                        <img src="../Assets/search.png" height="15px">
+                        <img src="../mvc/Assets/images/search.png" height="15px">
                     </span>
                     <input type="text" name="search" placeholder="search" class="form-control" style="border:none;border-radius:5px;background-color:transparent;">
                 </div>
@@ -62,11 +62,11 @@
                             <?php
                             $next = $page + 1;
                             $previous = $page - 1;
-                            echo "<li class='page-item'><a class='page-link' href='theme?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/previous.png' alt=''></a></li>";
+                            echo "<li class='page-item'><a class='page-link' href='theme?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
                             if ($previous >= 1)
-                                echo "<li class='page-item'><a class='page-link' href='theme?page=$previous' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
+                                echo "<li class='page-item'><a class='page-link' href='theme?page=$previous' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
                             else
-                                echo "<li class='page-item'><a class='page-link' href='theme?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/left.png' alt=''></a></li>";
+                                echo "<li class='page-item'><a class='page-link' href='theme?page=1' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
                             for ($i = 1; $i <= $cnt; $i++) {
                                 if ($i == $page)
                                     echo "<li class='page-item'><a class='page-link active text-center' href='theme?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
@@ -74,10 +74,10 @@
                                     echo "<li class='page-item'><a class='page-link text-center' href='theme?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
                             }
                             if ($next <= $cnt)
-                                echo "<li class='page-item'><a class='page-link' href='theme?page=$next' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
+                                echo "<li class='page-item'><a class='page-link' href='theme?page=$next' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
                             else
-                                echo "<li class='page-item'><a class='page-link' href='theme?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/arrow.png' alt=''></a></li>";
-                            echo "<li class='page-item'><a class='page-link' href='theme?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../Assets/next.png' alt=''></a></li>";
+                                echo "<li class='page-item'><a class='page-link' href='theme?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
+                            echo "<li class='page-item'><a class='page-link' href='theme?page=$cnt' style='border-radius:5px; padding:10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
                             ?>
                         </ul>
                     </nav>

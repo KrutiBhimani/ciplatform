@@ -21,7 +21,7 @@
                     <p class="mb-1 mt-4" style="font-size:14px;">password</p>
                     <input type="password" name="password" class="popup" value="<?php echo $user->password; ?>" required>
                     <p class="mb-1 mt-4" style="font-size:14px;">Avatar</p>
-                    <img class="m-2" style="height:50px" src="../Assets/<?php echo $user->avatar; ?>">
+                    <img class="m-2" style="height:50px" src="../mvc/Assets/uplodes/<?php echo $user->avatar; ?>">
                     <input type="file" name="avatar" value="">
                     <p class="mb-1 mt-4" style="font-size:14px;">Employee ID</p>
                     <input type="text" name="employee_id" class="popup" value="<?php echo $user->employee_id; ?>">

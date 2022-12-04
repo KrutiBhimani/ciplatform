@@ -1,10 +1,19 @@
-<?php
+<?php if (!isset($_SESSION['admin_data'])) {
+?>
+    <script type="text/javascript">
+        window.location.href = 'login';
+    </script>
+    <?php
+}
 $case = 6;
 include 'Views/header.php';
-$firstname = $_SESSION['admin_data']->first_name;
-$lastname = $_SESSION['admin_data']->last_name;
-$avtar = $_SESSION['admin_data']->avatar;
-include 'Views/adminsidebar.php';
+$admin_id = $_SESSION['admin_data']->admin_id;
+$where = [
+    'admin_id' => $admin_id
+];
+$selectData = $this->SelectData1('admin', $where);
+$admin = $selectData['Data'];
+include 'Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -97,4 +106,5 @@ switch ($source) {
         }
         include "Views/Admin/view_all_app.php";
 }
+include 'Views/footer.php';
 ?>

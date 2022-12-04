@@ -6,13 +6,13 @@
         $token = md5(2418 * 2) . substr(md5(uniqid(rand(), 1)), 3, 10);
         if ($_SESSION['reset_data']) {
             $link = "<a href='http://localhost/ci-platform/mvc/reset?key=" . $_SESSION['reset_data']->email . "&t=" . $token . "'>Click To Reset password</a>";
-            require 'Views/PHPMailerAutoload.php';
-            require_once('../PHPMailer/src/PHPMailer.php');
-            require_once('../PHPMailer/src/Exception.php');
-            require_once('../PHPMailer/src/OAuthTokenProvider.php');
-            require_once('../PHPMailer/src/OAuth.php');
-            require_once('../PHPMailer/src/POP3.php');
-            require_once('../PHPMailer/src/SMTP.php');
+            require '../mvc/Assets/PHPMailer/PHPMailerAutoload.php';
+            require_once('../mvc/Assets/PHPMailer/src/PHPMailer.php');
+            require_once('../mvc/Assets/PHPMailer/src/Exception.php');
+            require_once('../mvc/Assets/PHPMailer/src/OAuthTokenProvider.php');
+            require_once('../mvc/Assets/PHPMailer/src/OAuth.php');
+            require_once('../mvc/Assets/PHPMailer/src/POP3.php');
+            require_once('../mvc/Assets/PHPMailer/src/SMTP.php');
             if (empty($errors)) {
                 $insert_data = [
                     'email' => $_SESSION['reset_data']->email,
@@ -26,8 +26,8 @@
                     $mail->isSMTP();                                    // Set mailer to use SMTP
                     $mail->Host = 'smtp.office365.com'; // Specify main and backup SMTP servers
                     $mail->SMTPAuth = true;                             // Enable SMTP authentication
-                    $mail->Username = 'krutipatel5773@outlook.com';           // SMTP username
-                    $mail->Password = 'kruti9607';                       // SMTP password
+                    $mail->Username = 'krutibhimani11@outlook.com';           // SMTP username
+                    $mail->Password = 'kruti123';                       // SMTP password
                     $mail->SMTPSecure = 'tls';                          // Enable TLS encryption, `ssl` also accepted
                     $mail->Port = 587;                                  // TCP port to connect, tls=587, ssl=465
                     $mail->From = 'krutipatel5773@outlook.com';
@@ -70,4 +70,5 @@ $selectData = $this->SelectBanner();
 $banners = $selectData['Data'];
 include 'Views/header.php';
 include 'Views/forgotpsd.php';
+include 'Views/footer.php';
 ?>

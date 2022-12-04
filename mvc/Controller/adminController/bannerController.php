@@ -1,10 +1,19 @@
-<?php
+<?php if (!isset($_SESSION['admin_data'])) {
+?>
+    <script type="text/javascript">
+        window.location.href = 'login';
+    </script>
+    <?php
+}
 $case = 8;
 include 'Views/header.php';
-$firstname = $_SESSION['admin_data']->first_name;
-$lastname = $_SESSION['admin_data']->last_name;
-$avtar = $_SESSION['admin_data']->avatar;
-include 'Views/adminsidebar.php';
+$admin_id = $_SESSION['admin_data']->admin_id;
+$where = [
+    'admin_id' => $admin_id
+];
+$selectData = $this->SelectData1('admin', $where);
+$admin = $selectData['Data'];
+include 'Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -23,7 +32,7 @@ switch ($source) {
             $insertEx = $this->InsertData('banner', $insert_data);
             if ($insertEx['Code']) {
                 if (!is_null($image)) {
-                    move_uploaded_file($image_temp, '../Assets/' . $image);
+                    move_uploaded_file($image_temp, '../mvc/Assets/uplodes/' . $image);
                 }
 ?>
                 <script type="text/javascript">
@@ -73,7 +82,7 @@ switch ($source) {
             $upd_data = $this->UpdateData1('banner', $update_data, $where);
             if ($upd_data) {
                 if (!is_null($avatar)) {
-                    move_uploaded_file($avatar_temp, '../Assets/' . $avatar);
+                    move_uploaded_file($avatar_temp, '../mvc/Assets/uplodes/' . $avatar);
                 }
             ?>
                 <script type="text/javascript">
@@ -149,4 +158,5 @@ switch ($source) {
         }
         include "Views/Admin/view_all_banner.php";
 }
+include 'Views/footer.php';
 ?>

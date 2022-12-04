@@ -32,4 +32,6 @@
 $selectData = $this->SelectBanner();
 $banners = $selectData['Data'];
 include 'Views/header.php';
-include 'Views/registration.php';?>
+include 'Views/registration.php';
+include 'Views/footer.php';
+?>

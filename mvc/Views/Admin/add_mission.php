@@ -59,9 +59,9 @@
                     </select>
                     <!-- <input id="divResult1" value=''></input> -->
                     <p class="mb-1 mt-4" style="font-size:14px;">Image</p>
-                    <input type="file" name="media_name[]" multiple="multiple">
+                    <input type="file" name="media_name" >
                     <p class="mb-1 mt-4" style="font-size:14px;">Document</p>
-                    <input type="file" name="document_name[]" multiple="multiple">
+                    <input type="file" name="document_name" >
                     <p class="mb-1 mt-4" style="font-size:14px;">Availability</p>
                     <select class="popup pt-0 pb-0" name="availability">
                         <option value="none" selected="" disabled="" hidden=""></option>
@@ -70,8 +70,6 @@
                         <option value='week-end'>Weekend</option>
                         <option value='monthly'>Monthly</option>
                     </select>
-                    <p class="mb-1 mt-4" style="font-size:14px;" hidden>Video URL</p>
-                    <input type="url" class="popup" name="" hidden>
                 </td>
             </tr>
         </tbody>

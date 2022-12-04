@@ -42,6 +42,7 @@
                 $banners = $selectData['Data'];
                 include 'Views/header.php';
                 include 'Views/resetpsd.php';
+                include 'Views/footer.php';
             }
         } else { ?>
             <script type="text/javascript">

@@ -20,7 +20,7 @@ class Controller extends Model
 					include 'loginController.php';
 					break;
 				case '/home':
-					include 'homeController.php';
+					include 'homeController/homeController.php';
 					break;
 				case '/logout':
 					include 'logoutController.php';
@@ -55,8 +55,12 @@ class Controller extends Model
 				case '/banner';
 					include 'adminController/bannerController.php';
 					break;
-				case '/ruff':
-					include "Views/ruff.php";
+				case '/edit_admin':
+					include "adminController/editAdminController.php";
+					break;
+				case '/timesheet':
+					include "homeController/timesheetController.php";
+					break;
 				default:
 					break;
 			}
