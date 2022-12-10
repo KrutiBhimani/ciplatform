@@ -25,17 +25,17 @@ class Model
 		$clms = implode(',', array_keys($data));
 		$vals = implode("','", $data);
 		$sql = "insert into $tbl ($clms) values ('$vals')";
-		$sql = str_replace("''","NULL",$sql);
+		$sql = str_replace("''", "NULL", $sql);
 		echo $sql;
 		$insertEx = $this->connection->query($sql);
 		if ($insertEx) {
 			$response['Data'] = null;
 			$response['Code'] = true;
-			$response['Message'] = 'Data inserted successfully.'.$sql;
+			$response['Message'] = 'Data inserted successfully.';
 		} else {
 			$response['Data'] = null;
 			$response['Code'] = false;
-			$response['Message'] = 'Data insertion failed.'.$sql;
+			$response['Message'] = 'Data insertion failed.';
 		}
 		return $response;
 	}
@@ -160,6 +160,37 @@ class Model
 		}
 		if ($postno != 0 || $pagecount != 0) {
 			$selSql .= " LIMIT $postno,$pagecount";
+		}
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
+	function SelectApply(string $tblName, array $where = [])
+	{
+		$selSql = "SELECT * FROM $tblName";
+		if (!empty($where)) {
+			$selSql .= " WHERE (";
+			foreach ($where as $key => $value) {
+				$selSql .= " $key LIKE '%$value%' OR";
+			}
+			$selSql = rtrim($selSql, 'OR');
+			$selSql .= ") AND deleted_at is NULL";
+		} else if (empty($where)) {
+			$selSql .= " WHERE deleted_at is NULL";
+		}
+		if ($tblName == 'mission_application') {
+			$selSql .= " AND (approval_status LIKE 'APPROVE' OR approval_status LIKE 'PENDING')";
 		}
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
@@ -369,6 +400,56 @@ class Model
 		}
 		return $response;
 	}
+	function SelectData3($postno, $pagecount,$resultString)
+	{
+		$selSql = "SELECT *,city.name as city_name, country.name as country_name,mission.title as mission_title, mission_theme.title as theme_title,mission.mission_id as missionid,COUNT(mission_application.mission_id) as count, ROUND(AVG(mission_rating.rating)) as rating from mission
+		LEFT JOIN time_mission on time_mission.mission_id = mission.mission_id 
+		LEFT JOIN goal_mission on goal_mission.mission_id = mission.mission_id 
+		LEFT JOIN city on city.city_id = mission.city_id
+		LEFT JOIN country on country.country_id = mission.country_id
+		LEFT JOIN mission_theme on mission_theme.mission_theme_id = mission.theme_id
+		LEFT JOIN mission_media on mission_media.mission_id = mission.mission_id
+		LEFT JOIN mission_document on mission_document.mission_id = mission.mission_id
+        LEFT JOIN mission_application on mission_application.mission_id = mission.mission_id
+        LEFT JOIN mission_rating on mission_rating.mission_id = mission.mission_id
+		GROUP By mission.mission_id
+		ORDER BY mission.mission_id $resultString
+		LIMIT $postno,$pagecount";
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
+	// function SelectData4()
+	// {
+	// 	$selSql = "SELECT *,COUNT(mission_id) as count FROM `mission_application` 
+	// 	where approval_status = 'APPROVE' GROUP BY mission_id;";
+	// 	echo $selSql;
+	// 	$sqlEx = $this->connection->query($selSql);
+	// 	if ($sqlEx->num_rows > 0) {
+	// 		while ($FetchData = $sqlEx->fetch_object()) {
+	// 			$allData[] = $FetchData;
+	// 		}
+	// 		$response['Data'] = $allData;
+	// 		$response['Code'] = true;
+	// 		$response['Message'] = 'Data retrieved successfully.';
+	// 	} else {
+	// 		$response['Data'] = [];
+	// 		$response['Code'] = false;
+	// 		$response['Message'] = 'Data not retrieved.';
+	// 	}
+	// 	return $response;
+	// }
 	function UpdateData1($tbl, $data, array $where = [])
 	{
 		$sql = "UPDATE $tbl SET ";
@@ -379,10 +460,11 @@ class Model
 		if (!empty($where)) {
 			$sql .= " WHERE ";
 			foreach ($where as $key => $value) {
-				$sql .= " $key = $value";
+				$sql .= " $key = $value AND";
 			}
+			$sql = rtrim($sql, 'AND');
 		}
-		$sql = str_replace("''","NULL",$sql);
+		$sql = str_replace("''", "NULL", $sql);
 		return $updEx = $this->connection->query($sql);
 	}
 	function SelectId(int $user_id)
@@ -449,10 +531,26 @@ class Model
 		}
 		return $response;
 	}
-	function exp($mission_id,$item)
+	function exp($mission_id, $item)
 	{
 		$selSql = "INSERT INTO mission_skill (mission_id,skill_id) VALUES ($mission_id,$item)";
 		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx) {
+			$response['Data'] = null;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = null;
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
+	function updateexp($mission_id, $item, $updated_at)
+	{
+		$selSql = "UPDATE mission_skill set skill_id=$item, updated_at='$updated_at' where mission_id=$mission_id";
+		$sqlEx = $this->connection->query($selSql);
+		echo $selSql;
 		if ($sqlEx) {
 			$response['Data'] = null;
 			$response['Code'] = true;

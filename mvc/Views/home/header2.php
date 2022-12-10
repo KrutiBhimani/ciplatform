@@ -5,7 +5,7 @@
                 <thead>
                     <tr style="border:1px solid rgb(183, 183, 183)">
                         <td class="p-2">
-                            <input type="text" name="search" placeholder="Search mission..." class="form-control shadow-none" style="border:none; font-size:18px;">
+                            <input type="text" value="" id="search" name="search" placeholder="Search mission..." class="form-control shadow-none" style="border:none; font-size:18px;">
                         </td>
                         <td>
                             <nav class="navbar navbar-expand-sm" style="background-color:white ;">
@@ -85,11 +85,11 @@
                 <thead>
                     <tr>
                         <td class="border-end" style="width:calc(100%/2);">
-                            <div class="input-group">
+                            <div class="input-group d-flex align-items-center">
                                 <div class="input-group-prepend" style="padding:5px 0">
-                                    <img src="Assets/search.png" alt="" class="input-group-text p-0" id="basic-addon1" style="background-color:white; border:none;">
+                                    <img src="../mvc/Assets/images/search.png" alt="" class="input-group-text p-0 m-0" id="basic-addon1" style="background-color:white; border:none;">
                                 </div>
-                                <input type="text" name="search" placeholder="Search mission..." class="form-control shadow-none" style="border:none; font-size:18px;">
+                                <input type="text" value="" id="search" name="search" placeholder="Search mission..." class="form-control shadow-none m-2" style="border:none; font-size:18px;">
                             </div>
                         </td>
                         <td class="border-end pe-4" style="width:calc(100%/8);">

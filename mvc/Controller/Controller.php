@@ -59,7 +59,19 @@ class Controller extends Model
 					include "adminController/editAdminController.php";
 					break;
 				case '/timesheet':
-					include "homeController/timesheetController.php";
+					include "adminController/timesheetController.php";
+					break;
+				case '/stories';
+					include "homeController/storyController.php";
+					break;
+				case '/edit_user';
+					include "homeController/edituserController.php";
+					break;
+				case '/user_timesheet';
+					include "homeController/usertimesheetController.php";
+					break;
+				case '/policy';
+					include "homeController/policyController.php";
 					break;
 				default:
 					break;

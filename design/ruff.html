@@ -19,43 +19,24 @@
 
 
 <body>
+    <script>
+        $(document).ready(function(){
+            $("#gridlink").click(function() {
+                $("#divlist").hide();
+                $("#divgrid").show();
+            });
+            $("#listlink").click(function() {
+                $("#divlist").show();
+                $("#divgrid").hide();
+            });
+        })
+    </script>
     
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <footer id="footer2" >
-        <div class="position-absolute bottom-0 w-100">
-            <div class="container pt-4 pb-4">
-                <a href="policy.html" class="Forma-1-copy-13">Privacy policy</a>
-            </div>
-        </div>
-        <div id="footer" class="position-absolute bottom-0 w-100" style="z-index: 9;">
-            <div class="float-end mt-3 me-3">
-                <img src="Assets/cross.png" alt="" class="img-fluid" onclick="$('#footer').remove();">
-            </div>
-            <div class="container">
-                <div class="d-flex justify-content-between pt-4 pb-3">
-                    <div>
-                        <span>This website makes use of cookies to enhance browsing experience and provide additional
-                            functionality.</span><br />
-                        <a href="policy.html" class="Forma-1-copy-12">Privacy policy</a>
-                    </div>
-                    <div>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <div class="col-example">I Agree</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- </div>  -->
+    <a id="gridlink" href="#">Grid view</a> |
+    <a id="listlink" href="#">List view</a>
+    
+    <div id="divgrid">Grid content here</div>
+    <div id="divlist" style="display:none">List content here</div>
 </body>
 
 </html>

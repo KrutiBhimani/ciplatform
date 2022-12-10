@@ -204,7 +204,7 @@ switch ($source) {
                 $media_name = $_FILES['media_name']['name'];
                 move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
                 $media_type = substr(strstr($media_name, '.'), 1);
-                $media_path = 'Assets/' . $media_name;
+                $media_path = 'mvc/Assets/uplodes/' . $media_name;
                 $update_data = [
                     'media_name' => $media_name,
                     'media_type' => $media_type,
@@ -289,6 +289,13 @@ switch ($source) {
                     $this->UpdateData1('time_mission', $delete_data, $where);
                 }
             }
+            // if ($_POST['mission_skill_id']){
+            //     $skil = $_POST['mission_skill_id'];
+            //     $updated_at = date("Y-m-d h:i:s");
+            //     foreach ($skil as $item) {
+            //         $this->updateexp($mission_id, $item,$updated_at);
+            //     }
+            // }
             if ($upd_data) {
             ?>
                 <script type="text/javascript">
@@ -323,6 +330,11 @@ switch ($source) {
             'mission_id' => $mission_id
         ];
         $delete_data = $this->UpdateData1('mission', $update_data, $where);
+        $delete_data = $this->UpdateData1('goal_mission', $update_data, $where);
+        $delete_data = $this->UpdateData1('mission_document', $update_data, $where);
+        $delete_data = $this->UpdateData1('mission_media', $update_data, $where);
+        $delete_data = $this->UpdateData1('time_mission', $update_data, $where);
+        $delete_data = $this->UpdateData1('mission_skill', $update_data, $where);
         if ($delete_data) {
             ?>
             <script type="text/javascript">

@@ -10,7 +10,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="../design/storylist.php">Stories</a>
+                                <a class="nav-link" href="stories">Stories</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -30,12 +30,11 @@
                     <ul class="navbar-nav me-auto mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../mvc/Assets/uplodes/<?php if ($avatar == '') echo 'user1.png';
-                                                    else echo $avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
+                                <img src="../mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png'; else echo 'uplodes/'.$user->avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="edit_user.html">My Profile</a></li>
-                                <li><a class="dropdown-item" href="timesheet.html">volunteering timesheet</a></li>
+                                <li><a class="dropdown-item" href="edit_user">My Profile</a></li>
+                                <li><a class="dropdown-item" href="user_timesheet">volunteering timesheet</a></li>
                                 <li><a class="dropdown-item" href="logout">Logout</a></li>
                             </ul>
                         </li>
@@ -47,13 +46,12 @@
                     <ul class="navbar-nav me-auto mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../mvc/Assets/uplodes/<?php if ($avatar == '') echo 'user1.png';
-                                                    else echo $avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
-                                <label>kruti patel</label>
+                                <img src="../mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png'; else echo 'uplodes/'.$user->avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
+                                <label><?php echo $user->first_name . ' ' . $user->last_name; ?></label>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="edit_user.html">My Profile</a></li>
-                                <li><a class="dropdown-item" href="timesheet.html">volunteering timesheet</a></li>
+                                <li><a class="dropdown-item" href="edit_user">My Profile</a></li>
+                                <li><a class="dropdown-item" href="user_timesheet">volunteering timesheet</a></li>
                                 <li><a class="dropdown-item" href="logout">Logout</a></li>
                             </ul>
                         </li>

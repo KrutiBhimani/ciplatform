@@ -40,7 +40,16 @@
   color: white;
   background-color: rgba(0, 0, 0, .5);
 }
-
+.five-txt {
+  position: absolute;
+  top: 15px;
+  font-size: 13px;
+  padding: 3px 10px;
+  color: white;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: green;
+}
 .first-txt1 {
   position: absolute;
   top: 15px;
@@ -367,14 +376,9 @@ input[type="password"]:focus {
 }
 
 .Ellipse-574 {
-  width: 40px;
-  height: 38px;
-  padding: 6px;
-  margin: 0 7px 0 30px;
   border-radius: 30px;
   background-color: #e8e8e8;
 }
-
 .Ellipse-575 {
   width: 40px;
   height: 40px;

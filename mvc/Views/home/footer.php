@@ -1,7 +1,7 @@
 <footer id="footer2" class="position-relative" style="border-bottom:2px solid rgb(225, 225, 225)">
   <div class="position-absolute w-100">
     <div class="container-lg pt-4 pb-3 mb-1">
-      <a href="policy.html" class="Forma-1-copy-13">Privacy policy</a><br />
+      <a href="policy" class="Forma-1-copy-13">Privacy policy</a><br />
       <a href="#" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup2">contact us</a>
     </div>
   </div>
@@ -14,7 +14,7 @@
         <div>
           <span>This website makes use of cookies to enhance browsing experience and provide additional
             functionality.</span><br />
-          <a href="policy.html" class="Forma-1-copy-12">Privacy policy</a>
+          <a href="policy" class="Forma-1-copy-12">Privacy policy</a>
         </div>
         <div>
           <div class="col-example12">I&nbsp;Agree</div>
