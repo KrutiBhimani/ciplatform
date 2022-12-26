@@ -1,69 +1,89 @@
-<input type="text" id="clickedButton" hidden>
 <div class="container-lg d-none d-lg-block mb-4 mt-3">
-  <div class="row row-cols-auto ps-4">
-    <button value="Tree Plantation" class="p-1 six-txt ps-2 pe-2 m-1">
-      <span>Tree Plantation</span>
-      <img src="../mvc/Assets/images/cancel.png" alt="" class="ps-1" height="8px">
-    </button>
-    <button value="Canada" class="p-1 six-txt ps-2 pe-2 m-1">
-      <span>Canada</span>
-      <img src="../mvc/Assets/images/cancel.png" alt="" class="ps-1" height="8px">
-    </button>
-    <button value="Toronto" class="p-1 six-txt ps-2 pe-2 m-1">
-      <span>Toronto</span>
-      <img src="../mvc/Assets/images/cancel.png" alt="" class="ps-1" height="8px">
-    </button>
-    <button value="Montreal" class="p-1 six-txt ps-2 pe-2 m-1">
-      <span>Montreal</span>
-      <img src="../mvc/Assets/images/cancel.png" alt="" class="ps-1" height="8px">
-    </button>
-    <button value="Environment" class="p-1 six-txt ps-2 pe-2 m-1">
-      <span>Environment</span>
-      <img src="../mvc/Assets/images/cancel.png" alt="" class="ps-1" height="8px">
-    </button>
-    <button value="Nutrition" class="p-1 six-txt ps-2 pe-2 m-1">
-      <span> Nutrition</span>
-      <img src="../mvc/Assets/images/cancel.png" alt="" class="ps-1" height="8px">
-    </button>
-    <button value="Anthropology" class="p-1 six-txt ps-2 pe-2 m-1">
-      <span>Anthropology</span>
-      <img src="../mvc/Assets/images/cancel.png" alt="" class="ps-1" height="8px">
-    </button>
-    <button value="Environment Science" class="p-1 six-txt ps-2 pe-2 m-1">
-      <span>Environment Science</span>
-      <img src="../mvc/Assets/images/cancel.png" alt="" class="ps-1" height="8px">
-    </button>
-    <button class="p-1 ps-2 pe-2 m-1" style="border:none; background-color:transparent;">
-      <a href="#" style="color:black; font-size:11px">Clear all</a>
+  <div class="row row-cols-auto ps-4" id="text">
+    <div id="t1" class="p-1 six-txt pe-2 m-1">
+      <button value="Tree Plantation" class="six-txt1" style="background-color: transparent;border:none;">
+        <span>Tree Plantation</span>
+      </button>
+      <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="$('#t1').remove();" style="cursor: pointer;">
+    </div>
+    <div id="t2" class="p-1 six-txt pe-2 m-1">
+      <button value="Canada" class="six-txt1" style="background-color: transparent;border:none;">
+        <span>Canada</span>
+      </button>
+      <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="$('#t2').remove();" style="cursor: pointer;">
+    </div>
+    <div id="t3" class="p-1 six-txt pe-2 m-1">
+      <button value="Toronto" class="six-txt1" style="background-color: transparent;border:none;">
+        <span>Toronto</span>
+      </button>
+      <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="$('#t3').remove();" style="cursor: pointer;">
+    </div>
+    <div id="t4" class="p-1 six-txt pe-2 m-1">
+      <button value="Montreal" class="six-txt1" style="background-color: transparent;border:none;">
+        <span>Montreal</span>
+      </button>
+      <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="$('#t4').remove();" style="cursor: pointer;">
+    </div>
+    <div id="t5" class="p-1 six-txt pe-2 m-1">
+      <button value="Environment" class="six-txt1" style="background-color: transparent;border:none;">
+        <span>Environment</span>
+      </button>
+      <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="$('#t5').remove();" style="cursor: pointer;">
+    </div>
+    <div id="t6" class="p-1 six-txt pe-2 m-1">
+      <button value="Nutrition" class="six-txt1" style="background-color: transparent;border:none;">
+        <span> Nutrition</span>
+      </button>
+      <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="$('#t6').remove();" style="cursor: pointer;">
+    </div>
+    <div id="t7" class="six-txt p-1 pe-2 m-1">
+      <button value="Anthropology" class="six-txt1" style="background-color: transparent;border:none;">
+        <span>Anthropology</span>
+      </button>
+      <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="$('#t7').remove();" style="cursor: pointer;">
+    </div>
+    <div id="t8" class="p-1 six-txt pe-2 m-1">
+      <button value="Environment Science" class="six-txt1" style="background-color: transparent;border:none;">
+        <span>Environment Science</span>
+      </button>
+      <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="$('#t8').remove();" style="cursor: pointer;">
+    </div>
+    <button class="p-1 ps-2 pe-2 m-1" style="border:none; background-color:transparent;" onclick="$('#text').remove();">
+      <span style="color:black; font-size:11px">Clear all</span>
     </button>
   </div>
 </div>
-<div id="search"></div>
-<div class="container-lg">
-  <div class="row">
-    <div class="col-lg-5 col-md-5 col-sm-5 col-12">
-      <h2 class="mb-0" style="font-size:calc(14px + 0.3vw);">Explore <b> <?php echo $cnts ?> missions</b></h2>
-    </div>
-    <div class="col-lg-7 col-mb-7 col-sm-7 col-0" style="display:flex; justify-content:flex-end">
-      <div class="d-none d-lg-block">
-        <form id="selectSort" method="POST" enctype="multipart/form-data">
-          <select class="Rounded-Rectangle-8" name="sort">
-            <option value="none" selected="" disabled="" hidden="">Sort by</option>
-            <option value="DESC">Newest</option>
-            <option value="ASC">Oldest</option>
-            <option value="lowest">Lowest available seats</option>
-            <option value="highest">Highest available seats</option>
-            <option value="favourite">Sort by my favourite</option>
-            <option value="deadline">sort by deadline</option>
-          </select>
-          <a id="gridlink" class="ms-2" href="#"><i id="h1" class="fa fa-th-large Ellipse-574 p-2 fs-5" aria-hidden="true" style="color:gray"></i></a>
-          <a id="listlink" href="#"><i id="h2" class="fa fa-list-ul p-2 fs-5" aria-hidden="true" style="color:gray"></i></a>
-        </form>
+<?php if ($row > 0) { ?>
+  <div class="container-lg mt-3">
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-5 col-12">
+        <h2 class="mb-0" style="font-size:calc(14px + 0.3vw);">Explore <b> <?php echo $row ?> missions</b></h2>
+      </div>
+      <div class="col-lg-7 col-mb-7 col-sm-7 col-0" style="display:flex; justify-content:flex-end">
+        <div class="d-none d-lg-block">
+          <form class="m-0" id="selectSort" method="post" enctype="multipart/form-data">
+            <select class="Rounded-Rectangle-8" name="sort" onChange="showHide()">
+              <?php if ($_POST['sort'] != null) { ?>
+                <option value="none" selected="" disabled="" hidden=""><?php echo $_POST['sort']; ?></option>
+              <?php } else { ?>
+                <option value="none" selected="" disabled="" hidden="">Sort By...</option>
+              <?php } ?>
+              <option value="Newest">Newest</option>
+              <option value="Oldest">Oldest</option>
+              <option value="Lowest available seats">Lowest available seats</option>
+              <option value="Highest available seats">Highest available seats</option>
+              <option value="Sort by my favourite">Sort by my favourite</option>
+              <option value="sort by deadline">sort by deadline</option>
+            </select>
+            <a id="gridlink" class="ms-2" href="#"><i id="h1" class="fa fa-th-large Ellipse-574 p-2 fs-5" aria-hidden="true" style="color:gray"></i></a>
+            <a id="listlink" href="#"><i id="h2" class="fa fa-list-ul p-2 fs-5" aria-hidden="true" style="color:gray"></i></a>
+          </form>
+        </div>
         <div id="divResult"></div>
       </div>
     </div>
   </div>
-</div>
+<?php } ?>
 <main id="main">
   <section id="story">
     <div class="container-lg"><br>
@@ -116,7 +136,35 @@
                     }
                     ?>
                   </div>
-                  <div class="d-flex align-items-center third-txt p-2"><img src="../mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px"></div>
+                  <div class="d-flex align-items-center third-txt p-2"><a href="#" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup<?php echo $mission->missionid ?>"><img src="../mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px"></a></div>
+                  <div id="popup<?php echo $mission->missionid ?>" class="modal">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content p-2">
+                        <div class="modal-header pb-0" style="border-bottom:0 ;">
+                          <p class="mb-0" style="font-size:20px ;">Invite</p>
+                        </div>
+                        <form class="m-0" method="post" enctype="multipart/form-data">
+                          <input type="text" name='m_id' value="<?php echo $mission->missionid ?>" hidden>
+                          <div class="modal-body pb-0">
+                            <select class="Rounded-Rectangle-9 w-100" name="invite[]" multiple size="<?php echo $userrow ?>" style="overflow-y: auto;">
+                              <?php
+                              foreach ($users as $user) { ?>
+                                <option class="fs-6 p-2" value="<?php echo $user->user_id ?>">
+                                  <?php echo $user->first_name . " " . $user->last_name ?>
+                                </option>
+                              <?php } ?>
+                            </select>
+                          </div>
+                          <div class="modal-footer" style="border-top:0 ;">
+                            <button type="reset" class="col-example8" data-bs-dismiss="modal">Cancle
+                            </button>
+                            <button type="submit" name='inviteuser' class="col-example7" data-bs-dismiss="modal">Invite
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                   <div class="d-flex four-txt justify-content-center">
                     <div class="bdg1"><?php echo $mission->theme_title; ?></div>
                   </div>
@@ -136,7 +184,26 @@
                             break;
                           }
                         }
-                        if ($key == 1) {
+                        if ($mission->mission_type == 'TIME') {
+                          $current = date("Y-m-d h:i:s");
+                          if ($mission->deadline != null && $current > $mission->deadline) {
+                            $key = 1;
+                          } else if ($mission->end_date != null && $current > $mission->end_date) {
+                            $key = 1;
+                          }
+                        }
+                        $k = 0;
+                        $c = 10;
+                        foreach ($seats as $seat) {
+                          if ($seat->mission_id == $mission->missionid) {
+                            $k = 1;
+                            break;
+                          }
+                        }
+                        if ($k == 1) {
+                          $c = $mission->total_seat - $seat->count;
+                        }
+                        if ($key == 1 || $c == 0) {
                           echo 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit...';
                         } else {
                           echo $mission->short_description;
@@ -159,11 +226,34 @@
                       </div>
                     </div>
                   </div>
-                  <?php $key = 0;
+                  <?php
+                  $key = 0;
                   foreach ($appusers as $appuser) {
                     if ($appuser->mission_id == $mission->missionid) {
                       $key = 1;
                       break;
+                    }
+                  }
+                  if ($mission->mission_type == 'TIME') {
+                    $current = date("Y-m-d h:i:s");
+                    if ($mission->deadline != null && $current > $mission->deadline) {
+                      $key = 1;
+                    } else if ($mission->end_date != null && $current > $mission->end_date) {
+                      $key = 1;
+                    }
+                  }
+                  $k = 0;
+                  $c = 10;
+                  foreach ($seats as $seat) {
+                    if ($seat->mission_id == $mission->missionid) {
+                      $k = 1;
+                      break;
+                    }
+                  }
+                  if ($k == 1) {
+                    $c = $mission->total_seat - $seat->count;
+                    if ($c == 0) {
+                      $key = 1;
                     }
                   }
                   if ($key == 0) { ?>
@@ -200,7 +290,22 @@
                               <div class="row">
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/Seats-left.png" alt="" style="height:23px"></div>
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-9">
-                                  <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);"><?php echo $mission->total_seat - $mission->count; ?></h4>
+                                  <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
+                                    <?php
+                                    $key = 0;
+                                    foreach ($seats as $seat) {
+                                      if ($seat->mission_id == $mission->missionid) {
+                                        $key = 1;
+                                        break;
+                                      }
+                                    }
+                                    if ($key == 1) {
+                                      echo $mission->total_seat - $seat->count;
+                                    } else {
+                                      echo $mission->total_seat;
+                                    }
+                                    ?>
+                                  </h4>
                                   <h6 class="mb-2" style="font-size:12px ;color:gray;">Seats Left</h6>
                                 </div>
                               </div>
@@ -210,7 +315,22 @@
                               <div class="row">
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/Already-volunteered.png" alt="" style="height:20px"></div>
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-9">
-                                  <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);"><?php echo $mission->count; ?></h4>
+                                  <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
+                                    <?php
+                                    $key = 0;
+                                    foreach ($seats as $seat) {
+                                      if ($seat->mission_id == $mission->missionid) {
+                                        $key = 1;
+                                        break;
+                                      }
+                                    }
+                                    if ($key == 1) {
+                                      echo $seat->count;
+                                    } else {
+                                      echo '0';
+                                    }
+                                    ?>
+                                  </h4>
                                   <h6 class="mb-2" style="font-size:12px ;color:gray;">Already volunteered</h6>
                                 </div>
                               </div>
@@ -261,7 +381,26 @@
                         break;
                       }
                     }
-                    if ($key == 1) {
+                    if ($mission->mission_type == 'TIME') {
+                      $current = date("Y-m-d h:i:s");
+                      if ($mission->deadline != null && $current > $mission->deadline) {
+                        $key = 1;
+                      } else if ($mission->end_date != null && $current > $mission->end_date) {
+                        $key = 1;
+                      }
+                    }
+                    $k = 0;
+                    $c = 10;
+                    foreach ($seats as $seat) {
+                      if ($seat->mission_id == $mission->missionid) {
+                        $k = 1;
+                        break;
+                      }
+                    }
+                    if ($k == 1) {
+                      $c = $mission->total_seat - $seat->count;
+                    }
+                    if ($key == 1 || $c == 0) {
                       echo 'View Detail';
                     } else {
                       echo 'Apply';
@@ -312,7 +451,7 @@
                       echo '<div class="d-flex align-items-center five-txt">APPLIED</div>';
                     }
                     ?>
-                    <div class="d-flex align-items-center second-txt1 p-2">
+                    <div class="d-flex align-items-center second-txt1 ps-2 pe-2 pt-1 pb-1">
                       <?php
                       $key = 0;
                       foreach ($likeusers as $likeuser) {
@@ -392,7 +531,22 @@
                                     <div class="row">
                                       <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="../mvc/Assets/images/Seats-left.png" alt="" style="height:21px"></div>
                                       <div class="col-lg-9 col-md-9 col-sm-9 col-9">
-                                        <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);"><?php echo $mission->total_seat - $mission->count; ?></h4>
+                                        <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">
+                                          <?php
+                                          $key = 0;
+                                          foreach ($seats as $seat) {
+                                            if ($seat->mission_id == $mission->missionid) {
+                                              $key = 1;
+                                              break;
+                                            }
+                                          }
+                                          if ($key == 1) {
+                                            echo $mission->total_seat - $seat->count;
+                                          } else {
+                                            echo $mission->total_seat;
+                                          }
+                                          ?>
+                                        </h4>
                                         <h6 class="mb-0" style="font-size:12px ;color:gray;">Seats Left</h6>
                                       </div>
                                     </div>
@@ -402,7 +556,22 @@
                                     <div class="row">
                                       <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="../mvc/Assets/images/Seats-left.png" alt="" style="height:21px"></div>
                                       <div class="col-lg-9 col-md-9 col-sm-9 col-9">
-                                        <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);"><?php echo $mission->count; ?></h4>
+                                        <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">
+                                          <?php
+                                          $key = 0;
+                                          foreach ($seats as $seat) {
+                                            if ($seat->mission_id == $mission->missionid) {
+                                              $key = 1;
+                                              break;
+                                            }
+                                          }
+                                          if ($key == 1) {
+                                            echo $seat->count;
+                                          } else {
+                                            echo '0';
+                                          }
+                                          ?>
+                                        </h4>
                                         <h6 class="mb-0" style="font-size:12px ;color:gray;">Already volunteered</h6>
                                       </div>
                                     </div>
@@ -487,7 +656,26 @@
                                 break;
                               }
                             }
-                            if ($key == 1) {
+                            if ($mission->mission_type == 'TIME') {
+                              $current = date("Y-m-d h:i:s");
+                              if ($mission->deadline != null && $current > $mission->deadline) {
+                                $key = 1;
+                              } else if ($mission->end_date != null && $current > $mission->end_date) {
+                                $key = 1;
+                              }
+                            }
+                            $k = 0;
+                            $c = 10;
+                            foreach ($seats as $seat) {
+                              if ($seat->mission_id == $mission->missionid) {
+                                $k = 1;
+                                break;
+                              }
+                            }
+                            if ($k == 1) {
+                              $c = $mission->total_seat - $seat->count;
+                            }
+                            if ($key == 1 || $c == 0) {
                               echo 'View Detail';
                             } else {
                               echo 'Apply';
@@ -505,30 +693,36 @@
           </div>
         </div>
       </div>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination pager justify-content-center">
-          <?php
-          $next = $page + 1;
-          $previous = $page - 1;
-          echo "<li class='page-item'><a class='page-link' href='home?page=1' style='border-radius:5px; padding:0px 10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
-          if ($previous >= 1)
-            echo "<li class='page-item'><a class='page-link' href='home?page=$previous' style='border-radius:5px; padding:0px 10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
-          else
-            echo "<li class='page-item'><a class='page-link' href='home?page=1' style='border-radius:5px; padding:0px 10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
-          for ($i = 1; $i <= $cnt; $i++) {
-            if ($i == $page)
-              echo "<li class='page-item'><a class='page-link active text-center' href='home?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
+      <?php if ($row > 0) { ?>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination pager justify-content-center">
+            <?php
+            $next = $page + 1;
+            $previous = $page - 1;
+            echo "<li class='page-item'><a class='page-link' href='home?page=1' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
+            if ($previous >= 1)
+              echo "<li class='page-item'><a class='page-link' href='home?page=$previous' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
             else
-              echo "<li class='page-item'><a class='page-link text-center' href='home?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
-          }
-          if ($next <= $cnt)
-            echo "<li class='page-item'><a class='page-link' href='home?page=$next' style='border-radius:5px; padding:0px 10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
-          else
-            echo "<li class='page-item'><a class='page-link' href='home?page=$cnt' style='border-radius:5px; padding:0px 10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
-          echo "<li class='page-item'><a class='page-link' href='home?page=$cnt' style='border-radius:5px; padding:0px 10px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
-          ?>
-        </ul>
-      </nav>
+              echo "<li class='page-item'><a class='page-link' href='home?page=1' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
+            for ($i = 1; $i <= $cnt; $i++) {
+              if ($i == $page)
+                echo "<li class='page-item'><a class='page-link active text-center' href='home?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
+              else
+                echo "<li class='page-item'><a class='page-link text-center' href='home?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
+            }
+            if ($next <= $cnt)
+              echo "<li class='page-item'><a class='page-link' href='home?page=$next' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
+            else
+              echo "<li class='page-item'><a class='page-link' href='home?page=$cnt' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
+            echo "<li class='page-item'><a class='page-link' href='home?page=$cnt' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
+            ?>
+          </ul>
+        </nav>
+      <?php } else { ?>
+        <div class="text-center m-4">
+          No mission Found
+        </div>
+      <?php } ?>
       <br />
     </div>
   </section>

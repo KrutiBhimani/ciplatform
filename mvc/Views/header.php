@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html>
 
 <head>
@@ -10,7 +10,7 @@
   <link href="../mvc/Assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <!-- <link href="../mvc/Assets/css/font-awesome.min.css" rel="stylesheet"> -->
-  <link href="../mvc/Assets/css/style1.css" rel="stylesheet">
+  <link href="../mvc/Assets/css/style4.css" rel="stylesheet">
 
   <!-- for popup -->
   <script src="../mvc/Assets/js/jquery.min.js"></script>

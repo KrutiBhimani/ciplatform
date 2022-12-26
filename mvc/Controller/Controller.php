@@ -61,6 +61,9 @@ class Controller extends Model
 				case '/timesheet':
 					include "adminController/timesheetController.php";
 					break;
+				case '/ruff':
+					include "ruffController.php";
+					break;
 				case '/stories';
 					include "homeController/storyController.php";
 					break;

@@ -26,7 +26,6 @@ class Model
 		$vals = implode("','", $data);
 		$sql = "insert into $tbl ($clms) values ('$vals')";
 		$sql = str_replace("''", "NULL", $sql);
-		echo $sql;
 		$insertEx = $this->connection->query($sql);
 		if ($insertEx) {
 			$response['Data'] = null;
@@ -192,6 +191,26 @@ class Model
 		if ($tblName == 'mission_application') {
 			$selSql .= " AND (approval_status LIKE 'APPROVE' OR approval_status LIKE 'PENDING')";
 		}
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
+	function SelectSeat()
+	{
+		$selSql = "SELECT *,Count(mission_id) as count FROM `mission_application` 
+		WHERE approval_status LIKE 'APPROVE'
+		GROUP By mission_id";
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
 			while ($FetchData = $sqlEx->fetch_object()) {
@@ -400,9 +419,9 @@ class Model
 		}
 		return $response;
 	}
-	function SelectData3($postno, $pagecount,$resultString)
+	function SelectData3($postno, $pagecount,$resultString,$user_id = 0,array $where = [],$int = '')
 	{
-		$selSql = "SELECT *,city.name as city_name, country.name as country_name,mission.title as mission_title, mission_theme.title as theme_title,mission.mission_id as missionid,COUNT(mission_application.mission_id) as count, ROUND(AVG(mission_rating.rating)) as rating from mission
+		$selSql = "SELECT *,city.name as city_name, country.name as country_name,mission.title as mission_title, mission_theme.title as theme_title,mission.mission_id as missionid,COUNT(mission_application.mission_id) as count, ROUND(AVG(mission_rating.rating)) as rating, time_mission.total_seat - COUNT(mission_application.mission_id) as seatcount from mission
 		LEFT JOIN time_mission on time_mission.mission_id = mission.mission_id 
 		LEFT JOIN goal_mission on goal_mission.mission_id = mission.mission_id 
 		LEFT JOIN city on city.city_id = mission.city_id
@@ -411,10 +430,55 @@ class Model
 		LEFT JOIN mission_media on mission_media.mission_id = mission.mission_id
 		LEFT JOIN mission_document on mission_document.mission_id = mission.mission_id
         LEFT JOIN mission_application on mission_application.mission_id = mission.mission_id
-        LEFT JOIN mission_rating on mission_rating.mission_id = mission.mission_id
-		GROUP By mission.mission_id
-		ORDER BY mission.mission_id $resultString
-		LIMIT $postno,$pagecount";
+        LEFT JOIN mission_rating on mission_rating.mission_id = mission.mission_id";
+		if($resultString=='Sort by my favourite'){
+			$selSql .= " INNER JOIN favourite_mission on favourite_mission.mission_id = mission.mission_id Where favourite_mission.user_id = $user_id AND favourite_mission.deleted_at is null";
+		}
+		if($int == null)
+		{
+			if (!empty($where)) {
+				$selSql .= " WHERE (";
+				foreach ($where as $key => $value) {
+					$selSql .= " $key LIKE '%$value%' OR";
+				}
+				$selSql = rtrim($selSql, 'OR');
+				$selSql .= ") ";
+			}
+		}
+		if($int != null)
+		{
+			if (!empty($where)) {
+				$selSql .= " WHERE (";
+				foreach ($where as $key => $value) {
+					$selSql .= " $int LIKE '%$value%' OR";
+				}
+				$selSql = rtrim($selSql, 'OR');
+				$selSql .= ") ";
+			}
+		}
+		$selSql .= " GROUP By mission.mission_id";
+		if($resultString=='Newest')
+		{
+			$selSql .= " ORDER BY mission.mission_id DESC ";
+		}
+		if($resultString=='Oldest')
+		{
+			$selSql .= " ORDER BY mission.mission_id ASC ";
+		}
+		if($resultString=='sort by deadline')
+		{
+			$selSql .= " ORDER BY time_mission.deadline ASC ";
+		}
+		if($resultString=='Lowest available seats')
+		{
+			$selSql .= " ORDER BY seatcount ASC ";
+		}
+		if($resultString=='Highest available seats')
+		{
+			$selSql .= " ORDER BY seatcount DESC ";
+		}
+		$selSql .= " LIMIT $postno,$pagecount";
+		// echo $selSql;
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
 			while ($FetchData = $sqlEx->fetch_object()) {
@@ -422,34 +486,38 @@ class Model
 			}
 			$response['Data'] = $allData;
 			$response['Code'] = true;
+			$response['Row'] = $sqlEx->num_rows;
 			$response['Message'] = 'Data retrieved successfully.';
 		} else {
 			$response['Data'] = [];
 			$response['Code'] = false;
+			$response['Row'] = 0;
 			$response['Message'] = 'Data not retrieved.';
 		}
 		return $response;
 	}
-	// function SelectData4()
-	// {
-	// 	$selSql = "SELECT *,COUNT(mission_id) as count FROM `mission_application` 
-	// 	where approval_status = 'APPROVE' GROUP BY mission_id;";
-	// 	echo $selSql;
-	// 	$sqlEx = $this->connection->query($selSql);
-	// 	if ($sqlEx->num_rows > 0) {
-	// 		while ($FetchData = $sqlEx->fetch_object()) {
-	// 			$allData[] = $FetchData;
-	// 		}
-	// 		$response['Data'] = $allData;
-	// 		$response['Code'] = true;
-	// 		$response['Message'] = 'Data retrieved successfully.';
-	// 	} else {
-	// 		$response['Data'] = [];
-	// 		$response['Code'] = false;
-	// 		$response['Message'] = 'Data not retrieved.';
-	// 	}
-	// 	return $response;
-	// }
+	function SelectData4($user_id)
+	{
+		$selSql = "SELECT * FROM `user` 
+		where user_id  != $user_id";
+		echo $selSql;
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Row'] = $sqlEx->num_rows;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Row'] = 0;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
 	function UpdateData1($tbl, $data, array $where = [])
 	{
 		$sql = "UPDATE $tbl SET ";

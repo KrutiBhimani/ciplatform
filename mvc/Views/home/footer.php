@@ -7,7 +7,7 @@
   </div>
   <div id="footer" class="position-absolute w-100" style="z-index: 9;">
     <div class="float-end mt-3 me-3">
-      <img src="../mvc/Assets/images/cross.png" alt="" class="img-fluid" onclick="$('#footer').remove();">
+      <img src="../mvc/Assets/images/cross.png" alt="" class="img-fluid" onclick="$('#footer').remove();" style="cursor: pointer;">
     </div>
     <div class="container-lg">
       <div class="d-flex justify-content-between pt-4 pb-3">

@@ -25,24 +25,35 @@ $cnts = $selectData1['Data'];
 $cnt = ceil($cnts / $pagecount);
 $selectData = $this->SelectData3($postno, $pagecount, 'ASC');
 $missions = $selectData['Data'];
+$row = $selectData['Row'];
+$selectData = $this->SelectData('city');
+$cities = $selectData['Data'];
+$selectData = $this->SelectData('country');
+$countries = $selectData['Data'];
+$selectData = $this->SelectData('mission_theme');
+$themes = $selectData['Data'];
+$selectData = $this->SelectData('skill');
+$skills = $selectData['Data'];
+$selectData = $this->SelectData4($user_id);
+$users = $selectData['Data'];
+$userrow = $selectData['Row'];
 foreach ($missions as $mission) {
     $selectData = $this->SelectApply('mission_application', $where);
     $appusers = $selectData['Data'];
     $selectData = $this->SelectApply('favourite_mission', $where);
     $likeusers = $selectData['Data'];
-    // $selectData = $this->SelectApply('mission_invite', $where);
-    // $inviteusers = $selectData['Data'];
-}
-if (isset($_POST['sort'])) {
-    echo 'hello';
+    $selectData = $this->SelectSeat();
+    $seats = $selectData['Data'];
 }
 include 'Views/header.php';
-include 'Views/home/header1.php';
-include 'Views/home/header2.php';
 ?>
 <script>
-    $(document).on('click', '.six-txt', function() {
-        $('#clickedButton').val($(this).text());
+    $(document).on('click', '.six-txt1', function() {
+        var t = $(this).text();
+        var text = t.trim();
+        $('#clickedButton').val($(this).text().trim());
+        let form1 = document.getElementById("selectSort1");
+        form1.submit();
     })
     $(document).ready(function() {
         $("#gridlink").click(function() {
@@ -70,8 +81,42 @@ include 'Views/home/header2.php';
             }
         });
     });
+
+    function showHide() {
+        let form = document.getElementById("selectSort");
+        form.submit();
+    }
+
+    function showHide1() {
+        let form1 = document.getElementById("selectSort1");
+        form1.submit();
+    }
+
+    function showHide2() {
+        let form2 = document.getElementById("selectSort1");
+        form2.submit();
+    }
+
+    function showCountry() {
+        let form3 = document.getElementById("selectSort1");
+        form3.submit();
+    }
+    function showCity() {
+        let form4 = document.getElementById("selectSort1");
+        form4.submit();
+    }
+    function showTheme() {
+        let form5 = document.getElementById("selectSort1");
+        form5.submit();
+    }
+    function showSkill() {
+        let form6 = document.getElementById("selectSort1");
+        form6.submit();
+    }
 </script>
 <?php
+include 'Views/home/header1.php';
+include 'Views/home/header2.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -117,10 +162,75 @@ switch ($source) {
             <script type="text/javascript">
                 window.location.href = 'home';
             </script>
-<?php
+            <?php
         }
         break;
     default:
+        if (isset($_POST['sort'])) {
+            $order = $_POST['sort'];
+            $selectData = $this->SelectData3($postno, $pagecount, $order, $user_id);
+            $missions = $selectData['Data'];
+            $row = $selectData['Row'];
+        }
+        if (isset($_POST['search'])) {
+            $search = $_POST['search'];
+            $where = [
+                'mission.title' => $search,
+                'city.name' => $search,
+                'mission_theme.title' => $search,
+                'mission.short_description' => $search,
+                'mission.organization_name' => $search
+            ];
+            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where);
+            $missions = $selectData['Data'];
+            $row = $selectData['Row'];
+        }
+        if (isset($_POST['country'])) {
+            $country = $_POST['country'];
+            $where = [
+                'country.name' => $country
+            ];
+            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where);
+            $missions = $selectData['Data'];
+            $row = $selectData['Row'];
+        }
+        if (isset($_POST['city'])) {
+            $where = array();
+            foreach ($_POST['city'] as $item) {
+                $where[] = $item;
+            }
+            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where,'city.name');
+            $missions = $selectData['Data'];
+            $row = $selectData['Row'];
+        }
+        if (isset($_POST['theme'])) {
+            $where = array();
+            foreach ($_POST['theme'] as $item) {
+                $where[] = $item;
+            }
+            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where,'mission_theme.title');
+            $missions = $selectData['Data'];
+            $row = $selectData['Row'];
+        }
+        if (isset($_POST['skill'])) {
+            $where = array();
+            foreach ($_POST['skill'] as $item) {
+                $where[] = $item;
+            }
+            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where,'skill.skill_name');
+            $missions = $selectData['Data'];
+            $row = $selectData['Row'];
+        }
+        if (isset($_POST['inviteuser'])) {
+            foreach ($_POST['invite'] as $item) {
+                $data = [
+                    'to_user_id' => $item,
+                    'from_user_id' => $user_id,
+                    'mission_id' => $_POST['m_id']
+                ];
+                $this->InsertData('mission_invite', $data);
+            }
+        }
         include 'Views/home/home.php';
         break;
 }
