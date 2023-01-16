@@ -1,10 +1,10 @@
 <?php
 
 date_default_timezone_set('Asia/Kolkata');
-require_once('Model/Model.php');
+require_once('Model/loginModel.php');
 session_start();
 
-class Controller extends Model
+class Controller extends loginModel
 {
 
 	function __construct()
@@ -67,6 +67,12 @@ class Controller extends Model
 				case '/stories';
 					include "homeController/storyController.php";
 					break;
+				case '/share_story';
+					include "homeController/share_storyController.php";
+					break;
+				case '/story_detail';
+					include "homeController/story_detailController.php";
+					break;
 				case '/edit_user';
 					include "homeController/edituserController.php";
 					break;
@@ -75,6 +81,9 @@ class Controller extends Model
 					break;
 				case '/policy';
 					include "homeController/policyController.php";
+					break;
+				case '/Volunteering_Mission';
+					include "homeController/Volunteering_MissionController.php";
 					break;
 				default:
 					break;

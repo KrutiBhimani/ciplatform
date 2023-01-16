@@ -42,11 +42,13 @@ switch ($source) {
         if (isset($_POST['add_user'])) {
             $avatar = $_FILES['avatar']['name'];
             $avatar_temp = $_FILES['avatar']['tmp_name'];
+            $salt = "SeCrEtStUfFfOrPaSsWoRd";
+            $encrypted_password = base64_encode($_POST['password'] . $salt);
             $insert_data = [
                 'first_name' => $_POST['first_name'],
                 'last_name' => $_POST['last_name'],
                 'email' => $_POST['email'],
-                'password' => $_POST['password'],
+                'password' => $encrypted_password,
                 'phone_number' => $_POST['phone_number'],
                 'city_id' => $_POST['city_id'],
                 'country_id' => $_POST['country_id'],
@@ -89,6 +91,8 @@ switch ($source) {
         if (isset($_POST['edit_user'])) {
             $avatar = $_FILES['avatar']['name'];
             $avatar_temp = $_FILES['avatar']['tmp_name'];
+            $salt = "SeCrEtStUfFfOrPaSsWoRd";
+            $encrypted_password = base64_encode($_POST['password'] . $salt);
             if (empty($avatar)) {
                 $selectData12 = $this->SelectId($user_id);
                 $avatar = $selectData12['Data']->avatar;
@@ -98,7 +102,7 @@ switch ($source) {
                 'first_name' => $_POST['first_name'],
                 'last_name' => $_POST['last_name'],
                 'email' => $_POST['email'],
-                'password' => $_POST['password'],
+                'password' => $encrypted_password,
                 'phone_number' => $_POST['phone_number'],
                 'city_id' => $_POST['city_id'],
                 'country_id' => $_POST['country_id'],

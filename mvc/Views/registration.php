@@ -2,11 +2,15 @@
   <div class="row height100per">
     <div class="col-lg-8 col-md-8 col-sm-12 col-12 p-0">
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators" style="bottom:2%">
-          <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="border-top: 0; border-bottom:0;border-radius:15px;width:8px;height: 8px;"></li>
-          <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" style="border-top: 0; border-bottom:0;border-radius:15px;width:8px;height: 8px;"></li>
-          <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" style="border-top: 0; border-bottom:0;border-radius:15px;width:8px;height: 8px;"></li>
-          <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4" style="border-top: 0; border-bottom:0;border-radius:15px;width:8px;height: 8px;"></li>
+      <div class="carousel-indicators" style="bottom:2%">
+          <?php foreach ($banners as $banner) {
+            $less= $banner->sort_order - 1;
+            if ($banner->sort_order == 1) {?>
+              <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?php echo $less?>" class="active" aria-current="true" aria-label="Slide <?php echo $banner->sort_order?>" style="border-top: 0; border-bottom:0;border-radius:15px;width:8px;height: 8px;"></li>
+            <?php } else { ?>
+              <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?php echo $less?>" aria-label="Slide <?php echo $banner->sort_order?>" style="border-top: 0; border-bottom:0;border-radius:15px;width:8px;height: 8px;"></li>
+          <?php }
+          } ?>
         </div>
         <div class="carousel-inner">
           <?php foreach ($banners as $banner) {
@@ -27,7 +31,7 @@
       </div>
       <div class="col-md-4 col-sm-12 d-md-flex align-items-center position-relative">
         <div class="Layer-52">
-          <br />
+          
           <form method="post" enctype="multipart/form-data">
             <div class="form-group">
               <span class="Email">First Name</span>
@@ -56,11 +60,11 @@
             <span id=error style="color: red;"></span>
             <button class="login" name="register" type="submit">Register</button>
           </form>
-          <p class="text-center">
-            <a href="forgot" class="lost">Lost your password?</a><br /><br />
-          </p><br/><br/>
+          <p class="text-center m-0">
+            <a class="text-center m-0 lost" href="forgot">Lost your password?</a>
+          </p><br/>
         </div>
-        <a href="policy.html" class="text-center position-absolute bottom-0 start-50 translate-middle p-0 m-0 mt-3 Privacy-Policy">Privacy Policy</a>
+        <a href="policy" class="text-center position-absolute bottom-0 start-50 translate-middle p-0 m-0 mt-3 Privacy-Policy">Privacy Policy</a>
       </div>
     </div>
   </div>

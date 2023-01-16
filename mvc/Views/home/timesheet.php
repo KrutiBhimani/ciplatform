@@ -73,7 +73,7 @@
     </div>
 </div>
 <br/><br/>
-<div class="container">
+<div class="container-lg">
     <p class="fs-2 fw-light pt-5">Volunteering Timesheet</p>
     <div class="row">
         <div class="col m-2 pb-5 " style="border: 1px solid #dee2e6; border-radius: 5px;">

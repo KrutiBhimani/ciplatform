@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2022 at 12:10 PM
+-- Generation Time: Dec 27, 2022 at 02:43 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `first_name`, `last_name`, `email`, `password`, `phone_number`, `avatar`, `created_at`, `updated_at`, `delete_at`) VALUES
-(1, 'admin', 'patel', 'admin@gmail.com', '123', 1234567890, 'avatar-5.jpg', '2022-11-22 03:55:27', '2022-12-04 06:24:07', NULL);
+(1, 'admin', 'patel', 'admin@gmail.com', 'MTIzU2VDckV0JS4vX1BhU3NXb1JkLkNvbSxtWV9AUyN0dSFGZg==', 1234567890, 'avatar-5.jpg', '2022-11-22 03:55:27', '2022-12-04 06:24:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -217,7 +217,8 @@ INSERT INTO `favourite_mission` (`favourite_mission_id`, `user_id`, `mission_id`
 (6, 63, 96, '2022-12-08 04:31:33', NULL, NULL),
 (7, 29, 92, '2022-12-09 08:11:21', NULL, NULL),
 (8, 29, 94, '2022-12-09 08:11:29', NULL, NULL),
-(11, 29, 98, '2022-12-09 08:31:13', NULL, '2022-12-08 20:31:19');
+(11, 29, 98, '2022-12-09 08:31:13', NULL, '2022-12-08 20:31:19'),
+(12, 61, 91, '2022-12-21 05:23:05', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -274,8 +275,8 @@ CREATE TABLE `mission` (
 --
 
 INSERT INTO `mission` (`mission_id`, `theme_id`, `city_id`, `country_id`, `title`, `short_description`, `description`, `start_date`, `end_date`, `mission_type`, `status`, `organization_name`, `organization_detail`, `availability`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(91, 1, 2, 2, 'Grow Trees – On the path to environment sustainability', 'Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor incididunt ut labore...', NULL, '2019-01-10 17:46:59', '2019-02-25 17:47:31', 'TIME', '0', 'Tree Canada', NULL, NULL, '2022-12-05 12:20:27', NULL, NULL),
-(92, 2, 3, 3, 'Education Supplies for Every Pair of Shoes Sold', 'Lorem ipsum dolor sit amet, consectetur dipiscing elit, sed do eiusmod tempor incididunt ut labore...', NULL, '2019-01-10 17:53:07', '2019-02-25 17:53:26', 'TIME', '0', 'Australian Paradise', NULL, NULL, '2022-12-05 12:24:42', NULL, NULL),
+(91, 1, 2, 2, 'Grow Trees – On the path to environment sustainability', 'Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor incididunt ut labore...', NULL, '2019-01-10 17:46:59', '2023-02-25 17:47:31', 'TIME', '0', 'Tree Canada', NULL, NULL, '2022-12-05 12:20:27', NULL, NULL),
+(92, 2, 3, 3, 'Education Supplies for Every Pair of Shoes Sold', 'Lorem ipsum dolor sit amet, consectetur dipiscing elit, sed do eiusmod tempor incididunt ut labore...', NULL, '2019-01-10 17:53:07', '2023-02-25 17:53:26', 'TIME', '0', 'Australian Paradise', NULL, NULL, '2022-12-05 12:24:42', NULL, NULL),
 (93, 3, 4, 4, 'Nourish the Children in African country', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...', NULL, NULL, NULL, 'TIME', '0', 'The Hunger', NULL, NULL, '2022-12-05 12:27:27', NULL, NULL),
 (94, 1, 5, 5, 'CSR initiative stands for Coffee and Farmer Equity', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...', NULL, NULL, NULL, 'TIME', '0', 'CSE Network', NULL, NULL, '2022-12-05 12:29:34', NULL, NULL),
 (95, 4, 6, 6, 'Animal welfare & save birds campaign', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...', NULL, NULL, NULL, 'GOAL', '0', 'JR Foundation', NULL, NULL, '2022-12-05 12:32:51', NULL, NULL),
@@ -311,7 +312,8 @@ INSERT INTO `mission_application` (`mission_application_id`, `mission_id`, `user
 (12, 92, 63, '2022-12-06 05:12:27', 'APPROVE', '2022-12-06 04:12:52', NULL, NULL),
 (13, 93, 63, '2022-12-07 05:05:43', 'APPROVE', '2022-12-07 04:06:00', NULL, NULL),
 (14, 92, 29, '2022-12-08 04:44:33', 'DECLINE', '2022-12-08 03:44:47', NULL, NULL),
-(15, 93, 29, '2022-12-08 04:44:33', 'DECLINE', '2022-12-08 03:44:47', NULL, NULL);
+(15, 93, 29, '2022-12-08 04:44:33', 'DECLINE', '2022-12-08 03:44:47', NULL, NULL),
+(16, 99, 63, '2022-12-23 05:57:55', 'APPROVE', '2022-12-23 04:58:07', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -345,6 +347,17 @@ CREATE TABLE `mission_invite` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mission_invite`
+--
+
+INSERT INTO `mission_invite` (`mission_invite_id`, `mission_id`, `from_user_id`, `to_user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 97, 29, 61, '2022-12-23 11:15:22', NULL, NULL),
+(3, 95, 63, 29, '2022-12-23 11:16:21', NULL, NULL),
+(4, 95, 63, 61, '2022-12-23 11:16:21', NULL, NULL),
+(5, 92, 29, 63, '2022-12-27 04:39:41', NULL, NULL),
+(6, 93, 29, 61, '2022-12-27 05:07:53', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -418,6 +431,21 @@ CREATE TABLE `mission_skill` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mission_skill`
+--
+
+INSERT INTO `mission_skill` (`mission_skill_id`, `skill_id`, `mission_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(53, 19, 91, '2022-12-27 12:05:34', NULL, NULL),
+(54, 23, 92, '2022-12-27 12:05:34', NULL, NULL),
+(55, 5, 93, '2022-12-27 12:06:01', NULL, NULL),
+(56, 26, 94, '2022-12-27 12:06:01', NULL, NULL),
+(57, 18, 95, '2022-12-27 12:06:40', NULL, NULL),
+(58, 10, 96, '2022-12-27 12:06:40', NULL, NULL),
+(59, 8, 97, '2022-12-27 12:07:06', NULL, NULL),
+(60, 9, 98, '2022-12-27 12:07:06', NULL, NULL),
+(61, 6, 99, '2022-12-27 12:07:22', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -540,7 +568,11 @@ INSERT INTO `password_reset` (`email`, `token`, `created_at`) VALUES
 ('190540107014@darshan.ac.in', '768e78024aa8fdb9b8fe87be86f64745d49d397d3b', '2022-11-25 11:44:31'),
 ('190540107014@darshan.ac.in', '768e78024aa8fdb9b8fe87be86f64745869c437787', '2022-11-28 11:06:21'),
 ('190540107014@darshan.ac.in', '768e78024aa8fdb9b8fe87be86f64745e9d148d393', '2022-11-28 11:10:50'),
-('krutipatel5773@gmail.com', '768e78024aa8fdb9b8fe87be86f6474550fd720b8d', '2022-11-29 04:20:06');
+('krutipatel5773@gmail.com', '768e78024aa8fdb9b8fe87be86f6474550fd720b8d', '2022-11-29 04:20:06'),
+('190540107014@darshan.ac.in', '768e78024aa8fdb9b8fe87be86f647451f0356e141', '2022-12-27 04:43:13'),
+('krutipatel5773@gmail.com', '768e78024aa8fdb9b8fe87be86f64745dcd7c4511e', '2022-12-27 04:45:33'),
+('krutipatel5773@gmail.com', '768e78024aa8fdb9b8fe87be86f64745c35e8f864c', '2022-12-27 04:45:57'),
+('190540107014@darshan.ac.in', '768e78024aa8fdb9b8fe87be86f64745a4faa4e79d', '2022-12-27 04:50:04');
 
 -- --------------------------------------------------------
 
@@ -682,13 +714,13 @@ CREATE TABLE `time_mission` (
 --
 
 INSERT INTO `time_mission` (`time_mission_id`, `mission_id`, `total_seat`, `deadline`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(18, 91, 20, '2019-01-09 00:00:00', '2022-12-05 12:20:27', NULL, NULL),
-(19, 92, NULL, '2019-01-09 00:00:00', '2022-12-05 12:24:42', NULL, NULL),
-(20, 93, 20, '2019-01-09 00:00:00', '2022-12-05 12:27:27', NULL, NULL),
+(18, 91, 20, '2023-01-09 00:00:00', '2022-12-23 05:08:44', NULL, NULL),
+(19, 92, NULL, '2023-01-09 00:00:00', '2022-12-23 05:09:03', NULL, NULL),
+(20, 93, 20, '2023-01-09 00:00:00', '2022-12-23 05:11:31', NULL, NULL),
 (21, 94, NULL, NULL, '2022-12-05 12:29:34', NULL, NULL),
 (22, 97, NULL, NULL, '2022-12-05 12:41:40', NULL, NULL),
 (23, 98, 10, '2019-01-09 00:00:00', '2022-12-05 12:44:12', NULL, NULL),
-(24, 99, 20, '2022-12-30 10:37:00', '2022-12-09 05:07:17', NULL, NULL);
+(24, 99, 1, '2022-12-30 10:37:00', '2022-12-23 05:12:21', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -723,9 +755,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `password`, `phone_number`, `avatar`, `why_i_volunteer`, `employee_id`, `department`, `city_id`, `country_id`, `profile_text`, `linked_in_url`, `title`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(29, 'kruti', 'bhimani', '190540107014@darshan.ac.in', '123', 1234567890, 'volunteer6.png', NULL, '123324', 'HR', 3, 5, 'fdfdfd', NULL, NULL, '1', '2022-11-23 05:52:16', '2022-12-05 04:38:59', NULL),
-(61, 'kruti', 'patel', 'krutipatel5773@gmail.com', '123', 1234567890, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, '1', '2022-11-29 04:18:13', NULL, NULL),
-(63, 'bansi', 'patel', 'bansi9315@gmail.com', '123', 2147483647, 'volunteer9.png', NULL, NULL, NULL, 7, 5, NULL, NULL, NULL, '1', '2022-12-05 04:37:38', NULL, NULL);
+(29, 'kruti', 'bhimani', '190540107014@darshan.ac.in', 'MTIzU2VDckV0U3RVZkZmT3JQYVNzV29SZA==', 1234567890, 'volunteer6.png', NULL, '123324', 'HR', 3, 5, 'fdfdfd', NULL, NULL, '1', '2022-11-23 05:52:16', '2022-12-26 21:00:56', NULL),
+(61, 'kruti', 'patel', 'krutipatel5773@gmail.com', 'MTIzU2VDckV0U3RVZkZmT3JQYVNzV29SZA==', 1234567890, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, '1', '2022-11-29 04:18:13', NULL, NULL),
+(63, 'bansi', 'patel', 'bansi9315@gmail.com', 'MTIzU2VDckV0U3RVZkZmT3JQYVNzV29SZA==', 2147483647, 'volunteer9.png', NULL, NULL, NULL, 7, 5, NULL, NULL, NULL, '1', '2022-12-05 04:37:38', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -968,7 +1000,7 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT for table `favourite_mission`
 --
 ALTER TABLE `favourite_mission`
-  MODIFY `favourite_mission_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `favourite_mission_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `goal_mission`
@@ -986,7 +1018,7 @@ ALTER TABLE `mission`
 -- AUTO_INCREMENT for table `mission_application`
 --
 ALTER TABLE `mission_application`
-  MODIFY `mission_application_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `mission_application_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `mission_document`
@@ -998,7 +1030,7 @@ ALTER TABLE `mission_document`
 -- AUTO_INCREMENT for table `mission_invite`
 --
 ALTER TABLE `mission_invite`
-  MODIFY `mission_invite_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `mission_invite_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `mission_media`
@@ -1016,7 +1048,7 @@ ALTER TABLE `mission_rating`
 -- AUTO_INCREMENT for table `mission_skill`
 --
 ALTER TABLE `mission_skill`
-  MODIFY `mission_skill_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `mission_skill_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `mission_theme`
@@ -1064,7 +1096,7 @@ ALTER TABLE `time_mission`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `user_skill`

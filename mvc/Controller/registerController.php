@@ -2,11 +2,13 @@
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
     if ($password == $password2) {
+        $salt = "SeCrEtStUfFfOrPaSsWoRd";
+        $encrypted_password = base64_encode($password . $salt);
         $insert_data = [
             'first_name' => $_POST['first_name'],
             'last_name' => $_POST['last_name'],
             'email' => $_POST['email'],
-            'password' => $_POST['password'],
+            'password' => $encrypted_password,
             'phone_number' => $_POST['phone_number'],
             'city_id' => 1,
             'country_id' => 1

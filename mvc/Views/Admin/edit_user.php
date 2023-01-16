@@ -19,7 +19,12 @@
                     <p class="mb-1 mt-4" style="font-size:14px;">Phone number</p>
                     <input type="text" name="phone_number" class="popup" value="<?php echo $user->phone_number; ?>" required>
                     <p class="mb-1 mt-4" style="font-size:14px;">password</p>
-                    <input type="password" name="password" class="popup" value="<?php echo $user->password; ?>" required>
+                    <?php
+                    $salt = "SeCrEtStUfFfOrPaSsWoRd";
+                    $pass_raw = base64_decode($user->password);
+                    $pass = preg_replace(sprintf('/%s/', $salt), '', $pass_raw);
+                    ?>
+                    <input type="password" name="password" class="popup" value="<?php echo $pass; ?>" required>
                     <p class="mb-1 mt-4" style="font-size:14px;">Avatar</p>
                     <img class="m-2" style="height:50px" src="../mvc/Assets/uplodes/<?php echo $user->avatar; ?>">
                     <input type="file" name="avatar" value="">

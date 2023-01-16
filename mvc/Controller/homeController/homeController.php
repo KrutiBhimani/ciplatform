@@ -26,17 +26,6 @@ $cnt = ceil($cnts / $pagecount);
 $selectData = $this->SelectData3($postno, $pagecount, 'ASC');
 $missions = $selectData['Data'];
 $row = $selectData['Row'];
-$selectData = $this->SelectData('city');
-$cities = $selectData['Data'];
-$selectData = $this->SelectData('country');
-$countries = $selectData['Data'];
-$selectData = $this->SelectData('mission_theme');
-$themes = $selectData['Data'];
-$selectData = $this->SelectData('skill');
-$skills = $selectData['Data'];
-$selectData = $this->SelectData4($user_id);
-$users = $selectData['Data'];
-$userrow = $selectData['Row'];
 foreach ($missions as $mission) {
     $selectData = $this->SelectApply('mission_application', $where);
     $appusers = $selectData['Data'];
@@ -45,7 +34,19 @@ foreach ($missions as $mission) {
     $selectData = $this->SelectSeat();
     $seats = $selectData['Data'];
 }
-include 'Views/header.php';
+$selectData = $this->SelectData5('city');
+$cities = $selectData['Data'];
+$selectData = $this->SelectData5('country');
+$countries = $selectData['Data'];
+$selectData = $this->SelectData5('mission_theme');
+$themes = $selectData['Data'];
+$selectData = $this->SelectData5('skill');
+$skills = $selectData['Data'];
+$selectData = $this->SelectData4($user_id);
+$users = $selectData['Data'];
+$userrow = $selectData['Row'];
+
+include 'Views/home/header.php';
 ?>
 <script>
     $(document).on('click', '.six-txt1', function() {
@@ -83,40 +84,28 @@ include 'Views/header.php';
     });
 
     function showHide() {
-        let form = document.getElementById("selectSort");
+        let form = document.getElementById("selectSort1");
         form.submit();
     }
 
-    function showHide1() {
-        let form1 = document.getElementById("selectSort1");
-        form1.submit();
-    }
-
     function showHide2() {
-        let form2 = document.getElementById("selectSort1");
+        let form2 = document.getElementById("selectSort3");
         form2.submit();
     }
 
-    function showCountry() {
+    function removecountry() {
+        $("option:selected").removeAttr("selected");
         let form3 = document.getElementById("selectSort1");
         form3.submit();
     }
-    function showCity() {
-        let form4 = document.getElementById("selectSort1");
-        form4.submit();
-    }
-    function showTheme() {
-        let form5 = document.getElementById("selectSort1");
-        form5.submit();
-    }
-    function showSkill() {
-        let form6 = document.getElementById("selectSort1");
-        form6.submit();
+
+    function remove(value) {
+        $('input[value="' + value + '"]').removeAttr('checked');
+        let form3 = document.getElementById("selectSort1");
+        form3.submit();
     }
 </script>
 <?php
-include 'Views/home/header1.php';
-include 'Views/home/header2.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -130,6 +119,28 @@ switch ($source) {
         $insertEx = $this->InsertData('favourite_mission', $insert_data);
         if ($insertEx['Code']) {
 ?>
+            <script type="text/javascript">
+                window.location.href = 'home';
+            </script>
+        <?php
+        } else {
+        ?>
+            <script type="text/javascript">
+                window.location.href = 'home';
+            </script>
+        <?php
+        }
+        break;
+    case 'apply':
+        $insert_data = [
+            'user_id' => $user_id,
+            'mission_id' => $_GET['id'],
+            'applied_at' => date("Y-m-d h:i:s"),
+            'approval_status' => 'PENDING'
+        ];
+        $insertEx = $this->InsertData('mission_application', $insert_data);
+        if ($insertEx['Code']) {
+        ?>
             <script type="text/javascript">
                 window.location.href = 'home';
             </script>
@@ -166,73 +177,134 @@ switch ($source) {
         }
         break;
     default:
-        if (isset($_POST['sort'])) {
-            $order = $_POST['sort'];
-            $selectData = $this->SelectData3($postno, $pagecount, $order, $user_id);
-            $missions = $selectData['Data'];
-            $row = $selectData['Row'];
-        }
-        if (isset($_POST['search'])) {
-            $search = $_POST['search'];
-            $where = [
-                'mission.title' => $search,
-                'city.name' => $search,
-                'mission_theme.title' => $search,
-                'mission.short_description' => $search,
-                'mission.organization_name' => $search
-            ];
-            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where);
-            $missions = $selectData['Data'];
-            $row = $selectData['Row'];
-        }
-        if (isset($_POST['country'])) {
-            $country = $_POST['country'];
-            $where = [
-                'country.name' => $country
-            ];
-            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where);
-            $missions = $selectData['Data'];
-            $row = $selectData['Row'];
-        }
-        if (isset($_POST['city'])) {
+        if (isset($_POST['skill']) || isset($_POST['theme']) || isset($_POST['city']) || isset($_POST['country']) || isset($_POST['search']) || isset($_POST['sort']) || isset($_GET['pag'])) {
+            $skill = array();
+            $theme = array();
+            $city = array();
+            $country = array();
             $where = array();
-            foreach ($_POST['city'] as $item) {
-                $where[] = $item;
+            $order = 'Oldest';
+            if (isset($_POST['search'])) {
+                $search = $_POST['search'];
+                $where = [
+                    'mission.title' => $search,
+                    'city.name' => $search,
+                    'mission_theme.title' => $search,
+                    'mission.short_description' => $search,
+                    'mission.organization_name' => $search
+                ];
             }
-            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where,'city.name');
-            $missions = $selectData['Data'];
-            $row = $selectData['Row'];
-        }
-        if (isset($_POST['theme'])) {
-            $where = array();
-            foreach ($_POST['theme'] as $item) {
-                $where[] = $item;
+            if (isset($_POST['country']) && $_POST['country'] != 'none') {
+                $country = [
+                    'country.name' => $_POST['country']
+                ];
             }
-            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where,'mission_theme.title');
-            $missions = $selectData['Data'];
-            $row = $selectData['Row'];
-        }
-        if (isset($_POST['skill'])) {
-            $where = array();
-            foreach ($_POST['skill'] as $item) {
-                $where[] = $item;
+            if (isset($_POST['skill'])) {
+                foreach ($_POST['skill'] as $item) {
+                    $skill[] = $item;
+                }
             }
-            $selectData = $this->SelectData3($postno, $pagecount, 'Oldest', $user_id, $where,'skill.skill_name');
+            if (isset($_POST['theme'])) {
+                foreach ($_POST['theme'] as $item) {
+                    $theme[] = $item;
+                }
+            }
+            if (isset($_POST['city'])) {
+                foreach ($_POST['city'] as $item) {
+                    $city[] = $item;
+                }
+            }
+            if (isset($_POST['sort'])) {
+                $order = $_POST['sort'];
+            }
+
+            $selectData = $this->SelectData3($postno, $pagecount, $order, $user_id, $where, 'kdn', $country, $city, $theme, $skill);
             $missions = $selectData['Data'];
             $row = $selectData['Row'];
         }
         if (isset($_POST['inviteuser'])) {
-            foreach ($_POST['invite'] as $item) {
-                $data = [
-                    'to_user_id' => $item,
-                    'from_user_id' => $user_id,
-                    'mission_id' => $_POST['m_id']
-                ];
-                $this->InsertData('mission_invite', $data);
+            // foreach ($_POST['invite'] as $item) {
+            //     $data = [
+            //         'to_user_id' => $item,
+            //         'from_user_id' => $user_id,
+            //         'mission_id' => $_POST['m_id']
+            //     ];
+            //     $this->InsertData('mission_invite', $data);
+            // }
+            $email = $_POST['email'];
+            $inviteEx = $this->ResetPass($email);
+            if ($inviteEx['Code']) {
+                $_SESSION['invite_data'] = $inviteEx['Data'];
+                if ($_SESSION['invite_data']) {
+                    $link = "<a href='http://localhost/ci-platform/mvc/login'>Click To Get Started</a>";
+                    require '../mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
+                    require_once('../mvc/Libraries/PHPMailer/src/PHPMailer.php');
+                    require_once('../mvc/Libraries/PHPMailer/src/Exception.php');
+                    require_once('../mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
+                    require_once('../mvc/Libraries/PHPMailer/src/OAuth.php');
+                    require_once('../mvc/Libraries/PHPMailer/src/POP3.php');
+                    require_once('../mvc/Libraries/PHPMailer/src/SMTP.php');
+                    if (empty($errors)) {
+                        $data = [
+                            'to_user_id' => $_SESSION['invite_data']->user_id,
+                            'from_user_id' => $user_id,
+                            'mission_id' => $_POST['m_id']
+                        ];
+                        $insertEx = $this->InsertData('mission_invite', $data);
+                        $mail = new PHPMailer\PHPMailer\PHPMailer(true); //defaults to using php "mail()"; the true param means it will throw exceptions on errors, which we need to catch
+                        try {
+                            // $mail->SMTPDebug = 1;                               // Enable verbose debug output
+                            $mail->isSMTP();                                    // Set mailer to use SMTP
+                            $mail->Host = 'smtp.office365.com'; // Specify main and backup SMTP servers
+                            $mail->SMTPAuth = true;                             // Enable SMTP authentication
+                            $mail->Username = 'krutibhimani11@outlook.com';           // SMTP username
+                            $mail->Password = 'kruti123';                       // SMTP password
+                            $mail->SMTPSecure = 'tls';                          // Enable TLS encryption, `ssl` also accepted
+                            $mail->Port = 587;                                  // TCP port to connect, tls=587, ssl=465
+                            $mail->From = 'krutibhimani11@outlook.com';
+                            $mail->FromName = 'kruti bhimani';
+                            $mail->addAddress($email);     // Add a recipient
+                            $mail->addReplyTo($email);
+                            $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
+                            $mail->isHTML(false);                                  // Set email format to HTML
+                            $mail->Subject = 'Invited';
+                            $mail->Body    = 'You gets invitation by user ' . $link . '';
+                            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                            if (!$mail->send()) {
+                                echo 'Message could not be sent.';
+                                echo 'Mailer Error: ' . $mail->ErrorInfo;
+                            } else { ?>
+                                <script type="text/javascript">
+                                    alert("message sent to your email.");
+                                    window.location.href = 'home';
+                                </script>
+                    <?php }
+                            $errors[] = "Send mail sucsessfully";
+                        } catch (Exception $e) {
+                            $errors[] = $e->getMessage(); //Boring error messages from anything else!
+                        }
+                    }
+                } else { ?>
+                    <script type="text/javascript">
+                        alert("user not found");
+                        window.location.href = 'forgot';
+                    </script>
+<?php }
             }
         }
+        if (isset($_POST['contact'])) {
+            $insert_data = [
+                'user_id' => $user->user_id,
+                'subject' => $_POST['subject'],
+                'message' => $_POST['message']
+            ];
+            $insertEx = $this->InsertData('contact', $insert_data);
+        }
+        include 'Views/home/header1.php';
+        include 'Views/home/header2.php';
         include 'Views/home/home.php';
         break;
 }
+
 include 'Views/home/footer.php';
 ?>

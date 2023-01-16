@@ -6,13 +6,13 @@
         $token = md5(2418 * 2) . substr(md5(uniqid(rand(), 1)), 3, 10);
         if ($_SESSION['reset_data']) {
             $link = "<a href='http://localhost/ci-platform/mvc/reset?key=" . $_SESSION['reset_data']->email . "&t=" . $token . "'>Click To Reset password</a>";
-            require '../mvc/Assets/PHPMailer/PHPMailerAutoload.php';
-            require_once('../mvc/Assets/PHPMailer/src/PHPMailer.php');
-            require_once('../mvc/Assets/PHPMailer/src/Exception.php');
-            require_once('../mvc/Assets/PHPMailer/src/OAuthTokenProvider.php');
-            require_once('../mvc/Assets/PHPMailer/src/OAuth.php');
-            require_once('../mvc/Assets/PHPMailer/src/POP3.php');
-            require_once('../mvc/Assets/PHPMailer/src/SMTP.php');
+            require '../mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
+            require_once('../mvc/Libraries/PHPMailer/src/PHPMailer.php');
+            require_once('../mvc/Libraries/PHPMailer/src/Exception.php');
+            require_once('../mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
+            require_once('../mvc/Libraries/PHPMailer/src/OAuth.php');
+            require_once('../mvc/Libraries/PHPMailer/src/POP3.php');
+            require_once('../mvc/Libraries/PHPMailer/src/SMTP.php');
             if (empty($errors)) {
                 $insert_data = [
                     'email' => $_SESSION['reset_data']->email,
@@ -22,7 +22,7 @@
                 $insertEx = $this->InsertData('password_reset', $insert_data);
                 $mail = new PHPMailer\PHPMailer\PHPMailer(true); //defaults to using php "mail()"; the true param means it will throw exceptions on errors, which we need to catch
                 try {
-                    //$mail->SMTPDebug = 1;                               // Enable verbose debug output
+                    $mail->SMTPDebug = 1;                               // Enable verbose debug output
                     $mail->isSMTP();                                    // Set mailer to use SMTP
                     $mail->Host = 'smtp.office365.com'; // Specify main and backup SMTP servers
                     $mail->SMTPAuth = true;                             // Enable SMTP authentication
@@ -30,7 +30,7 @@
                     $mail->Password = 'kruti123';                       // SMTP password
                     $mail->SMTPSecure = 'tls';                          // Enable TLS encryption, `ssl` also accepted
                     $mail->Port = 587;                                  // TCP port to connect, tls=587, ssl=465
-                    $mail->From = 'krutipatel5773@outlook.com';
+                    $mail->From = 'krutibhimani11@outlook.com';
                     $mail->FromName = 'kruti bhimani';
                     $mail->addAddress($email);     // Add a recipient
                     $mail->addReplyTo($email);
