@@ -158,6 +158,46 @@ class loginModel extends Model
 		}
 		return $response;
 	}
+	function timesheethour($user_id)
+	{
+		$selSql = "SELECT * FROM `timesheet` 
+		JOin mission on mission.mission_id = timesheet.mission_id
+		WHERE timesheet.action is null AND timesheet.deleted_at is null AND timesheet.user_id = $user_id";
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
+	function timesheetgoal($user_id)
+	{
+		$selSql = "SELECT * FROM `timesheet` 
+		JOin mission on mission.mission_id = timesheet.mission_id
+		WHERE timesheet.action != 'NULL' AND timesheet.deleted_at is null AND timesheet.user_id = $user_id";
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
 	function Story(int $postno = 0, int $pagecount = 0)
 	{
 		$selSql = "SELECT *,story.title as story_title,story.description as sdescription FROM `story`

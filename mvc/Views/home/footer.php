@@ -29,7 +29,7 @@
     <div class="position-fixed bottom-0 w-100" style="border-top:2px solid rgb(225, 225, 225)">
       <div class="container-lg pt-3 pb-3 mb-1">
         <a href="policy" class="Forma-1-copy-13">Privacy policy</a><br />
-        <a href="#" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup2">contact us</a>
+        <a href="#" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup22">contact us</a>
       </div>
     </div>
     <div id="footer" class="position-fixed bottom-0 w-100" style="z-index: 9;">
@@ -51,7 +51,7 @@
     </div>
   </footer>
 <?php } ?>
-<div id="popup2" class="modal">
+<div id="popup22" class="modal">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-2">
       <div class="modal-header pb-0" style="border-bottom:0 ;">
