@@ -31,7 +31,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../mvc/Assets/uplodes/<?php if ($avatar == '') echo 'user1.png';
-                                                    else echo $avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
+                                                                else echo $avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="edit_user.html">My Profile</a></li>
@@ -47,7 +47,8 @@
                     <ul class="navbar-nav me-auto mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../mvc/Assets/<?php if ($admin->avatar == '') echo 'images/user1.png'; else echo 'uplodes/'.$admin->avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
+                                <img src="../mvc/Assets/<?php if ($admin->avatar == '') echo 'images/user1.png';
+                                                        else echo 'uplodes/' . $admin->avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
                                 <label><?php echo $admin->first_name . ' ' . $admin->last_name; ?></label>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

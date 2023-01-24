@@ -21,7 +21,7 @@
         </div>
     </div>
 </form>
-<form method="post" enctype="multipart/form-data">
+<form name="myForm" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
     <div id="popup3" class="modal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-3">
@@ -113,9 +113,9 @@
                         </script>
                         <label for="choose-file2">
                             <img id="blah" src="../mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png';
-                                                                else echo 'uplodes/' . $user->avatar; ?>" class="rounded-circle mt-4 mb-3" style="height:calc(30px + 8vw);width:calc(30px + 8vw);">
+                                                                else echo 'uplodes/' . $user->avatar; ?>" class="rounded-circle mt-4 mb-3" style="height:calc(30px + 8vw);width:calc(30px + 8vw);cursor:pointer;">
                         </label>
-                        <input type="file" name='avatar' id="choose-file2" onchange="readURL(this);" style="display: none;">
+                        <input type="file" name='avatar' id="choose-file2" onchange="readURL(this);" style="display: none;" accept="image/x-png,image/jpg,image/jpeg">
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-5 col-5" style="margin: auto;">
                         <h4 class="" style="font-size:calc(15px + 0.1vw);"><?php echo $user->first_name . ' ' . $user->last_name ?></h4>
@@ -135,18 +135,21 @@
                         <div class="tab-pane show active" id="mission">
                             <div class="row mt-4">
                                 <div class="col">
-                                    <p class="mb-1" style="font-size:14px;">Name*</p>
-                                    <input type="text" class="popup" name="first_name" value="<?php echo $user->first_name ?>" placeholder="Enter your name" required />
+                                    <p class="mb-1" style="font-size:14px;">Name</p>
+                                    <input type="text" class="popup" name="first_name" value="<?php echo $user->first_name ?>" placeholder="Enter your name" />
+                                    <span id="error1" style="color:#f88634"></span>
                                 </div>
                                 <div class="col">
-                                    <p class="mb-1" style="font-size:14px;">Surname*</p>
-                                    <input type="text" class="popup" name="last_name" value="<?php echo $user->last_name ?>" placeholder="Enter your surname" required />
+                                    <p class="mb-1" style="font-size:14px;">Surname</p>
+                                    <input type="text" class="popup" name="last_name" value="<?php echo $user->last_name ?>" placeholder="Enter your surname" />
+                                    <span id="error2" style="color:#f88634"></span>
                                 </div>
                             </div>
                             <div class="row mt-4">
                                 <div class="col">
                                     <p class="mb-1" style="font-size:14px;">Employee ID</p>
                                     <input type="text" class="popup" name="employee_id" value="<?php echo $user->employee_id ?>" placeholder="Enter your employee id">
+                                    <span id="error3" style="color:#f88634"></span>
                                 </div>
                                 <div class="col">
                                     <p class="mb-1" style="font-size:14px;">Manager</p>
@@ -157,13 +160,15 @@
                                 <div class="col">
                                     <p class="mb-1" style="font-size:14px;">Title</p>
                                     <input type="text" class="popup" name="title" value="<?php echo $user->title ?>" placeholder="Enter your employee id">
+                                    <span id="error4" style="color:#f88634"></span>
                                 </div>
                                 <div class="col">
                                     <p class="mb-1" style="font-size:14px;">Department</p>
                                     <input type="text" class="popup" name="department" value="<?php echo $user->department ?>" placeholder="Enter your manager details">
+                                    <span id="error5" style="color:#f88634"></span>
                                 </div>
                             </div>
-                            <p class="mb-1 mt-4" style="font-size:14px;">My Profile*</p>
+                            <p class="mb-1 mt-4" style="font-size:14px;">My Profile</p>
                             <textarea rows="4" placeholder="Enter your message" name="profile_text" value="<?php echo $user->profile_text ?>" class="popup1"><?php echo $user->profile_text ?></textarea>
                             <p class="mb-1 mt-4" style="font-size:14px;">Why I Volunteer?</p>
                             <textarea rows="4" placeholder="Enter your message" name="why_i_volunteer" value="<?php echo $user->why_i_volunteer ?>" class="popup1"><?php echo $user->why_i_volunteer ?></textarea>
@@ -183,7 +188,7 @@
                             <div class="row mt-4">
                                 <div class="col">
                                     <p class="mb-1" style="font-size:14px;">City</p>
-                                    <select class="popup pt-0 pb-0" name="city_id" required>
+                                    <select class="popup pt-0 pb-0" name="city_id">
                                         <?php foreach ($cities as $city) { ?>
                                             <option value='<?php echo $city->city_id; ?>' <?php if ($city->city_id == $user->city_id) {
                                                                                                 echo 'selected';
@@ -192,8 +197,8 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <p class="mb-1" style="font-size:14px;">Country*</p>
-                                    <select class="popup pt-0 pb-0" name="country_id" required>
+                                    <p class="mb-1" style="font-size:14px;">Country</p>
+                                    <select class="popup pt-0 pb-0" name="country_id">
                                         <?php foreach ($countries as $country) { ?>
                                             <option value='<?php echo $country->country_id; ?>' <?php if ($country->country_id == $user->country_id) {
                                                                                                     echo 'selected';

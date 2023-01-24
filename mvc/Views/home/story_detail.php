@@ -84,7 +84,10 @@
                 </div>
                 <div class="col-lg-5 col-md-12 col-sm-12 col-12 mt-2">
                     <div class="col-example text-center" style="font-size:calc(13px + 0.2vw);">
-                        <a href="Volunteering_Mission?id=<?php echo $story->mission_id?>" style="color: inherit; text-decoration: inherit;">
+                        <a href="Volunteering_Mission?id=<?php $id = $story->mission_id;
+                                                            $salt = "SECRET_STUFF";
+                                                            $encrypted_id = base64_encode($id . $salt);
+                                                            echo $encrypted_id; ?>" style="color: inherit; text-decoration: inherit;">
                             Open Mission
                             <img src="../mvc/Assets/images/right-arrow.png" alt="" class="ms-3 mb-1" style="height:15px ;">
                         </a>

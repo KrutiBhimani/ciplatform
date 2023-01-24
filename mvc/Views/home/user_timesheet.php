@@ -9,9 +9,11 @@
                     <p class="mb-1">Mission</p>
                     <select class="popup pt-0 pb-0" name='mission_id'>
                         <option value="none" selected="" disabled="" hidden="">Select your mission</option>
-                        <?php foreach ($missions as $mission) { ?>
-                            <option value="<?php echo $mission->mission_id ?>"><?php echo $mission->mission_title ?></option>
-                        <?php } ?>
+                        <?php foreach ($missions as $mission) {
+                            if ($mission->mission_type == "TIME") { ?>
+                                <option value="<?php echo $mission->mission_id ?>"><?php echo $mission->mission_title ?></option>
+                        <?php }
+                        } ?>
                     </select>
                     <p class="mb-1 mt-3">Date Volunteered</p>
                     <input type="date" name="date_volunteered" class="popup" value="Select date">
@@ -49,9 +51,11 @@
                     <p class="mb-1">Mission</p>
                     <select class="popup pt-0 pb-0" name='mission_id'>
                         <option value="none" selected="" disabled="" hidden="">Select your mission</option>
-                        <?php foreach ($missions as $mission) { ?>
-                            <option value="<?php echo $mission->mission_id ?>"><?php echo $mission->mission_title ?></option>
-                        <?php } ?>
+                        <?php foreach ($missions as $mission) {
+                            if ($mission->mission_type == "GOAL") { ?>
+                                <option value="<?php echo $mission->mission_id ?>"><?php echo $mission->mission_title ?></option>
+                        <?php }
+                        } ?>
                     </select>
                     <p class="mb-1 mt-3">Action</p>
                     <input type="text" class="popup" name="action" placeholder="Enter Action">
@@ -150,11 +154,13 @@
                                             <p class="mb-1">Mission</p>
                                             <select class="popup pt-0 pb-0" name='mission_id'>
                                                 <option value="none" selected="" disabled="" hidden="">Select your mission</option>
-                                                <?php foreach ($missions as $mission) { ?>
-                                                    <option value="<?php echo $mission->mission_id ?>" <?php if ($hour->mission_id == $mission->mission_id) {
-                                                                                                            echo 'selected';
-                                                                                                        } ?>><?php echo $mission->mission_title ?></option>
-                                                <?php } ?>
+                                                <?php foreach ($missions as $mission) {
+                                                    if ($mission->mission_type == "TIME") { ?>
+                                                        <option value="<?php echo $mission->mission_id ?>" <?php if ($hour->mission_id == $mission->mission_id) {
+                                                                                                                echo 'selected';
+                                                                                                            } ?>><?php echo $mission->mission_title ?></option>
+                                                <?php }
+                                                } ?>
                                             </select>
                                             <p class="mb-1 mt-3">Date Volunteered</p>
                                             <input type="date" name="date_volunteered" value="<?php echo $hour->date_volunteered ?>" class="popup" value="Select date">
@@ -256,11 +262,13 @@
                                             <p class="mb-1">Mission</p>
                                             <select class="popup pt-0 pb-0" name='mission_id'>
                                                 <option value="none" selected="" disabled="" hidden="">Select your mission</option>
-                                                <?php foreach ($missions as $mission) { ?>
-                                                    <option value="<?php echo $mission->mission_id ?>" <?php if ($goal->mission_id == $mission->mission_id) {
-                                                                                                            echo 'selected';
-                                                                                                        } ?>><?php echo $mission->mission_title ?></option>
-                                                <?php } ?>
+                                                <?php foreach ($missions as $mission) {
+                                                    if ($mission->mission_type == "GOAL") { ?>
+                                                        <option value="<?php echo $mission->mission_id ?>" <?php if ($goal->mission_id == $mission->mission_id) {
+                                                                                                                echo 'selected';
+                                                                                                            } ?>><?php echo $mission->mission_title ?></option>
+                                                <?php }
+                                                } ?>
                                             </select>
                                             <p class="mb-1 mt-3">Action</p>
                                             <input type="text" class="popup" name="action" value="<?php echo $goal->action ?>" placeholder="Enter Action">

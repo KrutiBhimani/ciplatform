@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
                 window.location.href = 'home';
             </script>
         <?php
-        } 
+        }
         $_SESSION['admin_data'] = $loginEx['Data2'];
         if ($_SESSION['admin_data']) {
         ?>
@@ -31,7 +31,23 @@ if (isset($_POST['login'])) {
         </script>
 <?php
     }
-}
+} ?>
+<script>
+    function validateForm() {
+        let y = document.forms["myForm"]["email"].value;
+        if (y == "") {
+            document.getElementById("error1").innerHTML = "Email Address is required";
+            return false;
+        }
+        let x = document.forms["myForm"]["password"].value;
+        if (x == "") {
+            document.getElementById("error2").innerHTML = "Password is required";
+            return false;
+        }
+
+    }
+</script>
+<?php
 $selectData = $this->SelectBanner();
 $banners = $selectData['Data'];
 include 'Views/header.php';

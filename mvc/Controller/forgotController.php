@@ -65,7 +65,17 @@
             </script>
 <?php }
     }
-}
+} ?>
+<script>
+    function validateForm() {
+        let y = document.forms["myForm"]["email"].value;
+        if (y == "") {
+            document.getElementById("error1").innerHTML = "Email Address is required";
+            return false;
+        }
+    }
+</script>
+<?php
 $selectData = $this->SelectBanner();
 $banners = $selectData['Data'];
 include 'Views/header.php';

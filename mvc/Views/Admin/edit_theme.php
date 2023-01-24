@@ -6,7 +6,7 @@
                 <td class="p-3 fs-6" scope="col">Edit</td>
             </tr>
         </thead>
-        
+
         <tbody>
             <tr>
                 <td class="p-3 fs-6">
@@ -28,7 +28,7 @@
         </tbody>
     </table>
     <div class="d-flex align-content-end justify-content-end">
-    <a class="col-example8 mt-4 mb-4 me-2" href="#" style="font-size:calc(13px + 0.1vw);">
+        <a class="col-example8 mt-4 mb-4 me-2" href="#" style="font-size:calc(13px + 0.1vw);">
             cancel
         </a>
         <button class="col-example mt-4 mb-4" name="edit_theme" type="submit" style="font-size:calc(13px + 0.1vw);">

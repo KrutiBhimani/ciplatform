@@ -54,11 +54,8 @@
                                                                         $salt = "SECRET_STUFF";
                                                                         $encrypted_id = base64_encode($id . $salt);
                                                                         echo $encrypted_id; ?>"><i class="fa fa-pencil-square-o" style="color: #f88634;" aria-hidden="true"></i></a>
-                                    <a onClick="javascript:return confirm('Are you sure to delete?');" href='user?source=delete_user&delete=<?php $id = $user->user_id;
-                                                                                                                                            $salt = "SECRET_STUFF";
-                                                                                                                                            $encrypted_id = base64_encode($id . $salt);
-                                                                                                                                            echo $encrypted_id; ?>'><i class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
-                                    <!-- <div id="popup1" class="modal">
+
+                                    <div id="popup<?php echo $user->user_id; ?>" class="modal">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content p-2">
                                                 <div class="modal-header pb-0" style="border-bottom:0 ;">
@@ -73,12 +70,12 @@
                                                     <a href='user?source=delete_user&delete=<?php $id = $user->user_id;
                                                                                             $salt = "SECRET_STUFF";
                                                                                             $encrypted_id = base64_encode($id . $salt);
-                                                                                            echo $encrypted_id; ?>'><i class="fa fa-trash-o text-dark" aria-hidden="true"></i><?php echo $user->user_id; ?></a>
+                                                                                            echo $encrypted_id; ?>' class="col-example7">Delete</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <a href='#' data-bs-toggle='modal' data-bs-target='#popup1'><i class='fa fa-trash-o text-dark' aria-hidden='true'></i></a> -->
+                                    <a href='#' data-bs-toggle='modal' data-bs-target='#popup<?php echo $user->user_id; ?>'><i class='fa fa-trash-o text-dark' aria-hidden='true'></i></a>
                                 </td>
                             </tr>
                         <?php

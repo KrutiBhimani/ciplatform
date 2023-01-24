@@ -13,6 +13,8 @@ $where = [
 $selectData = $this->SelectData1('admin', $where);
 $admin = $selectData['Data'];
 if (isset($_POST['edit_admin'])) {
+    $salt = "SeCrEtStUfFfOrPaSsWoRd";
+    $encrypted_password = base64_encode($_POST['password'] . $salt);
     $avatar = $_FILES['avatar']['name'];
     $avatar_temp = $_FILES['avatar']['tmp_name'];
     if (empty($avatar)) {
@@ -22,7 +24,7 @@ if (isset($_POST['edit_admin'])) {
         'first_name' => $_POST['first_name'],
         'last_name' => $_POST['last_name'],
         'email' => $_POST['email'],
-        'password' => $_POST['password'],
+        'password' => $encrypted_password,
         'phone_number' => $_POST['phone_number'],
         'avatar' => $avatar,
         'updated_at' => date("Y-m-d h:i:s")
@@ -32,9 +34,8 @@ if (isset($_POST['edit_admin'])) {
         if (!is_null($avatar)) {
             move_uploaded_file($avatar_temp, '../mvc/Assets/uplodes/' . $avatar);
         }
-?>
+    ?>
         <script type="text/javascript">
-            alert("Data update successfully.");
             window.location.href = 'user';
         </script>
     <?php
@@ -42,9 +43,12 @@ if (isset($_POST['edit_admin'])) {
     ?>
         <script type="text/javascript">
             alert("Something Went Wrong.");
-            window.location.href = 'edit_admin?edit=<?php $id = $admin_id; $salt = "SECRET_STUFF"; $encrypted_id = base64_encode($id . $salt); echo $encrypted_id; ?>';
+            window.location.href = 'edit_admin?edit=<?php $id = $admin_id;
+                                                    $salt = "SECRET_STUFF";
+                                                    $encrypted_id = base64_encode($id . $salt);
+                                                    echo $encrypted_id; ?>';
         </script>
- <?php
+<?php
     }
 }
 include 'Views/header.php';

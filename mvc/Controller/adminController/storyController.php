@@ -49,9 +49,8 @@ switch ($source) {
         ];
         $upd_data = $this->UpdateData1('story', $update_data, $where);
         if ($upd_data) {
-?>
+    ?>
             <script type="text/javascript">
-                alert("Data update successfully.");
                 window.location.href = 'story';
             </script>
         <?php
@@ -81,7 +80,6 @@ switch ($source) {
         if ($upd_data) {
         ?>
             <script type="text/javascript">
-                alert("Data update successfully.");
                 window.location.href = 'story';
             </script>
         <?php
@@ -110,7 +108,6 @@ switch ($source) {
         if ($delete_data) {
         ?>
             <script type="text/javascript">
-                alert("Data deleted successfully.");
                 window.location.href = 'story';
             </script>
         <?php

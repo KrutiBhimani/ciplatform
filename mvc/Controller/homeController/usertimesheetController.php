@@ -3,7 +3,7 @@
     <script type="text/javascript">
         window.location.href = 'login';
     </script>
-<?php
+    <?php
 }
 $user_id = $_SESSION['user_data']->user_id;
 $where = [
@@ -27,7 +27,7 @@ $hours = $selectData['Data'];
 $selectData = $this->timesheetgoal($user_id);
 $goals = $selectData['Data'];
 if (isset($_POST['add_hours'])) {
-    $time = $_POST['h'].':'.$_POST['m'].':00';
+    $time = $_POST['h'] . ':' . $_POST['m'] . ':00';
     $insert_data = [
         'user_id' => $user_id,
         'mission_id' => $_POST['mission_id'],
@@ -48,7 +48,7 @@ if (isset($_POST['add_goals'])) {
     $insertEx = $this->InsertData('timesheet', $insert_data);
 }
 if (isset($_POST['edit_hours'])) {
-    $time = $_POST['h'].':'.$_POST['m'].':00';
+    $time = $_POST['h'] . ':' . $_POST['m'] . ':00';
     $update_data = [
         'mission_id' => $_POST['mission_id'],
         'notes' => $_POST['notes'],
@@ -62,11 +62,11 @@ if (isset($_POST['edit_hours'])) {
     ];
     $upd_data = $this->UpdateData1('timesheet', $update_data, $where);
     if ($upd_data) {
-        ?>
-                <script type="text/javascript">
-                    window.location.href = 'user_timesheet';
-                </script>
-            <?php
+    ?>
+        <script type="text/javascript">
+            window.location.href = 'user_timesheet';
+        </script>
+    <?php
     }
 }
 if (isset($_POST['edit_goals'])) {
@@ -83,11 +83,11 @@ if (isset($_POST['edit_goals'])) {
     ];
     $upd_data = $this->UpdateData1('timesheet', $update_data, $where);
     if ($upd_data) {
-        ?>
-                <script type="text/javascript">
-                    window.location.href = 'user_timesheet';
-                </script>
-            <?php
+    ?>
+        <script type="text/javascript">
+            window.location.href = 'user_timesheet';
+        </script>
+    <?php
     }
 }
 if (isset($_POST['delete_hours'])) {
@@ -100,11 +100,11 @@ if (isset($_POST['delete_hours'])) {
     ];
     $upd_data = $this->UpdateData1('timesheet', $update_data, $where);
     if ($upd_data) {
-        ?>
-                <script type="text/javascript">
-                    window.location.href = 'user_timesheet';
-                </script>
-            <?php
+    ?>
+        <script type="text/javascript">
+            window.location.href = 'user_timesheet';
+        </script>
+<?php
     }
 }
 include 'Views/home/header.php';

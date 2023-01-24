@@ -34,9 +34,8 @@ switch ($source) {
         ];
         $upd_data = $this->UpdateData1('mission_application', $update_data, $where);
         if ($upd_data) {
-?>
+    ?>
             <script type="text/javascript">
-                alert("Data update successfully.");
                 window.location.href = 'app';
             </script>
         <?php
@@ -67,7 +66,6 @@ switch ($source) {
         if ($upd_data) {
         ?>
             <script type="text/javascript">
-                alert("Data update successfully.");
                 window.location.href = 'app';
             </script>
         <?php

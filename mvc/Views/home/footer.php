@@ -1,4 +1,4 @@
-<?php if ($row > 0) { ?>
+<?php if ($row > 3) { ?>
   <footer id="footer2" class="d-flex position-relative" style="border-top:2px solid rgb(225, 225, 225)">
     <div class="position-absolute top-100 w-100">
       <div class="container-lg pt-4 pb-3 mb-1">
@@ -60,9 +60,9 @@
       <form class="m-0" method="post" enctype="multipart/form-data">
         <div class="modal-body pb-0">
           <p class="mb-1">Name*</p>
-          <input type="text" class="popup" name="" value="<?php echo $user->first_name.' '.$user->last_name?>" disabled>
+          <input type="text" class="popup" name="" value="<?php echo $user->first_name . ' ' . $user->last_name ?>" disabled>
           <p class="mb-1 mt-3">Email Address*</p>
-          <input type="email" class="popup" name="" value="<?php echo $user->email?>" disabled>
+          <input type="email" class="popup" name="" value="<?php echo $user->email ?>" disabled>
           <p class="mb-1 mt-3">Subject*</p>
           <input type="text" class="popup" name="subject" placeholder="Enter your subject">
           <p class="mb-1 mt-3">Message*</p>

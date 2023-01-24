@@ -20,7 +20,7 @@ else
     $source = '';
 switch ($source) {
     case 'add_mission':
-?>
+    ?>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#selecttype').change(function() {
@@ -71,61 +71,37 @@ switch ($source) {
                 foreach ($skil as $item) {
                     $this->exp($mission_id, $item);
                 }
-                // foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
-                //     $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
-                //     $media_name = $_FILES['media_name']['name'][$key];
-                //     move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
-                //     $media_type = substr(strstr($media_name, '.'), 1);
-                //     $media_path = 'Assets/' . $media_name;
-                //     $insert_data = [
-                //         'mission_id' => $mission_id,
-                //         'media_name' => $media_name,
-                //         'media_type' => $media_type,
-                //         'media_path' => $media_path
-                //     ];
-                //     $this->InsertData('mission_media', $insert_data);
-                // }
-                // foreach ($_FILES['document_name']['tmp_name'] as $key => $image) {
-                //     $document_name_temp = $_FILES['document_name']['tmp_name'][$key];
-                //     $document_name = $_FILES['document_name']['name'][$key];
-                //     move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
-                //     $document_type = substr(strstr($document_name, '.'), 1);
-                //     $document_path = 'Assets/' . $document_name;
-                //     $insert_data = [
-                //         'mission_id' => $mission_id,
-                //         'document_name' => $document_name,
-                //         'document_type' => $document_type,
-                //         'document_path' => $document_path
-                //     ];
-                //     $this->InsertData('mission_document', $insert_data);
-                // }
-                if ($_FILES['media_name']['name'] != '') {
-                    $media_name_temp = $_FILES['media_name']['tmp_name'];
-                    $media_name = $_FILES['media_name']['name'];
-                    move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
-                    $media_type = substr(strstr($media_name, '.'), 1);
-                    $media_path = 'Assets/' . $media_name;
-                    $insert_data = [
-                        'mission_id' => $mission_id,
-                        'media_name' => $media_name,
-                        'media_type' => $media_type,
-                        'media_path' => $media_path
-                    ];
-                    $this->InsertData('mission_media', $insert_data);
+                if (!empty(array_filter($_FILES['media_name']['name']))) {
+                    foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
+                        $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
+                        $media_name = $_FILES['media_name']['name'][$key];
+                        move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                        $media_type = substr(strstr($media_name, '.'), 1);
+                        $media_path = 'mvc/Assets/uplodes/' . $media_name;
+                        $insert_data = [
+                            'mission_id' => $mission_id,
+                            'media_name' => $media_name,
+                            'media_type' => $media_type,
+                            'media_path' => $media_path
+                        ];
+                        $this->InsertData('mission_media', $insert_data);
+                    }
                 }
-                if ($_FILES['document_name']['name'] != '') {
-                    $document_name_temp = $_FILES['document_name']['tmp_name'];
-                    $document_name = $_FILES['document_name']['name'];
-                    move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
-                    $document_type = substr(strstr($document_name, '.'), 1);
-                    $document_path = 'Assets/' . $document_name;
-                    $insert_data = [
-                        'mission_id' => $mission_id,
-                        'document_name' => $document_name,
-                        'document_type' => $document_type,
-                        'document_path' => $document_path
-                    ];
-                    $this->InsertData('mission_document', $insert_data);
+                if (!empty(array_filter($_FILES['document_name']['name']))) {
+                    foreach ($_FILES['document_name']['tmp_name'] as $key => $image) {
+                        $document_name_temp = $_FILES['document_name']['tmp_name'][$key];
+                        $document_name = $_FILES['document_name']['name'][$key];
+                        move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
+                        $document_type = substr(strstr($document_name, '.'), 1);
+                        $document_path = 'Assets/' . $document_name;
+                        $insert_data = [
+                            'mission_id' => $mission_id,
+                            'document_name' => $document_name,
+                            'document_type' => $document_type,
+                            'document_path' => $document_path
+                        ];
+                        $this->InsertData('mission_document', $insert_data);
+                    }
                 }
                 if ($_POST['mission_type'] != '') {
                     if ($_POST['mission_type'] == 'TIME') {
@@ -146,14 +122,13 @@ switch ($source) {
                 }
         ?>
                 <script type="text/javascript">
-                    alert("<?php echo $insertEx['Message'] ?>");
                     window.location.href = 'mission';
                 </script>
             <?php
             } else {
             ?>
                 <script type="text/javascript">
-                    alert("<?php echo $insertEx['Message'] ?>");
+                    alert("Something Went Wrong.");
                     window.location.href = 'mission?source=add_mission';
                 </script>
             <?php
@@ -199,51 +174,37 @@ switch ($source) {
                 'mission_id' => $mission_id,
             ];
             $upd_data = $this->UpdateData1('mission', $update_data, $where);
-            if ($_FILES['media_name']['name'] != '') {
-                $media_name_temp = $_FILES['media_name']['tmp_name'];
-                $media_name = $_FILES['media_name']['name'];
-                move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
-                $media_type = substr(strstr($media_name, '.'), 1);
-                $media_path = 'mvc/Assets/uplodes/' . $media_name;
-                $update_data = [
-                    'media_name' => $media_name,
-                    'media_type' => $media_type,
-                    'media_path' => $media_path,
-                    'updated_at' => date("Y-m-d h:i:s")
-                ];
-                $insert_data = [
-                    'mission_id' => $mission_id,
-                    'media_name' => $media_name,
-                    'media_type' => $media_type,
-                    'media_path' => $media_path,
-                ];
-                if ($mission->media_path != '') {
-                    $this->UpdateData1('mission_media', $update_data, $where);
-                } else if ($mission->media_path == '') {
+            if (!empty(array_filter($_FILES['media_name']['name']))) {
+                $this->DeleteData3('mission_media', $mission_id);
+                foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
+                    $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
+                    $media_name = $_FILES['media_name']['name'][$key];
+                    move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                    $media_type = substr(strstr($media_name, '.'), 1);
+                    $media_path = 'mvc/Assets/uplodes/' . $media_name;
+                    $insert_data = [
+                        'mission_id' => $mission_id,
+                        'media_name' => $media_name,
+                        'media_type' => $media_type,
+                        'media_path' => $media_path
+                    ];
                     $this->InsertData('mission_media', $insert_data);
                 }
             }
-            if ($_FILES['document_name']['name'] != '') {
-                $document_name_temp = $_FILES['document_name']['tmp_name'];
-                $document_name = $_FILES['document_name']['name'];
-                move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
-                $document_type = substr(strstr($document_name, '.'), 1);
-                $document_path = 'Assets/' . $document_name;
-                $update_data = [
-                    'document_name' => $document_name,
-                    'document_type' => $document_type,
-                    'document_path' => $document_path,
-                    'updated_at' => date("Y-m-d h:i:s")
-                ];
-                $insert_data = [
-                    'mission_id' => $mission_id,
-                    'document_name' => $document_name,
-                    'document_type' => $document_type,
-                    'document_path' => $document_path,
-                ];
-                if ($mission->document_path != '') {
-                    $this->UpdateData1('mission_document', $update_data, $where);
-                } else if ($mission->document_path == '') {
+            if (!empty(array_filter($_FILES['document_name']['name']))) {
+                $this->DeleteData3('mission_document', $mission_id);
+                foreach ($_FILES['document_name']['tmp_name'] as $key => $image) {
+                    $document_name_temp = $_FILES['document_name']['tmp_name'][$key];
+                    $document_name = $_FILES['document_name']['name'][$key];
+                    move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
+                    $document_type = substr(strstr($document_name, '.'), 1);
+                    $document_path = 'Assets/' . $document_name;
+                    $insert_data = [
+                        'mission_id' => $mission_id,
+                        'document_name' => $document_name,
+                        'document_type' => $document_type,
+                        'document_path' => $document_path
+                    ];
                     $this->InsertData('mission_document', $insert_data);
                 }
             }
@@ -299,7 +260,6 @@ switch ($source) {
             if ($upd_data) {
             ?>
                 <script type="text/javascript">
-                    alert("Data update successfully.");
                     window.location.href = 'mission';
                 </script>
             <?php
@@ -338,7 +298,6 @@ switch ($source) {
         if ($delete_data) {
             ?>
             <script type="text/javascript">
-                alert("Data deleted successfully.");
                 window.location.href = 'mission';
             </script>
         <?php

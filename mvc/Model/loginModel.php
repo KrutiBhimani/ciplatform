@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('Config/db.php');
 class loginModel extends Model
 {
@@ -938,7 +938,6 @@ class loginModel extends Model
 			$sql .= " ) ";
 		}
 		$sql = str_replace("''", "NULL", $sql);
-		echo $sql;
 		$updEx = $this->connection->query($sql);
 		if ($updEx) {
 			$response['Data'] = null;
@@ -982,15 +981,19 @@ class loginModel extends Model
 		$sql = "DELETE FROM $tbl WHERE user_id = $delete_user_id";
 		return $updEx = $this->connection->query($sql);
 	}
-	function DeleteData2($tbl, $delete_user_id,$type)
+	function DeleteData2($tbl, $delete_user_id, $type)
 	{
 		$sql = "DELETE FROM $tbl WHERE story_id = $delete_user_id AND type ";
-		if($type == 'video'){
+		if ($type == 'video') {
 			$sql .= " = 'video'";
-		}
-		else{
+		} else {
 			$sql .= " != 'video'";
 		}
+		return $updEx = $this->connection->query($sql);
+	}
+	function DeleteData3($tbl, $mission_id)
+	{
+		$sql = "DELETE FROM $tbl WHERE mission_id = $mission_id ";
 		return $updEx = $this->connection->query($sql);
 	}
 	function DeleteData1($tbl, array $where = [])

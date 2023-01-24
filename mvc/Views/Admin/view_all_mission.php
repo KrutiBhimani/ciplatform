@@ -47,10 +47,33 @@
                                                                                 $salt = "SECRET_STUFF";
                                                                                 $encrypted_id = base64_encode($id . $salt);
                                                                                 echo $encrypted_id; ?>'><i class="fa fa-pencil-square-o" style="color: #f88634;" aria-hidden="true"></i></a>
-                                    <a onClick="javascript:return confirm('Are you sure to delete?');" href='mission?source=delete_mission&delete=<?php $id = $mission->mission_id;
-                                                                                                                                                    $salt = "SECRET_STUFF";
-                                                                                                                                                    $encrypted_id = base64_encode($id . $salt);
-                                                                                                                                                    echo $encrypted_id; ?>'><i class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                    <button class="p-0" data-bs-toggle="modal" data-bs-target="#popupdelete<?php echo $mission->mission_id ?>" type="button" style='border:none;background-color:white;'>
+                                        <i class="fa fa-trash-o text-dark" aria-hidden="true"></i>
+                                    </button>
+                                    <div id="popupdelete<?php echo $mission->mission_id ?>" class="modal" style="--bs-modal-width:900px;">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content p-2">
+                                                <div class="modal-header pb-0" style="border-bottom:0 ;">
+                                                    <p class="mb-0" style="font-size:20px ;">Confirm Delete</p>
+                                                </div>
+                                                <form method="post" enctype="multipart/form-data">
+                                                    <input type='text' value="<?php echo $mission->mission_id ?>" name="timesheet_id" hidden>
+                                                    <div class="modal-body pb-0">
+                                                        <p class="mb-1">Are you sure you want to delete this item?</p>
+                                                    </div>
+                                                    <div class="modal-footer" style="border-top:0 ;">
+                                                        <button type="button" class="col-example8" data-bs-dismiss="modal">Cancle
+                                                        </button>
+                                                        <a href='mission?source=delete_mission&delete=<?php $id = $mission->mission_id;
+                                                                                                        $salt = "SECRET_STUFF";
+                                                                                                        $encrypted_id = base64_encode($id . $salt);
+                                                                                                        echo $encrypted_id; ?>' class="col-example7">Delete</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </td>
                             </tr>
                         <?php

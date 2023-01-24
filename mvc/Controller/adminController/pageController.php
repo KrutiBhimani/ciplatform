@@ -30,16 +30,15 @@ switch ($source) {
             $insertEx = $this->InsertData('cms_page', $insert_data);
             echo $insertEx;
             if ($insertEx['Code']) {
-?>
+    ?>
                 <script type="text/javascript">
-                    alert("<?php echo $insertEx['Message'] ?>");
                     window.location.href = 'page';
                 </script>
             <?php
             } else {
             ?>
                 <script type="text/javascript">
-                    alert("<?php echo $insertEx['Message'] ?>");
+                    alert("Something Went Wrong.");
                     window.location.href = 'page?source=add_page';
                 </script>
             <?php
@@ -73,7 +72,6 @@ switch ($source) {
             if ($upd_data) {
             ?>
                 <script type="text/javascript">
-                    alert("Data update successfully.");
                     window.location.href = 'page';
                 </script>
             <?php
@@ -107,7 +105,6 @@ switch ($source) {
         if ($delete_data) {
             ?>
             <script type="text/javascript">
-                alert("Data deleted successfully.");
                 window.location.href = 'page';
             </script>
         <?php

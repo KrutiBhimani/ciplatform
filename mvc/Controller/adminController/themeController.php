@@ -28,16 +28,15 @@ switch ($source) {
             $insertEx = $this->InsertData('mission_theme', $insert_data);
             echo $insertEx;
             if ($insertEx['Code']) {
-?>
+    ?>
                 <script type="text/javascript">
-                    alert("<?php echo $insertEx['Message'] ?>");
                     window.location.href = 'theme';
                 </script>
             <?php
             } else {
             ?>
                 <script type="text/javascript">
-                    alert("<?php echo $insertEx['Message'] ?>");
+                    alert("Something Went Wrong.");
                     window.location.href = 'theme?source=add_theme';
                 </script>
             <?php
@@ -69,7 +68,6 @@ switch ($source) {
             if ($upd_data) {
             ?>
                 <script type="text/javascript">
-                    alert("Data update successfully.");
                     window.location.href = 'theme';
                 </script>
             <?php
@@ -103,7 +101,6 @@ switch ($source) {
         if ($delete_data) {
             ?>
             <script type="text/javascript">
-                alert("Data deleted successfully.");
                 window.location.href = 'theme';
             </script>
         <?php

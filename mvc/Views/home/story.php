@@ -22,7 +22,10 @@
                     <div class="gfg1">
                         <img src="../<?php echo $story->path ?>" alt="" class="img-fluid image2" style="width:100%; height:170px">
                         <div class="middle1">
-                            <a href="story_detail?key=<?php echo $story->story_id?>">
+                            <a href="story_detail?key=<?php $id = $story->story_id;
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>">
                                 <div class="text1 text-center">View Detail
                                     <i class="fa fa-arrow-right pl-2"></i>
                                 </div>
@@ -33,8 +36,8 @@
                         </div>
                     </div>
                     <div class="card-body remove">
-                        <h2 class="card-title mb-2" style="font-size:calc(16px + 0.3vw);"><?php echo $story->story_title ?></h2>
-                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);"><?php echo substr($story->sdescription, 0, 99).'...';?></p>
+                        <h2 class="card-title mb-2" style="font-size:calc(15px + 0.3vw);"><?php echo $story->story_title ?></h2>
+                        <p class="mb-3" style="color:gray; font-size:calc(11px + 0.1vw);"><?php echo substr($story->sdescription, 0, 99) . '...'; ?></p>
 
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-2">

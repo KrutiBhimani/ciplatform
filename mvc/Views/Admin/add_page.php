@@ -25,7 +25,7 @@
         </tbody>
     </table>
     <div class="d-flex align-content-end justify-content-end">
-    <a class="col-example8 mt-4 mb-4 me-2" href="#" style="font-size:calc(13px + 0.1vw);">
+        <a class="col-example8 mt-4 mb-4 me-2" href="#" style="font-size:calc(13px + 0.1vw);">
             cancel
         </a>
         <button class="col-example mt-4 mb-4" name="add_page" type="submit" style="font-size:calc(13px + 0.1vw);">

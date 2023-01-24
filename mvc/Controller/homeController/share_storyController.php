@@ -6,7 +6,7 @@
     <?php
 }
 $user_id = $_SESSION['user_data']->user_id;
-$row = 1;
+$row = 3;
 $where = [
     'user_id' => $user_id
 ];
@@ -14,7 +14,7 @@ $selectData = $this->SelectData1('user', $where);
 $user = $selectData['Data'];
 $selectData = $this->DraftStory($user_id);
 $story = $selectData['Data'];
-if(!empty($story)){
+if (!empty($story)) {
     $selectData = $this->StoryMedia($story->story_id);
     $medias = $selectData['Data'];
 }
@@ -67,10 +67,9 @@ if (isset($_POST['draft'])) {
             <script type="text/javascript">
                 window.location.href = 'share_story';
             </script>
-<?php
+        <?php
         }
-    }
-    else{
+    } else {
         $insert_data = [
             'mission_id' => $_POST['mission_id'],
             'title' => $_POST['title'],
@@ -111,11 +110,11 @@ if (isset($_POST['draft'])) {
                     $insertEx = $this->InsertData('story_media', $insert_data);
                 }
             }
-    ?>
+        ?>
             <script type="text/javascript">
                 window.location.href = 'share_story';
             </script>
-<?php
+        <?php
         }
     }
 }
@@ -163,14 +162,13 @@ if (isset($_POST['publish'])) {
                     $insertEx = $this->InsertData('story_media', $insert_data);
                 }
             }
-    ?>
+        ?>
             <script type="text/javascript">
                 window.location.href = 'share_story';
             </script>
-<?php
+        <?php
         }
-    }
-    else{
+    } else {
         $insert_data = [
             'mission_id' => $_POST['mission_id'],
             'title' => $_POST['title'],
@@ -211,7 +209,7 @@ if (isset($_POST['publish'])) {
                     $insertEx = $this->InsertData('story_media', $insert_data);
                 }
             }
-    ?>
+        ?>
             <script type="text/javascript">
                 window.location.href = 'share_story';
             </script>
@@ -228,6 +226,18 @@ if (isset($_POST['contact'])) {
     $insertEx = $this->InsertData('contact', $insert_data);
 }
 include 'Views/home/header.php';
+?>
+<script>
+    function validateForm() {
+        var e = document.getElementById("mission_id");
+        var strUser = e.options[e.selectedIndex].value;
+        if (strUser == "") {
+            document.getElementById("error1").innerHTML = "Please select mission";
+            return false;
+        }
+    }
+</script>
+<?php
 include 'Views/home/header1.php';
 include 'Views/home/share_story.php';
 include 'Views/home/footer.php';

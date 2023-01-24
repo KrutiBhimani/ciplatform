@@ -6,13 +6,18 @@
     <?php
 }
 $user_id = $_SESSION['user_data']->user_id;
-$row = 1;
+$row = 4;
 $where = [
     'user_id' => $user_id
 ];
 $selectData = $this->SelectData1('user', $where);
 $user = $selectData['Data'];
-$selectData = $this->Storys($_GET['key']);
+$encrypted_id = $_GET['key'];
+$salt = "SECRET_STUFF";
+$decrypted_id_raw = base64_decode($encrypted_id);
+$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+$story_id = $decrypted_id;
+$selectData = $this->Storys($story_id);
 $story = $selectData['Data'];
 $where3 = [
     'story_id' => $story->story_id,

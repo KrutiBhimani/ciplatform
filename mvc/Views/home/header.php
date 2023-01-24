@@ -17,7 +17,7 @@
   <script src="../mvc/Assets/js/jquery.backstretch.min.js"></script>
   <script src="../mvc/Assets/js/wow.min.js"></script>
   <script src="../mvc/Assets/js/scripts.js"></script>
-  <link href="../mvc/Assets/css/style7.css" rel="stylesheet">
+  <link href="../mvc/Assets/css/style8.css" rel="stylesheet">
 
   <!-- for popup -->
   <script src="../mvc/Assets/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

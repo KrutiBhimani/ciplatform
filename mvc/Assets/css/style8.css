@@ -40,6 +40,7 @@
   color: white;
   background-color: rgba(0, 0, 0, .5);
 }
+
 .five-txt {
   position: absolute;
   top: 15px;
@@ -50,6 +51,7 @@
   border-bottom-right-radius: 30px;
   background-color: green;
 }
+
 .first-txt1 {
   position: absolute;
   top: 15px;
@@ -134,7 +136,7 @@
 }
 
 .Rounded-Rectangle-2 {
-  margin: 5px 0 15px 0;
+  margin: 5px 0 5px 0;
   box-shadow: 0 0 0 rgba(43, 100, 177, 0.12);
 }
 
@@ -221,9 +223,11 @@ input[type="password"]:focus {
 .star {
   height: 15px;
 }
-.hj{
+
+.hj {
   padding-right: 5px;
 }
+
 .col-example:hover {
   font-size: calc(13px + 0.1vw);
   padding: 5px 20px 5px 20px;
@@ -233,12 +237,15 @@ input[type="password"]:focus {
   margin-bottom: 15px;
   background-color: #f88634;
 }
-.colorhover{
-  color:#f88634 ;
+
+.colorhover {
+  color: #f88634;
 }
-.colorhover:hover{
-  color:white;
+
+.colorhover:hover {
+  color: white;
 }
+
 .col-example {
   font-size: calc(13px + 0.1vw);
   padding: 5px 20px 5px 20px;
@@ -257,6 +264,7 @@ input[type="password"]:focus {
   color: #f88634;
   background-color: #fff;
 }
+
 .col-example1:hover {
   font-size: calc(13px + 0.1vw);
   padding: 5px 20px 5px 20px;
@@ -265,6 +273,7 @@ input[type="password"]:focus {
   color: white;
   background-color: #f88634;
 }
+
 .col-example2 {
   font-size: calc(13px + 0.1vw);
   padding: 6px;
@@ -299,6 +308,7 @@ input[type="password"]:focus {
   margin-right: 10px;
   background-color: white;
 }
+
 .col-example5:hover {
   font-size: calc(13px + 0.1vw);
   padding: 5px 15px;
@@ -316,6 +326,7 @@ input[type="password"]:focus {
   color: #f88634;
   background-color: #fff;
 }
+
 .col-example7:hover {
   padding: 5px 20px;
   border-radius: 24px;
@@ -323,6 +334,7 @@ input[type="password"]:focus {
   color: #fff;
   background-color: #f88634;
 }
+
 .col-example8 {
   padding: 5px 20px;
   border-radius: 24px;
@@ -330,6 +342,7 @@ input[type="password"]:focus {
   color: gray;
   background-color: #fff;
 }
+
 .col-example8:hover {
   padding: 5px 20px;
   border-radius: 24px;
@@ -337,6 +350,7 @@ input[type="password"]:focus {
   color: white;
   background-color: gray;
 }
+
 .col-example10 {
   padding: 10px 0px calc(10vw) 0px;
   border-radius: 4px;
@@ -365,6 +379,7 @@ input[type="password"]:focus {
   margin-bottom: 15px;
   background-color: #f88634;
 }
+
 .col-example13 {
   font-size: 10px;
   padding: 2px 7px;
@@ -373,6 +388,7 @@ input[type="password"]:focus {
   color: #f88634;
   background-color: white;
 }
+
 .col-example13:hover {
   font-size: 10px;
   padding: 2px 5px;
@@ -416,6 +432,7 @@ input[type="password"]:focus {
   border-radius: 30px;
   background-color: #e8e8e8;
 }
+
 .Ellipse-575 {
   width: 40px;
   height: 40px;
@@ -625,6 +642,7 @@ h6 {
   padding: 6px 15px;
   border-radius: 30px;
 }
+
 .text:hover {
   margin: auto;
   width: calc(100px + 5vw);
@@ -646,6 +664,7 @@ h6 {
   padding: 6px 15px;
   border-radius: 30px;
 }
+
 .text1:hover {
   margin: auto;
   border: 2px solid white;
@@ -816,16 +835,19 @@ li ol>li:before {
     height: 100%;
   }
 }
+
 @media (max-width:991.5px) {
   .middle {
-    width:62%;
+    width: 62%;
   }
 }
+
 @media (max-width:575.5px) {
   .middle {
-    width:79%;
+    width: 79%;
   }
 }
+
 @media (max-width:768px) {
   .col-example10 {
     padding: 10px 0px 10 0px;

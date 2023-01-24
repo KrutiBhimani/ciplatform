@@ -45,10 +45,27 @@
                                                                         $salt = "SECRET_STUFF";
                                                                         $encrypted_id = base64_encode($id . $salt);
                                                                         echo $encrypted_id; ?>'><i class="fa fa-pencil-square-o" style="color: #f88634;" aria-hidden="true"></i></a>
-                                    <a onClick="javascript:return confirm('Are you sure to delete?');" href='page?source=delete_page&delete=<?php $id = $pag->cms_page_id;
-                                                                                                                                            $salt = "SECRET_STUFF";
-                                                                                                                                            $encrypted_id = base64_encode($id . $salt);
-                                                                                                                                            echo $encrypted_id; ?>'><i class="fa fa-trash-o text-dark" aria-hidden="true"></i></a>
+                                    <div id="popup<?php echo $pag->cms_page_id; ?>" class="modal">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content p-2">
+                                                <div class="modal-header pb-0" style="border-bottom:0 ;">
+                                                    <p class="mb-0" style="font-size:20px ;">Confirm Delete </p>
+                                                </div>
+                                                <div class="modal-body pb-0">
+                                                    Are you sure you want to delete this item?
+                                                </div>
+                                                <div class="modal-footer mt-3 justify-content-center" style="border-top:0 ;">
+                                                    <button type="button" class="col-example8" data-bs-dismiss="modal">Cancle
+                                                    </button>
+                                                    <a href='page?source=delete_page&delete=<?php $id = $pag->cms_page_id;
+                                                                                            $salt = "SECRET_STUFF";
+                                                                                            $encrypted_id = base64_encode($id . $salt);
+                                                                                            echo $encrypted_id; ?>' class="col-example7">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href='#' data-bs-toggle='modal' data-bs-target='#popup<?php echo $pag->cms_page_id ?>'><i class='fa fa-trash-o text-dark' aria-hidden='true'></i></a>
                                 </td>
                             </tr>
                         <?php

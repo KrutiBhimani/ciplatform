@@ -11,8 +11,12 @@ $where = [
 ];
 $selectData = $this->SelectData1('user', $where);
 $user = $selectData['Data'];
-$row = 2;
-$mission_id = $_GET['id'];
+$row = 4;
+$encrypted_id = $_GET['id'];
+$salt = "SECRET_STUFF";
+$decrypted_id_raw = base64_decode($encrypted_id);
+$decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
+$mission_id = $decrypted_id;
 $where = [
     'mission.mission_id' => $mission_id,
 ];

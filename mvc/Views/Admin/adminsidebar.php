@@ -2,7 +2,7 @@
     <div class="col-md-2 d-md-none col-sm-2 col-2 ps-2 pe-2 position-relative" style="background-color: #f88634;">
         <div class="position-sticky top-0 pt-5">
             <div class="nav flex-column nav-pills m-0">
-            <?php if ($case == 1) { ?>
+                <?php if ($case == 1) { ?>
                     <a href="user" class="nav-link text-center active">
                     <?php } else { ?>
                         <a href="user" class="nav-link text-center">
@@ -143,15 +143,15 @@
                         <ul class="navbar-nav me-auto mb-lg-0">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle me-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="../mvc/Assets/<?php if ($admin->avatar == '') echo 'images/user1.png'; else echo 'uplodes/'.$admin->avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
+                                    <img src="../mvc/Assets/<?php if ($admin->avatar == '') echo 'images/user1.png';
+                                                            else echo 'uplodes/' . $admin->avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
                                     <label><?php echo $admin->first_name . ' ' . $admin->last_name; ?></label>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="edit_admin?edit=<?php $id = $admin_id;
-                                                                        $salt = "SECRET_STUFF";
-                                                                        $encrypted_id = base64_encode($id . $salt);
-                                                                        echo $encrypted_id; ?>">My Profile</a></li>
-                                    <li><a class="dropdown-item" href="timesheet">volunteering timesheet</a></li>
+                                                                                        $salt = "SECRET_STUFF";
+                                                                                        $encrypted_id = base64_encode($id . $salt);
+                                                                                        echo $encrypted_id; ?>">My Profile</a></li>
                                     <li><a class="dropdown-item" href="logout">Logout</a></li>
                                 </ul>
                             </li>

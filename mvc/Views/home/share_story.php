@@ -1,12 +1,12 @@
 <br /><br /><br />
 <div class="container-lg">
     <p class="fs-2 fw-light pt-5">Share your story</p>
-    <form method="post" enctype="multipart/form-data">
+    <form name="myForm" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col">
                 <p class="mb-1">Select mission</p>
-                <select class="popup pt-0 pb-0" name='mission_id'>
-                    <option value="none" selected="" disabled="" hidden="">Select your mission</option>
+                <select class="popup pt-0 pb-0" id="mission_id" name='mission_id'>
+                    <option value="" selected="" disabled="" hidden="">Select your mission</option>
                     <?php foreach ($missions as $mission) { ?>
                         <option value="<?php echo $mission->mission_id ?>" <?php if (!empty($story)) {
                                                                                 if ($story->mission_id == $mission->mission_id) {
@@ -15,6 +15,7 @@
                                                                             } ?>><?php echo $mission->mission_title ?></option>
                     <?php } ?>
                 </select>
+                <span id="error1" style="color:#f88634"></span>
             </div>
             <div class="col">
                 <p class="mb-1">My Story Title</p>

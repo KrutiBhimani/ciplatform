@@ -60,7 +60,7 @@
                         <form class="m-0" method="post" enctype="multipart/form-data">
                           <input type="text" name='m_id' value="<?php echo $mission->missionid ?>" hidden>
                           <div class="modal-body pb-0">
-                      
+
                             <p class="mb-1 mt-3">Email </p>
                             <input type="email" class="popup" name="email" place-holder='enter user email to invite'>
                           </div>
@@ -81,7 +81,10 @@
                 <div class="row">
                   <div class="col-md-12" style="color:black">
                     <div class="card-body pb-3 remove">
-                      <a href="Volunteering_Mission?id=<?php echo $mission->mission_id?>" style="color:black;">
+                      <a href="Volunteering_Mission?id=<?php $id = $mission->mission_id;
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>" style="color:black;">
                         <h2 class="card-title mb-2" style="font-size:calc(15px + 0.3vw);"><?php echo $mission->mission_title; ?></h2>
                       </a>
                       <p class="mb-2" style="color:gray; font-size:calc(11px + 0.1vw);">
@@ -309,9 +312,12 @@
                     if ($k == 1) {
                       $c = $mission->total_seat - $seat->count;
                     }
-                    if ($key == 1 || $c == 0) {?>
-                      <a href="Volunteering_Mission?id=<?php echo $mission->missionid ?>" style="color: inherit;">View Detail</a>
-                    <?php } else {?>
+                    if ($key == 1 || $c == 0) { ?>
+                      <a href="Volunteering_Mission?id=<?php $id = $mission->mission_id;
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>" style="color: inherit;">View Detail</a>
+                    <?php } else { ?>
                       <a href="home?source=apply&id=<?php echo $mission->missionid ?>" style="color: inherit;">Apply</a>
                     <?php }
                     ?>
@@ -626,10 +632,16 @@
                             if ($k == 1) {
                               $c = $mission->total_seat - $seat->count;
                             }
-                            if ($key == 1 || $c == 0) {?>
-                              <a href="Volunteering_Mission?id=<?php echo $mission->missionid ?>" style="color: inherit;">View Detail</a>
+                            if ($key == 1 || $c == 0) { ?>
+                              <a href="Volunteering_Mission?id=<?php $id = $mission->mission_id;
+                                                                $salt = "SECRET_STUFF";
+                                                                $encrypted_id = base64_encode($id . $salt);
+                                                                echo $encrypted_id; ?>" style="color: inherit;">View Detail</a>
                             <?php } else { ?>
-                              <a href="Volunteering_Mission?id=<?php echo $mission->missionid ?>" style="color: inherit;">Apply</a>
+                              <a href="Volunteering_Mission?id=<?php $id = $mission->mission_id;
+                                                                $salt = "SECRET_STUFF";
+                                                                $encrypted_id = base64_encode($id . $salt);
+                                                                echo $encrypted_id; ?>" style="color: inherit;">Apply</a>
                             <?php }
                             ?>
                             <i class="fa fa-arrow-right"></i>
@@ -646,32 +658,32 @@
       </div>
       <?php if ($row > 0) { ?>
         <nav aria-label="Page navigation example">
-            <ul class="pagination pager justify-content-center">
-                <?php
-                $next = $page + 1;
-                $previous = $page - 1;
-                if ($page == 1) {
-                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
-                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
-                } else {
-                    echo "<li class='page-item'><a class='page-link' href='home?page=1' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
-                    echo "<li class='page-item'><a class='page-link' href='home?page=$previous' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
-                }
-                for ($i = 1; $i <= $cnt; $i++) {
-                    if ($i == $page)
-                        echo "<li class='page-item'><a class='page-link active text-center' href='home?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
-                    else
-                        echo "<li class='page-item'><a class='page-link text-center' href='home?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
-                }
-                if ($page == $cnt) {
-                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
-                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
-                } else {
-                    echo "<li class='page-item'><a class='page-link' href='home?page=$next' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
-                    echo "<li class='page-item'><a class='page-link' href='home?page=$cnt' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
-                }
-                ?>
-            </ul>
+          <ul class="pagination pager justify-content-center">
+            <?php
+            $next = $page + 1;
+            $previous = $page - 1;
+            if ($page == 1) {
+              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
+            } else {
+              echo "<li class='page-item'><a class='page-link' href='home?page=1' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' href='home?page=$previous' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
+            }
+            for ($i = 1; $i <= $cnt; $i++) {
+              if ($i == $page)
+                echo "<li class='page-item'><a class='page-link active text-center' href='home?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px;'><b>$i</b></a></li>";
+              else
+                echo "<li class='page-item'><a class='page-link text-center' href='home?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
+            }
+            if ($page == $cnt) {
+              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
+            } else {
+              echo "<li class='page-item'><a class='page-link' href='home?page=$next' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' href='home?page=$cnt' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
+            }
+            ?>
+          </ul>
         </nav>
       <?php } else { ?>
         <div class="text-center">mission not found</div>

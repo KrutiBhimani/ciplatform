@@ -65,14 +65,13 @@ switch ($source) {
                 }
         ?>
                 <script type="text/javascript">
-                    alert("<?php echo $insertEx['Message'] ?>");
                     window.location.href = 'user';
                 </script>
             <?php
             } else {
             ?>
                 <script type="text/javascript">
-                    alert("<?php echo $insertEx['Message'] ?>");
+                    alert("Something Went Wrong.");
                     window.location.href = 'user?source=add_user';
                 </script>
             <?php
@@ -120,7 +119,6 @@ switch ($source) {
                 }
             ?>
                 <script type="text/javascript">
-                    alert("Data update successfully.");
                     window.location.href = 'user';
                 </script>
             <?php
@@ -156,7 +154,6 @@ switch ($source) {
         if ($delete_data) {
             ?>
             <script type="text/javascript">
-                alert("Data deleted successfully.");
                 window.location.href = 'user';
             </script>
         <?php

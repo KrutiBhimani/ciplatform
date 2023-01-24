@@ -6,7 +6,7 @@
     <?php
 }
 $user_id = $_SESSION['user_data']->user_id;
-$row = 1;
+$row = 4;
 $where = [
     'user_id' => $user_id
 ];
@@ -111,6 +111,45 @@ if (isset($_POST['change'])) {
 <?php
     }
 }
+?>
+<script>
+    function validateForm() {
+        let y = document.forms["myForm"]["first_name"].value;
+        if (y == "") {
+            document.getElementById("error1").innerHTML = "Name is required";
+            return false;
+        }
+        if (y.length > 16) {
+            document.getElementById("error1").innerHTML = "maximum 16 characters are allowed";
+            return false;
+        }
+        let x = document.forms["myForm"]["last_name"].value;
+        if (x == "") {
+            document.getElementById("error2").innerHTML = "Surname is required";
+            return false;
+        }
+        if (x.length > 16) {
+            document.getElementById("error2").innerHTML = "maximum 16 characters are allowed";
+            return false;
+        }
+        let a = document.forms["myForm"]["employee_id"].value;
+        if (a.length > 16) {
+            document.getElementById("error3").innerHTML = "maximum 16 characters are allowed";
+            return false;
+        }
+        let b = document.forms["myForm"]["title"].value;
+        if (b.length > 255) {
+            document.getElementById("error4").innerHTML = "maximum 255 characters are allowed";
+            return false;
+        }
+        let c = document.forms["myForm"]["department"].value;
+        if (c.length > 16) {
+            document.getElementById("error5").innerHTML = "maximum 16 characters are allowed";
+            return false;
+        }
+    }
+</script>
+<?php
 include 'Views/home/header.php';
 include 'Views/home/header1.php';
 include 'Views/home/edit_user.php';

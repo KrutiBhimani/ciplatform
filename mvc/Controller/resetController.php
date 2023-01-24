@@ -34,10 +34,29 @@
                                 alert("<?php echo $changeEx['Message'] ?>");
                                 window.location.href = 'register';
                             </script>
-            <?php
+                <?php
                         }
                     }
-                }
+                } ?>
+                <script>
+                    function validateForm() {
+                        let z = document.forms["myForm"]["password"].value;
+                        if (z == "") {
+                            document.getElementById("errorp1").innerHTML = "Password is required";
+                            return false;
+                        }
+                        let a = document.forms["myForm"]["password2"].value;
+                        if (a == "") {
+                            document.getElementById("errorp2").innerHTML = "Confirm password is required";
+                            return false;
+                        }
+                        if (a != z) {
+                            document.getElementById("errorp2").innerHTML = "Password and confirm password need to be same ";
+                            return false;
+                        }
+                    }
+                </script>
+            <?php
                 $selectData = $this->SelectBanner();
                 $banners = $selectData['Data'];
                 include 'Views/header.php';

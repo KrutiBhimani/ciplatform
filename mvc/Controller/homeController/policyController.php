@@ -11,7 +11,7 @@ $where = [
 ];
 $selectData = $this->SelectData1('user', $where);
 $user = $selectData['Data'];
-$row = 1;
+$row = 4;
 $where = [
     'slug' => 'policy'
 ];
@@ -25,7 +25,7 @@ if (isset($_POST['contact'])) {
     ];
     $insertEx = $this->InsertData('contact', $insert_data);
 }
- echo '<!DOCTYPE html>';
+echo '<!DOCTYPE html>';
 include 'Views/home/header.php';
 include 'Views/home/header1.php';
 include 'Views/home/policy.php';
