@@ -7,13 +7,15 @@
                 <p class="mb-1">Select mission</p>
                 <select class="popup pt-0 pb-0" id="mission_id" name='mission_id'>
                     <option value="" selected="" disabled="" hidden="">Select your mission</option>
-                    <?php foreach ($missions as $mission) { ?>
+                    <?php foreach ($missions as $mission) { 
+                        foreach($missions1 as $mission1)
+                        { if($mission->mission_id == $mission1->mission_id){?>
                         <option value="<?php echo $mission->mission_id ?>" <?php if (!empty($story)) {
                                                                                 if ($story->mission_id == $mission->mission_id) {
                                                                                     echo 'selected';
                                                                                 }
                                                                             } ?>><?php echo $mission->mission_title ?></option>
-                    <?php } ?>
+                    <?php }} }?>
                 </select>
                 <span id="error1" style="color:#f88634"></span>
             </div>

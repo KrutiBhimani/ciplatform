@@ -6,7 +6,7 @@
     <?php
 }
 $user_id = $_SESSION['user_data']->user_id;
-$row = 3;
+$row = 4;
 $where = [
     'user_id' => $user_id
 ];
@@ -20,6 +20,8 @@ if (!empty($story)) {
 }
 $selectData = $this->SelectData3(0, 0, 'Newest');
 $missions = $selectData['Data'];
+$selectData = $this->AppliedMissions1($user_id);
+$missions1 = $selectData['Data'];
 if (isset($_POST['draft'])) {
     if (!empty($story)) {
         $update_data = [

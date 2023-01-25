@@ -158,6 +158,24 @@ class loginModel extends Model
 		}
 		return $response;
 	}
+	function AppliedMissions1($user_id)
+	{
+		$selSql = "SELECT * FROM `mission_application` WHERE user_id = $user_id AND approval_status = 'APPROVE'";
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
 	function timesheethour($user_id)
 	{
 		$selSql = "SELECT * FROM `timesheet` 

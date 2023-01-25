@@ -60,7 +60,7 @@ if (isset($_POST['inviteuser'])) {
                     $mail->Host = 'smtp.office365.com'; // Specify main and backup SMTP servers
                     $mail->SMTPAuth = true;                             // Enable SMTP authentication
                     $mail->Username = 'krutibhimani11@outlook.com';           // SMTP username
-                    $mail->Password = 'kruti123';                       // SMTP password
+                    $mail->Password = 'kruti321';                       // SMTP password
                     $mail->SMTPSecure = 'tls';                          // Enable TLS encryption, `ssl` also accepted
                     $mail->Port = 587;                                  // TCP port to connect, tls=587, ssl=465
                     $mail->From = 'krutibhimani11@outlook.com';
@@ -79,7 +79,10 @@ if (isset($_POST['inviteuser'])) {
     ?>
                         <script type="text/javascript">
                             alert("message sent to your email.");
-                            window.location.href = 'story_detail?key=<?php echo $_POST['s_id'] ?>';
+                            window.location.href = 'story_detail?key=<?php $id = $_POST['s_id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
                         </script>
             <?php }
                     $errors[] = "Send mail sucsessfully";
@@ -90,7 +93,10 @@ if (isset($_POST['inviteuser'])) {
         } else { ?>
             <script type="text/javascript">
                 alert("user not found");
-                window.location.href = 'story_detail?key=<?php echo $_POST['s_id'] ?>';
+                window.location.href = 'story_detail?key=<?php $id = $_POST['s_id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
 <?php }
     }

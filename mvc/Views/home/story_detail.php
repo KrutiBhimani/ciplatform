@@ -89,7 +89,7 @@
                                                             $encrypted_id = base64_encode($id . $salt);
                                                             echo $encrypted_id; ?>" style="color: inherit; text-decoration: inherit;">
                             Open Mission
-                            <img src="../mvc/Assets/images/right-arrow.png" alt="" class="ms-3 mb-1" style="height:15px ;">
+                            <i class="fa fa-arrow-right ps-3"></i>
                         </a>
                     </div>
                 </div>

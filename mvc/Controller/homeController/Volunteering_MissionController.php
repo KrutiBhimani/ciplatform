@@ -17,6 +17,7 @@ $salt = "SECRET_STUFF";
 $decrypted_id_raw = base64_decode($encrypted_id);
 $decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
 $mission_id = $decrypted_id;
+$mission_id1 = $decrypted_id;
 $where = [
     'mission.mission_id' => $mission_id,
 ];
@@ -92,19 +93,25 @@ switch ($source) {
     case 'like_mission':
         $insert_data = [
             'user_id' => $user_id,
-            'mission_id' => $_GET['like']
+            'mission_id' => $_GET['id']
         ];
         $insertEx = $this->InsertData('favourite_mission', $insert_data);
         if ($insertEx['Code']) {
     ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['like'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
         <?php
         } else {
         ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['like'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
         <?php
         }
@@ -115,19 +122,25 @@ switch ($source) {
         ];
         $where = [
             'user_id' => $user_id,
-            'mission_id' => $_GET['like'],
+            'mission_id' => $_GET['id'],
         ];
         $delete_data = $this->UpdateData1('favourite_mission', $update_data, $where);
         if ($delete_data) {
         ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['like'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
         <?php
         } else {
         ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['like'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
         <?php
         }
@@ -143,13 +156,19 @@ switch ($source) {
         if ($insertEx['Code']) {
         ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['id'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
         <?php
         } else {
         ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['id'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
         <?php
         }
@@ -157,20 +176,26 @@ switch ($source) {
     case 'addrating':
         $insert_data = [
             'user_id' => $user_id,
-            'mission_id' => $_GET['by'],
+            'mission_id' => $_GET['id'],
             'rating' => $_GET['rate']
         ];
         $insertEx = $this->InsertData('mission_rating', $insert_data);
         if ($insertEx['Code']) {
         ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['by'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
         <?php
         } else {
         ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['by'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
         <?php
         }
@@ -182,19 +207,25 @@ switch ($source) {
         ];
         $where = [
             'user_id' => $user_id,
-            'mission_id' => $_GET['by'],
+            'mission_id' => $_GET['id'],
         ];
         $insertEx = $this->UpdateData1('mission_rating', $update_data, $where);
         if ($insertEx['Code']) {
         ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['by'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
         <?php
         } else {
         ?>
             <script type="text/javascript">
-                window.location.href = 'Volunteering_Mission?id=<?php echo $_GET['by'] ?>';
+                window.location.href = 'Volunteering_Mission?id=<?php $id = $_GET['id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
             </script>
             <?php
         }
@@ -228,7 +259,7 @@ switch ($source) {
                             $mail->Host = 'smtp.office365.com'; // Specify main and backup SMTP servers
                             $mail->SMTPAuth = true;                             // Enable SMTP authentication
                             $mail->Username = 'krutibhimani11@outlook.com';           // SMTP username
-                            $mail->Password = 'kruti123';                       // SMTP password
+                            $mail->Password = 'kruti321';                       // SMTP password
                             $mail->SMTPSecure = 'tls';                          // Enable TLS encryption, `ssl` also accepted
                             $mail->Port = 587;                                  // TCP port to connect, tls=587, ssl=465
                             $mail->From = 'krutibhimani11@outlook.com';
@@ -247,18 +278,27 @@ switch ($source) {
             ?>
                                 <script type="text/javascript">
                                     alert("message sent to your email.");
-                                    window.location.href = 'Volunteering_Mission?id=<?php echo $_POST['m_id'] ?>';
+                                    window.location.href = 'Volunteering_Mission?id=<?php $id = $_POST['m_id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
                                 </script>
                     <?php }
                             $errors[] = "Send mail sucsessfully";
                         } catch (Exception $e) {
                             $errors[] = $e->getMessage(); //Boring error messages from anything else!
+                            ?><script type="text/javascript">
+                                    alert("message not sent");
+                                </script><?php 
                         }
                     }
                 } else { ?>
                     <script type="text/javascript">
                         alert("user not found");
-                        window.location.href = 'Volunteering_Mission?id=<?php echo $_POST['m_id'] ?>';
+                        window.location.href = 'Volunteering_Mission?id=<?php $id = $_POST['m_id'];
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
                     </script>
                 <?php }
             }

@@ -27,7 +27,7 @@
                     $mail->Host = 'smtp.office365.com'; // Specify main and backup SMTP servers
                     $mail->SMTPAuth = true;                             // Enable SMTP authentication
                     $mail->Username = 'krutibhimani11@outlook.com';           // SMTP username
-                    $mail->Password = 'kruti123';                       // SMTP password
+                    $mail->Password = 'kruti321';                       // SMTP password
                     $mail->SMTPSecure = 'tls';                          // Enable TLS encryption, `ssl` also accepted
                     $mail->Port = 587;                                  // TCP port to connect, tls=587, ssl=465
                     $mail->From = 'krutibhimani11@outlook.com';

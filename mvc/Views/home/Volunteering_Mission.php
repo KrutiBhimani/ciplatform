@@ -172,9 +172,9 @@
                                 }
                             }
                             if ($key == 1) {
-                                echo "<a href='Volunteering_Mission?source=unlike_mission&like=$mission->missionid' style='color: inherit; text-decoration: inherit;'><i class='fa fa-heart text-danger me-2' aria-hidden='true'></i>Remove From Favourite</a>";
+                                echo "<a href='Volunteering_Mission?source=unlike_mission&id=$mission->missionid' style='color: inherit; text-decoration: inherit;'><i class='fa fa-heart text-danger me-2' aria-hidden='true'></i>Remove From Favourite</a>";
                             } else {
-                                echo "<a href='Volunteering_Mission?source=like_mission&like=$mission->missionid' style='color: inherit; text-decoration: inherit;'><i class='fa fa-heart-o text-dark me-2' aria-hidden='true'></i>Add To Favourite</a>";
+                                echo "<a href='Volunteering_Mission?source=like_mission&id=$mission->missionid' style='color: inherit; text-decoration: inherit;'><i class='fa fa-heart-o text-dark me-2' aria-hidden='true'></i>Add To Favourite</a>";
                             }
                             ?>
                         </div>
@@ -224,14 +224,14 @@
                         if ($rating == 1 && $key == 1) {
                             for ($x = 1; $x <= 5; $x++) {
                                 if ($x < ($rateduser->rating + 1)) {
-                                    echo "<a href='Volunteering_Mission?source=editrating&rate=$x&by=$mission->missionid'><img src='../mvc/Assets/images/selected-star.png' style='height:20px; cursor: pointer;'></a>";
+                                    echo "<a href='Volunteering_Mission?source=editrating&rate=$x&id=$mission->missionid'><img src='../mvc/Assets/images/selected-star.png' style='height:20px; cursor: pointer;'></a>";
                                 } else {
-                                    echo "<a href='Volunteering_Mission?source=editrating&rate=$x&by=$mission->missionid'><img src='../mvc/Assets/images/star.png' style='height:22px; cursor: pointer;'></a>";
+                                    echo "<a href='Volunteering_Mission?source=editrating&rate=$x&id=$mission->missionid'><img src='../mvc/Assets/images/star.png' style='height:22px; cursor: pointer;'></a>";
                                 }
                             }
                         } else if ($rating == 0 && $key == 1) {
                             for ($x = 1; $x <= 5; $x++) {
-                                echo "<a href='Volunteering_Mission?source=addrating&rate=$x&by=$mission->missionid'><img src='../mvc/Assets/images/star.png' style='height:22px; cursor: pointer;'></a>";
+                                echo "<a href='Volunteering_Mission?source=addrating&rate=$x&id=$mission->missionid'><img src='../mvc/Assets/images/star.png' style='height:22px; cursor: pointer;'></a>";
                             }
                         } else {
                             for ($x = 0; $x < 5; $x++) {
@@ -541,9 +541,9 @@
                                             }
                                         }
                                         if ($key == 1) {
-                                            echo "<a href='home?source=unlike_mission&like=$missi->missionid&user=$user_id'><i class='fa fa-heart text-danger' aria-hidden='true'></i></a>";
+                                            echo "<a href='home?source=unlike_mission&id=$missi->missionid&user=$user_id'><i class='fa fa-heart text-danger' aria-hidden='true'></i></a>";
                                         } else {
-                                            echo "<a href='home?source=like_mission&like=$missi->missionid&user=$user_id'><i class='fa fa-heart-o' aria-hidden='true' style='color:white'></i></a>";
+                                            echo "<a href='home?source=like_mission&id=$missi->missionid&user=$user_id'><i class='fa fa-heart-o' aria-hidden='true' style='color:white'></i></a>";
                                         }
                                         ?>
                                     </div>
