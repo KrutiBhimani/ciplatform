@@ -191,6 +191,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Invite</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form class="m-0" method="post" enctype="multipart/form-data">
                                         <input type="text" name='m_id' value="<?php echo $mission->missionid ?>" hidden>
@@ -553,6 +554,7 @@
                                             <div class="modal-content p-2">
                                                 <div class="modal-header pb-0" style="border-bottom:0 ;">
                                                     <p class="mb-0" style="font-size:20px ;">Invite</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                                 </div>
                                                 <form class="m-0" method="post" enctype="multipart/form-data">
                                                     <input type="text" name='m_id' value="<?php echo $missi->missionid ?>" hidden>

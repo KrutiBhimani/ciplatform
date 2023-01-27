@@ -5,6 +5,7 @@
             <div class="modal-content p-2">
                 <div class="modal-header pb-0" style="border-bottom:0 ;">
                     <p class="mb-0" style="font-size:20px ;">Change Password </p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                 </div>
                 <div class="modal-body pb-0">
                     <input type="password" class="popup mb-3" name="password" placeholder="Enter old password" required>
@@ -27,6 +28,7 @@
             <div class="modal-content p-3">
                 <div class="modal-header pb-0" style="border-bottom:0 ;">
                     <p class="mb-0" style="font-size:20px ;">Add Your Skills</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                 </div>
                 <div class="modal-body pb-0">
                     <div class="row" style="font-size:10px ;">
@@ -258,7 +260,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane show active" id="mission">
-                            <textarea rows="6" class="popup1 mt-3" id="divskill" placeholder="select your skill" disabled><?php foreach ($selected as $select) {
+                            <textarea rows="6" class="popup1 mt-3" id="divskill" placeholder="select your skill" disabled style="background-color:white;"><?php foreach ($selected as $select) {
                                                                                                                                 echo $select->skill_name . '&#13;&#10;';
                                                                                                                             } ?></textarea>
 

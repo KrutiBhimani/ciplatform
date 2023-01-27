@@ -9,7 +9,8 @@
     include 'mvc/Views/home/header.php';
     include 'mvc/Views/home/policy.php';
     include 'mvc/Views/footer.php';
-} else {
+}
+else{
     $user_id = $_SESSION['user_data']->user_id;
     $where = [
         'user_id' => $user_id
@@ -36,4 +37,5 @@
     include 'mvc/Views/home/policy.php';
     include 'mvc/Views/home/footer.php';
 }
+
 ?>

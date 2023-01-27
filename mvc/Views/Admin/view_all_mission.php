@@ -50,11 +50,12 @@
                                     <button class="p-0" data-bs-toggle="modal" data-bs-target="#popupdelete<?php echo $mission->mission_id ?>" type="button" style='border:none;background-color:white;'>
                                         <i class="fa fa-trash-o text-dark" aria-hidden="true"></i>
                                     </button>
-                                    <div id="popupdelete<?php echo $mission->mission_id ?>" class="modal" style="--bs-modal-width:900px;">
+                                    <div id="popupdelete<?php echo $mission->mission_id ?>" class="modal">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content p-2">
                                                 <div class="modal-header pb-0" style="border-bottom:0 ;">
                                                     <p class="mb-0" style="font-size:20px ;">Confirm Delete</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                                 </div>
                                                 <form method="post" enctype="multipart/form-data">
                                                     <input type='text' value="<?php echo $mission->mission_id ?>" name="timesheet_id" hidden>

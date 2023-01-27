@@ -56,6 +56,7 @@
     <div class="modal-content p-2">
       <div class="modal-header pb-0" style="border-bottom:0 ;">
         <p class="mb-0" style="font-size:20px ;">contact Us</p>
+        <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
       </div>
       <form class="m-0" method="post" enctype="multipart/form-data">
         <div class="modal-body pb-0">

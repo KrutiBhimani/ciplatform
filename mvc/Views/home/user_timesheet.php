@@ -3,6 +3,7 @@
         <div class="modal-content p-2">
             <div class="modal-header pb-0" style="border-bottom:0 ;">
                 <p class="mb-0" style="font-size:20px ;">Please input below Volunteering Hours</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
             </div>
             <form method="post" enctype="multipart/form-data">
                 <div class="modal-body pb-0">
@@ -45,6 +46,7 @@
         <div class="modal-content p-2">
             <div class="modal-header pb-0" style="border-bottom:0 ;">
                 <p class="mb-0" style="font-size:20px ;">Please input below Volunteering Goal</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
             </div>
             <form method="post" enctype="multipart/form-data">
                 <div class="modal-body pb-0">
@@ -126,6 +128,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Confirm Delete</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form method="post" enctype="multipart/form-data">
                                         <input type='text' value="<?php echo $hour->timesheet_id ?>" name="timesheet_id" hidden>
@@ -147,6 +150,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Please input below Volunteering Hours</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form method="post" enctype="multipart/form-data">
                                         <input type='text' value="<?php echo $hour->timesheet_id ?>" name="timesheet_id" hidden>
@@ -234,6 +238,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Confirm Delete</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form method="post" enctype="multipart/form-data">
                                         <input type='text' value="<?php echo $goal->timesheet_id ?>" name="timesheet_id" hidden>
@@ -255,6 +260,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Please input below Volunteering Goal</p>
+                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form method="post" enctype="multipart/form-data">
                                         <input type='text' value="<?php echo $goal->timesheet_id ?>" name="timesheet_id" hidden>

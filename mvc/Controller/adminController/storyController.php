@@ -25,7 +25,7 @@ switch ($source) {
         $decrypted_id_raw = base64_decode($encrypted_id);
         $decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
         $story_id = $decrypted_id;
-        $selectData = $this->Selectmvc/Viewstory($story_id);
+        $selectData = $this->SelectViewstory($story_id);
         $story = $selectData['Data'];
         $where = [
             'story_id' => $story_id
