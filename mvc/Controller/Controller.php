@@ -1,7 +1,7 @@
 <?php
 
 date_default_timezone_set('Asia/Kolkata');
-require_once('Model/loginModel.php');
+require_once('mvc/Model/loginModel.php');
 session_start();
 
 class Controller extends loginModel
@@ -80,6 +80,11 @@ class Controller extends loginModel
 					include "homeController/Volunteering_MissionController.php";
 					break;
 				default:
+?>
+					<script type="text/javascript">
+						window.location.href = 'login';
+					</script>
+<?php
 					break;
 			}
 		}

@@ -6,14 +6,14 @@
     <?php
 }
 $case = 8;
-include 'Views/header.php';
+include 'mvc/Views/header.php';
 $admin_id = $_SESSION['admin_data']->admin_id;
 $where = [
     'admin_id' => $admin_id
 ];
 $selectData = $this->SelectData1('admin', $where);
 $admin = $selectData['Data'];
-include 'Views/Admin/adminsidebar.php';
+include 'mvc/Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -32,7 +32,7 @@ switch ($source) {
             $insertEx = $this->InsertData('banner', $insert_data);
             if ($insertEx['Code']) {
                 if (!is_null($image)) {
-                    move_uploaded_file($image_temp, '../mvc/Assets/uplodes/' . $image);
+                    move_uploaded_file($image_temp, 'mvc/Assets/uplodes/' . $image);
                 }
     ?>
                 <script type="text/javascript">
@@ -48,7 +48,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/add_banner.php";
+        include "mvc/Views/Admin/add_banner.php";
         break;
     case 'edit_banner':
         $encrypted_id = $_GET['edit'];
@@ -81,7 +81,7 @@ switch ($source) {
             $upd_data = $this->UpdateData1('banner', $update_data, $where);
             if ($upd_data) {
                 if (!is_null($avatar)) {
-                    move_uploaded_file($avatar_temp, '../mvc/Assets/uplodes/' . $avatar);
+                    move_uploaded_file($avatar_temp, 'mvc/Assets/uplodes/' . $avatar);
                 }
             ?>
                 <script type="text/javascript">
@@ -101,7 +101,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/edit_banner.php";
+        include "mvc/Views/Admin/edit_banner.php";
         break;
     case 'delete_banner':
         $encrypted_id = $_GET['delete'];
@@ -153,7 +153,7 @@ switch ($source) {
             $selectData = $this->SelectData('banner', 0, 0, $where);
             $banners = $selectData['Data'];
         }
-        include "Views/Admin/view_all_banner.php";
+        include "mvc/Views/Admin/view_all_banner.php";
 }
-include 'Views/footer.php';
+include 'mvc/Views/footer.php';
 ?>

@@ -62,7 +62,7 @@
 <?php
 $selectData = $this->SelectBanner();
 $banners = $selectData['Data'];
-include 'Views/header.php';
-include 'Views/registration.php';
-include 'Views/footer.php';
+include 'mvc/Views/header.php';
+include 'mvc/Views/registration.php';
+include 'mvc/Views/footer.php';
 ?>

@@ -2,10 +2,10 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between position-relative">
             <nav class="navbar navbar-expand-sm" style="background-color:white ;">
-                <img class="d-none d-sm-block" src="../mvc/Assets/images/logo.png">
+                <img class="d-none d-sm-block" src="mvc/Assets/images/logo.png">
                 <div class="container-fluid">
                     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"><img src="../mvc/Assets/images/list.png" /></span>
+                        <span class="navbar-toggler-icon"><img src="mvc/Assets/images/list.png" /></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -24,7 +24,7 @@
                     <ul class="navbar-nav me-auto mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png';
+                                <img src="mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png';
                                                         else echo 'uplodes/' . $user->avatar; ?>" class="rounded-circle col" style="height: 30px;width: 60px;">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -41,7 +41,7 @@
                     <ul class="navbar-nav me-auto mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png';
+                                <img src="mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png';
                                                         else echo 'uplodes/' . $user->avatar; ?>" class="rounded-circle col" style="height: 30px;width: 60px;">
                                 <label><?php echo $user->first_name . ' ' . $user->last_name; ?></label>
                             </a>

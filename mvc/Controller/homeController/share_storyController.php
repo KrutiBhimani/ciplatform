@@ -54,7 +54,7 @@ if (isset($_POST['draft'])) {
                 foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
                     $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
                     $media_name = $_FILES['media_name']['name'][$key];
-                    move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                    move_uploaded_file($media_name_temp, 'mvc/Assets/uplodes/' . $media_name);
                     $media_type = substr(strstr($media_name, '.'), 1);
                     $media_path = 'mvc/Assets/uplodes/' . $media_name;
                     $insert_data = [
@@ -101,7 +101,7 @@ if (isset($_POST['draft'])) {
                 foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
                     $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
                     $media_name = $_FILES['media_name']['name'][$key];
-                    move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                    move_uploaded_file($media_name_temp, 'mvc/Assets/uplodes/' . $media_name);
                     $media_type = substr(strstr($media_name, '.'), 1);
                     $media_path = 'mvc/Assets/uplodes/' . $media_name;
                     $insert_data = [
@@ -153,7 +153,7 @@ if (isset($_POST['publish'])) {
                 foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
                     $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
                     $media_name = $_FILES['media_name']['name'][$key];
-                    move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                    move_uploaded_file($media_name_temp, 'mvc/Assets/uplodes/' . $media_name);
                     $media_type = substr(strstr($media_name, '.'), 1);
                     $media_path = 'mvc/Assets/uplodes/' . $media_name;
                     $insert_data = [
@@ -200,7 +200,7 @@ if (isset($_POST['publish'])) {
                 foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
                     $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
                     $media_name = $_FILES['media_name']['name'][$key];
-                    move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                    move_uploaded_file($media_name_temp, 'mvc/Assets/uplodes/' . $media_name);
                     $media_type = substr(strstr($media_name, '.'), 1);
                     $media_path = 'mvc/Assets/uplodes/' . $media_name;
                     $insert_data = [
@@ -227,7 +227,7 @@ if (isset($_POST['contact'])) {
     ];
     $insertEx = $this->InsertData('contact', $insert_data);
 }
-include 'Views/home/header.php';
+include 'mvc/Views/home/header.php';
 ?>
 <script>
     function validateForm() {
@@ -240,7 +240,7 @@ include 'Views/home/header.php';
     }
 </script>
 <?php
-include 'Views/home/header1.php';
-include 'Views/home/share_story.php';
-include 'Views/home/footer.php';
+include 'mvc/Views/home/header1.php';
+include 'mvc/Views/home/share_story.php';
+include 'mvc/Views/home/footer.php';
 ?>

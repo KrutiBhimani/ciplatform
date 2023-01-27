@@ -4,19 +4,19 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                 <div style="height:100%;">
-                    <img id='mainImage' class="ps-1 pe-1 mt-2" src="../<?php echo $mission->media_path; ?>" height="80%" width="100%" style='object-fit: cover;'>
+                    <img id='mainImage' class="ps-1 pe-1 mt-2" src="<?php echo $mission->media_path; ?>" height="80%" width="100%" style='object-fit: cover;'>
                     <div class="row pe-3 ps-3 pt-1">
                         <div class="top-content p-0" id='style-sheet-modern'>
                             <div class="container-fluid p-0 m-0">
                                 <div id="carousel-example" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner row w-100 mx-auto" role="listbox">
                                         <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active p-1">
-                                            <img src="../<?php echo $mission->media_path; ?>" class="img-fluid mx-auto d-block" style="object-fit: cover;height: 100px; width:100%" alt="img1">
+                                            <img src="<?php echo $mission->media_path; ?>" class="img-fluid mx-auto d-block" style="object-fit: cover;height: 100px; width:100%" alt="img1">
                                         </div>
 
                                         <?php foreach ($medias as $key => $media) { ?>
                                             <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 p-1">
-                                                <img src="../<?php echo $media->media_path; ?>" class="img-fluid mx-auto d-block" style="object-fit: cover;height: 100px; width:100%" alt="img1">
+                                                <img src="<?php echo $media->media_path; ?>" class="img-fluid mx-auto d-block" style="object-fit: cover;height: 100px; width:100%" alt="img1">
                                             </div>
                                         <?php } ?>
                                     </div>
@@ -73,7 +73,7 @@
                             <div style="color:black;">
                                 <div class="d-flex justify-content-around">
                                     <div class="pe-3">
-                                        <img src="../mvc/Assets/images/Seats-left.png" alt="" style="height:23px">
+                                        <img src="mvc/Assets/images/Seats-left.png" alt="" style="height:23px">
                                     </div>
                                     <div>
                                         <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
@@ -100,7 +100,7 @@
                             <div style="color:black;">
                                 <div class="d-flex justify-content-around">
                                     <div class="pe-3">
-                                        <img src="../mvc/Assets/images/Already-volunteered.png" alt="" style="height:20px">
+                                        <img src="mvc/Assets/images/Already-volunteered.png" alt="" style="height:20px">
                                     </div>
                                     <div>
                                         <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
@@ -128,7 +128,7 @@
                             <div style="color:black;">
                                 <div class="d-flex justify-content-around">
                                     <div class="pe-3">
-                                        <img src="../mvc/Assets/images/deadline.png" alt="" style="height:28px">
+                                        <img src="mvc/Assets/images/deadline.png" alt="" style="height:28px">
                                     </div>
                                     <div>
                                         <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
@@ -146,7 +146,7 @@
                         <div style="color:black;">
                             <div class="d-flex justify-content-around">
                                 <div class="pe-3">
-                                    <img src="../mvc/Assets/images/achieved.png" alt="" style="height:22px">
+                                    <img src="mvc/Assets/images/achieved.png" alt="" style="height:22px">
                                 </div>
                                 <div style="width: 100%;">
                                     <div class="mt-1 mb-3" style="background-color:#EEEEEE; height:7px; width:100%; border-radius: 10px;">
@@ -182,7 +182,7 @@
                     <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt-2">
                         <div class="col-example2 text-center" style="font-size:calc(13px + 0.1vw);">
                             <a href="#" style="color: inherit; text-decoration: inherit;" data-bs-toggle="modal" data-bs-target="#popup<?php echo $mission->missionid ?>">
-                                <img src="../mvc/Assets/images/add1.png" alt="" class="mb-1" style="height:15px ;">
+                                <img src="mvc/Assets/images/add1.png" alt="" class="mb-1" style="height:15px ;">
                                 Recommend to a Co-Worker
                             </a>
                         </div>
@@ -224,21 +224,21 @@
                         if ($rating == 1 && $key == 1) {
                             for ($x = 1; $x <= 5; $x++) {
                                 if ($x < ($rateduser->rating + 1)) {
-                                    echo "<a href='Volunteering_Mission?source=editrating&rate=$x&id=$mission->missionid'><img src='../mvc/Assets/images/selected-star.png' style='height:20px; cursor: pointer;'></a>";
+                                    echo "<a href='Volunteering_Mission?source=editrating&rate=$x&id=$mission->missionid'><img src='mvc/Assets/images/selected-star.png' style='height:20px; cursor: pointer;'></a>";
                                 } else {
-                                    echo "<a href='Volunteering_Mission?source=editrating&rate=$x&id=$mission->missionid'><img src='../mvc/Assets/images/star.png' style='height:22px; cursor: pointer;'></a>";
+                                    echo "<a href='Volunteering_Mission?source=editrating&rate=$x&id=$mission->missionid'><img src='mvc/Assets/images/star.png' style='height:22px; cursor: pointer;'></a>";
                                 }
                             }
                         } else if ($rating == 0 && $key == 1) {
                             for ($x = 1; $x <= 5; $x++) {
-                                echo "<a href='Volunteering_Mission?source=addrating&rate=$x&id=$mission->missionid'><img src='../mvc/Assets/images/star.png' style='height:22px; cursor: pointer;'></a>";
+                                echo "<a href='Volunteering_Mission?source=addrating&rate=$x&id=$mission->missionid'><img src='mvc/Assets/images/star.png' style='height:22px; cursor: pointer;'></a>";
                             }
                         } else {
                             for ($x = 0; $x < 5; $x++) {
                                 if ($x < $mission->rating) {
-                                    echo "<img src='../mvc/Assets/images/selected-star.png' alt='' class='ps-1'>";
+                                    echo "<img src='mvc/Assets/images/selected-star.png' alt='' class='ps-1'>";
                                 } else {
-                                    echo "<img src='../mvc/Assets/images/star.png' alt='' class='ps-1'>";
+                                    echo "<img src='mvc/Assets/images/star.png' alt='' class='ps-1'>";
                                 }
                             }
                         }
@@ -249,17 +249,17 @@
                 </div>
                 <div class="row mt-3 mb-3 ms-1 me-1">
                     <div class="col col-example3 pe-2 ps-2">
-                        <img src="../mvc/Assets/images/pin1.png" style="height:18px;">
+                        <img src="mvc/Assets/images/pin1.png" style="height:18px;">
                         <h6 class="mt-3 mb-1" style="color:gray; font-size:10px">City</h6>
                         <h4 class="mb-0" style="font-size:calc(11px + 0.1vw);"><?php echo $mission->city_name; ?></h4>
                     </div>
                     <div class="col col-example3 pe-2 ps-2">
-                        <img src="../mvc/Assets/images/web.png" style="height:18px;">
+                        <img src="mvc/Assets/images/web.png" style="height:18px;">
                         <h6 class="mt-3 mb-1" style="color:gray; font-size:10px">Theme</h6>
                         <h4 class="mb-0" style="font-size:calc(11px + 0.1vw);"><?php echo $mission->theme_title; ?></h4>
                     </div>
                     <div class="col col-example3 pe-2 ps-2">
-                        <img src="../mvc/Assets/images/calender.png" style="height:17px;">
+                        <img src="mvc/Assets/images/calender.png" style="height:17px;">
                         <h6 class="mt-3 mb-1" style="color:gray; font-size:10px">Date</h6>
                         <h4 class="mb-0" style="font-size:calc(11px + 0.1vw);">
                             <?php if ($mission->mission_type == 'TIME') { ?>
@@ -283,7 +283,7 @@
                         </h4>
                     </div>
                     <div class="col col-example3 pe-2 ps-2">
-                        <img src="../mvc/Assets/images/organization.png" style="height:15px;">
+                        <img src="mvc/Assets/images/organization.png" style="height:15px;">
                         <h6 class="mt-3 mb-1" style="color:gray; font-size:10px">Organization</h6>
                         <h4 class="mb-0" style="font-size:calc(11px + 0.1vw);"><?php echo $mission->organization_name; ?></h4>
                     </div>
@@ -292,8 +292,8 @@
                 <div class="d-flex align-items-center justify-content-center">
                 <?php
                     $key = 0;
-                    foreach ($appusers as $appuser) {
-                      if ($appuser->mission_id == $mission->missionid) {
+                    foreach ($appuse as $appus) {
+                      if ($appus->mission_id == $mission->missionid) {
                         $key = 1;
                         break;
                       }
@@ -322,7 +322,7 @@
                     <?php } else {?>
                         <a href="home?source=apply&id=<?php echo $mission->missionid ?>" style="color: inherit;">
                         <div class="col-example" style="font-size:calc(15px + 0.1vw); font-weight: 400;">Apply Now
-                            <img src="../mvc/Assets/images/right-arrow.png" alt="" class="ps-3">
+                            <img src="mvc/Assets/images/right-arrow.png" alt="" class="ps-3">
                         </div>
                     </a>
                     <?php }
@@ -354,15 +354,15 @@
                                     <button class="col-example5 mt-2" style="font-size:calc(13px + 0.1vw);">
                                         <?php
                                         if ($document->document_type == 'pdf') { ?>
-                                            <img src="../mvc/Assets/images/pdf.png" alt="" style="height:18px ;">
+                                            <img src="mvc/Assets/images/pdf.png" alt="" style="height:18px ;">
                                         <?php }
                                         if ($document->document_type == 'doc' || $document->document_type == 'docx') { ?>
-                                            <img src="../mvc/Assets/images/doc.png" alt="" style="height:18px ;">
+                                            <img src="mvc/Assets/images/doc.png" alt="" style="height:18px ;">
                                         <?php }
                                         if ($document->document_type == 'xls' || $document->document_type == 'xlsx') { ?>
-                                            <img src="../mvc/Assets/images/xlsx.png" alt="" style="height:18px ;">
+                                            <img src="mvc/Assets/images/xlsx.png" alt="" style="height:18px ;">
                                         <?php } ?>
-                                        <a href="../<?php echo $document->document_path ?>" target="_blank" style="color: inherit;"><?php echo $document->document_name ?></a>
+                                        <a href="<?php echo $document->document_path ?>" target="_blank" style="color: inherit;"><?php echo $document->document_name ?></a>
                                     </button>
                                 <?php } ?>
                             </div>
@@ -387,7 +387,7 @@
                                 <?php foreach ($comments as $comment) { ?>
                                     <div class="row mt-2 mb-2 p-3 ms-0 me-0" style="background-color:white;">
                                         <div class="col-lg-1 col-md-2 col-sm-2 col-12 p-0">
-                                            <img src="../mvc/Assets/<?php if ($comment->avatar == '') echo 'images/user1.png';
+                                            <img src="mvc/Assets/<?php if ($comment->avatar == '') echo 'images/user1.png';
                                                                     else echo 'uplodes/' . $comment->avatar; ?>" class="rounded-circle" height="45px">
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-10 col-12 p-0">
@@ -434,9 +434,9 @@
                                         <td style="border-bottom: 0;">
                                             <?php for ($x = 0; $x < 5; $x++) {
                                                 if ($x < $mission->rating) {
-                                                    echo "<img src='../mvc/Assets/images/selected-star.png' height='15px'>";
+                                                    echo "<img src='mvc/Assets/images/selected-star.png' height='15px'>";
                                                 } else {
-                                                    echo "<img src='../mvc/Assets/images/star.png' height='15px'>";
+                                                    echo "<img src='mvc/Assets/images/star.png' height='15px'>";
                                                 }
                                             } ?>
                                             <span class="gray2">(by <?php
@@ -468,7 +468,7 @@
                                 $count = 0;
                                 foreach ($vols as $vol) { ?>
                                     <div class="col-4 text-center p-0">
-                                        <img src="../mvc/Assets/<?php if ($vol->avatar == '') echo 'images/user1.png';
+                                        <img src="mvc/Assets/<?php if ($vol->avatar == '') echo 'images/user1.png';
                                                                 else echo 'uplodes/' . $vol->avatar; ?>" class="rounded-circle" height="60px">
                                         <p style="font-size:11px ;"><?php echo $vol->first_name . ' ' . $vol->last_name; ?></p>
                                     </div>
@@ -480,10 +480,10 @@
                     </div>
                     <table class="table table-bordered m-0 text-center">
                         <tr style="border-bottom: 0; border-start:0;">
-                            <td style="border-bottom: 0; border-start: 0;"><img src="../mvc/Assets/images/left.png" height="12px">
+                            <td style="border-bottom: 0; border-start: 0;"><img src="mvc/Assets/images/left.png" height="12px">
                             </td>
                             <td style="border-bottom: 0; border-start: 0;"><?php echo $count ?> Recent Volunteers</td>
-                            <td style="border-bottom: 0; border-end: 0;"><img src="../mvc/Assets/images/right-arrow1.png" height="12px">
+                            <td style="border-bottom: 0; border-end: 0;"><img src="mvc/Assets/images/right-arrow1.png" height="12px">
                             </td>
                         </tr>
                     </table>
@@ -504,8 +504,8 @@
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
                             <div class="card box border-0">
                                 <div class="gfg">
-                                    <img src="../<?php echo $missi->media_path; ?>" alt="" class="img-fluid" style="width:100%;">
-                                    <div class="d-flex align-items-center first-txt"><img src="../mvc/Assets/images/pin.png" alt="" class="img-fluid pe-1" style="height:12px;"><?php echo $missi->city_name; ?></div>
+                                    <img src="<?php echo $missi->media_path; ?>" alt="" class="img-fluid" style="width:100%;">
+                                    <div class="d-flex align-items-center first-txt"><img src="mvc/Assets/images/pin.png" alt="" class="img-fluid pe-1" style="height:12px;"><?php echo $missi->city_name; ?></div>
                                     <?php if ($missi->mission_type == 'TIME') {
                                         $current = date("Y-m-d h:i:s");
                                         if ($missi->deadline != null) {
@@ -547,7 +547,7 @@
                                         }
                                         ?>
                                     </div>
-                                    <div class="d-flex align-items-center third-txt p-2"><a href="" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup<?php echo $missi->missionid ?>"><img src="../mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px"></a></div>
+                                    <div class="d-flex align-items-center third-txt p-2"><a href="" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup<?php echo $missi->missionid ?>"><img src="mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px"></a></div>
                                     <div id="popup<?php echo $missi->missionid ?>" class="modal">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content p-2">
@@ -633,9 +633,9 @@
                                                 <div class="icon">
                                                     <?php for ($x = 0; $x < 5; $x++) {
                                                         if ($x < $missi->rating) {
-                                                            echo "<img src='../mvc/Assets/images/selected-star.png' alt='' class='ps-1 star'>";
+                                                            echo "<img src='mvc/Assets/images/selected-star.png' alt='' class='ps-1 star'>";
                                                         } else {
-                                                            echo "<img src='../mvc/Assets/images/star.png' alt='' class='ps-1 star'>";
+                                                            echo "<img src='mvc/Assets/images/star.png' alt='' class='ps-1 star'>";
                                                         }
                                                     } ?>
                                                 </div>
@@ -704,7 +704,7 @@
                                                     if ($missi->total_seat != null) { ?>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
                                                             <div class="row">
-                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/Seats-left.png" alt="" style="height:23px"></div>
+                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/Seats-left.png" alt="" style="height:23px"></div>
                                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                                                     <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
                                                                         <?php
@@ -729,7 +729,7 @@
                                                     <?php } else { ?>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
                                                             <div class="row">
-                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/Already-volunteered.png" alt="" style="height:20px"></div>
+                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/Already-volunteered.png" alt="" style="height:20px"></div>
                                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                                                     <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
                                                                         <?php
@@ -755,7 +755,7 @@
                                                     if ($missi->deadline != null) { ?>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
                                                             <div class="row">
-                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/deadline.png" alt="" style="height:28px"></div>
+                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/deadline.png" alt="" style="height:28px"></div>
                                                                 <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                                                     <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
                                                                         <?php
@@ -771,7 +771,7 @@
                                                 } else { ?>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
                                                         <div class="row">
-                                                            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/achieved.png" alt="" style="height:22px"></div>
+                                                            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/achieved.png" alt="" style="height:22px"></div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                                                 <div class="mt-1 mb-3" style="background-color:#EEEEEE; height:7px; width:100%; border-radius: 10px;">
                                                                     <div style="background-color:#f88634; height:7px; border-radius: 10px; width:80%;">

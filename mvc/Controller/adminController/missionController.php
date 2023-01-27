@@ -6,14 +6,14 @@
     <?php
 }
 $case = 3;
-include 'Views/header.php';
+include 'mvc/Views/header.php';
 $admin_id = $_SESSION['admin_data']->admin_id;
 $where = [
     'admin_id' => $admin_id
 ];
 $selectData = $this->SelectData1('admin', $where);
 $admin = $selectData['Data'];
-include 'Views/Admin/adminsidebar.php';
+include 'mvc/Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -75,7 +75,7 @@ switch ($source) {
                     foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
                         $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
                         $media_name = $_FILES['media_name']['name'][$key];
-                        move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                        move_uploaded_file($media_name_temp, 'mvc/Assets/uplodes/' . $media_name);
                         $media_type = substr(strstr($media_name, '.'), 1);
                         $media_path = 'mvc/Assets/uplodes/' . $media_name;
                         $insert_data = [
@@ -91,9 +91,9 @@ switch ($source) {
                     foreach ($_FILES['document_name']['tmp_name'] as $key => $image) {
                         $document_name_temp = $_FILES['document_name']['tmp_name'][$key];
                         $document_name = $_FILES['document_name']['name'][$key];
-                        move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
+                        move_uploaded_file($document_name_temp, 'mvc/Assets/uplodes/' . $document_name);
                         $document_type = substr(strstr($document_name, '.'), 1);
-                        $document_path = 'Assets/' . $document_name;
+                        $document_path = 'mvc/Assets/uplodes' . $document_name;
                         $insert_data = [
                             'mission_id' => $mission_id,
                             'document_name' => $document_name,
@@ -134,7 +134,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/add_mission.php";
+        include "mvc/Views/Admin/add_mission.php";
         break;
     case 'edit_mission':
         $encrypted_id = $_GET['edit'];
@@ -179,7 +179,7 @@ switch ($source) {
                 foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
                     $media_name_temp = $_FILES['media_name']['tmp_name'][$key];
                     $media_name = $_FILES['media_name']['name'][$key];
-                    move_uploaded_file($media_name_temp, '../mvc/Assets/uplodes/' . $media_name);
+                    move_uploaded_file($media_name_temp, 'mvc/Assets/uplodes/' . $media_name);
                     $media_type = substr(strstr($media_name, '.'), 1);
                     $media_path = 'mvc/Assets/uplodes/' . $media_name;
                     $insert_data = [
@@ -196,9 +196,9 @@ switch ($source) {
                 foreach ($_FILES['document_name']['tmp_name'] as $key => $image) {
                     $document_name_temp = $_FILES['document_name']['tmp_name'][$key];
                     $document_name = $_FILES['document_name']['name'][$key];
-                    move_uploaded_file($document_name_temp, '../mvc/Assets/uplodes/' . $document_name);
+                    move_uploaded_file($document_name_temp, 'mvc/Assets/uplodes/' . $document_name);
                     $document_type = substr(strstr($document_name, '.'), 1);
-                    $document_path = 'Assets/' . $document_name;
+                    $document_path = 'mvc/Assets/uplodes/' . $document_name;
                     $insert_data = [
                         'mission_id' => $mission_id,
                         'document_name' => $document_name,
@@ -275,7 +275,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/edit_mission.php";
+        include "mvc/Views/Admin/edit_mission.php";
         break;
     case 'delete_mission':
         $encrypted_id = $_GET['delete'];
@@ -334,7 +334,7 @@ switch ($source) {
             $selectData1 = $this->SelectData('mission', 0, 0, $where);
             $missions = $selectData1['Data'];
         }
-        include "Views/Admin/view_all_mission.php";
+        include "mvc/Views/Admin/view_all_mission.php";
 }
-include 'Views/footer.php';
+include 'mvc/Views/footer.php';
 ?>

@@ -44,8 +44,8 @@
                             </select>
                         </div>
                         <div class="col-1 align-self-center text-center">
-                            <img class="mb-2" src="../mvc/Assets/images/arrow.png">
-                            <img class="mt-2" src="../mvc/Assets/images/left.png">
+                            <img class="mb-2" src="mvc/Assets/images/arrow.png">
+                            <img class="mt-2" src="mvc/Assets/images/left.png">
                         </div>
                         <script>
                             $(document).ready(function() {
@@ -112,7 +112,7 @@
                             }
                         </script>
                         <label for="choose-file2">
-                            <img id="blah" src="../mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png';
+                            <img id="blah" src="mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png';
                                                                 else echo 'uplodes/' . $user->avatar; ?>" class="rounded-circle mt-4 mb-3" style="height:calc(30px + 8vw);width:calc(30px + 8vw);cursor:pointer;">
                         </label>
                         <input type="file" name='avatar' id="choose-file2" onchange="readURL(this);" style="display: none;" accept="image/x-png,image/jpg,image/jpeg">

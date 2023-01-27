@@ -50,8 +50,8 @@ if (isset($_POST['login'])) {
 <?php
 $selectData = $this->SelectBanner();
 $banners = $selectData['Data'];
-include 'Views/header.php';
-include 'Views/login.php';
-include 'Views/footer.php';
+include 'mvc/Views/header.php';
+include 'mvc/Views/login.php';
+include 'mvc/Views/footer.php';
 
 ?>

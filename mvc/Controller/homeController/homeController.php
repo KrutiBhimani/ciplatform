@@ -46,7 +46,7 @@ $selectData = $this->SelectData4($user_id);
 $users = $selectData['Data'];
 $userrow = $selectData['Row'];
 
-include 'Views/home/header.php';
+include 'mvc/Views/home/header.php';
 ?>
 <script>
     $(document).on('click', '.six-txt1', function() {
@@ -223,27 +223,19 @@ switch ($source) {
             $row = $selectData['Row'];
         }
         if (isset($_POST['inviteuser'])) {
-            // foreach ($_POST['invite'] as $item) {
-            //     $data = [
-            //         'to_user_id' => $item,
-            //         'from_user_id' => $user_id,
-            //         'mission_id' => $_POST['m_id']
-            //     ];
-            //     $this->InsertData('mission_invite', $data);
-            // }
             $email = $_POST['email'];
             $inviteEx = $this->ResetPass($email);
             if ($inviteEx['Code']) {
                 $_SESSION['invite_data'] = $inviteEx['Data'];
                 if ($_SESSION['invite_data']) {
-                    $link = "<a href='http://localhost/ci-platform/mvc/login'>Click To Get Started</a>";
-                    require '../mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
-                    require_once('../mvc/Libraries/PHPMailer/src/PHPMailer.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/Exception.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/OAuth.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/POP3.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/SMTP.php');
+                    $link = "<a href='http://localhost/ci-platform/login'>Click To Get Started</a>";
+                    require 'mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
+                    require_once('mvc/Libraries/PHPMailer/src/PHPMailer.php');
+                    require_once('mvc/Libraries/PHPMailer/src/Exception.php');
+                    require_once('mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
+                    require_once('mvc/Libraries/PHPMailer/src/OAuth.php');
+                    require_once('mvc/Libraries/PHPMailer/src/POP3.php');
+                    require_once('mvc/Libraries/PHPMailer/src/SMTP.php');
                     if (empty($errors)) {
                         $data = [
                             'to_user_id' => $_SESSION['invite_data']->user_id,
@@ -300,11 +292,11 @@ switch ($source) {
             ];
             $insertEx = $this->InsertData('contact', $insert_data);
         }
-        include 'Views/home/header1.php';
-        include 'Views/home/header2.php';
-        include 'Views/home/home.php';
+        include 'mvc/Views/home/header1.php';
+        include 'mvc/Views/home/header2.php';
+        include 'mvc/Views/home/home.php';
         break;
 }
 
-include 'Views/home/footer.php';
+include 'mvc/Views/home/footer.php';
 ?>

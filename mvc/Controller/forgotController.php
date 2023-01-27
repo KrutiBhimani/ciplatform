@@ -5,14 +5,14 @@
         $_SESSION['reset_data'] = $resetEx['Data'];
         $token = md5(2418 * 2) . substr(md5(uniqid(rand(), 1)), 3, 10);
         if ($_SESSION['reset_data']) {
-            $link = "<a href='http://localhost/ci-platform/mvc/reset?key=" . $_SESSION['reset_data']->email . "&t=" . $token . "'>Click To Reset password</a>";
-            require '../mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
-            require_once('../mvc/Libraries/PHPMailer/src/PHPMailer.php');
-            require_once('../mvc/Libraries/PHPMailer/src/Exception.php');
-            require_once('../mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
-            require_once('../mvc/Libraries/PHPMailer/src/OAuth.php');
-            require_once('../mvc/Libraries/PHPMailer/src/POP3.php');
-            require_once('../mvc/Libraries/PHPMailer/src/SMTP.php');
+            $link = "<a href='http://localhost/ci-platform/reset?key=" . $_SESSION['reset_data']->email . "&t=" . $token . "'>Click To Reset password</a>";
+            require 'mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
+            require_once('mvc/Libraries/PHPMailer/src/PHPMailer.php');
+            require_once('mvc/Libraries/PHPMailer/src/Exception.php');
+            require_once('mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
+            require_once('mvc/Libraries/PHPMailer/src/OAuth.php');
+            require_once('mvc/Libraries/PHPMailer/src/POP3.php');
+            require_once('mvc/Libraries/PHPMailer/src/SMTP.php');
             if (empty($errors)) {
                 $insert_data = [
                     'email' => $_SESSION['reset_data']->email,
@@ -22,7 +22,7 @@
                 $insertEx = $this->InsertData('password_reset', $insert_data);
                 $mail = new PHPMailer\PHPMailer\PHPMailer(true); //defaults to using php "mail()"; the true param means it will throw exceptions on errors, which we need to catch
                 try {
-                    $mail->SMTPDebug = 1;                               // Enable verbose debug output
+                    // $mail->SMTPDebug = 1;                               // Enable verbose debug output
                     $mail->isSMTP();                                    // Set mailer to use SMTP
                     $mail->Host = 'smtp.office365.com'; // Specify main and backup SMTP servers
                     $mail->SMTPAuth = true;                             // Enable SMTP authentication
@@ -78,7 +78,7 @@
 <?php
 $selectData = $this->SelectBanner();
 $banners = $selectData['Data'];
-include 'Views/header.php';
-include 'Views/forgotpsd.php';
-include 'Views/footer.php';
+include 'mvc/Views/header.php';
+include 'mvc/Views/forgotpsd.php';
+include 'mvc/Views/footer.php';
 ?>

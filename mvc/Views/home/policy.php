@@ -10,7 +10,7 @@
                     <a class="gray1 list-group-item list-group-item-action" href="#policy<?php echo $page->cms_page_id ?>">
                         <div class="d-flex justify-content-between">
                             <?php echo $page->title ?>
-                            <img class="mt-2" src="../mvc/Assets/images/arrow.png" height="10px">
+                            <img class="mt-2" src="mvc/Assets/images/arrow.png" height="10px">
                         </div>
                     </a>
                     <hr class="div ms-3 me-3">

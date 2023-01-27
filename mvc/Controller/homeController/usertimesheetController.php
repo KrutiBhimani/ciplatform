@@ -107,8 +107,8 @@ if (isset($_POST['delete_hours'])) {
 <?php
     }
 }
-include 'Views/home/header.php';
-include 'Views/home/header1.php';
-include 'Views/home/user_timesheet.php';
-include 'Views/home/footer.php';
+include 'mvc/Views/home/header.php';
+include 'mvc/Views/home/header1.php';
+include 'mvc/Views/home/user_timesheet.php';
+include 'mvc/Views/home/footer.php';
 ?>

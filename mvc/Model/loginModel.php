@@ -1,5 +1,5 @@
 <?php
-require_once('Config/db.php');
+require_once('mvc/Config/db.php');
 class loginModel extends Model
 {
 	function InsertData($tbl, $data)
@@ -300,7 +300,7 @@ class loginModel extends Model
 		}
 		return $response;
 	}
-	function SelectApply(string $tblName, array $where = [])
+	function SelectApply(string $tblName, array $where = [],string $tbl = null)
 	{
 		$selSql = "SELECT * FROM $tblName";
 		if (!empty($where)) {
@@ -314,7 +314,12 @@ class loginModel extends Model
 			$selSql .= " WHERE deleted_at is NULL";
 		}
 		if ($tblName == 'mission_application') {
-			$selSql .= " AND (approval_status LIKE 'APPROVE' OR approval_status LIKE 'PENDING')";
+			if($tbl == null){
+				$selSql .= " AND (approval_status LIKE 'APPROVE' OR approval_status LIKE 'PENDING')";
+			}
+			else{
+				$selSql .= " AND (approval_status LIKE 'APPROVE')";
+			}
 		}
 		if ($tblName == 'mission_media') {
 			$selSql .= " AND mission_media_id>=47";

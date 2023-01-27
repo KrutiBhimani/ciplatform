@@ -143,7 +143,7 @@
                         <ul class="navbar-nav me-auto mb-lg-0">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle me-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="../mvc/Assets/<?php if ($admin->avatar == '') echo 'images/user1.png';
+                                    <img src="mvc/Assets/<?php if ($admin->avatar == '') echo 'images/user1.png';
                                                             else echo 'uplodes/' . $admin->avatar; ?>" class="rounded-circle m-2 mt-0 mb-0 col" width="29" height="29">
                                     <label><?php echo $admin->first_name . ' ' . $admin->last_name; ?></label>
                                 </a>

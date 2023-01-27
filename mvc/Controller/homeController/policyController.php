@@ -26,8 +26,8 @@ if (isset($_POST['contact'])) {
     $insertEx = $this->InsertData('contact', $insert_data);
 }
 echo '<!DOCTYPE html>';
-include 'Views/home/header.php';
-include 'Views/home/header1.php';
-include 'Views/home/policy.php';
-include 'Views/home/footer.php';
+include 'mvc/Views/home/header.php';
+include 'mvc/Views/home/header1.php';
+include 'mvc/Views/home/policy.php';
+include 'mvc/Views/home/footer.php';
 ?>

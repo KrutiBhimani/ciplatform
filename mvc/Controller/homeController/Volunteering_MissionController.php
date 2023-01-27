@@ -25,10 +25,12 @@ $selectData = $this->SelectData3(0, 0, '', $user_id, $where, 'kdn');
 $missions = $selectData['Data'];
 foreach ($missions as $mission) {
     $where1 = [
-        'user_id' => $user_id,
+        'user_id' => $user_id
     ];
-    $selectData = $this->SelectApply('mission_application', $where1);
+    $selectData = $this->SelectApply('mission_application', $where1,'dfdsf');
     $appusers = $selectData['Data'];
+    $selectData = $this->SelectApply('mission_application', $where1);
+    $appuse = $selectData['Data'];
     $where2 = [
         'user_id' => $user_id,
         'mission_id' => $mission->mission_id,
@@ -237,14 +239,14 @@ switch ($source) {
             if ($inviteEx['Code']) {
                 $_SESSION['invite_data'] = $inviteEx['Data'];
                 if ($_SESSION['invite_data']) {
-                    $link = "<a href='http://localhost/ci-platform/mvc/login'>Click To Get Started</a>";
-                    require '../mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
-                    require_once('../mvc/Libraries/PHPMailer/src/PHPMailer.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/Exception.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/OAuth.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/POP3.php');
-                    require_once('../mvc/Libraries/PHPMailer/src/SMTP.php');
+                    $link = "<a href='http://localhost/ci-platform/login'>Click To Get Started</a>";
+                    require 'mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
+                    require_once('mvc/Libraries/PHPMailer/src/PHPMailer.php');
+                    require_once('mvc/Libraries/PHPMailer/src/Exception.php');
+                    require_once('mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
+                    require_once('mvc/Libraries/PHPMailer/src/OAuth.php');
+                    require_once('mvc/Libraries/PHPMailer/src/POP3.php');
+                    require_once('mvc/Libraries/PHPMailer/src/SMTP.php');
                     if (empty($errors)) {
                         $data = [
                             'to_user_id' => $_SESSION['invite_data']->user_id,
@@ -313,19 +315,25 @@ switch ($source) {
             if ($loginEx['Code']) {
                 ?>
                 <script type="text/javascript">
-                    window.location.href = 'Volunteering_Mission?id=<?php echo $mission_id ?>';
+                    window.location.href = 'Volunteering_Mission?id=<?php $id = $mission_id;
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
                 </script>
             <?php
             } else {
             ?>
                 <script type="text/javascript">
                     alert("<?php echo $loginEx['Message'] ?>");
-                    window.location.href = 'Volunteering_Mission?id=<?php echo $mission_id ?>';
+                    window.location.href = 'Volunteering_Mission?id=<?php $id = $mission_id;
+                                                        $salt = "SECRET_STUFF";
+                                                        $encrypted_id = base64_encode($id . $salt);
+                                                        echo $encrypted_id; ?>';
                 </script>
         <?php
             }
         }
-        include 'Views/home/header.php';
+        include 'mvc/Views/home/header.php';
         ?>
         <script type="text/javascript">
             $(document).ready(function() {
@@ -355,9 +363,9 @@ switch ($source) {
             ];
             $insertEx = $this->InsertData('contact', $insert_data);
         }
-        include 'Views/home/header1.php';
-        include 'Views/home/Volunteering_Mission.php';
-        include 'Views/home/footer.php';
+        include 'mvc/Views/home/header1.php';
+        include 'mvc/Views/home/Volunteering_Mission.php';
+        include 'mvc/Views/home/footer.php';
         break;
 }
 ?>

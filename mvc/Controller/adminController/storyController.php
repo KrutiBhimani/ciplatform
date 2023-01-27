@@ -6,14 +6,14 @@
     <?php
 }
 $case = 7;
-include 'Views/header.php';
+include 'mvc/Views/header.php';
 $admin_id = $_SESSION['admin_data']->admin_id;
 $where = [
     'admin_id' => $admin_id
 ];
 $selectData = $this->SelectData1('admin', $where);
 $admin = $selectData['Data'];
-include 'Views/Admin/adminsidebar.php';
+include 'mvc/Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -25,14 +25,14 @@ switch ($source) {
         $decrypted_id_raw = base64_decode($encrypted_id);
         $decrypted_id = preg_replace(sprintf('/%s/', $salt), '', $decrypted_id_raw);
         $story_id = $decrypted_id;
-        $selectData = $this->SelectViewStory($story_id);
+        $selectData = $this->Selectmvc/Viewstory($story_id);
         $story = $selectData['Data'];
         $where = [
             'story_id' => $story_id
         ];
         $selectData1 = $this->SelectData('story_media', 0, 0, $where);
         $medias = $selectData1['Data'];
-        include "Views/Admin/view_story.php";
+        include "mvc/Views/Admin/view_story.php";
         break;
     case 'approve_story':
         $encrypted_id = $_GET['edit'];
@@ -145,7 +145,7 @@ switch ($source) {
             $selectData = $this->SelectJoinStory(0, 0, $where);
             $storys = $selectData['Data'];
         }
-        include "Views/Admin/view_all_story.php";
+        include "mvc/Views/Admin/view_all_story.php";
 }
-include 'Views/footer.php';
+include 'mvc/Views/footer.php';
 ?>

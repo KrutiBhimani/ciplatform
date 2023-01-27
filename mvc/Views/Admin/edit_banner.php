@@ -16,7 +16,7 @@
                     <p class="mb-1 mt-4" style="font-size:14px;">Sort Order</p>
                     <input type="number" name="sort_order" class="popup" value="<?php echo $banner->sort_order; ?>" required>
                     <p class="mb-1 mt-4" style="font-size:14px;">Image</p>
-                    <img class="m-2" style="height:50px" src="../mvc/Assets/uplodes/<?php echo $banner->image; ?>">
+                    <img class="m-2" style="height:50px" src="mvc/Assets/uplodes/<?php echo $banner->image; ?>">
                     <input type="file" name="image" value="">
                 </td>
             </tr>

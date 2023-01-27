@@ -6,14 +6,14 @@
     <?php
 }
 $case = 6;
-include 'Views/header.php';
+include 'mvc/Views/header.php';
 $admin_id = $_SESSION['admin_data']->admin_id;
 $where = [
     'admin_id' => $admin_id
 ];
 $selectData = $this->SelectData1('admin', $where);
 $admin = $selectData['Data'];
-include 'Views/Admin/adminsidebar.php';
+include 'mvc/Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -102,7 +102,7 @@ switch ($source) {
             $selectData = $this->SelectJoinApp(0, 0, $where);
             $apps = $selectData['Data'];
         }
-        include "Views/Admin/view_all_app.php";
+        include "mvc/Views/Admin/view_all_app.php";
 }
-include 'Views/footer.php';
+include 'mvc/Views/footer.php';
 ?>

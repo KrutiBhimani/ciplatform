@@ -32,7 +32,7 @@ if (isset($_POST['edit_admin'])) {
     $upd_data = $this->UpdateData1('admin', $update_data, $where);
     if ($upd_data) {
         if (!is_null($avatar)) {
-            move_uploaded_file($avatar_temp, '../mvc/Assets/uplodes/' . $avatar);
+            move_uploaded_file($avatar_temp, 'mvc/Assets/uplodes/' . $avatar);
         }
     ?>
         <script type="text/javascript">
@@ -51,8 +51,8 @@ if (isset($_POST['edit_admin'])) {
 <?php
     }
 }
-include 'Views/header.php';
-include 'Views/Admin/adminsidebar.php';
-include "Views/Admin/edit_admin.php";
-include 'Views/footer.php';
+include 'mvc/Views/header.php';
+include 'mvc/Views/Admin/adminsidebar.php';
+include "mvc/Views/Admin/edit_admin.php";
+include 'mvc/Views/footer.php';
 ?>

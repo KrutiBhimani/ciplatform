@@ -20,6 +20,8 @@
                     $password = mysqli_real_escape_string($this->connection, $_POST['password']);
                     $password2 = mysqli_real_escape_string($this->connection, $_POST['password2']);
                     if ($password == $password2) {
+                        $salt = "SeCrEtStUfFfOrPaSsWoRd";
+                        $password = base64_encode($password . $salt);
                         $changeEx = $this->UpdatePass($email, $password);
                         if ($changeEx['Code']) {
 ?>
@@ -59,9 +61,9 @@
             <?php
                 $selectData = $this->SelectBanner();
                 $banners = $selectData['Data'];
-                include 'Views/header.php';
-                include 'Views/resetpsd.php';
-                include 'Views/footer.php';
+                include 'mvc/Views/header.php';
+                include 'mvc/Views/resetpsd.php';
+                include 'mvc/Views/footer.php';
             }
         } else { ?>
             <script type="text/javascript">

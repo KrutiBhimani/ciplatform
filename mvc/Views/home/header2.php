@@ -15,7 +15,7 @@
                                 <nav class="navbar navbar-expand-sm" style="background-color:white ;">
                                     <div class="container-fluid justify-content-end">
                                         <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                            <img src="../mvc/Assets/images/filter.png" class="input-group-text m-0 p-0" id="basic-addon1" style="background-color:white; border:none;" height="30px">
+                                            <img src="mvc/Assets/images/filter.png" class="input-group-text m-0 p-0" id="basic-addon1" style="background-color:white; border:none;" height="30px">
                                         </button>
                                     </div>
                                 </nav>
@@ -109,7 +109,7 @@
                             <td class="border-end pb-1" style="width:calc(100%/2);">
                                 <div class="input-group d-flex align-items-center">
                                     <div class="input-group-prepend" style="padding:5px 0">
-                                        <img src="../mvc/Assets/images/search.png" alt="" class="input-group-text p-0 m-0" id="basic-addon1" style="background-color:white; border:none;">
+                                        <img src="mvc/Assets/images/search.png" alt="" class="input-group-text p-0 m-0" id="basic-addon1" style="background-color:white; border:none;">
                                     </div>
                                     <input type="text" value="<?php if (isset($_POST['search'])) {
                                                                     echo $_POST['search'];
@@ -218,7 +218,7 @@
                 if (isset($_POST['country']) && $_POST['country'] != 'none') { ?>
                     <div class="p-1 six-txt pe-2 m-1">
                         <span id="removecountry"><?php echo $_POST['country'] ?></span>
-                        <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="removecountry()" style="cursor: pointer;">
+                        <img src="mvc/Assets/images/cancel.png" alt="" height="8px" onclick="removecountry()" style="cursor: pointer;">
                     </div>
                     <?php }
                 if (isset($_POST['skill'])) {
@@ -226,7 +226,7 @@
                     ?>
                         <div class="p-1 six-txt pe-2 m-1">
                             <span><?php echo $item ?></span>
-                            <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="remove('<?php echo $item ?>')" style="cursor: pointer;">
+                            <img src="mvc/Assets/images/cancel.png" alt="" height="8px" onclick="remove('<?php echo $item ?>')" style="cursor: pointer;">
                         </div>
                     <?php
                     }
@@ -238,7 +238,7 @@
                             <button value="<?php echo $item ?>" class="six-txt1" style="background-color: transparent;border:none;">
                                 <span><?php echo $item ?></span>
                             </button>
-                            <img src="../mvc/Assets/images/cancel.png" alt="" height="8px" onclick="remove('<?php echo $item ?>');" style="cursor: pointer;">
+                            <img src="mvc/Assets/images/cancel.png" alt="" height="8px" onclick="remove('<?php echo $item ?>');" style="cursor: pointer;">
                         </div>
                     <?php
                     }
@@ -248,7 +248,7 @@
                     ?>
                         <div id='remove' class="p-1 six-txt pe-2 m-1">
                             <span><?php echo $item ?></span>
-                            <img src="../mvc/Assets/images/cancel.png" id='removeAll' alt="" height="8px" onclick="remove('<?php echo $item ?>')" style="cursor: pointer;">
+                            <img src="mvc/Assets/images/cancel.png" id='removeAll' alt="" height="8px" onclick="remove('<?php echo $item ?>')" style="cursor: pointer;">
                         </div>
                 <?php
                     }

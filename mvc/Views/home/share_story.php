@@ -75,7 +75,7 @@
         </script>
         <p class="mb-1 mt-3">Mission Images</p>
         <label for="gallery-photo-add" class="custom-file-upload">
-            <img src="../mvc/Assets/images/drag-and-drop.png" style="height:calc(20px + 2vw);"><br />
+            <img src="mvc/Assets/images/drag-and-drop.png" style="height:calc(20px + 2vw);"><br />
         </label>
         <input type="file" name='media_name[]' id="gallery-photo-add" onchange="readURL(this);" multiple style="display: none;" />
         <div class="hide">
@@ -83,7 +83,7 @@
                 if (!empty($medias)) {
                     foreach ($medias as $media) {
                         if ($media->type != 'video') { ?>
-                            <img src="../<?php echo $media->path ?>" style="height:80px;width:80px;">
+                            <img src="<?php echo $media->path ?>" style="height:80px;width:80px;">
             <?php }
                     }
                 }

@@ -1,6 +1,6 @@
 <br /><br />
 <div class="example mt-3">
-    <img class="image1" src="../mvc/Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-login - Copy.png">
+    <img class="image1" src="mvc/Assets/images/Grow-Trees-On-the-path-to-environment-sustainability-login - Copy.png">
     <div class="middle">
         <p class="txt1 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut
@@ -20,7 +20,7 @@
             <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
                 <div class="card box border-0">
                     <div class="gfg1">
-                        <img src="../<?php echo $story->path ?>" alt="" class="img-fluid image2" style="width:100%; height:170px">
+                        <img src="<?php echo $story->path ?>" alt="" class="img-fluid image2" style="width:100%; height:170px">
                         <div class="middle1">
                             <a href="story_detail?key=<?php $id = $story->story_id;
                                                         $salt = "SECRET_STUFF";
@@ -41,7 +41,7 @@
 
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                                <img src="../mvc/Assets/<?php if ($story->avatar == '') echo 'images/user1.png';
+                                <img src="mvc/Assets/<?php if ($story->avatar == '') echo 'images/user1.png';
                                                         else echo 'uplodes/' . $story->avatar; ?>" class="rounded-circle" height="34px" width="34px">
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-8 pt-2 pb-2">
@@ -58,11 +58,11 @@
                 $next = $page + 1;
                 $previous = $page - 1;
                 if ($page == 1) {
-                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
-                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
+                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/previous.png' alt=''></a></li>";
+                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/left.png' alt=''></a></li>";
                 } else {
-                    echo "<li class='page-item'><a class='page-link' href='stories?page=1' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
-                    echo "<li class='page-item'><a class='page-link' href='stories?page=$previous' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
+                    echo "<li class='page-item'><a class='page-link' href='stories?page=1' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/previous.png' alt=''></a></li>";
+                    echo "<li class='page-item'><a class='page-link' href='stories?page=$previous' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/left.png' alt=''></a></li>";
                 }
                 for ($i = 1; $i <= $cnt; $i++) {
                     if ($i == $page)
@@ -71,11 +71,11 @@
                         echo "<li class='page-item'><a class='page-link text-center' href='stories?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
                 }
                 if ($page == $cnt) {
-                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
-                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
+                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/arrow.png' alt=''></a></li>";
+                    echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/next.png' alt=''></a></li>";
                 } else {
-                    echo "<li class='page-item'><a class='page-link' href='stories?page=$next' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
-                    echo "<li class='page-item'><a class='page-link' href='stories?page=$cnt' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
+                    echo "<li class='page-item'><a class='page-link' href='stories?page=$next' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/arrow.png' alt=''></a></li>";
+                    echo "<li class='page-item'><a class='page-link' href='stories?page=$cnt' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/next.png' alt=''></a></li>";
                 }
                 ?>
             </ul>

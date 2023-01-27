@@ -6,14 +6,14 @@
     <?php
 }
 $case = 5;
-include 'Views/header.php';
+include 'mvc/Views/header.php';
 $admin_id = $_SESSION['admin_data']->admin_id;
 $where = [
     'admin_id' => $admin_id
 ];
 $selectData = $this->SelectData1('admin', $where);
 $admin = $selectData['Data'];
-include 'Views/Admin/adminsidebar.php';
+include 'mvc/Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -42,7 +42,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/add_skill.php";
+        include "mvc/Views/Admin/add_skill.php";
         break;
     case 'edit_skill':
         $encrypted_id = $_GET['edit'];
@@ -83,7 +83,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/edit_skill.php";
+        include "mvc/Views/Admin/edit_skill.php";
         break;
     case 'delete_skill':
         $encrypted_id = $_GET['delete'];
@@ -134,7 +134,7 @@ switch ($source) {
             $selectData = $this->SelectData('skill', 0, 0, $where);
             $skills = $selectData['Data'];
         }
-        include "Views/Admin/view_all_skill.php";
+        include "mvc/Views/Admin/view_all_skill.php";
 }
-include 'Views/footer.php';
+include 'mvc/Views/footer.php';
 ?>

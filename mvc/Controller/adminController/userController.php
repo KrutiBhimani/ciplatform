@@ -6,14 +6,14 @@
     <?php
 }
 $case = 1;
-include 'Views/header.php';
+include 'mvc/Views/header.php';
 $admin_id = $_SESSION['admin_data']->admin_id;
 $where = [
     'admin_id' => $admin_id
 ];
 $selectData = $this->SelectData1('admin', $where);
 $admin = $selectData['Data'];
-include 'Views/Admin/adminsidebar.php';
+include 'mvc/Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -61,7 +61,7 @@ switch ($source) {
             $insertEx = $this->InsertData('user', $insert_data);
             if ($insertEx['Code']) {
                 if (!is_null($avatar)) {
-                    move_uploaded_file($avatar_temp, '../mvc/Assets/uplodes/' . $avatar);
+                    move_uploaded_file($avatar_temp, 'mvc/Assets/uplodes/' . $avatar);
                 }
         ?>
                 <script type="text/javascript">
@@ -77,7 +77,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/add_user.php";
+        include "mvc/Views/Admin/add_user.php";
         break;
     case 'edit_user':
         $encrypted_id = $_GET['edit'];
@@ -115,7 +115,7 @@ switch ($source) {
             $upd_data = $this->UpdateData('user', $update_data, $user_id);
             if ($upd_data) {
                 if (!is_null($avatar)) {
-                    move_uploaded_file($avatar_temp, '../mvc/Assets/uplodes/' . $avatar);
+                    move_uploaded_file($avatar_temp, 'mvc/Assets/uplodes/' . $avatar);
                 }
             ?>
                 <script type="text/javascript">
@@ -135,7 +135,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/edit_user.php";
+        include "mvc/Views/Admin/edit_user.php";
         break;
     case 'delete_user':
         $encrypted_id = $_GET['delete'];
@@ -192,7 +192,7 @@ switch ($source) {
             $selectData1 = $this->SelectData('user', 0, 0, $where);
             $users = $selectData1['Data'];
         }
-        include "Views/Admin/view_all_user.php";
+        include "mvc/Views/Admin/View_all_user.php";
 }
-include 'Views/footer.php';
+include 'mvc/Views/footer.php';
 ?>

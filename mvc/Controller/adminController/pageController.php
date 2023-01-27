@@ -6,14 +6,14 @@
     <?php
 }
 $case = 2;
-include 'Views/header.php';
+include 'mvc/Views/header.php';
 $admin_id = $_SESSION['admin_data']->admin_id;
 $where = [
     'admin_id' => $admin_id
 ];
 $selectData = $this->SelectData1('admin', $where);
 $admin = $selectData['Data'];
-include 'Views/Admin/adminsidebar.php';
+include 'mvc/Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -44,7 +44,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/add_page.php";
+        include "mvc/Views/Admin/add_page.php";
         break;
     case 'edit_page':
         $encrypted_id = $_GET['edit'];
@@ -87,7 +87,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/edit_page.php";
+        include "mvc/Views/Admin/edit_page.php";
         break;
     case 'delete_page':
         $encrypted_id = $_GET['delete'];
@@ -139,7 +139,7 @@ switch ($source) {
             $selectData1 = $this->SelectData('cms_page', 0, 0, $where);
             $pages = $selectData1['Data'];
         }
-        include "Views/Admin/view_all_page.php";
+        include "mvc/Views/Admin/view_all_page.php";
 }
-include 'Views/footer.php';
+include 'mvc/Views/footer.php';
 ?>

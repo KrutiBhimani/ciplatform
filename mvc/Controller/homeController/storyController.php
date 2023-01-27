@@ -34,8 +34,8 @@ if (isset($_POST['contact'])) {
     ];
     $insertEx = $this->InsertData('contact', $insert_data);
 }
-include 'Views/home/header.php';
-include 'Views/home/header1.php';
-include 'Views/home/story.php';
-include 'Views/home/footer.php';
+include 'mvc/Views/home/header.php';
+include 'mvc/Views/home/header1.php';
+include 'mvc/Views/home/story.php';
+include 'mvc/Views/home/footer.php';
 ?>

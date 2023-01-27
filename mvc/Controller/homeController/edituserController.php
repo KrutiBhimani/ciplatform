@@ -62,7 +62,7 @@ if (isset($_POST['edit_user'])) {
             $this->exp1($user_id, $item);
         }
         if (!is_null($avatar)) {
-            move_uploaded_file($avatar_temp, '../mvc/Assets/uplodes/' . $avatar);
+            move_uploaded_file($avatar_temp, 'mvc/Assets/uplodes/' . $avatar);
         }
     ?>
         <script type="text/javascript">
@@ -150,8 +150,8 @@ if (isset($_POST['change'])) {
     }
 </script>
 <?php
-include 'Views/home/header.php';
-include 'Views/home/header1.php';
-include 'Views/home/edit_user.php';
-include 'Views/home/footer.php';
+include 'mvc/Views/home/header.php';
+include 'mvc/Views/home/header1.php';
+include 'mvc/Views/home/edit_user.php';
+include 'mvc/Views/home/footer.php';
 ?>

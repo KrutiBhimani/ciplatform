@@ -7,8 +7,9 @@
             <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
               <div class="card box border-0">
                 <div class="gfg">
-                  <img src="../<?php echo $mission->media_path; ?>" alt="" class="img-fluid" style="width:100%;">
-                  <div class="d-flex align-items-center first-txt"><img src="../mvc/Assets/images/pin.png" alt="" class="img-fluid pe-1" style="height:12px;"><?php echo $mission->city_name; ?></div>
+                  <img src="<?php echo $mission->media_path; ?>" alt="" class="img-fluid" style="width:100%;">
+                  <div class="d-flex align-items-center first-txt"><img src="mvc/Assets/images/pin.png" alt="" class="img-fluid pe-1" style="height:12px;">
+                        <?php echo $mission->city_name; ?></div>
                   <?php if ($mission->mission_type == 'TIME') {
                     $current = date("Y-m-d h:i:s");
                     if ($mission->deadline != null) {
@@ -50,7 +51,7 @@
                     }
                     ?>
                   </div>
-                  <div class="d-flex align-items-center third-txt p-2"><a href="" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup<?php echo $mission->missionid ?>"><img src="../mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px"></a></div>
+                  <div class="d-flex align-items-center third-txt p-2"><a href="" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup<?php echo $mission->missionid ?>"><img src="mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px"></a></div>
                   <div id="popup<?php echo $mission->missionid ?>" class="modal">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content p-2">
@@ -129,9 +130,9 @@
                         <div class="icon">
                           <?php for ($x = 0; $x < 5; $x++) {
                             if ($x < $mission->rating) {
-                              echo "<img src='../mvc/Assets/images/selected-star.png' alt='' class='ps-1 star'>";
+                              echo "<img src='mvc/Assets/images/selected-star.png' alt='' class='ps-1 star'>";
                             } else {
-                              echo "<img src='../mvc/Assets/images/star.png' alt='' class='ps-1 star'>";
+                              echo "<img src='mvc/Assets/images/star.png' alt='' class='ps-1 star'>";
                             }
                           } ?>
                         </div>
@@ -200,7 +201,7 @@
                           if ($mission->total_seat != null) { ?>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
                               <div class="row">
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/Seats-left.png" alt="" style="height:23px"></div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/Seats-left.png" alt="" style="height:23px"></div>
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                   <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
                                     <?php
@@ -225,7 +226,7 @@
                           <?php } else { ?>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
                               <div class="row">
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/Already-volunteered.png" alt="" style="height:20px"></div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/Already-volunteered.png" alt="" style="height:20px"></div>
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                   <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
                                     <?php
@@ -251,7 +252,7 @@
                           if ($mission->deadline != null) { ?>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
                               <div class="row">
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/deadline.png" alt="" style="height:28px"></div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/deadline.png" alt="" style="height:28px"></div>
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                   <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
                                     <?php
@@ -267,7 +268,7 @@
                         } else { ?>
                           <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
                             <div class="row">
-                              <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="../mvc/Assets/images/achieved.png" alt="" style="height:22px"></div>
+                              <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/achieved.png" alt="" style="height:22px"></div>
                               <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                 <div class="mt-1 mb-3" style="background-color:#EEEEEE; height:7px; width:100%; border-radius: 10px;">
                                   <div style="background-color:#f88634; height:7px; border-radius: 10px; width:80%;">
@@ -336,9 +337,9 @@
               <div class="card box border-0 mb-4">
                 <div class="row">
                   <div class="col-lg-3 col-md-3 col-sm-3 col-3 position-relative">
-                    <img src="../<?php echo $mission->media_path; ?>" alt="" class="img-fluid" style="height:100%">
+                    <img src="<?php echo $mission->media_path; ?>" alt="" class="img-fluid" style="height:100%">
                     <div class="d-flex align-items-center first-txt1">
-                      <img src="../mvc/Assets/images/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
+                      <img src="mvc/Assets/images/pin.png" alt="" class="img-fluid pe-2" style="height:10px;">
                       <span><?php echo $mission->city_name; ?></span>
                     </div>
                     <?php if ($mission->mission_type == 'TIME') {
@@ -383,7 +384,7 @@
                       ?>
                     </div>
                     <div class="d-flex align-items-center third-txt1 p-2">
-                      <img src="../mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px">
+                      <img src="mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px">
                     </div>
                     <div class="d-flex four-txt justify-content-center">
                       <div class="bdg1"><?php echo $mission->theme_title; ?></div>
@@ -393,17 +394,17 @@
                     <div class="card-body me-4">
                       <div class="d-flex justify-content-between">
                         <div>
-                          <img src="../mvc/Assets/images/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
-                          <span class="black"><?php echo $mission->city_name; ?></span> <img src="../mvc/Assets/images/web.png" alt="" class="img-fluid pe-3 ps-3" style="height:13px;">
-                          <span class="black"><?php echo $mission->theme_title; ?></span> <img src="../mvc/Assets/images/organization.png" alt="" class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <img src="mvc/Assets/images/pin1.png" alt="" class="img-fluid pe-3" style="height:13px;">
+                          <span class="black"><?php echo $mission->city_name; ?></span> <img src="mvc/Assets/images/web.png" alt="" class="img-fluid pe-3 ps-3" style="height:13px;">
+                          <span class="black"><?php echo $mission->theme_title; ?></span> <img src="mvc/Assets/images/organization.png" alt="" class="img-fluid pe-3 ps-3" style="height:13px;">
                           <span class="black"><?php echo $mission->organization_name; ?></span>
                         </div>
                         <div class="icon">
                           <?php for ($x = 0; $x < 5; $x++) {
                             if ($x < $mission->rating) {
-                              echo "<img src='../mvc/Assets/images/selected-star.png' alt='' class='ps-1 star'>";
+                              echo "<img src='mvc/Assets/images/selected-star.png' alt='' class='ps-1 star'>";
                             } else {
-                              echo "<img src='../mvc/Assets/images/star.png' alt='' class='ps-1 star'>";
+                              echo "<img src='mvc/Assets/images/star.png' alt='' class='ps-1 star'>";
                             }
                           } ?>
                         </div>
@@ -486,7 +487,7 @@
                                 if ($mission->total_seat != null) { ?>
                                   <div class="col" style="color:black;">
                                     <div class="row">
-                                      <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="../mvc/Assets/images/Seats-left.png" alt="" style="height:21px"></div>
+                                      <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="mvc/Assets/images/Seats-left.png" alt="" style="height:21px"></div>
                                       <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                         <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">
                                           <?php
@@ -511,7 +512,7 @@
                                 <?php } else { ?>
                                   <div class="col" style="color:black;">
                                     <div class="row">
-                                      <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="../mvc/Assets/images/Seats-left.png" alt="" style="height:21px"></div>
+                                      <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="mvc/Assets/images/Seats-left.png" alt="" style="height:21px"></div>
                                       <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                         <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">
                                           <?php
@@ -537,7 +538,7 @@
                                 if ($mission->deadline != null) { ?>
                                   <div class="col" style="color:black;">
                                     <div class="row">
-                                      <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="../mvc/Assets/images/deadline.png" alt="" style="height:28px"></div>
+                                      <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="mvc/Assets/images/deadline.png" alt="" style="height:28px"></div>
                                       <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                         <h4 class="mb-1" style="font-size:calc(12px + 0.1vw);">
                                           <?php
@@ -552,7 +553,7 @@
                                 <?php } ?>
                                 <div class="col" style="color:black;">
                                   <div class="row">
-                                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="../mvc/Assets/images/calender.png" alt="" style="height:20px"></div>
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="mvc/Assets/images/calender.png" alt="" style="height:20px"></div>
                                     <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                       <h4 class="mb-1" style="font-size:11px;">
                                         <?php
@@ -571,7 +572,7 @@
                               <?php } else { ?>
                                 <div class="col" style="color:black;">
                                   <div class="row">
-                                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="../mvc/Assets/images/achieved.png" alt="" style="height:22px"></div>
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="mvc/Assets/images/achieved.png" alt="" style="height:22px"></div>
                                     <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                       <div class="mt-2 mb-2" id="forwidth" style="background-color:#EEEEEE; height:7px; width:100%; border-radius: 10px;">
                                         <div style="background-color:#f88634; height:7px; border-radius: 10px; width:80%;" class="6"></div>
@@ -582,7 +583,7 @@
                                 </div>
                                 <div class="col" style="color:black;">
                                   <div class="row">
-                                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="../mvc/Assets/images/calender.png" alt="" style="height:20px"></div>
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><img src="mvc/Assets/images/calender.png" alt="" style="height:20px"></div>
                                     <div class="col-lg-9 col-md-9 col-sm-9 col-9">
                                       <h4 class="mb-1" style="font-size:11px;">
                                         <?php echo $mission->goal_objective_text; ?>
@@ -663,11 +664,11 @@
             $next = $page + 1;
             $previous = $page - 1;
             if ($page == 1) {
-              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
-              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/previous.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/left.png' alt=''></a></li>";
             } else {
-              echo "<li class='page-item'><a class='page-link' href='home?page=1' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/previous.png' alt=''></a></li>";
-              echo "<li class='page-item'><a class='page-link' href='home?page=$previous' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/left.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' href='home?page=1' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/previous.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' href='home?page=$previous' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/left.png' alt=''></a></li>";
             }
             for ($i = 1; $i <= $cnt; $i++) {
               if ($i == $page)
@@ -676,11 +677,11 @@
                 echo "<li class='page-item'><a class='page-link text-center' href='home?page=$i' style='border-radius:5px; padding:5px; height:30px; width:30px; margin:4px; font-size:15px; color:black;'>$i</a></li>";
             }
             if ($page == $cnt) {
-              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
-              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/arrow.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/next.png' alt=''></a></li>";
             } else {
-              echo "<li class='page-item'><a class='page-link' href='home?page=$next' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/arrow.png' alt=''></a></li>";
-              echo "<li class='page-item'><a class='page-link' href='home?page=$cnt' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='../mvc/Assets/images/next.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' href='home?page=$next' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/arrow.png' alt=''></a></li>";
+              echo "<li class='page-item'><a class='page-link' href='home?page=$cnt' style='border-radius:5px; padding:9px; height:30px; width:30px; margin:4px;'><img src='mvc/Assets/images/next.png' alt=''></a></li>";
             }
             ?>
           </ul>

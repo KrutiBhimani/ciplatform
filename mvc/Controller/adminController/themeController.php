@@ -6,14 +6,14 @@
     <?php
 }
 $case = 4;
-include 'Views/header.php';
+include 'mvc/Views/header.php';
 $admin_id = $_SESSION['admin_data']->admin_id;
 $where = [
     'admin_id' => $admin_id
 ];
 $selectData = $this->SelectData1('admin', $where);
 $admin = $selectData['Data'];
-include 'Views/Admin/adminsidebar.php';
+include 'mvc/Views/Admin/adminsidebar.php';
 if (isset($_GET['source']))
     $source = $_GET['source'];
 else
@@ -42,7 +42,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/add_theme.php";
+        include "mvc/Views/Admin/add_theme.php";
         break;
     case 'edit_theme':
         $encrypted_id = $_GET['edit'];
@@ -83,7 +83,7 @@ switch ($source) {
             <?php
             }
         }
-        include "Views/Admin/edit_theme.php";
+        include "mvc/Views/Admin/edit_theme.php";
         break;
     case 'delete_theme':
         $encrypted_id = $_GET['delete'];
@@ -134,7 +134,7 @@ switch ($source) {
             $selectData = $this->SelectData('mission_theme', 0, 0, $where);
             $themes = $selectData['Data'];
         }
-        include "Views/Admin/view_all_theme.php";
+        include "mvc/Views/Admin/view_all_theme.php";
 }
-include 'Views/footer.php';
+include 'mvc/Views/footer.php';
 ?>

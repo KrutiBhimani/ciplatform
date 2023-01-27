@@ -38,14 +38,14 @@ if (isset($_POST['inviteuser'])) {
     if ($inviteEx['Code']) {
         $_SESSION['invite_data'] = $inviteEx['Data'];
         if ($_SESSION['invite_data']) {
-            $link = "<a href='http://localhost/ci-platform/mvc/login'>Click To Get Started</a>";
-            require '../mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
-            require_once('../mvc/Libraries/PHPMailer/src/PHPMailer.php');
-            require_once('../mvc/Libraries/PHPMailer/src/Exception.php');
-            require_once('../mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
-            require_once('../mvc/Libraries/PHPMailer/src/OAuth.php');
-            require_once('../mvc/Libraries/PHPMailer/src/POP3.php');
-            require_once('../mvc/Libraries/PHPMailer/src/SMTP.php');
+            $link = "<a href='http://localhost/ci-platform/login'>Click To Get Started</a>";
+            require 'mvc/Libraries/PHPMailer/PHPMailerAutoload.php';
+            require_once('mvc/Libraries/PHPMailer/src/PHPMailer.php');
+            require_once('mvc/Libraries/PHPMailer/src/Exception.php');
+            require_once('mvc/Libraries/PHPMailer/src/OAuthTokenProvider.php');
+            require_once('mvc/Libraries/PHPMailer/src/OAuth.php');
+            require_once('mvc/Libraries/PHPMailer/src/POP3.php');
+            require_once('mvc/Libraries/PHPMailer/src/SMTP.php');
             if (empty($errors)) {
                 $data = [
                     'to_user_id' => $_SESSION['invite_data']->user_id,
@@ -101,7 +101,7 @@ if (isset($_POST['inviteuser'])) {
 <?php }
     }
 }
-include 'Views/home/header.php';
+include 'mvc/Views/home/header.php';
 ?>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -123,7 +123,7 @@ include 'Views/home/header.php';
     });
 </script>
 <?php
-include 'Views/home/header1.php';
-include 'Views/home/story_detail.php';
-include 'Views/home/footer.php';
+include 'mvc/Views/home/header1.php';
+include 'mvc/Views/home/story_detail.php';
+include 'mvc/Views/home/footer.php';
 ?>

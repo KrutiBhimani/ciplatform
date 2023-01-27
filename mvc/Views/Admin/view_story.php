@@ -18,7 +18,7 @@
                     <p class="mb-1 mt-4" style="font-size:20px;">Story Photo</p>
                     <?php foreach ($medias as $media) {
                         if ($media->type == 'png') { ?>
-                            <img class="m-3" src="../<?php echo $media->path; ?>" height="140px" width="180px">
+                            <img class="m-3" src="<?php echo $media->path; ?>" height="140px" width="180px">
                     <?php
                         }
                     } ?>
