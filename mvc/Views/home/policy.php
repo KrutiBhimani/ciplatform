@@ -1,5 +1,3 @@
-<!-- for stick to top -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 <br /><br /><br />
 <div class="container-lg mt-5">
     <h2 class="mb-0">Privacy and Cookies Policy</h2>

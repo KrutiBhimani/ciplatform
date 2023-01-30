@@ -170,7 +170,9 @@ input[type="password"]:focus {
   background-color: #f88634;
   margin-top: 5px;
 }
-
+.hello .dropdown-toggle::after {
+  content: none;
+}
 .bdg {
   font-size: 11px;
   color: black;
