@@ -300,7 +300,25 @@ class loginModel extends Model
 		}
 		return $response;
 	}
-	function SelectApply(string $tblName, array $where = [],string $tbl = null)
+	function SelectNote()
+	{
+		$selSql = "SELECT * FROM notification ORDER BY `notification`.`notification_id` DESC";
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
+	function SelectApply(string $tblName, array $where = [], string $tbl = null)
 	{
 		$selSql = "SELECT * FROM $tblName";
 		if (!empty($where)) {
@@ -314,10 +332,9 @@ class loginModel extends Model
 			$selSql .= " WHERE deleted_at is NULL";
 		}
 		if ($tblName == 'mission_application') {
-			if($tbl == null){
+			if ($tbl == null) {
 				$selSql .= " AND (approval_status LIKE 'APPROVE' OR approval_status LIKE 'PENDING')";
-			}
-			else{
+			} else {
 				$selSql .= " AND (approval_status LIKE 'APPROVE')";
 			}
 		}
@@ -438,6 +455,25 @@ class loginModel extends Model
 		$selSql = "SELECT * FROM `mission_application` 
 		JOIN user on user.user_id = mission_application.user_id
 		WHERE mission_id = $mission_id AND approval_status = 'APPROVE'";
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.' . $selSql;
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.' . $selSql;
+		}
+		return $response;
+	}
+	function toptheme()
+	{
+		$selSql = "SELECT theme_id,count(theme_id) FROM `mission`
+		group by theme_id";
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
 			while ($FetchData = $sqlEx->fetch_object()) {
@@ -693,6 +729,40 @@ class loginModel extends Model
 	function StoryMedia($story_id)
 	{
 		$selSql = "SELECT * FROM `story_media` WHERE story_id = $story_id";
+		$sqlEx = $this->connection->query($selSql);
+		if ($sqlEx->num_rows > 0) {
+			while ($FetchData = $sqlEx->fetch_object()) {
+				$allData[] = $FetchData;
+			}
+			$response['Data'] = $allData;
+			$response['Code'] = true;
+			$response['Message'] = 'Data retrieved successfully.';
+		} else {
+			$response['Data'] = [];
+			$response['Code'] = false;
+			$response['Message'] = 'Data not retrieved.';
+		}
+		return $response;
+	}
+	function selecttoptheme($theme_id)
+	{
+		$selSql = "SELECT *,city.name as city_name, country.name as country_name,mission.title as mission_title, 
+		mission_theme.title as theme_title,mission.mission_id as missionid,COUNT(mission_application.mission_id) as count, 
+		ROUND(AVG(mission_rating.rating)) as rating, time_mission.total_seat - COUNT(mission_application.mission_id) as seatcount from mission 
+		LEFT JOIN time_mission on time_mission.mission_id = mission.mission_id 
+		LEFT JOIN goal_mission on goal_mission.mission_id = mission.mission_id 
+		LEFT JOIN city on city.city_id = mission.city_id 
+		LEFT JOIN country on country.country_id = mission.country_id 
+		LEFT JOIN mission_theme on mission_theme.mission_theme_id = mission.theme_id 
+		LEFT JOIN mission_media on mission_media.mission_id = mission.mission_id 
+		LEFT JOIN mission_document on mission_document.mission_id = mission.mission_id 
+		LEFT JOIN mission_application on mission_application.mission_id = mission.mission_id 
+		LEFT JOIN mission_rating on mission_rating.mission_id = mission.mission_id 
+		LEFT JOIN mission_skill on mission_skill.mission_id = mission.mission_id 
+		LEFT JOIN skill on skill.skill_id = mission_skill.skill_id 
+		where mission.theme_id = $theme_id
+		GROUP By mission.mission_id 
+		LIMIT 0,9";
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
 			while ($FetchData = $sqlEx->fetch_object()) {

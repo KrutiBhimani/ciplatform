@@ -16,17 +16,43 @@
     $insertEx = $this->InsertData('user', $insert_data);
     if ($insertEx['Code']) {
 ?>
-      <script type="text/javascript">
-        alert("<?php echo 'your registration is successfull!' ?>");
-        window.location.href = 'login';
-      </script>
+      <div class="modal show" aria-modal="true" role="dialog" style="display: block;background-color:rgba(0,0,0,.5);">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content p-2">
+            <div class="modal-header" style="border-bottom:0 ;">
+              <p class="mb-0" style="font-size:20px ;font-weight:bold">Registration</p>
+              <a href='login'><img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png"></a>
+            </div>
+            <div class="modal-body pb-0">
+              <p class="mb-1" style="font-size:18px">Registration Sucessfull</p>
+            </div>
+            <div class="modal-footer" style="border-top:0 ;">
+
+              <a href="login" class="col-example7 text-center">Ok</a>
+            </div>
+          </div>
+        </div>
+      </div>
     <?php
     } else {
     ?>
-      <script type="text/javascript">
-        alert("<?php echo 'please try again!' ?>");
-        window.location.href = 'register';
-      </script>
+      <div class="modal show" aria-modal="true" role="dialog" style="display: block;background-color:rgba(0,0,0,.5);">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content p-2">
+            <div class="modal-header" style="border-bottom:0 ;">
+              <p class="mb-0" style="font-size:20px ;font-weight:bold">Registration</p>
+              <a href='login'><img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png"></a>
+            </div>
+            <div class="modal-body pb-0">
+              <p class="mb-1" style="font-size:18px">something went wrong!</p>
+            </div>
+            <div class="modal-footer" style="border-top:0 ;">
+
+              <a href="login" class="col-example7 text-center">Ok</a>
+            </div>
+          </div>
+        </div>
+      </div>
 <?php
     }
   }

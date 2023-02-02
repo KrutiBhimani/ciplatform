@@ -49,6 +49,7 @@ switch ($source) {
         $selectData = $this->SelectData('skill');
         $skills = $selectData['Data'];
         if (isset($_POST['add_mission'])) {
+
             $insert_data = [
                 'title' => $_POST['title'],
                 'short_description' => $_POST['short_description'],
@@ -67,9 +68,11 @@ switch ($source) {
             if ($insertEx['Code']) {
                 $selectData = $this->GetMission();
                 $mission_id = $selectData['Data']->max;
-                $skil = $_POST['skill_id'];
-                foreach ($skil as $item) {
-                    $this->exp($mission_id, $item);
+                if (!empty($_POST['skill_id'])) {
+                    $skil = $_POST['skill_id'];
+                    foreach ($skil as $item) {
+                        $this->exp($mission_id, $item);
+                    }
                 }
                 if (!empty(array_filter($_FILES['media_name']['name']))) {
                     foreach ($_FILES['media_name']['tmp_name'] as $key => $image) {
@@ -120,6 +123,16 @@ switch ($source) {
                         $this->InsertData('goal_mission', $insert_data);
                     }
                 }
+                $selectData1 = $this->SelectData('user');
+                $users = $selectData1['Data'];
+                foreach ($users as $user) {
+                    $insert_data = [
+                        'message' => 'new mission added',
+                        'user_id' => $user->user_id,
+                    ];
+                    $this->InsertData('notification', $insert_data);
+                }
+
         ?>
                 <script type="text/javascript">
                     window.location.href = 'mission';

@@ -41,7 +41,7 @@
               <input type="email" placeholder="Enter your email address..." name="email" class="Rounded-Rectangle-2 form-control" style="font-size:14px; height:40px;">
               <span id="error1" style="color:#f88634"></span>
             </div>
-            <button class="login" name="forgot" type="submit">Reset my password</button>
+            <button id='button1' class="login" name="forgot" type="submit">Reset my password</button>
           </form>
           <p class="text-center">
             <a href="login" class="back">Login</a>

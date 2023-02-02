@@ -3,7 +3,7 @@
         <div class="modal-content p-2">
             <div class="modal-header pb-0" style="border-bottom:0 ;">
                 <p class="mb-0" style="font-size:20px ;">Please input below Volunteering Hours</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
             </div>
             <form method="post" enctype="multipart/form-data">
                 <div class="modal-body pb-0">
@@ -46,7 +46,7 @@
         <div class="modal-content p-2">
             <div class="modal-header pb-0" style="border-bottom:0 ;">
                 <p class="mb-0" style="font-size:20px ;">Please input below Volunteering Goal</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
             </div>
             <form method="post" enctype="multipart/form-data">
                 <div class="modal-body pb-0">
@@ -59,10 +59,10 @@
                         <?php }
                         } ?>
                     </select>
-                    <p class="mb-1 mt-3">Action</p>
-                    <input type="text" class="popup" name="action" placeholder="Enter Action">
                     <p class="mb-1 mt-3">Date Volunteered</p>
                     <input type="date" name="date_volunteered" class="popup">
+                    <p class="mb-1 mt-3">Action</p>
+                    <input type="text" class="popup" name="action" placeholder="Enter Action">
                     <p class="mb-1 mt-3">Message</p>
                     <textarea class="popup1" rows="4" placeholder="Enter your message" name="notes"></textarea>
                 </div>
@@ -128,7 +128,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Confirm Delete</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                                        <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form method="post" enctype="multipart/form-data">
                                         <input type='text' value="<?php echo $hour->timesheet_id ?>" name="timesheet_id" hidden>
@@ -150,7 +150,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Please input below Volunteering Hours</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                                        <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form method="post" enctype="multipart/form-data">
                                         <input type='text' value="<?php echo $hour->timesheet_id ?>" name="timesheet_id" hidden>
@@ -238,7 +238,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Confirm Delete</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                                        <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form method="post" enctype="multipart/form-data">
                                         <input type='text' value="<?php echo $goal->timesheet_id ?>" name="timesheet_id" hidden>
@@ -260,7 +260,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Please input below Volunteering Goal</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                                        <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form method="post" enctype="multipart/form-data">
                                         <input type='text' value="<?php echo $goal->timesheet_id ?>" name="timesheet_id" hidden>
@@ -276,10 +276,10 @@
                                                 <?php }
                                                 } ?>
                                             </select>
-                                            <p class="mb-1 mt-3">Action</p>
-                                            <input type="text" class="popup" name="action" value="<?php echo $goal->action ?>" placeholder="Enter Action">
                                             <p class="mb-1 mt-3">Date Volunteered</p>
                                             <input type="date" name="date_volunteered" value="<?php echo $goal->date_volunteered ?>" class="popup">
+                                            <p class="mb-1 mt-3">Action</p>
+                                            <input type="text" class="popup" name="action" value="<?php echo $goal->action ?>" placeholder="Enter Action">
                                             <p class="mb-1 mt-3">Message</p>
                                             <textarea class="popup1" rows="4" placeholder="Enter your message" name="notes"><?php echo $goal->notes ?></textarea>
                                         </div>

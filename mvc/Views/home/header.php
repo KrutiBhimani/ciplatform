@@ -1,4 +1,5 @@
 <!-- <!DOCTYPE html> -->
+<?php usleep(60000); ?>
 <html>
 
 <head>
@@ -20,7 +21,7 @@
   <script src="mvc/Assets/js/jquery.backstretch.min.js"></script>
   <script src="mvc/Assets/js/wow.min.js"></script>
   <script src="mvc/Assets/js/scripts.js"></script>
-  <link href="mvc/Assets/css/style9.css" rel="stylesheet">
+  <link href="mvc/Assets/css/style.css" rel="stylesheet">
 
   <!-- for popup -->
   <script src="mvc/Assets/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -28,3 +29,52 @@
 </head>
 
 <body>
+  <div id="overlay" style='z-index:2;'>
+    <div class="cv-spinner">
+      <span class="spinner"></span>
+    </div>
+  </div>
+  <script>
+    jQuery(function($) {
+      $(document).ajaxSend(function() {
+        $("#overlay").fadeIn(0);
+      });
+
+      $('#button').click(function() {
+        $.ajax({
+          type: 'POST',
+          success: function(data) {
+            console.log(data);
+          }
+        }).done(function() {
+          setTimeout(function() {
+            $("#overlay").fadeOut(500);
+          }, 500);
+        });
+      });
+      $('#button2').click(function() {
+        $.ajax({
+          type: 'POST',
+          success: function(data) {
+            console.log(data);
+          }
+        }).done(function() {
+          setTimeout(function() {
+            $("#overlay").fadeOut(500);
+          }, 500);
+        });
+      });
+      $('#button1').click(function() {
+        $.ajax({
+          type: 'POST',
+          success: function(data) {
+            console.log(data);
+          }
+        }).done(function() {
+          setTimeout(function() {
+            $("#overlay").fadeOut(15000);
+          }, 15000);
+        });
+      });
+    });
+  </script>

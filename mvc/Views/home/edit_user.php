@@ -5,12 +5,12 @@
             <div class="modal-content p-2">
                 <div class="modal-header pb-0" style="border-bottom:0 ;">
                     <p class="mb-0" style="font-size:20px ;">Change Password </p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                 </div>
                 <div class="modal-body pb-0">
-                    <input type="password" class="popup mb-3" name="password" placeholder="Enter old password" required>
-                    <input type="password" class="popup mb-3" name="password1" placeholder="Enter new password" required>
-                    <input type="password" class="popup mb-2" name="password2" placeholder="Enter confirm password" required>
+                    <input type="password" class="popup mb-3" name="password" placeholder="Enter old password">
+                    <input type="password" class="popup mb-3" name="password1" placeholder="Enter new password">
+                    <input type="password" class="popup mb-2" name="password2" placeholder="Enter confirm password">
                 </div>
                 <div class="modal-footer" style="border-top:0 ;">
                     <button type="button" class="col-example8" data-bs-dismiss="modal">Cancle
@@ -28,7 +28,7 @@
             <div class="modal-content p-3">
                 <div class="modal-header pb-0" style="border-bottom:0 ;">
                     <p class="mb-0" style="font-size:20px ;">Add Your Skills</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                 </div>
                 <div class="modal-body pb-0">
                     <div class="row" style="font-size:10px ;">
@@ -115,7 +115,7 @@
                         </script>
                         <label for="choose-file2">
                             <img id="blah" src="mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png';
-                                                                else echo 'uplodes/' . $user->avatar; ?>" class="rounded-circle mt-4 mb-3" style="height:calc(30px + 8vw);width:calc(30px + 8vw);cursor:pointer;">
+                                                            else echo 'uplodes/' . $user->avatar; ?>" class="rounded-circle mt-4 mb-3" style="height:calc(30px + 8vw);width:calc(30px + 8vw);cursor:pointer;">
                         </label>
                         <input type="file" name='avatar' id="choose-file2" onchange="readURL(this);" style="display: none;" accept="image/x-png,image/jpg,image/jpeg">
                     </div>
@@ -173,7 +173,7 @@
                             <p class="mb-1 mt-4" style="font-size:14px;">My Profile</p>
                             <textarea rows="4" placeholder="Enter your message" name="profile_text" value="<?php echo $user->profile_text ?>" class="popup1"><?php echo $user->profile_text ?></textarea>
                             <p class="mb-1 mt-4" style="font-size:14px;">Why I Volunteer?</p>
-                            <textarea rows="4" placeholder="Enter your message" name="why_i_volunteer" value="<?php echo $user->why_i_volunteer ?>" class="popup1"><?php echo $user->why_i_volunteer ?></textarea>
+                            <textarea rows="4" placeholder="Enter your message" name="why_i_volunteer" value="<?php echo $user->why_i_volunteer ?>" class="popup1"><?php echo strip_tags($user->why_i_volunteer) ?></textarea>
 
                         </div>
                     </div>
@@ -261,17 +261,22 @@
                     <div class="tab-content">
                         <div class="tab-pane show active" id="mission">
                             <textarea rows="6" class="popup1 mt-3" id="divskill" placeholder="select your skill" disabled style="background-color:white;"><?php foreach ($selected as $select) {
-                                                                                                                                echo $select->skill_name . '&#13;&#10;';
-                                                                                                                            } ?></textarea>
+                                                                                                                                                                echo $select->skill_name . '&#13;&#10;';
+                                                                                                                                                            } ?></textarea>
 
                             <button type="button" class="col-example8 mt-3" data-bs-toggle="modal" data-bs-target="#popup3">Add Skills</button>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-4 mb-5">
-                    <button type="submit" name="edit_user" class="col-example7">Save</button>
+                    <button id="button" type="submit" name="edit_user" class="scrollToTopButton col-example7">Save</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
+<script>
+    document.querySelector(".scrollToTopButton").addEventListener("click", function() {
+        window.scrollTo(0, 0);
+    });
+</script>

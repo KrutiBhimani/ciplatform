@@ -7,15 +7,17 @@
                 <p class="mb-1">Select mission</p>
                 <select class="popup pt-0 pb-0" id="mission_id" name='mission_id'>
                     <option value="" selected="" disabled="" hidden="">Select your mission</option>
-                    <?php foreach ($missions as $mission) { 
-                        foreach($missions1 as $mission1)
-                        { if($mission->mission_id == $mission1->mission_id){?>
-                        <option value="<?php echo $mission->mission_id ?>" <?php if (!empty($story)) {
-                                                                                if ($story->mission_id == $mission->mission_id) {
-                                                                                    echo 'selected';
-                                                                                }
-                                                                            } ?>><?php echo $mission->mission_title ?></option>
-                    <?php }} }?>
+                    <?php foreach ($missions as $mission) {
+                        foreach ($missions1 as $mission1) {
+                            if ($mission->mission_id == $mission1->mission_id) { ?>
+                                <option value="<?php echo $mission->mission_id ?>" <?php if (!empty($story)) {
+                                                                                        if ($story->mission_id == $mission->mission_id) {
+                                                                                            echo 'selected';
+                                                                                        }
+                                                                                    } ?>><?php echo $mission->mission_title ?></option>
+                    <?php }
+                        }
+                    } ?>
                 </select>
                 <span id="error1" style="color:#f88634"></span>
             </div>
@@ -95,9 +97,18 @@
                 <button type="button" class="col-example8">Cancle</button>
             </div>
             <div>
-                <button type="submit" name='draft' class="col-example7">Save</button>
-                <button type="submit" name='publish' class="col-example7">Submit</button>
+                <button id='button' type="submit" name='draft' class="scrollToTopButton col-example7">Save</button>
+                <button id='button2' type="submit" name='publish' class="scrollTopButton col-example7">Submit</button>
             </div>
         </div>
     </form>
 </div>
+
+<script>
+    document.querySelector(".scrollToTopButton").addEventListener("click", function() {
+        window.scrollTo(0, 0);
+    });
+    document.querySelector(".scrollTopButton").addEventListener("click", function() {
+        window.scrollTo(0, 0);
+    });
+</script>

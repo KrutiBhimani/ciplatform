@@ -3,13 +3,18 @@
     <div class="container-lg"><br>
       <div id="divgrid">
         <div class="row row-eq-height justify-content-center">
-          <?php foreach ($missions as $mission) { ?>
+
+          <?php
+          // foreach ($topthemes as $toptheme) {
+          //   $selectData = $this->selecttoptheme($toptheme->theme_id);
+          //   $missions = $selectData['Data'];
+          foreach ($missions as $mission) { ?>
             <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
               <div class="card box border-0">
                 <div class="gfg">
                   <img src="<?php echo $mission->media_path; ?>" alt="" class="img-fluid" style="width:100%;">
                   <div class="d-flex align-items-center first-txt"><img src="mvc/Assets/images/pin.png" alt="" class="img-fluid pe-1" style="height:12px;">
-                        <?php echo $mission->city_name; ?></div>
+                    <?php echo $mission->city_name; ?></div>
                   <?php if ($mission->mission_type == 'TIME') {
                     $current = date("Y-m-d h:i:s");
                     if ($mission->deadline != null) {
@@ -47,7 +52,7 @@
                     if ($key == 1) {
                       echo "<a href='home?source=unlike_mission&like=$mission->missionid&user=$user_id'><i class='fa fa-heart text-danger' aria-hidden='true'></i></a>";
                     } else {
-                      echo "<a href='home?source=like_mission&like=$mission->missionid&user=$user_id'><i class='fa fa-heart-o' aria-hidden='true' style='color:white'></i></a>";
+                      echo "<a href='#' data-bs-toggle='modal' data-bs-target='#popuplike'><a href='home?source=like_mission&like=$mission->missionid&user=$user_id'><i class='fa fa-heart-o' aria-hidden='true' style='color:white'></i></a></a>";
                     }
                     ?>
                   </div>
@@ -57,7 +62,7 @@
                       <div class="modal-content p-2">
                         <div class="modal-header pb-0" style="border-bottom:0 ;">
                           <p class="mb-0" style="font-size:20px ;">Invite</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                          <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                         </div>
                         <form class="m-0" method="post" enctype="multipart/form-data">
                           <input type="text" name='m_id' value="<?php echo $mission->missionid ?>" hidden>
@@ -69,7 +74,7 @@
                           <div class="modal-footer mt-4" style="border-top:0 ;">
                             <button type="reset" class="col-example8" data-bs-dismiss="modal">Cancle
                             </button>
-                            <button type="submit" name='inviteuser' class="col-example7" data-bs-dismiss="modal">Invite
+                            <button type="submit" id='button1' name='inviteuser' class="col-example7" data-bs-dismiss="modal">Invite
                             </button>
                           </div>
                         </form>
@@ -286,49 +291,48 @@
                 </div>
                 <hr class="div">
                 <div class="d-flex align-items-center justify-content-center">
-                  <button class=" col-example mt-3" style="font-size:calc(13px + 0.1vw);">
-                    <?php
-                    $key = 0;
-                    foreach ($appusers as $appuser) {
-                      if ($appuser->mission_id == $mission->missionid) {
-                        $key = 1;
-                        break;
-                      }
+                  <?php
+                  $key = 0;
+                  foreach ($appusers as $appuser) {
+                    if ($appuser->mission_id == $mission->missionid) {
+                      $key = 1;
+                      break;
                     }
-                    if ($mission->mission_type == 'TIME') {
-                      $current = date("Y-m-d h:i:s");
-                      if ($mission->deadline != null && $current > $mission->deadline) {
-                        $key = 1;
-                      } else if ($mission->end_date != null && $current > $mission->end_date) {
-                        $key = 1;
-                      }
+                  }
+                  if ($mission->mission_type == 'TIME') {
+                    $current = date("Y-m-d h:i:s");
+                    if ($mission->deadline != null && $current > $mission->deadline) {
+                      $key = 1;
+                    } else if ($mission->end_date != null && $current > $mission->end_date) {
+                      $key = 1;
                     }
-                    $k = 0;
-                    $c = 10;
-                    foreach ($seats as $seat) {
-                      if ($seat->mission_id == $mission->missionid) {
-                        $k = 1;
-                        break;
-                      }
+                  }
+                  $k = 0;
+                  $c = 10;
+                  foreach ($seats as $seat) {
+                    if ($seat->mission_id == $mission->missionid) {
+                      $k = 1;
+                      break;
                     }
-                    if ($k == 1) {
-                      $c = $mission->total_seat - $seat->count;
-                    }
-                    if ($key == 1 || $c == 0) { ?>
-                      <a href="Volunteering_Mission?id=<?php $id = $mission->mission_id;
-                                                        $salt = "SECRET_STUFF";
-                                                        $encrypted_id = base64_encode($id . $salt);
-                                                        echo $encrypted_id; ?>" style="color: inherit;">View Detail</a>
-                    <?php } else { ?>
-                      <a href="home?source=apply&id=<?php echo $mission->missionid ?>" style="color: inherit;">Apply</a>
-                    <?php }
-                    ?>
-                    <i class="fa fa-arrow-right ps-2"></i>
-                  </button>
+                  }
+                  if ($k == 1) {
+                    $c = $mission->total_seat - $seat->count;
+                  }
+                  if ($key == 1 || $c == 0) { ?>
+                    <a href="Volunteering_Mission?id=<?php $id = $mission->mission_id;
+                                                      $salt = "SECRET_STUFF";
+                                                      $encrypted_id = base64_encode($id . $salt);
+                                                      echo $encrypted_id; ?>" style="color: inherit;"><button class=" col-example mt-3" style="font-size:calc(13px + 0.1vw);">View Detail<i class="fa fa-arrow-right ps-2"></i></button></a>
+                  <?php } else { ?>
+                    <a href="home?source=apply&id=<?php echo $mission->missionid ?>" style="color: inherit;"><button class=" col-example mt-3" style="font-size:calc(13px + 0.1vw);">Apply<i class="fa fa-arrow-right ps-2"></i></button></a>
+                  <?php }
+                  ?>
                 </div>
               </div>
             </div>
-          <?php } ?>
+          <?php }
+          // }
+          ?>
         </div>
       </div>
       <div id="divlist" style="display:none">

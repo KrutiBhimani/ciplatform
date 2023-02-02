@@ -64,7 +64,7 @@
                     <input type="file" name="document_name[]" multiple>
                     <p class="mb-1 mt-4" style="font-size:14px;">Availability</p>
                     <select class="popup pt-0 pb-0" name="availability">
-                        <option value="none" selected="" disabled="" hidden=""></option>
+                        <option value='null' selected="" disabled="" hidden=""></option>
                         <option value='daily'>Daily</option>
                         <option value='weekly'>Weekly</option>
                         <option value='week-end'>Weekend</option>

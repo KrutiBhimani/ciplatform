@@ -6,23 +6,6 @@
         <a href="#" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup22">contact us</a>
       </div>
     </div>
-    <div id="footer" class="position-absolute w-100" style="z-index: 9;">
-      <div class="float-end mt-3 me-3">
-        <img src="mvc/Assets/images/cross.png" alt="" class="img-fluid" onclick="$('#footer').remove();" style="cursor: pointer;">
-      </div>
-      <div class="container-lg">
-        <div class="d-flex justify-content-between pt-4 pb-3">
-          <div>
-            <span>This website makes use of cookies to enhance browsing experience and provide additional
-              functionality.</span><br />
-            <a href="policy" class="Forma-1-copy-12">Privacy policy</a>
-          </div>
-          <div>
-            <div class="col-example12">I&nbsp;Agree</div>
-          </div>
-        </div>
-      </div>
-    </div>
   </footer>
 <?php } else { ?>
   <footer id="footer2" class="d-flex position-relative">
@@ -30,23 +13,6 @@
       <div class="container-lg pt-3 pb-3 mb-1">
         <a href="policy" class="Forma-1-copy-13">Privacy policy</a><br />
         <a href="#" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup22">contact us</a>
-      </div>
-    </div>
-    <div id="footer" class="position-fixed bottom-0 w-100" style="z-index: 9;">
-      <div class="float-end mt-3 me-3">
-        <img src="mvc/Assets/images/cross.png" alt="" class="img-fluid" onclick="$('#footer').remove();" style="cursor: pointer;">
-      </div>
-      <div class="container-lg">
-        <div class="d-flex justify-content-between pt-4 pb-3">
-          <div>
-            <span style="font-size: calc(6px + 0.5vw);">This website makes use of cookies to enhance browsing experience and provide additional
-              functionality.</span><br />
-            <a href="policy" class="Forma-1-copy-12" style="font-size: calc(6px + 0.5vw);">Privacy policy</a>
-          </div>
-          <div>
-            <div class="col-example12" style="font-size: calc(6px + 0.5vw);">I&nbsp;Agree</div>
-          </div>
-        </div>
       </div>
     </div>
   </footer>

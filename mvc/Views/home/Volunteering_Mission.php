@@ -20,11 +20,11 @@
                                             </div>
                                         <?php } ?>
                                     </div>
-                                    <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev" style="background-color: black; width:5%;top:4px;bottom:4px;left:3px;">
+                                    <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev" style="z-index:0;background-color: black; width:5%;top:4px;bottom:4px;left:3px;">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Previous</span>
                                     </a>
-                                    <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next" style="background-color: black; width:5%;top:4px;bottom:4px;right:3px;">
+                                    <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next" style="z-index:0;background-color: black; width:5%;top:4px;bottom:4px;right:3px;">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
@@ -191,7 +191,7 @@
                                 <div class="modal-content p-2">
                                     <div class="modal-header pb-0" style="border-bottom:0 ;">
                                         <p class="mb-0" style="font-size:20px ;">Invite</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                                        <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
                                     </div>
                                     <form class="m-0" method="post" enctype="multipart/form-data">
                                         <input type="text" name='m_id' value="<?php echo $mission->missionid ?>" hidden>
@@ -202,7 +202,7 @@
                                         <div class="modal-footer mt-4" style="border-top:0 ;">
                                             <button type="reset" class="col-example8" data-bs-dismiss="modal">Cancle
                                             </button>
-                                            <button type="submit" name='inviteuser' class="col-example7" data-bs-dismiss="modal">Invite
+                                            <button id='button1' type="submit" name='inviteuser' class="col-example7" data-bs-dismiss="modal">Invite
                                             </button>
                                         </div>
                                     </form>
@@ -272,7 +272,7 @@
                                     echo "From $start_date until $end_date";
                                 } else if ($mission->end_date >= $current || $mission->deadline >= $current) {
                                     echo "Ongoing Opportunity";
-                                }else if ($mission->end_date == null && $mission->deadline == null) {
+                                } else if ($mission->end_date == null && $mission->deadline == null) {
                                     echo "Ongoing Opportunity";
                                 } else {
                                     echo 'Closed';
@@ -291,44 +291,44 @@
 
                 </div>
                 <div class="d-flex align-items-center justify-content-center">
-                <?php
+                    <?php
                     $key = 0;
                     foreach ($appuse as $appus) {
-                      if ($appus->mission_id == $mission->missionid) {
-                        $key = 1;
-                        break;
-                      }
+                        if ($appus->mission_id == $mission->missionid) {
+                            $key = 1;
+                            break;
+                        }
                     }
                     if ($mission->mission_type == 'TIME') {
-                      $current = date("Y-m-d h:i:s");
-                      if ($mission->deadline != null && $current > $mission->deadline) {
-                        $key = 1;
-                      } else if ($mission->end_date != null && $current > $mission->end_date) {
-                        $key = 1;
-                      }
+                        $current = date("Y-m-d h:i:s");
+                        if ($mission->deadline != null && $current > $mission->deadline) {
+                            $key = 1;
+                        } else if ($mission->end_date != null && $current > $mission->end_date) {
+                            $key = 1;
+                        }
                     }
                     $k = 0;
                     $c = 10;
                     foreach ($seats as $seat) {
-                      if ($seat->mission_id == $mission->missionid) {
-                        $k = 1;
-                        break;
-                      }
+                        if ($seat->mission_id == $mission->missionid) {
+                            $k = 1;
+                            break;
+                        }
                     }
                     if ($k == 1) {
-                      $c = $mission->total_seat - $seat->count;
+                        $c = $mission->total_seat - $seat->count;
                     }
-                    if ($key == 1 || $c == 0) {?>
-                      
-                    <?php } else {?>
-                        <a href="home?source=apply&id=<?php echo $mission->missionid ?>" style="color: inherit;">
-                        <div class="col-example" style="font-size:calc(15px + 0.1vw); font-weight: 400;">Apply Now
-                            <img src="mvc/Assets/images/right-arrow.png" alt="" class="ps-3">
-                        </div>
-                    </a>
+                    if ($key == 1 || $c == 0) { ?>
+
+                    <?php } else { ?>
+                        <a href="Volunteering_Mission?source=apply&id=<?php echo $mission->missionid ?>" style="color: inherit;">
+                            <div class="col-example" style="font-size:calc(15px + 0.1vw); font-weight: 400;">Apply Now
+                                <img src="mvc/Assets/images/right-arrow.png" alt="" class="ps-3">
+                            </div>
+                        </a>
                     <?php }
                     ?>
-                
+
                 </div>
             </div>
         </div>
@@ -376,7 +376,8 @@
                     </div>
                     <div class="tab-pane" id="comments">
                         <form class="m-0" method="post" enctype="multipart/form-data">
-                            <textarea class="mt-3 ps-3 pe-3 textarea" rows="3" name="comment_text" placeholder="Enter your comments..."></textarea>
+                            <textarea class="mt-3 ps-3 pe-3 textarea" rows="3" name="comment_text" placeholder="Enter your comments..." required></textarea>
+                            <div class="error1"></div>
                             <button type="submit" name="add_comment" class="col-example mt-3" style="font-size:15px; width:fit-content">
                                 Post Comment
                             </button>
@@ -499,67 +500,67 @@
                 <p class="text-center" style="font-size:30px ;font-weight: 350;">
                     Related Missions
                 </p>
-                <?php 
-                    foreach ($missio as $missi) {
-                         ?>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
-                            <div class="card box border-0">
-                                <div class="gfg">
-                                    <img src="<?php echo $missi->media_path; ?>" alt="" class="img-fluid" style="width:100%;">
-                                    <div class="d-flex align-items-center first-txt"><img src="mvc/Assets/images/pin.png" alt="" class="img-fluid pe-1" style="height:12px;"><?php echo $missi->city_name; ?></div>
-                                    <?php if ($missi->mission_type == 'TIME') {
-                                        $current = date("Y-m-d h:i:s");
-                                        if ($missi->deadline != null) {
-                                            if ($current > $missi->deadline) {
-                                                echo '<div class="d-flex align-items-center five-txt" style="background-color:red;">CLOSED</div>';
-                                            }
-                                        } else if ($missi->end_date != null) {
-                                            if ($current > $missi->end_date) {
-                                                echo '<div class="d-flex align-items-center five-txt" style="background-color:red;">CLOSED</div>';
-                                            }
+                <?php
+                foreach ($missio as $missi) {
+                ?>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-5 d-flex align-items-stretch">
+                        <div class="card box border-0">
+                            <div class="gfg">
+                                <img src="<?php echo $missi->media_path; ?>" alt="" class="img-fluid" style="width:100%;">
+                                <div class="d-flex align-items-center first-txt"><img src="mvc/Assets/images/pin.png" alt="" class="img-fluid pe-1" style="height:12px;"><?php echo $missi->city_name; ?></div>
+                                <?php if ($missi->mission_type == 'TIME') {
+                                    $current = date("Y-m-d h:i:s");
+                                    if ($missi->deadline != null) {
+                                        if ($current > $missi->deadline) {
+                                            echo '<div class="d-flex align-items-center five-txt" style="background-color:red;">CLOSED</div>';
+                                        }
+                                    } else if ($missi->end_date != null) {
+                                        if ($current > $missi->end_date) {
+                                            echo '<div class="d-flex align-items-center five-txt" style="background-color:red;">CLOSED</div>';
                                         }
                                     }
-                                    ?>
+                                }
+                                ?>
+                                <?php
+                                $key = 0;
+                                foreach ($appusers as $appuser) {
+                                    if ($appuser->mission_id == $missi->missionid) {
+                                        $key = 1;
+                                        break;
+                                    }
+                                }
+                                if ($key == 1) {
+                                    echo '<div class="d-flex align-items-center five-txt">APPLIED</div>';
+                                }
+                                ?>
+                                <div class="d-flex align-items-center second-txt2 p-2">
                                     <?php
                                     $key = 0;
-                                    foreach ($appusers as $appuser) {
-                                        if ($appuser->mission_id == $missi->missionid) {
+                                    foreach ($likeusers as $likeuser) {
+                                        if ($likeuser->mission_id == $missi->missionid) {
                                             $key = 1;
                                             break;
                                         }
                                     }
                                     if ($key == 1) {
-                                        echo '<div class="d-flex align-items-center five-txt">APPLIED</div>';
+                                        echo "<a href='Volunteering_Mission?source=unlike_mission&id=$missi->missionid&user=$user_id'><i class='fa fa-heart text-danger' aria-hidden='true'></i></a>";
+                                    } else {
+                                        echo "<a href='Volunteering_Mission?source=like_mission&id=$missi->missionid&user=$user_id'><i class='fa fa-heart-o' aria-hidden='true' style='color:white'></i></a>";
                                     }
                                     ?>
-                                    <div class="d-flex align-items-center second-txt2 p-2">
-                                        <?php
-                                        $key = 0;
-                                        foreach ($likeusers as $likeuser) {
-                                            if ($likeuser->mission_id == $missi->missionid) {
-                                                $key = 1;
-                                                break;
-                                            }
-                                        }
-                                        if ($key == 1) {
-                                            echo "<a href='home?source=unlike_mission&id=$missi->missionid&user=$user_id'><i class='fa fa-heart text-danger' aria-hidden='true'></i></a>";
-                                        } else {
-                                            echo "<a href='home?source=like_mission&id=$missi->missionid&user=$user_id'><i class='fa fa-heart-o' aria-hidden='true' style='color:white'></i></a>";
-                                        }
-                                        ?>
-                                    </div>
-                                    <div class="d-flex align-items-center third-txt p-2"><a href="" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup<?php echo $missi->missionid ?>"><img src="mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px"></a></div>
-                                    <div id="popup<?php echo $missi->missionid ?>" class="modal">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content p-2">
-                                                <div class="modal-header pb-0" style="border-bottom:0 ;">
-                                                    <p class="mb-0" style="font-size:20px ;">Invite</p>
-                                                    <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
-                                                </div>
-                                                <form class="m-0" method="post" enctype="multipart/form-data">
-                                                    <input type="text" name='m_id' value="<?php echo $missi->missionid ?>" hidden>
-                                                    <div class="modal-body pb-0">
-                                                        <!-- <select class="Rounded-Rectangle-9 w-100" name="invite[]" multiple size="<?php echo $userrow ?>" style="overflow-y: auto;">
+                                </div>
+                                <div class="d-flex align-items-center third-txt p-2"><a href="" style="color: black;" data-bs-toggle="modal" data-bs-target="#popup<?php echo $missi->missionid ?>"><img src="mvc/Assets/images/user.png" alt="" class="img-fluid" style="height:17px"></a></div>
+                                <div id="popup<?php echo $missi->missionid ?>" class="modal">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content p-2">
+                                            <div class="modal-header pb-0" style="border-bottom:0 ;">
+                                                <p class="mb-0" style="font-size:20px ;">Invite</p>
+                                                <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
+                                            </div>
+                                            <form class="m-0" method="post" enctype="multipart/form-data">
+                                                <input type="text" name='m_id' value="<?php echo $missi->missionid ?>" hidden>
+                                                <div class="modal-body pb-0">
+                                                    <!-- <select class="Rounded-Rectangle-9 w-100" name="invite[]" multiple size="<?php echo $userrow ?>" style="overflow-y: auto;">
                                   <?php
                                     foreach ($users as $user) { ?>
                                     <option class="fs-6 p-2" value="<?php echo $user->user_id ?>">
@@ -567,272 +568,269 @@
                                     </option>
                                   <?php } ?>
                                 </select> -->
-                                                        <p class="mb-1 mt-3">Email </p>
-                                                        <input type="email" class="popup" name="email" place-holder='enter user email to invite'>
-                                                    </div>
-                                                    <div class="modal-footer mt-4" style="border-top:0 ;">
-                                                        <button type="reset" class="col-example8" data-bs-dismiss="modal">Cancle
-                                                        </button>
-                                                        <button type="submit" name='inviteuser' class="col-example7" data-bs-dismiss="modal">Invite
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                                    <p class="mb-1 mt-3">Email </p>
+                                                    <input type="email" class="popup" name="email" place-holder='enter user email to invite'>
+                                                </div>
+                                                <div class="modal-footer mt-4" style="border-top:0 ;">
+                                                    <button type="reset" class="col-example8" data-bs-dismiss="modal">Cancle
+                                                    </button>
+                                                    <button type="submit" name='inviteuser' class="col-example7" data-bs-dismiss="modal">Invite
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
-                                    </div>
-                                    <div class="d-flex four-txt justify-content-center">
-                                        <div class="bdg1"><?php echo $missi->theme_title; ?></div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12" style="color:black">
-                                        <div class="card-body pb-3 remove">
-                                            <a href="Volunteering_Mission?id=<?php $id = $missi->mission_id;
-                                                                                $salt = "SECRET_STUFF";
-                                                                                $encrypted_id = base64_encode($id . $salt);
-                                                                                echo $encrypted_id; ?>" style="color:black;">
-                                                <h2 class="card-title mb-2" style="font-size:calc(15px + 0.3vw);"><?php echo $missi->mission_title; ?></h2>
-                                            </a>
-                                            <p class="mb-2" style="color:gray; font-size:calc(11px + 0.1vw);">
-                                                <?php
-                                                $key = 0;
-                                                foreach ($appusers as $appuser) {
-                                                    if ($appuser->mission_id == $missi->missionid) {
-                                                        $key = 1;
-                                                        break;
-                                                    }
-                                                }
-                                                if ($missi->mission_type == 'TIME') {
-                                                    $current = date("Y-m-d h:i:s");
-                                                    if ($missi->deadline != null && $current > $missi->deadline) {
-                                                        $key = 1;
-                                                    } else if ($missi->end_date != null && $current > $missi->end_date) {
-                                                        $key = 1;
-                                                    }
-                                                }
-                                                $k = 0;
-                                                $c = 10;
-                                                foreach ($seats as $seat) {
-                                                    if ($seat->mission_id == $missi->missionid) {
-                                                        $k = 1;
-                                                        break;
-                                                    }
-                                                }
-                                                if ($k == 1) {
-                                                    $c = $missi->total_seat - $seat->count;
-                                                }
-                                                if ($key == 1 || $c == 0) {
-                                                    echo 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit...';
-                                                } else {
-                                                    echo $missi->short_description;
-                                                }
-                                                ?>
-                                            </p>
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <h6 class="m-0" style="font-size:calc(11px + 0.1vw);"><?php echo $missi->organization_name; ?></h6>
-                                                </div>
-                                                <div class="icon">
-                                                    <?php for ($x = 0; $x < 5; $x++) {
-                                                        if ($x < $missi->rating) {
-                                                            echo "<img src='mvc/Assets/images/selected-star.png' alt='' class='ps-1 star'>";
-                                                        } else {
-                                                            echo "<img src='mvc/Assets/images/star.png' alt='' class='ps-1 star'>";
-                                                        }
-                                                    } ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php
-                                    $key = 0;
-                                    foreach ($appusers as $appuser) {
-                                        if ($appuser->mission_id == $missi->missionid) {
-                                            $key = 1;
-                                            break;
-                                        }
-                                    }
-                                    if ($missi->mission_type == 'TIME') {
-                                        $current = date("Y-m-d h:i:s");
-                                        if ($missi->deadline != null && $current > $missi->deadline) {
-                                            $key = 1;
-                                        } else if ($missi->end_date != null && $current > $missi->end_date) {
-                                            $key = 1;
-                                        }
-                                    }
-                                    $k = 0;
-                                    $c = 10;
-                                    foreach ($seats as $seat) {
-                                        if ($seat->mission_id == $missi->missionid) {
-                                            $k = 1;
-                                            break;
-                                        }
-                                    }
-                                    if ($k == 1) {
-                                        $c = $missi->total_seat - $seat->count;
-                                        if ($c == 0) {
-                                            $key = 1;
-                                        }
-                                    }
-                                    if ($key == 0) { ?>
-                                        <?php if ($missi->mission_type == 'TIME') { ?>
-                                            <div class="d-flex align-items-center">
-                                                <hr class="flex-grow-1 div m-0">
-                                                <div class="bdg">
-                                                    <?php
-                                                    if ($missi->start_date != null && $missi->end_date != null) {
-                                                        $start_date = date("d-m-Y", strtotime($missi->start_date));
-                                                        $end_date = date("d-m-Y", strtotime($missi->end_date));
-                                                        echo "From $start_date until $end_date";
-                                                    } else {
-                                                        echo "Ongoing Opportunity";
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <hr class="flex-grow-1 div m-0">
-                                            </div>
-                                        <?php } else { ?>
-                                            <div class="d-flex align-items-center">
-                                                <hr class="flex-grow-1 div m-0">
-                                                <div class="bdg"><?php echo $missi->goal_objective_text; ?>
-                                                </div>
-                                                <hr class="flex-grow-1 div m-0">
-                                            </div>
-                                        <?php } ?>
-                                        <div class="card-body pt-2 pb-2 padremove">
-                                            <div class="row">
-                                                <?php
-                                                if ($missi->mission_type == 'TIME') {
-                                                    if ($missi->total_seat != null) { ?>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
-                                                            <div class="row">
-                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/Seats-left.png" alt="" style="height:23px"></div>
-                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
-                                                                    <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
-                                                                        <?php
-                                                                        $key = 0;
-                                                                        foreach ($seats as $seat) {
-                                                                            if ($seat->mission_id == $missi->missionid) {
-                                                                                $key = 1;
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        if ($key == 1) {
-                                                                            echo $missi->total_seat - $seat->count;
-                                                                        } else {
-                                                                            echo $missi->total_seat;
-                                                                        }
-                                                                        ?>
-                                                                    </h4>
-                                                                    <h6 class="mb-2" style="font-size:12px ;color:gray;">Seats Left</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    <?php } else { ?>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
-                                                            <div class="row">
-                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/Already-volunteered.png" alt="" style="height:20px"></div>
-                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
-                                                                    <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
-                                                                        <?php
-                                                                        $key = 0;
-                                                                        foreach ($seats as $seat) {
-                                                                            if ($seat->mission_id == $missi->missionid) {
-                                                                                $key = 1;
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        if ($key == 1) {
-                                                                            echo $seat->count;
-                                                                        } else {
-                                                                            echo '0';
-                                                                        }
-                                                                        ?>
-                                                                    </h4>
-                                                                    <h6 class="mb-2" style="font-size:11px ;color:gray;">Already volunteered</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    <?php }
-                                                    if ($missi->deadline != null) { ?>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
-                                                            <div class="row">
-                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/deadline.png" alt="" style="height:28px"></div>
-                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-9">
-                                                                    <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
-                                                                        <?php
-                                                                        $deadline = date("d/m/Y", strtotime($missi->deadline));
-                                                                        echo "$deadline";
-                                                                        ?>
-                                                                    </h4>
-                                                                    <h6 class="mb-2" style="font-size:12px ;color:gray;">Deadline</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    <?php }
-                                                } else { ?>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
-                                                        <div class="row">
-                                                            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/achieved.png" alt="" style="height:22px"></div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-9">
-                                                                <div class="mt-1 mb-3" style="background-color:#EEEEEE; height:7px; width:100%; border-radius: 10px;">
-                                                                    <div style="background-color:#f88634; height:7px; border-radius: 10px; width:80%;">
-                                                                    </div>
-                                                                </div>
-                                                                <h6 class="mb-2" style="font-size:12px ;color:gray;">8000 achieved</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
-                                    <?php }  ?>
-                                </div>
-                                <hr class="div">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <button class=" col-example mt-3" style="font-size:calc(13px + 0.1vw);">
-                                        <?php
-                                        $key = 0;
-                                        foreach ($appusers as $appuser) {
-                                            if ($appuser->mission_id == $missi->missionid) {
-                                                $key = 1;
-                                                break;
-                                            }
-                                        }
-                                        if ($missi->mission_type == 'TIME') {
-                                            $current = date("Y-m-d h:i:s");
-                                            if ($missi->deadline != null && $current > $missi->deadline) {
-                                                $key = 1;
-                                            } else if ($missi->end_date != null && $current > $missi->end_date) {
-                                                $key = 1;
-                                            }
-                                        }
-                                        $k = 0;
-                                        $c = 10;
-                                        foreach ($seats as $seat) {
-                                            if ($seat->mission_id == $missi->missionid) {
-                                                $k = 1;
-                                                break;
-                                            }
-                                        }
-                                        if ($k == 1) {
-                                            $c = $missi->total_seat - $seat->count;
-                                        }
-                                        if ($key == 1 || $c == 0) { ?>
-                                            <a href="Volunteering_Mission?id=<?php $id = $missi->mission_id;
-                                                                                $salt = "SECRET_STUFF";
-                                                                                $encrypted_id = base64_encode($id . $salt);
-                                                                                echo $encrypted_id; ?>" style="color: inherit;">View Detail</a>
-                                        <?php } else { ?>
-                                            <a href="home?source=apply&id=<?php echo $missi->mission_id;?>" style="color: inherit;">Apply</a>
-                                        <?php }
-                                        ?>
-                                        <i class="fa fa-arrow-right ps-2"></i>
-                                    </button>
+                                <div class="d-flex four-txt justify-content-center">
+                                    <div class="bdg1"><?php echo $missi->theme_title; ?></div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12" style="color:black">
+                                    <div class="card-body pb-3 remove">
+                                        <a href="Volunteering_Mission?id=<?php $id = $missi->mission_id;
+                                                                            $salt = "SECRET_STUFF";
+                                                                            $encrypted_id = base64_encode($id . $salt);
+                                                                            echo $encrypted_id; ?>" style="color:black;">
+                                            <h2 class="card-title mb-2" style="font-size:calc(15px + 0.3vw);"><?php echo $missi->mission_title; ?></h2>
+                                        </a>
+                                        <p class="mb-2" style="color:gray; font-size:calc(11px + 0.1vw);">
+                                            <?php
+                                            $key = 0;
+                                            foreach ($appusers as $appuser) {
+                                                if ($appuser->mission_id == $missi->missionid) {
+                                                    $key = 1;
+                                                    break;
+                                                }
+                                            }
+                                            if ($missi->mission_type == 'TIME') {
+                                                $current = date("Y-m-d h:i:s");
+                                                if ($missi->deadline != null && $current > $missi->deadline) {
+                                                    $key = 1;
+                                                } else if ($missi->end_date != null && $current > $missi->end_date) {
+                                                    $key = 1;
+                                                }
+                                            }
+                                            $k = 0;
+                                            $c = 10;
+                                            foreach ($seats as $seat) {
+                                                if ($seat->mission_id == $missi->missionid) {
+                                                    $k = 1;
+                                                    break;
+                                                }
+                                            }
+                                            if ($k == 1) {
+                                                $c = $missi->total_seat - $seat->count;
+                                            }
+                                            if ($key == 1 || $c == 0) {
+                                                echo 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit...';
+                                            } else {
+                                                echo $missi->short_description;
+                                            }
+                                            ?>
+                                        </p>
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <h6 class="m-0" style="font-size:calc(11px + 0.1vw);"><?php echo $missi->organization_name; ?></h6>
+                                            </div>
+                                            <div class="icon">
+                                                <?php for ($x = 0; $x < 5; $x++) {
+                                                    if ($x < $missi->rating) {
+                                                        echo "<img src='mvc/Assets/images/selected-star.png' alt='' class='ps-1 star'>";
+                                                    } else {
+                                                        echo "<img src='mvc/Assets/images/star.png' alt='' class='ps-1 star'>";
+                                                    }
+                                                } ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                                $key = 0;
+                                foreach ($appusers as $appuser) {
+                                    if ($appuser->mission_id == $missi->missionid) {
+                                        $key = 1;
+                                        break;
+                                    }
+                                }
+                                if ($missi->mission_type == 'TIME') {
+                                    $current = date("Y-m-d h:i:s");
+                                    if ($missi->deadline != null && $current > $missi->deadline) {
+                                        $key = 1;
+                                    } else if ($missi->end_date != null && $current > $missi->end_date) {
+                                        $key = 1;
+                                    }
+                                }
+                                $k = 0;
+                                $c = 10;
+                                foreach ($seats as $seat) {
+                                    if ($seat->mission_id == $missi->missionid) {
+                                        $k = 1;
+                                        break;
+                                    }
+                                }
+                                if ($k == 1) {
+                                    $c = $missi->total_seat - $seat->count;
+                                    if ($c == 0) {
+                                        $key = 1;
+                                    }
+                                }
+                                if ($key == 0) { ?>
+                                    <?php if ($missi->mission_type == 'TIME') { ?>
+                                        <div class="d-flex align-items-center">
+                                            <hr class="flex-grow-1 div m-0">
+                                            <div class="bdg">
+                                                <?php
+                                                if ($missi->start_date != null && $missi->end_date != null) {
+                                                    $start_date = date("d-m-Y", strtotime($missi->start_date));
+                                                    $end_date = date("d-m-Y", strtotime($missi->end_date));
+                                                    echo "From $start_date until $end_date";
+                                                } else {
+                                                    echo "Ongoing Opportunity";
+                                                }
+                                                ?>
+                                            </div>
+                                            <hr class="flex-grow-1 div m-0">
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="d-flex align-items-center">
+                                            <hr class="flex-grow-1 div m-0">
+                                            <div class="bdg"><?php echo $missi->goal_objective_text; ?>
+                                            </div>
+                                            <hr class="flex-grow-1 div m-0">
+                                        </div>
+                                    <?php } ?>
+                                    <div class="card-body pt-2 pb-2 padremove">
+                                        <div class="row">
+                                            <?php
+                                            if ($missi->mission_type == 'TIME') {
+                                                if ($missi->total_seat != null) { ?>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
+                                                        <div class="row">
+                                                            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/Seats-left.png" alt="" style="height:23px"></div>
+                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                                                <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
+                                                                    <?php
+                                                                    $key = 0;
+                                                                    foreach ($seats as $seat) {
+                                                                        if ($seat->mission_id == $missi->missionid) {
+                                                                            $key = 1;
+                                                                            break;
+                                                                        }
+                                                                    }
+                                                                    if ($key == 1) {
+                                                                        echo $missi->total_seat - $seat->count;
+                                                                    } else {
+                                                                        echo $missi->total_seat;
+                                                                    }
+                                                                    ?>
+                                                                </h4>
+                                                                <h6 class="mb-2" style="font-size:12px ;color:gray;">Seats Left</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
+                                                        <div class="row">
+                                                            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/Already-volunteered.png" alt="" style="height:20px"></div>
+                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                                                <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
+                                                                    <?php
+                                                                    $key = 0;
+                                                                    foreach ($seats as $seat) {
+                                                                        if ($seat->mission_id == $missi->missionid) {
+                                                                            $key = 1;
+                                                                            break;
+                                                                        }
+                                                                    }
+                                                                    if ($key == 1) {
+                                                                        echo $seat->count;
+                                                                    } else {
+                                                                        echo '0';
+                                                                    }
+                                                                    ?>
+                                                                </h4>
+                                                                <h6 class="mb-2" style="font-size:11px ;color:gray;">Already volunteered</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php }
+                                                if ($missi->deadline != null) { ?>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
+                                                        <div class="row">
+                                                            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/deadline.png" alt="" style="height:28px"></div>
+                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                                                <h4 class="mb-2" style="font-size:calc(13px + 0.1vw);">
+                                                                    <?php
+                                                                    $deadline = date("d/m/Y", strtotime($missi->deadline));
+                                                                    echo "$deadline";
+                                                                    ?>
+                                                                </h4>
+                                                                <h6 class="mb-2" style="font-size:12px ;color:gray;">Deadline</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php }
+                                            } else { ?>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="color:black;">
+                                                    <div class="row">
+                                                        <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1 mt-0 mb-0"><img src="mvc/Assets/images/achieved.png" alt="" style="height:22px"></div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-9">
+                                                            <div class="mt-1 mb-3" style="background-color:#EEEEEE; height:7px; width:100%; border-radius: 10px;">
+                                                                <div style="background-color:#f88634; height:7px; border-radius: 10px; width:80%;">
+                                                                </div>
+                                                            </div>
+                                                            <h6 class="mb-2" style="font-size:12px ;color:gray;">8000 achieved</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                <?php }  ?>
+                            </div>
+                            <hr class="div">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <?php
+                                $key = 0;
+                                foreach ($appusers as $appuser) {
+                                    if ($appuser->mission_id == $missi->missionid) {
+                                        $key = 1;
+                                        break;
+                                    }
+                                }
+                                if ($missi->mission_type == 'TIME') {
+                                    $current = date("Y-m-d h:i:s");
+                                    if ($missi->deadline != null && $current > $missi->deadline) {
+                                        $key = 1;
+                                    } else if ($missi->end_date != null && $current > $missi->end_date) {
+                                        $key = 1;
+                                    }
+                                }
+                                $k = 0;
+                                $c = 10;
+                                foreach ($seats as $seat) {
+                                    if ($seat->mission_id == $missi->missionid) {
+                                        $k = 1;
+                                        break;
+                                    }
+                                }
+                                if ($k == 1) {
+                                    $c = $missi->total_seat - $seat->count;
+                                }
+                                if ($key == 1 || $c == 0) { ?>
+                                    <a href="Volunteering_Mission?id=<?php $id = $missi->mission_id;
+                                                                        $salt = "SECRET_STUFF";
+                                                                        $encrypted_id = base64_encode($id . $salt);
+                                                                        echo $encrypted_id; ?>" style="color: inherit;"><button class=" col-example mt-3" style="font-size:calc(13px + 0.1vw);">View Detail<i class="fa fa-arrow-right ps-2"></i></button></a>
+                                <?php } else { ?>
+                                    <a href="Volunteering_Mission?source=apply&id=<?php echo $missi->missionid ?>" style="color: inherit;"><button class=" col-example mt-3" style="font-size:calc(13px + 0.1vw);">Apply<i class="fa fa-arrow-right ps-2"></i></button></a>
+                                <?php }
+                                ?>
+                            </div>
                         </div>
-                    <?php 
+                    </div>
+                <?php
                 } ?>
             </div>
             <br>

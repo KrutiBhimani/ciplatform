@@ -49,6 +49,15 @@ switch ($source) {
         ];
         $upd_data = $this->UpdateData1('story', $update_data, $where);
         if ($upd_data) {
+            $selectData1 = $this->SelectData('user');
+            $users = $selectData1['Data'];
+            foreach ($users as $user) {
+                $insert_data = [
+                    'message' => 'new story added',
+                    'user_id' => $user->user_id,
+                ];
+                $this->InsertData('notification', $insert_data);
+            }
     ?>
             <script type="text/javascript">
                 window.location.href = 'story';

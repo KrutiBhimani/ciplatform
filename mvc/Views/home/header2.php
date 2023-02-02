@@ -9,7 +9,7 @@
                             <td class="p-2">
                                 <input type="text" value="<?php if (isset($_POST['search'])) {
                                                                 echo $_POST['search'];
-                                                            } ?>" id="clickedButton" name="search" placeholder="Search mission..." class="form-control shadow-none m-2" style="border:none; font-size:18px;" onChange="showHide2()">
+                                                            } ?>" id="clickedButton" name="search" placeholder="Search mission..." class="form-control shadow-none m-2" style="border:none; font-size:18px;" onchange="showHide2()">
                             </td>
                             <td>
                                 <nav class="navbar navbar-expand-sm" style="background-color:white ;">
@@ -28,7 +28,7 @@
                                         <div class="collapse navbar-collapse w-100" id="navbarSupportedContent2">
                                             <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-6">
                                                 <li class="nav-item dropdown">
-                                                    <select class="Rounded-Rectangle-9 w-100 ps-0 pe-0" name="country" onkeydown="showHide2()">
+                                                    <select class="Rounded-Rectangle-9 w-100 ps-0 pe-0" name="country" onchange="showHide2()">
                                                         <option value="none" hidden="">Country</option>
                                                         <?php foreach ($countries as $country) { ?>
                                                             <option value="<?php echo $country->name ?>" <?php if (isset($_POST['country'])) {
@@ -45,7 +45,7 @@
                                                     </a>
                                                     <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
                                                         <?php foreach ($cities as $city) { ?>
-                                                            <input type="checkbox" name='city[]' value="<?php echo $city->name ?>" onkeydown="showHide2()" <?php if (isset($_POST['city'])) {
+                                                            <input type="checkbox" name='city[]' value="<?php echo $city->name ?>" onchange="showHide2()" <?php if (isset($_POST['city'])) {
                                                                                                                                                                 foreach ($_POST['city'] as $item) {
                                                                                                                                                                     if ($city->name == $item) {
                                                                                                                                                                         echo 'checked';
@@ -61,7 +61,7 @@
                                                     </a>
                                                     <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
                                                         <?php foreach ($themes as $theme) { ?>
-                                                            <input type="checkbox" name='theme[]' value="<?php echo $theme->title ?>" onkeydown="showHide2()" <?php if (isset($_POST['theme'])) {
+                                                            <input type="checkbox" name='theme[]' value="<?php echo $theme->title ?>" onchange="showHide2()" <?php if (isset($_POST['theme'])) {
                                                                                                                                                                     foreach ($_POST['theme'] as $item) {
                                                                                                                                                                         if ($theme->title == $item) {
                                                                                                                                                                             echo 'checked';
@@ -77,7 +77,7 @@
                                                     </a>
                                                     <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
                                                         <?php foreach ($skills as $skill) { ?>
-                                                            <input type="checkbox" name='skill[]' value="<?php echo $skill->skill_name ?>" onkeydown="showHide2()" <?php if (isset($_POST['skill'])) {
+                                                            <input type="checkbox" name='skill[]' value="<?php echo $skill->skill_name ?>" onchange="showHide2()" <?php if (isset($_POST['skill'])) {
                                                                                                                                                                         foreach ($_POST['skill'] as $item) {
                                                                                                                                                                             if ($skill->skill_name == $item) {
                                                                                                                                                                                 echo 'checked';
@@ -120,7 +120,7 @@
                                 <nav class="navbar navbar-expand ps-0 pe-0" style="background-color:white ;">
                                     <ul class="w-100 navbar-nav me-auto mb-2 mb-lg-0">
                                         <li class="w-100 nav-item dropdown fs-6">
-                                            <select class="Rounded-Rectangle-9 w-100" name="country" onkeydown="showHide()">
+                                            <select class="Rounded-Rectangle-9 w-100" name="country" onchange="showHide()">
                                                 <option value="none" hidden="">Country</option>
                                                 <?php foreach ($countries as $country) { ?>
                                                     <option value="<?php echo $country->name ?>" <?php if (isset($_POST['country'])) {
@@ -143,7 +143,7 @@
                                             </a>
                                             <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
                                                 <?php foreach ($cities as $city) { ?>
-                                                    <input type="checkbox" name='city[]' value="<?php echo $city->name ?>" onkeydown="showHide()" <?php if (isset($_POST['city'])) {
+                                                    <input type="checkbox" name='city[]' value="<?php echo $city->name ?>" onchange="showHide()" <?php if (isset($_POST['city'])) {
                                                                                                                                                         foreach ($_POST['city'] as $item) {
                                                                                                                                                             if ($city->name == $item) {
                                                                                                                                                                 echo 'checked';
@@ -165,13 +165,13 @@
                                             </a>
                                             <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
                                                 <?php foreach ($themes as $theme) { ?>
-                                                    <input type="checkbox" name='theme[]' value="<?php echo $theme->title ?>" onkeydown="showHide()" <?php if (isset($_POST['theme'])) {
-                                                                                                                                                            foreach ($_POST['theme'] as $item) {
-                                                                                                                                                                if ($theme->title == $item) {
-                                                                                                                                                                    echo 'checked';
-                                                                                                                                                                }
+                                                    <input type="checkbox" name='theme[]' value="<?php echo $theme->title ?>" onchange="showHide()" <?php if (isset($_POST['theme'])) {
+                                                                                                                                                        foreach ($_POST['theme'] as $item) {
+                                                                                                                                                            if ($theme->title == $item) {
+                                                                                                                                                                echo 'checked';
                                                                                                                                                             }
-                                                                                                                                                        } ?>> <?php echo $theme->title ?> <br />
+                                                                                                                                                        }
+                                                                                                                                                    } ?>> <?php echo $theme->title ?> <br />
                                                 <?php } ?>
                                             </ul>
                                         </li>
@@ -187,7 +187,7 @@
                                             </a>
                                             <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
                                                 <?php foreach ($skills as $skill) { ?>
-                                                    <input type="checkbox" name='skill[]' value="<?php echo $skill->skill_name ?>" onkeydown="showHide()" <?php if (isset($_POST['skill'])) {
+                                                    <input type="checkbox" name='skill[]' value="<?php echo $skill->skill_name ?>" onchange="showHide()" <?php if (isset($_POST['skill'])) {
                                                                                                                                                                 foreach ($_POST['skill'] as $item) {
                                                                                                                                                                     if ($skill->skill_name == $item) {
                                                                                                                                                                         echo 'checked';
@@ -269,7 +269,7 @@
                 <div class="col-lg-7 col-mb-7 col-sm-7 col-0" style="display:flex; justify-content:flex-end">
                     <div class="d-none d-lg-block">
 
-                        <select class="Rounded-Rectangle-8" name="sort" onkeydown="showHide()">
+                        <select class="Rounded-Rectangle-8" name="sort" onchange="showHide()">
                             <?php if (isset($_POST['sort'])) { ?>
                                 <option value="<?php echo $_POST['sort']; ?>" selected hidden><?php echo $_POST['sort']; ?></option>
                             <?php } else { ?>
