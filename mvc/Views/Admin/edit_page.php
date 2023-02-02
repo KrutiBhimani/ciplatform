@@ -13,7 +13,7 @@
                     <p class="mb-1" style="font-size:14px;">Title</p>
                     <input type="text" name="title" class="popup" value="<?php echo $pagei->title; ?>" required>
                     <p class="mb-1 mt-4" style="font-size:14px;">Description</p>
-                    <textarea rows="8" name="description" class="popup1"><?php echo $pagei->description; ?></textarea>
+                    <textarea rows="8" name="description" class="popup1"><?php echo strip_tags($pagei->description); ?></textarea>
                     <p class="mb-1 mt-4" style="font-size:14px;">Slug</p>
                     <input type="text" name="slug" class="popup" value="<?php echo $pagei->slug; ?>" required>
                     <p class="mb-1 mt-4" style="font-size:14px;">Status</p>

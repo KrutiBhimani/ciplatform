@@ -14,7 +14,7 @@
                     <p class="mb-1 mt-4" style="font-size:14px;">Short Description</p>
                     <input type="text" class="popup" name="short_description" value="<?php echo $mission->short_description; ?>" required>
                     <p class="mb-1 mt-4" style="font-size:14px;">Description</p>
-                    <textarea rows="5" name="description" class="popup1"><?php echo $mission->description; ?></textarea>
+                    <textarea rows="5" name="description" class="popup1"><?php echo strip_tags($mission->description); ?></textarea>
                     <p class="mb-1 mt-4" style="font-size:14px;">City</p>
                     <select class="popup pt-0 pb-0" name="city_id" required>
                         <option value="<?php echo $mission->city_id; ?>" selected="" hidden><?php echo $mission->city_name; ?></option>
