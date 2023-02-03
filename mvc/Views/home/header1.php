@@ -33,19 +33,6 @@
             <nav class="navbar d-sm-none navbar-expand position-absolute top-0 end-0 pb-0" style="background-color:white ;">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                     <ul class="navbar-nav me-auto mb-lg-0">
-                        <li class="nav-item me-3 hello">
-                            <a class="nav-link dropdown-toggle position-relative mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="mvc/Assets/images/bell.png">
-                                <div class="rounded-circle position-absolute top-0 end-0" style="background-color:#f88634; font-size:10px;padding:0px 3px;font-weight:bold;color:white;">11</div>
-                            </a>
-                            <div class="dropdown-menu position-absolute top-100 right-0" aria-labelledby="navbarDropdown" style='right:0;'>
-                                <div style="display: flex;justify-content:space-between;color:gray;">
-                                    <i class="fa fa-cog p-2" aria-hidden="true"></i>
-                                    Notification
-                                    <a href='home?source=clear&user=<?php echo $note->user_id; ?>&server=<?php echo $server; ?>'>Clear all</a>
-                                </div>
-                            </div>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="mvc/Assets/<?php if ($user->avatar == '') echo 'images/user1.png';
