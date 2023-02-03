@@ -16,8 +16,6 @@
   ];
   $selectData = $this->SelectData1('user', $where);
   $user = $selectData['Data'];
-  $selectData = $this->SelectNote();
-  $notes = $selectData['Data'];
   $row = 4;
   $where = [
     'slug' => 'policy'
@@ -70,8 +68,17 @@
           </div>
         </div>
       </div>
-<?php
+    <?php
     }
+  }
+  if (isset($_POST['notification'])) {
+
+    $note = $_POST['note'];
+    $selectData = $this->SelectNote($note);
+    $notes = $selectData['Data']; ?>
+<?php } else {
+    $selectData = $this->SelectNote();
+    $notes = $selectData['Data'];
   }
   echo '<!DOCTYPE html>';
   include 'mvc/Views/home/header.php';

@@ -48,14 +48,14 @@
                                                                                 $applied_at = date("d/m/Y", strtotime($applied_at));
                                                                                 echo $applied_at; ?></td>
                                 <td class="p-3 pe-0 p-0" style="font-size:20px;">
-                                    <a onClick="javascript:return confirm('Are you sure to change status to approve?');" href="app?source=edit_app&edit=<?php $id = $app->mission_application_id;
-                                                                                                                                                        $salt = "SECRET_STUFF";
-                                                                                                                                                        $encrypted_id = base64_encode($id . $salt);
-                                                                                                                                                        echo $encrypted_id; ?>"><i class='fa fa-check-circle-o pe-2' style='color: #14c506;' aria-hidden='true'></i></a>
-                                    <a onClick="javascript:return confirm('Are you sure to change status to decline?');" href="app?source=delete_app&delete=<?php $id = $app->mission_application_id;
-                                                                                                                                                            $salt = "SECRET_STUFF";
-                                                                                                                                                            $encrypted_id = base64_encode($id . $salt);
-                                                                                                                                                            echo $encrypted_id; ?>"><i class='fa fa-times-circle-o text-danger' aria-hidden='true'></i></a>
+                                    <a onClick="javascript:return confirm('Are you sure to change status to approve?');" href="app?source=edit_app&user=<?php echo $app->user_id; ?>&edit=<?php $id = $app->mission_application_id;
+                                                                                                                                                                                            $salt = "SECRET_STUFF";
+                                                                                                                                                                                            $encrypted_id = base64_encode($id . $salt);
+                                                                                                                                                                                            echo $encrypted_id; ?>"><i class='fa fa-check-circle-o pe-2' style='color: #14c506;' aria-hidden='true'></i></a>
+                                    <a onClick="javascript:return confirm('Are you sure to change status to decline?');" href="app?source=delete_app&user=<?php echo $app->user_id; ?>&delete=<?php $id = $app->mission_application_id;
+                                                                                                                                                                                                $salt = "SECRET_STUFF";
+                                                                                                                                                                                                $encrypted_id = base64_encode($id . $salt);
+                                                                                                                                                                                                echo $encrypted_id; ?>"><i class='fa fa-times-circle-o text-danger' aria-hidden='true'></i></a>
                                 </td>
                             </tr>
                         <?php

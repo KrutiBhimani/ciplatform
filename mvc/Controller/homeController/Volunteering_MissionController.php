@@ -11,8 +11,6 @@ $where = [
 ];
 $selectData = $this->SelectData1('user', $where);
 $user = $selectData['Data'];
-$selectData = $this->SelectNote();
-$notes = $selectData['Data'];
 $row = 4;
 $encrypted_id = $_GET['id'];
 $salt = "SECRET_STUFF";
@@ -437,6 +435,12 @@ switch ($source) {
             ];
             $abc = 'tatva123';
             $insertEx = $this->InsertData('mission_invite', $data);
+            $insert_data = [
+              'message' => 'you get invitation',
+              'user_id' => $_SESSION['invite_data']->user_id,
+              'category' => 3
+            ];
+            $this->InsertData('notification', $insert_data);
             $mail = new PHPMailer\PHPMailer\PHPMailer(true); //defaults to using php "mail()"; the true param means it will throw exceptions on errors, which we need to catch
             try {
               // $mail->SMTPDebug = 1;                               // Enable verbose debug output
@@ -652,6 +656,15 @@ switch ($source) {
       });
     </script>
     <?php
+    if (isset($_POST['notification'])) {
+
+      $note = $_POST['note'];
+      $selectData = $this->SelectNote($note);
+      $notes = $selectData['Data']; ?>
+      <?php } else {
+      $selectData = $this->SelectNote();
+      $notes = $selectData['Data'];
+    }
     if (isset($_POST['contact'])) {
       $insert_data = [
         'user_id' => $user->user_id,
@@ -661,7 +674,7 @@ switch ($source) {
       $insertEx = $this->InsertData('contact', $insert_data);
       if ($insertEx['Code']) {
 
-    ?>
+      ?>
         <div class="modal show" aria-modal="true" role="dialog" style="display: block;background-color:rgba(0,0,0,.5);">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-2">

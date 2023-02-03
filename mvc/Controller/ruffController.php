@@ -626,7 +626,7 @@ switch ($source) {
       $selectData = $this->SelectNote();
       $notes = $selectData['Data'];
     }
-    include 'mvc/Views/home/header1.php';
+    include 'mvc/Views/ruff.php';
     include 'mvc/Views/home/header2.php';
     include 'mvc/Views/home/home.php';
     break;

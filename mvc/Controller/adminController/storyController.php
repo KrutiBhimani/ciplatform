@@ -55,9 +55,18 @@ switch ($source) {
                 $insert_data = [
                     'message' => 'new story added',
                     'user_id' => $user->user_id,
+                    'category' => 2,
                 ];
                 $this->InsertData('notification', $insert_data);
             }
+            $insert_data = [
+                'message' => 'your story approved',
+                'user_id' => $_GET['user'],
+                'category' => 4,
+            ];
+            $this->InsertData('notification', $insert_data);
+
+
     ?>
             <script type="text/javascript">
                 window.location.href = 'story';
@@ -87,6 +96,12 @@ switch ($source) {
         ];
         $upd_data = $this->UpdateData1('story', $update_data, $where);
         if ($upd_data) {
+            $insert_data = [
+                'message' => 'your story decline',
+                'user_id' => $_GET['user'],
+                'category' => 4,
+            ];
+            $this->InsertData('notification', $insert_data);
         ?>
             <script type="text/javascript">
                 window.location.href = 'story';

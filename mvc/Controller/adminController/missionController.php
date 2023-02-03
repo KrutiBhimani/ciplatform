@@ -129,6 +129,7 @@ switch ($source) {
                     $insert_data = [
                         'message' => 'new mission added',
                         'user_id' => $user->user_id,
+                        'category' => 1,
                     ];
                     $this->InsertData('notification', $insert_data);
                 }

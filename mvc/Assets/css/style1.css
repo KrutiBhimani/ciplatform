@@ -922,3 +922,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   top: 32%;
   width: 100%;
 }
+.cb{
+  accent-color:orange;
+  height:20px;
+  width:17px;
+}

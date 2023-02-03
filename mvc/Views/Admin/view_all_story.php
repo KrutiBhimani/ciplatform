@@ -42,14 +42,14 @@
                                                                             $salt = "SECRET_STUFF";
                                                                             $encrypted_id = base64_encode($id . $salt);
                                                                             echo $encrypted_id; ?>" class='col-example13' style='background-color: white;'>View</a>
-                                    <a onClick="javascript:return confirm('Are you sure to change status to approve?');" href="story?source=approve_story&edit=<?php $id = $story->story_id;
-                                                                                                                                                                $salt = "SECRET_STUFF";
-                                                                                                                                                                $encrypted_id = base64_encode($id . $salt);
-                                                                                                                                                                echo $encrypted_id; ?>"><i class='fa fa-check-circle-o pe-2' style='color: #14c506;' aria-hidden='true'></i></a>
-                                    <a onClick="javascript:return confirm('Are you sure to change status to decline?');" href="story?source=decline_story&edit=<?php $id = $story->story_id;
-                                                                                                                                                                $salt = "SECRET_STUFF";
-                                                                                                                                                                $encrypted_id = base64_encode($id . $salt);
-                                                                                                                                                                echo $encrypted_id; ?>"><i class='fa fa-times-circle-o text-danger pe-2' aria-hidden='true'></i></a>
+                                    <a onClick="javascript:return confirm('Are you sure to change status to approve?');" href="story?source=approve_story&user=<?php echo $story->user_id; ?>&edit=<?php $id = $story->story_id;
+                                                                                                                                                                                                    $salt = "SECRET_STUFF";
+                                                                                                                                                                                                    $encrypted_id = base64_encode($id . $salt);
+                                                                                                                                                                                                    echo $encrypted_id; ?>"><i class='fa fa-check-circle-o pe-2' style='color: #14c506;' aria-hidden='true'></i></a>
+                                    <a onClick="javascript:return confirm('Are you sure to change status to decline?');" href="story?source=decline_story&user=<?php echo $story->user_id; ?>&edit=<?php $id = $story->story_id;
+                                                                                                                                                                                                    $salt = "SECRET_STUFF";
+                                                                                                                                                                                                    $encrypted_id = base64_encode($id . $salt);
+                                                                                                                                                                                                    echo $encrypted_id; ?>"><i class='fa fa-times-circle-o text-danger pe-2' aria-hidden='true'></i></a>
                                     <div id="popup<?php echo $id = $story->story_id; ?>" class="modal">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content p-2">

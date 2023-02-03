@@ -12,8 +12,6 @@ $where = [
 ];
 $selectData = $this->SelectData1('user', $where);
 $user = $selectData['Data'];
-$selectData = $this->SelectNote();
-$notes = $selectData['Data'];
 $selectData = $this->SelectData('city');
 $cities = $selectData['Data'];
 $selectData = $this->SelectData('country');
@@ -241,9 +239,18 @@ if (isset($_POST['change'])) {
           </div>
         </div>
       </div>
-<?php
+  <?php
     }
   }
+}
+if (isset($_POST['notification'])) {
+
+  $note = $_POST['note'];
+  $selectData = $this->SelectNote($note);
+  $notes = $selectData['Data']; ?>
+<?php } else {
+  $selectData = $this->SelectNote();
+  $notes = $selectData['Data'];
 }
 ?>
 <script>

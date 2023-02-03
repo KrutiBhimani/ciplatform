@@ -79,6 +79,9 @@ class Controller extends loginModel
 				case '/Volunteering_Mission';
 					include "homeController/Volunteering_MissionController.php";
 					break;
+				case '/ruff';
+					include "ruffController.php";
+					break;
 				default:
 ?>
 					<script type="text/javascript">

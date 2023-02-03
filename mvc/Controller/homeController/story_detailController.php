@@ -12,8 +12,6 @@ $where = [
 ];
 $selectData = $this->SelectData1('user', $where);
 $user = $selectData['Data'];
-$selectData = $this->SelectNote();
-$notes = $selectData['Data'];
 $encrypted_id = $_GET['key'];
 $salt = "SECRET_STUFF";
 $decrypted_id_raw = base64_decode($encrypted_id);
@@ -109,6 +107,12 @@ if (isset($_POST['inviteuser'])) {
         ];
         $abc = 'tatva123';
         $insertEx = $this->InsertData('story_invite', $data);
+        $insert_data = [
+          'message' => 'you get invitation',
+          'user_id' => $_SESSION['invite_data']->user_id,
+          'category' => 3
+        ];
+        $this->InsertData('notification', $insert_data);
         $mail = new PHPMailer\PHPMailer\PHPMailer(true); //defaults to using php "mail()"; the true param means it will throw exceptions on errors, which we need to catch
         try {
           // $mail->SMTPDebug = 1;                               // Enable verbose debug output
@@ -237,7 +241,16 @@ if (isset($_POST['inviteuser'])) {
         </div>
       </div>
     </div>
-<?php }
+  <?php }
+}
+if (isset($_POST['notification'])) {
+
+  $note = $_POST['note'];
+  $selectData = $this->SelectNote($note);
+  $notes = $selectData['Data']; ?>
+<?php } else {
+  $selectData = $this->SelectNote();
+  $notes = $selectData['Data'];
 }
 include 'mvc/Views/home/header.php';
 ?>

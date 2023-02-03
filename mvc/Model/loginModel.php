@@ -300,9 +300,17 @@ class loginModel extends Model
 		}
 		return $response;
 	}
-	function SelectNote()
+	function SelectNote(array $where = [])
 	{
-		$selSql = "SELECT * FROM notification ORDER BY `notification`.`notification_id` DESC";
+		$selSql = "SELECT * FROM notification";
+		if (!empty($where)) {
+			$selSql .= " WHERE ";
+			foreach ($where as $value) {
+				$selSql .= " category = $value OR";
+			}
+			$selSql = rtrim($selSql, 'OR');
+		}
+		$selSql .= " ORDER BY `notification`.`notification_id` DESC";
 		$sqlEx = $this->connection->query($selSql);
 		if ($sqlEx->num_rows > 0) {
 			while ($FetchData = $sqlEx->fetch_object()) {

@@ -42,7 +42,7 @@
                                 <div style="display: flex;justify-content:space-between;color:gray;">
                                     <i class="fa fa-cog p-2" aria-hidden="true"></i>
                                     Notification
-                                    <a href=''>Clear all</a>
+                                    <a href='home?source=clear&user=<?php echo $note->user_id; ?>&server=<?php echo $server; ?>'>Clear all</a>
                                 </div>
                             </div>
                         </li>
@@ -82,7 +82,7 @@
                                 <div class='d-flex align-items-center' style="display: flex;justify-content:space-between;color:gray;">
                                     <a href="#" style="color: black;" data-bs-toggle="modal" data-bs-target="#popupfdsds"><i class="fa fa-cog pl-2 pr-0 pb-2 pt-1" aria-hidden="true" style="font-size:25px;color:gray"></i></a>
                                     Notification
-                                    <a href='home?source=clear&user=<?php echo $note->user_id; ?>&server=<?php echo $server; ?>' style='font-size:13px;color:gray;padding:0px 5px'>Clear all</a>
+                                    <a href='home?source=clear&user=<?php echo $user->user_id; ?>&server=<?php echo $server; ?>' style='font-size:13px;color:gray;padding:0px 5px'>Clear all</a>
                                 </div>
                                 <?php foreach ($notes as $note) {
                                     $created_at = $note->created_at;
@@ -103,7 +103,7 @@
                                             <img class='col-lg-2 col-md-2 col-sm-2 col-2 rounded-circle' src="mvc/Assets/images/add.png" height='27px' width='22px'>
                                             <span class='col-lg-9 col-md-9 col-sm-9 col-9 m-0 p-0'><?php echo $note->message ?></span>
                                             <?php if ($note->status == 1) { ?>
-                                                <a class="col-lg-1 col-md-1 col-sm-1 col-1 rounded-circle text-end me-2" href="home?source=read&note=<?php echo $note->notification_id; ?>&user=<?php echo $note->user_id; ?>&server=<?php echo $server; ?>" style="background-color:#f88634;padding-right:0;height:15px;flex:0 0 0;"></a>
+                                                <a class="col-lg-1 col-md-1 col-sm-1 col-1 rounded-circle text-end me-2" href="home?source=read&note=<?php echo $note->notification_id; ?>&user=<?php echo $user->user_id; ?>&server=<?php echo $server; ?>" style="background-color:#f88634;padding-right:0;height:15px;flex:0 0 0;"></a>
                                             <?php } else { ?>
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-1 rounded-circle text-end me-2" style="background-color:gray;padding-right:0;height:15px;flex:0 0 0;"></div>
                                             <?php } ?>
@@ -132,7 +132,7 @@
                                             <img class='col-lg-2 col-md-2 col-sm-2 col-2 rounded-circle' src="mvc/Assets/images/add.png" height='27px' width='22px'>
                                             <span class='col-lg-9 col-md-9 col-sm-9 col-9 m-0 p-0'><?php echo $note->message ?></span>
                                             <?php if ($note->status == 1) { ?>
-                                                <a class="col-lg-1 col-md-1 col-sm-1 col-1 rounded-circle text-end me-2" href="home?source=read&note=<?php echo $note->notification_id; ?>&user=<?php echo $note->user_id; ?>" style="background-color:#f88634;padding-right:0;height:15px;flex:0 0 0;"></a>
+                                                <a class="col-lg-1 col-md-1 col-sm-1 col-1 rounded-circle text-end me-2" href="home?source=read&note=<?php echo $note->notification_id; ?>&user=<?php echo $note->user_id; ?>&server=<?php echo $server; ?>" style="background-color:#f88634;padding-right:0;height:15px;flex:0 0 0;"></a>
                                             <?php } else { ?>
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-1 rounded-circle text-end me-2" style="background-color:gray;padding-right:0;height:15px;flex:0 0 0;"></div>
                                             <?php } ?>
@@ -166,34 +166,65 @@
                 <p class="mb-0" style="font-size:20px ;">Notification Setting</p>
                 <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png" data-bs-dismiss="modal" style="cursor: pointer;height:13px">
             </div>
+
             <div class='w-100 mt-3 mb-3 pr-3 pl-3 pt-2 pb-2' style="border-top:1px solid #dddddd;border-bottom:1px solid #dddddd;background-color:#e8e8e8;color:gray;">Get a notification for</div>
             <form class="m-0" method="post" enctype="multipart/form-data">
-                <div class="modal-body pb-0 fs-6">
-                    <div class="d-flex justify-content-between" style='font-size:18px'>
-                        <p class="mb-1">Recommended mission</p>
-                        <input type="checkbox">
+                <div class="modal-body pb-0 mb-3">
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-1">New Mission</p>
+                        <input type="checkbox" class="cb" name="note[]" value="1" <?php if (isset($_POST['note'])) {
+                                                                                        foreach ($_POST['note'] as $item) {
+                                                                                            if (1 == $item) {
+                                                                                                echo 'checked';
+                                                                                            }
+                                                                                        }
+                                                                                    } ?>>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <p class="mb-1">Recommended mission</p>
-                        <input type="checkbox">
+                        <p class="mb-1">New Story</p>
+                        <input type="checkbox" class="cb" name="note[]" value="2" <?php if (isset($_POST['note'])) {
+                                                                                        foreach ($_POST['note'] as $item) {
+                                                                                            if (2 == $item) {
+                                                                                                echo 'checked';
+                                                                                            }
+                                                                                        }
+                                                                                    } ?>>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <p class="mb-1">Recommended mission</p>
-                        <input type="checkbox">
+                        <p class="mb-1">Story Status</p>
+                        <input type="checkbox" class="cb" name="note[]" value="4" <?php if (isset($_POST['note'])) {
+                                                                                        foreach ($_POST['note'] as $item) {
+                                                                                            if (4 == $item) {
+                                                                                                echo 'checked';
+                                                                                            }
+                                                                                        }
+                                                                                    } ?>>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <p class="mb-1">Recommended mission</p>
-                        <input type="checkbox">
+                        <p class="mb-1">Mission Application Status</p>
+                        <input type="checkbox" class="cb" name="note[]" value="5" <?php if (isset($_POST['note'])) {
+                                                                                        foreach ($_POST['note'] as $item) {
+                                                                                            if (5 == $item) {
+                                                                                                echo 'checked';
+                                                                                            }
+                                                                                        }
+                                                                                    } ?>>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <p class="mb-1">Recommended mission</p>
-                        <input type="checkbox">
+                        <p class="mb-1">Mission Invites</p>
+                        <input type="checkbox" class="cb" name="note[]" value="3" <?php if (isset($_POST['note'])) {
+                                                                                        foreach ($_POST['note'] as $item) {
+                                                                                            if (3 == $item) {
+                                                                                                echo 'checked';
+                                                                                            }
+                                                                                        }
+                                                                                    } ?>>
                     </div>
                 </div>
                 <div class="modal-footer" style="border-top:0 ;">
                     <button type="button" class="col-example8" data-bs-dismiss="modal">Cancle
                     </button>
-                    <button type="submit" name='contact' class="col-example7" data-bs-dismiss="modal">Save
+                    <button type="submit" name='notification' class="col-example7" data-bs-dismiss="modal">Save
                     </button>
                 </div>
             </form>

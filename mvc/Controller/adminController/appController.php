@@ -34,6 +34,12 @@ switch ($source) {
         ];
         $upd_data = $this->UpdateData1('mission_application', $update_data, $where);
         if ($upd_data) {
+            $insert_data = [
+                'message' => 'your application approved',
+                'user_id' => $_GET['user'],
+                'category' => 5
+            ];
+            $this->InsertData('notification', $insert_data);
     ?>
             <script type="text/javascript">
                 window.location.href = 'app';
@@ -64,6 +70,12 @@ switch ($source) {
         ];
         $upd_data = $this->UpdateData1('mission_application', $update_data, $where);
         if ($upd_data) {
+            $insert_data = [
+                'message' => 'your application decline',
+                'user_id' => $_GET['user'],
+                'category' => 5
+            ];
+            $this->InsertData('notification', $insert_data);
         ?>
             <script type="text/javascript">
                 window.location.href = 'app';

@@ -117,9 +117,7 @@
       <div class="modal-content p-2">
         <div class="modal-header" style="border-bottom:0 ;">
           <p class="mb-0" style="font-size:20px ;font-weight:bold">Change password</p>
-          <a href='forgot'>
-            <img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png">
-          </a>
+          <a href='forgot'><img class="text-end mt-2 mb-2" src="mvc/Assets/images/cancel1.png"></a>
         </div>
         <div class="modal-body pb-0">
           <p class="mb-1" style="font-size:18px">something went wrong!</p>
