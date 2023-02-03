@@ -46,7 +46,14 @@ $skills = $selectData['Data'];
 $selectData = $this->SelectData4($user_id);
 $users = $selectData['Data'];
 $userrow = $selectData['Row'];
-
+if (isset($_POST['notification'])) {
+  $note = $_POST['note'];
+  $selectData = $this->SelectNote($note);
+  $notes = $selectData['Data']; ?>
+<?php } else {
+  $selectData = $this->SelectNote();
+  $notes = $selectData['Data'];
+}
 include 'mvc/Views/home/header.php';
 ?>
 <script>
@@ -616,15 +623,6 @@ switch ($source) {
         </div>
       <?php
       }
-    }
-    if (isset($_POST['notification'])) {
-
-      $note = $_POST['note'];
-      $selectData = $this->SelectNote($note);
-      $notes = $selectData['Data']; ?>
-<?php } else {
-      $selectData = $this->SelectNote();
-      $notes = $selectData['Data'];
     }
     include 'mvc/Views/home/header1.php';
     include 'mvc/Views/home/header2.php';
