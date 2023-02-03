@@ -49,8 +49,8 @@ $userrow = $selectData['Row'];
 if (isset($_POST['notification'])) {
   $note = $_POST['note'];
   $selectData = $this->SelectNote($note);
-  $notes = $selectData['Data']; ?>
-<?php } else {
+  $notes = $selectData['Data'];
+} else {
   $selectData = $this->SelectNote();
   $notes = $selectData['Data'];
 }
